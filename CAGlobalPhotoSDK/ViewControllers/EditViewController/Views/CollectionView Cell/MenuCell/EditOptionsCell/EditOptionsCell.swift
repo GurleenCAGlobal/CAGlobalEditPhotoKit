@@ -6,6 +6,7 @@
 //
 
 import UIKit
+//error: Filename "FilterView.swift" used twice: '/Users/emp/CAGlobalEditPhotoKit/CAGlobalPhotoSDK/ViewControllers/EditViewController/Views/Filter/FilterView.swift' and '/Users/emp/CAGlobalEditPhotoKit/CAGlobalPhotoSDK/ViewControllers/EditViewController/Views/Frames/FilterView.swift' (in target 'CAGlobalPhotoSDK' from project 'Pods')
 
 // Define a protocol for the cell's data source
 protocol EditOptionsCellDataSource: AnyObject {

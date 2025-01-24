@@ -3,3 +3,4 @@
 //
 
 #import "GPUImage.h"
+//'CAGlobalPhotoSDK/ViewControllers','CAGlobalPhotoSDK/ViewControllers/EditViewController','CAGlobalPhotoSDK/ViewControllers/HelperClasses'

@@ -146,6 +146,22 @@ extension CAEditViewController {
         return resizedImage
     }
     
+    /**
+     Build description signature: f7cc62828be4850faba45d0e6fb7bee4
+         Build description path: /Users/emp/Library/Developer/Xcode/DerivedData/Build/Intermediates.noindex/XCBuildData/f7cc62828be4850faba45d0e6fb7bee4.xcbuilddata
+     
+         note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'App' from project 'App')
+     
+         error: SWIFT_VERSION '3.0' is unsupported, supported versions are: 4.0, 4.2, 5.0, 6.0. (in target 'App' from project 'App')
+         error: SWIFT_VERSION '3.0' is unsupported, supported versions are: 4.0, 4.2, 5.0, 6.0. (in target 'App' from project 'App')
+     
+         note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'Pods-App' from project 'Pods')
+         note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'caglobaledit' from project 'Pods')
+     
+         error: SWIFT_VERSION '3.0' is unsupported, supported versions are: 4.0, 4.2, 5.0, 6.0. (in target 'caglobaledit' from project 'Pods')
+         error: SWIFT_VERSION '3.0' is unsupported, supported versions are: 4.0, 4.2, 5.0, 6.0. (in target 'caglobaledit' from project 'Pods')
+     **/
+    
     func toResetFrames(frame: String) {
         print(frame)
         if selectedFrame as? String != "none" {
