@@ -258,6 +258,7 @@
 		B96F9FCC2AB708BA006BFEAC /* LUTFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96F9FCA2AB708BA006BFEAC /* LUTFilter.swift */; };
 		B96F9FCD2AB708BA006BFEAC /* Shaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96F9FCB2AB708BA006BFEAC /* Shaders.swift */; };
 		B97145872AC4820800D21C06 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97145862AC4820800D21C06 /* DrawingView.swift */; };
+		B97385EC2D438AB4001522EB /* caglobaledit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = B97385EB2D438AB4001522EB /* caglobaledit.podspec */; };
 		B97653AE29D2F43F0008F8DE /* CommonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97653AD29D2F43F0008F8DE /* CommonExtensions.swift */; };
 		B977D67E2AA9BDC700595142 /* CanvasRatioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B977D67D2AA9BDC700595142 /* CanvasRatioManager.swift */; };
 		B9787FBB29CDAAA100CADD20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9787FBA29CDAAA100CADD20 /* AppDelegate.swift */; };
@@ -2695,6 +2696,7 @@
 		B96F9FCA2AB708BA006BFEAC /* LUTFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LUTFilter.swift; sourceTree = "<group>"; };
 		B96F9FCB2AB708BA006BFEAC /* Shaders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shaders.swift; sourceTree = "<group>"; };
 		B97145862AC4820800D21C06 /* DrawingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
+		B97385EB2D438AB4001522EB /* caglobaledit.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = caglobaledit.podspec; sourceTree = "<group>"; };
 		B97653AD29D2F43F0008F8DE /* CommonExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonExtensions.swift; sourceTree = "<group>"; };
 		B977D67D2AA9BDC700595142 /* CanvasRatioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasRatioManager.swift; sourceTree = "<group>"; };
 		B9787FB729CDAAA100CADD20 /* CAGlobalPhotoSDK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CAGlobalPhotoSDK.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -5509,6 +5511,7 @@
 		B9787FAE29CDAAA100CADD20 = {
 			isa = PBXGroup;
 			children = (
+				B97385EB2D438AB4001522EB /* caglobaledit.podspec */,
 				25224FDD2B72639600335D28 /* .swiftlint.yml */,
 				B91C1B842CF76D8300FDE6AE /* CAGlobal-Bridging-Header.h */,
 				B9787FB929CDAAA100CADD20 /* CAGlobalPhotoSDK */,
@@ -9677,6 +9680,7 @@
 				B9CC92452C8F474000F39A5F /* anzac_poppy-2_TN.png in Resources */,
 				B9CC92462C8F474000F39A5F /* imglyStickerCategory@3x.png in Resources */,
 				B9CC92472C8F474000F39A5F /* moon_TN@3x.png in Resources */,
+				B97385EC2D438AB4001522EB /* caglobaledit.podspec in Resources */,
 				B9CC92482C8F474000F39A5F /* flower_TN.png in Resources */,
 				B9CC92492C8F474000F39A5F /* heart_football_px_TN.png in Resources */,
 				B9CC924A2C8F474000F39A5F /* mothersday.png in Resources */,
