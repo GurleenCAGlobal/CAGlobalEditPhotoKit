@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "imgly_icon_option_bring-to-front.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "imgly_icon_option_bring-to-front@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "imgly_icon_option_bring-to-front@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

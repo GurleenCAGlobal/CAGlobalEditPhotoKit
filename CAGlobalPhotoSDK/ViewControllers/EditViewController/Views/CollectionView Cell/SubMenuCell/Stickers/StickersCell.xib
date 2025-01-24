@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StickersCell" id="dg1-Yc-znb" customClass="StickersCell" customModule="CAGlobalPhotoSDK" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="80" height="100"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="80" height="100"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tS5-qV-QcP">
+                        <rect key="frame" x="2" y="2" width="76" height="74"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </imageView>
+                    <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ttq-MT-vNs">
+                        <rect key="frame" x="15" y="25" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="13b-Y7-YWZ"/>
+                            <constraint firstAttribute="height" constant="50" id="Kej-L1-Daf"/>
+                        </constraints>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" image="customSticker"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U1C-Wm-Hiu">
+                        <rect key="frame" x="10" y="78" width="60" height="20"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="0dM-vA-iep"/>
+                        </constraints>
+                        <attributedString key="attributedText">
+                            <fragment content="Add Photo">
+                                <attributes>
+                                    <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <font key="NSFont" size="8" name="HPSimplified-Regular"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="NL3-PM-j58"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="U1C-Wm-Hiu" secondAttribute="bottom" constant="2" id="0aZ-SP-SkO"/>
+                <constraint firstAttribute="trailing" secondItem="U1C-Wm-Hiu" secondAttribute="trailing" constant="10" id="4S6-zN-4W5"/>
+                <constraint firstAttribute="trailing" secondItem="tS5-qV-QcP" secondAttribute="trailing" constant="2" id="LEg-cT-DUa"/>
+                <constraint firstItem="ttq-MT-vNs" firstAttribute="centerX" secondItem="dg1-Yc-znb" secondAttribute="centerX" id="MjS-rZ-XVj"/>
+                <constraint firstItem="U1C-Wm-Hiu" firstAttribute="top" secondItem="tS5-qV-QcP" secondAttribute="bottom" constant="2" id="Mqi-ZO-cPI"/>
+                <constraint firstItem="tS5-qV-QcP" firstAttribute="leading" secondItem="dg1-Yc-znb" secondAttribute="leading" constant="2" id="OCK-b9-tdf"/>
+                <constraint firstItem="U1C-Wm-Hiu" firstAttribute="leading" secondItem="dg1-Yc-znb" secondAttribute="leading" constant="10" id="PVf-MY-CJ8"/>
+                <constraint firstItem="tS5-qV-QcP" firstAttribute="top" secondItem="dg1-Yc-znb" secondAttribute="top" constant="2" id="cxi-6e-p63"/>
+                <constraint firstItem="ttq-MT-vNs" firstAttribute="centerY" secondItem="dg1-Yc-znb" secondAttribute="centerY" id="pfZ-MJ-BNs"/>
+            </constraints>
+            <size key="customSize" width="88" height="74"/>
+            <connections>
+                <outlet property="addPhoto" destination="ttq-MT-vNs" id="p8L-DD-8W2"/>
+                <outlet property="heightConstraint" destination="0dM-vA-iep" id="qD3-by-SYc"/>
+                <outlet property="nameLabel" destination="U1C-Wm-Hiu" id="QnZ-nX-fdP"/>
+                <outlet property="stickerImageView" destination="tS5-qV-QcP" id="iUA-rC-oOC"/>
+            </connections>
+            <point key="canvasLocation" x="-32.061068702290072" y="-2.8169014084507045"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="customSticker" width="324" height="324"/>
+    </resources>
+</document>

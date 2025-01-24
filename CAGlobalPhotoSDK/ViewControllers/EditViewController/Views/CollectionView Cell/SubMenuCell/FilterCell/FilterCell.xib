@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FilterCell" id="FWN-J9-dRm" customClass="FilterCell" customModule="CAGlobalPhotoSDK" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="48" height="70"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="48" height="70"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="golden" translatesAutoresizingMaskIntoConstraints="NO" id="XdD-u4-YKj">
+                        <rect key="frame" x="2" y="2" width="44" height="66"/>
+                    </imageView>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="ktM-Cy-ZLL">
+                        <rect key="frame" x="2" y="2" width="44" height="66"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <attributedString key="attributedText">
+                            <fragment content="No Filter">
+                                <attributes>
+                                    <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <font key="NSFont" size="8" name="HPSimplified-Regular"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="pXZ-8h-qgd"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="XdD-u4-YKj" firstAttribute="top" secondItem="FWN-J9-dRm" secondAttribute="top" constant="2" id="0ZN-n4-iT2"/>
+                <constraint firstItem="ktM-Cy-ZLL" firstAttribute="top" secondItem="FWN-J9-dRm" secondAttribute="top" constant="2" id="7Cg-uj-POZ"/>
+                <constraint firstAttribute="bottom" secondItem="XdD-u4-YKj" secondAttribute="bottom" constant="2" id="ZQw-0H-cpf"/>
+                <constraint firstItem="ktM-Cy-ZLL" firstAttribute="leading" secondItem="FWN-J9-dRm" secondAttribute="leading" constant="2" id="b6S-5T-Gbu"/>
+                <constraint firstAttribute="bottom" secondItem="ktM-Cy-ZLL" secondAttribute="bottom" constant="2" id="d6y-rp-od6"/>
+                <constraint firstAttribute="trailing" secondItem="XdD-u4-YKj" secondAttribute="trailing" constant="2" id="fNt-IL-5TC"/>
+                <constraint firstAttribute="trailing" secondItem="ktM-Cy-ZLL" secondAttribute="trailing" constant="2" id="rmT-ah-BmT"/>
+                <constraint firstItem="XdD-u4-YKj" firstAttribute="leading" secondItem="FWN-J9-dRm" secondAttribute="leading" constant="2" id="wVh-JJ-cCQ"/>
+            </constraints>
+            <size key="customSize" width="88" height="74"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                    <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="filterImageView" destination="XdD-u4-YKj" id="yP9-nB-gBa"/>
+                <outlet property="filterLabel" destination="ktM-Cy-ZLL" id="tfF-9G-LOe"/>
+            </connections>
+            <point key="canvasLocation" x="-32.061068702290072" y="-2.8169014084507045"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="golden" width="1280" height="1280"/>
+    </resources>
+</document>

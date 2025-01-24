@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HPSimplified_Lt.ttf">
+            <string>HPSimplified-Light</string>
+        </array>
+        <array key="HPSimplified_Rg.ttf">
+            <string>HPSimplified-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomPaperLengthViewController" customModule="HP_Sprocket_Panorama" customModuleProvider="target">
+            <connections>
+                <outlet property="activityIndicator" destination="ymA-vV-cup" id="lPq-Av-cPc"/>
+                <outlet property="canvasView" destination="Cu9-xd-Lt0" id="SXo-5M-hXq"/>
+                <outlet property="tableViewSize" destination="DSL-dq-UVi" id="G1D-kr-Foz"/>
+                <outlet property="view" destination="Ouq-Ow-rCc" id="4fk-FO-aZ0"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Ouq-Ow-rCc">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y6T-LO-O6u">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="40"/>
+                    <color key="backgroundColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="Wht-Os-Vfm"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Po-YY-Ugk">
+                    <rect key="frame" x="0.0" y="40" width="393" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nel-rQ-lQU">
+                            <rect key="frame" x="20" y="10" width="25" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="25" id="Tgr-d5-fCm"/>
+                                <constraint firstAttribute="height" constant="25" id="i61-us-Z1G"/>
+                            </constraints>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" image="back"/>
+                            <connections>
+                                <action selector="actionBackButton:" destination="-1" eventType="touchUpInside" id="u49-Q7-q1k"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Paper Length" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zst-xY-gKU">
+                            <rect key="frame" x="127.66666666666669" y="12" width="138" height="23"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="23" id="ZF9-45-d83"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="20"/>
+                            <color key="textColor" red="1" green="0.94509803920000002" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ul-Nt-E8M">
+                            <rect key="frame" x="340" y="14" width="31" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="IPj-Ns-YGM"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="16"/>
+                            <state key="normal" title="Next">
+                                <color key="titleColor" red="1" green="0.94509803920000002" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="actionNextButton:" destination="-1" eventType="touchUpInside" id="oTF-E4-CkD"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="AFD-Ow-ZnC"/>
+                        <constraint firstAttribute="bottom" secondItem="8ul-Nt-E8M" secondAttribute="bottom" constant="15" id="J3x-K7-25Y"/>
+                        <constraint firstItem="Zst-xY-gKU" firstAttribute="centerX" secondItem="1Po-YY-Ugk" secondAttribute="centerX" id="WjH-nN-npf"/>
+                        <constraint firstAttribute="bottom" secondItem="nel-rQ-lQU" secondAttribute="bottom" constant="15" id="Zf2-zh-Agd"/>
+                        <constraint firstAttribute="trailing" secondItem="8ul-Nt-E8M" secondAttribute="trailing" constant="22" id="haf-81-Yhq"/>
+                        <constraint firstItem="nel-rQ-lQU" firstAttribute="leading" secondItem="1Po-YY-Ugk" secondAttribute="leading" constant="20" id="k4e-hK-bae"/>
+                        <constraint firstAttribute="bottom" secondItem="Zst-xY-gKU" secondAttribute="bottom" constant="15" id="m3A-0x-hqg"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="apk-cy-xIr">
+                    <rect key="frame" x="0.0" y="516" width="393" height="336"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="DSL-dq-UVi">
+                            <rect key="frame" x="0.0" y="91.333333333333357" width="393" height="244.66666666666663"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </tableView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suggested" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofD-SR-jov">
+                            <rect key="frame" x="29.999999999999996" y="70.333333333333371" width="59.666666666666657" height="16"/>
+                            <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="14"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kKR-s9-MWP">
+                            <rect key="frame" x="18" y="15.000000000000004" width="166.33333333333334" height="40.333333333333343"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" image="custom_lenght" title="   Custom Length">
+                                <fontDescription key="titleFontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="17"/>
+                                <color key="baseForegroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </buttonConfiguration>
+                            <connections>
+                                <action selector="actionCustomLength:" destination="-1" eventType="touchUpInside" id="qt5-0M-EdC"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="kKR-s9-MWP" firstAttribute="leading" secondItem="apk-cy-xIr" secondAttribute="leading" constant="18" id="O4V-a1-XWs"/>
+                        <constraint firstItem="kKR-s9-MWP" firstAttribute="top" secondItem="apk-cy-xIr" secondAttribute="top" constant="15" id="Of3-9s-M1c"/>
+                        <constraint firstAttribute="bottom" secondItem="DSL-dq-UVi" secondAttribute="bottom" id="RNb-Yg-NgO"/>
+                        <constraint firstItem="ofD-SR-jov" firstAttribute="top" secondItem="kKR-s9-MWP" secondAttribute="bottom" constant="15" id="UQy-2o-XeO"/>
+                        <constraint firstItem="DSL-dq-UVi" firstAttribute="leading" secondItem="apk-cy-xIr" secondAttribute="leading" id="au1-gV-lZL"/>
+                        <constraint firstItem="ofD-SR-jov" firstAttribute="leading" secondItem="apk-cy-xIr" secondAttribute="leading" constant="30" id="ayy-6g-v81"/>
+                        <constraint firstAttribute="trailing" secondItem="DSL-dq-UVi" secondAttribute="trailing" id="b1l-vl-nJL"/>
+                        <constraint firstItem="DSL-dq-UVi" firstAttribute="top" secondItem="ofD-SR-jov" secondAttribute="bottom" constant="5" id="sq6-cT-H42"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cu9-xd-Lt0" customClass="CanvasCropView" customModule="HP_Sprocket_Panorama" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="90" width="393" height="426"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ymA-vV-cup">
+                            <rect key="frame" x="178" y="194.66666666666669" width="37" height="37"/>
+                            <color key="color" red="0.0" green="0.69411764710000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.46666666670000001" green="0.46666666670000001" blue="0.46666666670000001" alpha="0.94432947020000002" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="ymA-vV-cup" firstAttribute="centerX" secondItem="Cu9-xd-Lt0" secondAttribute="centerX" id="Kai-Ub-beD"/>
+                        <constraint firstItem="ymA-vV-cup" firstAttribute="centerY" secondItem="Cu9-xd-Lt0" secondAttribute="centerY" id="t3J-tj-ePF"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="EwT-bZ-rFV"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="apk-cy-xIr" firstAttribute="trailing" secondItem="EwT-bZ-rFV" secondAttribute="trailing" id="1Pw-Ov-Suq"/>
+                <constraint firstItem="1Po-YY-Ugk" firstAttribute="leading" secondItem="EwT-bZ-rFV" secondAttribute="leading" id="7A4-tz-WX6"/>
+                <constraint firstItem="Cu9-xd-Lt0" firstAttribute="leading" secondItem="EwT-bZ-rFV" secondAttribute="leading" id="OpO-dM-y5w"/>
+                <constraint firstItem="1Po-YY-Ugk" firstAttribute="trailing" secondItem="EwT-bZ-rFV" secondAttribute="trailing" id="PXI-gs-CAn"/>
+                <constraint firstItem="apk-cy-xIr" firstAttribute="leading" secondItem="EwT-bZ-rFV" secondAttribute="leading" id="RVm-aw-OAs"/>
+                <constraint firstItem="EwT-bZ-rFV" firstAttribute="trailing" secondItem="y6T-LO-O6u" secondAttribute="trailing" id="SUe-ji-eGB"/>
+                <constraint firstItem="y6T-LO-O6u" firstAttribute="top" secondItem="Ouq-Ow-rCc" secondAttribute="top" id="Vpc-LB-nMm"/>
+                <constraint firstItem="apk-cy-xIr" firstAttribute="top" secondItem="Cu9-xd-Lt0" secondAttribute="bottom" id="ZqE-TY-O3r"/>
+                <constraint firstAttribute="bottom" secondItem="apk-cy-xIr" secondAttribute="bottom" id="e9X-KB-3tr"/>
+                <constraint firstItem="y6T-LO-O6u" firstAttribute="leading" secondItem="EwT-bZ-rFV" secondAttribute="leading" id="gTh-7b-ieR"/>
+                <constraint firstItem="Cu9-xd-Lt0" firstAttribute="height" secondItem="Ouq-Ow-rCc" secondAttribute="height" multiplier="0.5" id="ry4-TD-V19"/>
+                <constraint firstItem="Cu9-xd-Lt0" firstAttribute="trailing" secondItem="EwT-bZ-rFV" secondAttribute="trailing" id="tvX-Vd-NZS"/>
+                <constraint firstItem="1Po-YY-Ugk" firstAttribute="top" secondItem="y6T-LO-O6u" secondAttribute="bottom" id="u6E-du-bdo"/>
+                <constraint firstItem="Cu9-xd-Lt0" firstAttribute="top" secondItem="1Po-YY-Ugk" secondAttribute="bottom" id="xC3-0J-Lp9"/>
+            </constraints>
+            <point key="canvasLocation" x="-161.06870229007632" y="-648.59154929577471"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="back" width="32" height="32"/>
+        <image name="custom_lenght" width="26.333333969116211" height="26.333333969116211"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

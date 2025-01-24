@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OverlayCell" id="gTV-IL-0wX" customClass="OverlayCell" customModule="CAGlobalPhotoSDK" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="golden" translatesAutoresizingMaskIntoConstraints="NO" id="iND-Vl-Wia">
+                        <rect key="frame" x="10" y="10" width="60" height="60"/>
+                    </imageView>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="bRe-v1-fCk">
+                        <rect key="frame" x="10" y="10" width="60" height="60"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <attributedString key="attributedText">
+                            <fragment content="No Overlay">
+                                <attributes>
+                                    <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <font key="NSFont" size="8" name="HPSimplified-Regular"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="0.16350446428571427" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="bRe-v1-fCk" secondAttribute="bottom" constant="10" id="1sW-ee-NhL"/>
+                <constraint firstItem="bRe-v1-fCk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="E2d-Re-56Z"/>
+                <constraint firstItem="iND-Vl-Wia" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="Etp-Ek-Ij9"/>
+                <constraint firstAttribute="trailing" secondItem="bRe-v1-fCk" secondAttribute="trailing" constant="10" id="JUo-rg-CbZ"/>
+                <constraint firstAttribute="trailing" secondItem="iND-Vl-Wia" secondAttribute="trailing" constant="10" id="SPk-w2-Lxh"/>
+                <constraint firstItem="iND-Vl-Wia" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="XGp-5t-nkn"/>
+                <constraint firstAttribute="bottom" secondItem="iND-Vl-Wia" secondAttribute="bottom" constant="10" id="dUJ-yM-g3c"/>
+                <constraint firstItem="bRe-v1-fCk" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="qw1-ut-Sgh"/>
+            </constraints>
+            <size key="customSize" width="88" height="74"/>
+            <connections>
+                <outlet property="overlayImageView" destination="iND-Vl-Wia" id="CRk-Jh-IPK"/>
+                <outlet property="overlayLabel" destination="bRe-v1-fCk" id="m2A-ed-wHu"/>
+            </connections>
+            <point key="canvasLocation" x="-32.061068702290072" y="-2.8169014084507045"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="golden" width="1280" height="1280"/>
+    </resources>
+</document>

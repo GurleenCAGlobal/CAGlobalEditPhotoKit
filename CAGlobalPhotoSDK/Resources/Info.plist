@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>INIntentsSupported</key>
+	<array>
+		<string>Intent</string>
+	</array>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>NotoSans-Regular.ttf</string>
+		<string>NotoSans-Bold.ttf</string>
+		<string>Montserrat-Semibold.otf</string>
+		<string>Avenir Roman.otf</string>
+		<string>Dense-Regular.otf</string>
+		<string>black_jack.ttf</string>
+		<string>SofiaRegular.otf</string>
+		<string>OpenSans-Regular.ttf</string>
+		<string>OpenSans-Light.ttf</string>
+		<string>nexalight.ttf</string>
+		<string>museo_300_regular.ttf</string>
+		<string>graphic_regular.ttf</string>
+		<string>GoodDog.ttf</string>
+		<string>FFF_Tusj.ttf</string>
+		<string>Capture_it</string>
+		<string>Raleway-Regular.ttf</string>
+		<string>Raleway-Light.ttf</string>
+		<string>HPSimplified_Lt.ttf</string>
+		<string>HPSimplified_Bd.ttf</string>
+		<string>HPSimplified_BdIt.ttf</string>
+		<string>HPSimplified_It.ttf</string>
+		<string>HPSimplified_LtIt.ttf</string>
+		<string>HPSimplified_Rg.ttf</string>
+		<string>Oswald-Light.ttf</string>
+		<string>Agbalumo-Regular.ttf</string>
+		<string>Alatsi-Regular.ttf</string>
+		<string>Aleo-Medium.ttf</string>
+		<string>Bangers-Regular.ttf</string>
+		<string>Baskerville.ttc</string>
+		<string>BebasNeue-Regular.ttf</string>
+		<string>Bodoni 72.ttc</string>
+		<string>Bradley Hand Bold.ttf</string>
+		<string>BubblegumSans-Regular.ttf</string>
+		<string>Bungee-Regular.ttf</string>
+		<string>Calistoga-Regular.ttf</string>
+		<string>Caveat-SemiBold.ttf</string>
+		<string>Comfortaa-Medium.ttf</string>
+		<string>Copperplate.ttc</string>
+		<string>Flama-Bold.otf</string>
+		<string>Futura.ttc</string>
+		<string>Galada-Regular.ttf</string>
+		<string>Georgia.ttf</string>
+		<string>GillSans.ttc</string>
+		<string>GreatVibes-Regular.ttf</string>
+		<string>IndieFlower-Regular.ttf</string>
+		<string>Literata24pt-Black.ttf</string>
+		<string>Marcellus-Regular.ttf</string>
+		<string>MarkerFelt.ttc</string>
+		<string>Optima.ttc</string>
+		<string>Thonburi.ttc</string>
+		<string>AbrilFatface-Regular.ttf</string>
+	</array>
+</dict>
+</plist>

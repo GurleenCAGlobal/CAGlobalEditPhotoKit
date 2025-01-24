@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TextFontCell" id="vaO-5z-LXj" customClass="TextFontCell" customModule="CAGlobalPhotoSDK" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vwc-Rd-Sk7">
+                        <rect key="frame" x="0.0" y="0.0" width="48" height="46"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <state key="normal">
+                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Pt-FV-Uwh">
+                        <rect key="frame" x="0.0" y="0.0" width="48" height="46"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="46" id="gKf-xb-to9"/>
+                        </constraints>
+                        <attributedString key="attributedText">
+                            <fragment content="Abc">
+                                <attributes>
+                                    <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="17" name="HPSimplified-Regular"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="2Pt-FV-Uwh" firstAttribute="leading" secondItem="vaO-5z-LXj" secondAttribute="leading" id="7zP-1b-XmE"/>
+                <constraint firstAttribute="trailing" secondItem="2Pt-FV-Uwh" secondAttribute="trailing" id="JdQ-sF-7UZ"/>
+                <constraint firstItem="vwc-Rd-Sk7" firstAttribute="bottom" secondItem="2Pt-FV-Uwh" secondAttribute="bottom" id="QUy-8F-9X9"/>
+                <constraint firstItem="vwc-Rd-Sk7" firstAttribute="top" secondItem="2Pt-FV-Uwh" secondAttribute="top" id="Rw8-7I-w5U"/>
+                <constraint firstItem="2Pt-FV-Uwh" firstAttribute="top" secondItem="vaO-5z-LXj" secondAttribute="top" id="sdW-CS-QPT"/>
+                <constraint firstItem="vwc-Rd-Sk7" firstAttribute="trailing" secondItem="2Pt-FV-Uwh" secondAttribute="trailing" id="wJd-4r-ap3"/>
+                <constraint firstItem="vwc-Rd-Sk7" firstAttribute="leading" secondItem="2Pt-FV-Uwh" secondAttribute="leading" id="yHc-62-k5P"/>
+            </constraints>
+            <size key="customSize" width="78" height="121"/>
+            <connections>
+                <outlet property="fontPreviewLabel" destination="2Pt-FV-Uwh" id="EQr-Ko-MPl"/>
+                <outlet property="selectedButton" destination="vwc-Rd-Sk7" id="eoi-El-FZZ"/>
+            </connections>
+            <point key="canvasLocation" x="94.20289855072464" y="10.044642857142856"/>
+        </collectionViewCell>
+    </objects>
+</document>

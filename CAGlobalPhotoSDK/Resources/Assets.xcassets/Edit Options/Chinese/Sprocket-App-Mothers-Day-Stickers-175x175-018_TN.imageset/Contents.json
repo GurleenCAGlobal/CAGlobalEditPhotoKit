@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "Sprocket-App-Mothers-Day-Stickers-175x175-018_TN.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Sprocket-App-Mothers-Day-Stickers-350x350-018_TN@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Sprocket-App-Mothers-Day-Stickers-525x525-018_TN@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
