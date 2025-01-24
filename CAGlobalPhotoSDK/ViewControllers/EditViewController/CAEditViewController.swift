@@ -10,6 +10,7 @@ import Photos
 import Accelerate
 import AudioToolbox
 
+
 let kCLImageToolAnimationDuration: CGFloat = 0.3
 var printerDPI = 500
 var printerWidth = 2.0447 //Print head width in inches

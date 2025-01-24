@@ -10,13 +10,11 @@ s.license           = {
                         :type => 'MIT',
                         :file => 'LICENSE'
 }
-s.author            = {
-'GurleenSingh' => 'Gurleen'
-}
+s.author = { 'GurleenSingh' => 'gurleen.singh@example.com' }
 s.source            = {
                         :git => 'https://github.com/GurleenCAGlobal/CAGlobalEditPhotoKit.git',
                         :tag => "#{s.version}" }
-s.framework = "UIKit"
-s.source_files = 'CAGlobalPhotoSDK/**/*.{h,m,swift}'
+s.frameworks = 'UIKit', 'Foundation'
+s.source_files = 'Source/**/*.{h,m,swift}'
 s.requires_arc      = true
 end
