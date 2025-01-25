@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-s.name              = 'CAGlobalPhotoSDK'
+s.name              = 'CAGlobalPhotoSDKKit'
 s.version           = '0.0.1'
 s.summary           = 'CAGlobalPhotoSDK'
 s.homepage          = 'https://github.com/GurleenCAGlobal/CAGlobalEditPhotoKit'
@@ -13,8 +13,8 @@ s.license           = {
 s.author = { 'GurleenSingh' => 'gurleen.singh@example.com' }
 s.source            = {
                         :git => 'https://github.com/GurleenCAGlobal/CAGlobalEditPhotoKit.git',
-                        :tag => "#{s.version}" }
+                        :tag => s.version.to_s }
 s.frameworks = 'UIKit', 'Foundation'
-s.source_files = 'Source/**/*.{h,m,swift}'
+s.source_files = 'CAGlobalPhotoSDK/**/*.{h,m,swift}'
 s.requires_arc      = true
 end
