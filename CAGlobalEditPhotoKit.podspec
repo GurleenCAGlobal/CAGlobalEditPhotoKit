@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'CAGlobalEditPhotoKit'
-  s.version = '0.0.2'
+  s.version = '0.0.1'
 
   s.ios.deployment_target = '15.0'
   s.platform = :ios, '15.0'
@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.license = 'MIT'
   s.summary = 'Asynchronous image downloader with cache support with an UIImageView category.'
   s.homepage = 'https://github.com/GurleenCAGlobal/CAGlobalEditPhotoKit'
-  s.author = { 'GurleenSingh' => 'gurleen.singh@caglobal.com' }
+  s.author = { 'GurleenCAGlobal' => 'gurleen.singh@caglobal.com' }
   s.source = { :git => 'https://github.com/GurleenCAGlobal/CAGlobalEditPhotoKit.git', :tag => s.version.to_s }
   s.swift_version = ['5.0']
   s.description = 'This library provides a category for UIImageView with support for remote '      \
