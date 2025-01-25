@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
-s.name              = 'CAGlobalPhotoSDKKit'
+s.name              = 'CAGlobalEditPhotoKit'
 s.version           = '0.0.1'
-s.summary           = 'CAGlobalPhotoSDK'
+s.summary           = 'CAGlobalEditPhotoKit'
 s.homepage          = 'https://github.com/GurleenCAGlobal/CAGlobalEditPhotoKit'
 s.ios.deployment_target = '15.0'
 s.platform = :ios, '15.0'
@@ -18,3 +18,4 @@ s.frameworks = 'UIKit', 'Foundation'
 s.source_files = 'CAGlobalPhotoSDK/**/*.{h,m,swift}'
 s.requires_arc      = true
 end
+
