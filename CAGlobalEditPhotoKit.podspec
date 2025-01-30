@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.version          = '0.0.1'
   s.summary          = 'A brief description of your library'
   s.description      = 'A more detailed description of your library'
-  s.homepage         = 'https://github.com/GurleenCAGlobal/CAGlobalEditPhotoKi'
+  s.homepage         = 'https://github.com/GurleenCAGlobal/CAGlobalEditPhotoKit'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'GurleenCAGlobal' => 'gurleen.singh@caglobal.com' }
   s.source           = { :git => 'https://github.com/GurleenCAGlobal/CAGlobalEditPhotoKit.git', :tag => s.version.to_s }
