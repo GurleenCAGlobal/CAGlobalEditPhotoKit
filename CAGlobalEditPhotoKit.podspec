@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'CAGlobalEditPhotoKit'
-  s.version          = '0.0.2'
+  s.version          = '0.1.4'
   s.summary          = 'A brief description of your library'
   s.description      = 'A more detailed description of your library'
   s.homepage         = 'https://github.com/GurleenCAGlobal/CAGlobalEditPhotoKit'
