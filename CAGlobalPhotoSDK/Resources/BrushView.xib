@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -138,7 +138,7 @@
                                     </connections>
                                 </slider>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CxB-1I-ZGj">
-                                    <rect key="frame" x="361" y="20" width="56" height="12"/>
+                                    <rect key="frame" x="351.66666666666669" y="20" width="65.333333333333314" height="12"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="12" id="wDD-I2-gmJ"/>
                                     </constraints>
@@ -146,7 +146,7 @@
                                         <fragment content="Transparency">
                                             <attributes>
                                                 <color key="NSColor" name="White"/>
-                                                <font key="NSFont" size="10" name="HPSimplified-Regular"/>
+                                                <font key="NSFont" metaFont="system" size="10"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
                                         </fragment>
@@ -166,7 +166,7 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9RG-BC-GPb">
-                                    <rect key="frame" x="377" y="42" width="24" height="24"/>
+                                    <rect key="frame" x="372.33333333333331" y="42" width="24" height="24"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="24" id="YeV-Pf-M4G"/>
                                         <constraint firstAttribute="height" constant="24" id="Z3F-CH-FEz"/>
@@ -212,7 +212,7 @@
                                     </connections>
                                 </slider>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="g0t-3U-TRo">
-                                    <rect key="frame" x="373.66666666666669" y="20" width="43.333333333333314" height="12"/>
+                                    <rect key="frame" x="366" y="20" width="51" height="12"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="12" id="znf-ao-sUH"/>
                                     </constraints>
@@ -220,7 +220,7 @@
                                         <fragment content="Sharpness">
                                             <attributes>
                                                 <color key="NSColor" name="White"/>
-                                                <font key="NSFont" size="10" name="HPSimplified-Regular"/>
+                                                <font key="NSFont" metaFont="system" size="10"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
                                         </fragment>
@@ -240,7 +240,7 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWW-OE-Lmj">
-                                    <rect key="frame" x="383.33333333333331" y="41.999999999999986" width="24" height="24"/>
+                                    <rect key="frame" x="379.66666666666669" y="41.999999999999986" width="24" height="24"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="24" id="CUP-Rs-wS3"/>
                                         <constraint firstAttribute="height" constant="24" id="IoP-SM-dic"/>
@@ -305,7 +305,7 @@
                                         <fragment content="Size">
                                             <attributes>
                                                 <color key="NSColor" name="White"/>
-                                                <font key="NSFont" size="10" name="HPSimplified-Regular"/>
+                                                <font key="NSFont" metaFont="system" size="10"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
                                         </fragment>

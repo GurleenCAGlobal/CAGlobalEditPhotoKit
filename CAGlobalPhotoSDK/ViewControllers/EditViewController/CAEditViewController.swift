@@ -137,7 +137,7 @@ let stickerMoveSavedTags = 102
 let stickerMoveTempTags = 103
 let stickerReplaceTags = 104
 
-@objc protocol EditImageDelegate: AnyObject {
+public protocol EditImageDelegate: AnyObject {
     
     /*
      Called when the user to apply colors and font name
@@ -267,17 +267,17 @@ public class CAEditViewController: BaseViewController, UIGestureRecognizerDelega
 
     var angle: CGFloat = 0.0
     var textModel = TextModel()
-    @objc var imageOrignalBackUp: UIImage!
-    @objc var imageBlankCanvas: UIImage!
-    @objc var imageOrignal: UIImage!
+    public var imageOrignalBackUp: UIImage!
+    public var imageBlankCanvas: UIImage!
+    public var imageOrignal: UIImage!
     var imageTransform: UIImage!
     var imageBlur: UIImage!
     var finalImage: UIImage!
     var mainPreviousImage: UIImage!
     var framePreviousImage: UIImage!
     var lastScale = CGFloat()
-    @objc var selectedRatioWith: CGFloat = 0
-    @objc var selectedRatioWith2: CGFloat = 0
+    public var selectedRatioWith: CGFloat = 0
+    public var selectedRatioWith2: CGFloat = 0
     var orignalSelectedRatioWith: CGFloat?
     var mainImageScaledSize = CGSize()
     //    var selectedFrame: Any?
@@ -371,10 +371,10 @@ public class CAEditViewController: BaseViewController, UIGestureRecognizerDelega
     var isFramesFetch: Bool?
     var isCropRatio: Bool?
     var isFilterFetched: Bool = false
-    @objc var isBlankCanvasRuler: Bool = true
+    public var isBlankCanvasRuler: Bool = true
     var isImageAlreadyEdited: Bool = false
-    @objc var isLandscape: Bool = false
-    @objc var isLandscape2: Bool = false
+    public var isLandscape: Bool = false
+    public var isLandscape2: Bool = false
     var isReplacingSticker: Bool?
     let isOldFrame = true
     var isCircular: Bool?
@@ -404,7 +404,7 @@ public class CAEditViewController: BaseViewController, UIGestureRecognizerDelega
     var rotationAngle: CGFloat = 0.0
     var flipAngle: CGFloat = 0.0
     var fliped: Bool = false
-    @objc var isFromPhotoBooth: Bool = false
+    public var isFromPhotoBooth: Bool = false
     var manualZoomed: Bool = false
     var initialState: CropperState?
     var indexcount = Int()
@@ -439,7 +439,7 @@ public class CAEditViewController: BaseViewController, UIGestureRecognizerDelega
     var isMirrored = false
     var isFlippedSelected = false
     var isMirroredSelected = false
-    @objc var customDelegate: EditImageDelegate?
+    public var customDelegate: EditImageDelegate?
     var selectedRation = 0.0
     var delegate: StickersCellDelegate?
     open lazy var transformBottomView: UIView = {

@@ -1774,69 +1774,41 @@
 		B9C9214D2ACC2E7E000D5D67 /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C9214B2ACC2E7E000D5D67 /* FrameView.swift */; };
 		B9CC8EA52C8D73D100F39A5F /* BrushView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EA42C8D73D100F39A5F /* BrushView.xib */; };
 		B9CC8EA92C8F425B00F39A5F /* CAEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EA82C8F425B00F39A5F /* CAEditViewController.xib */; };
-		B9CC90852C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-010_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EE02C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-010_TN@2x.png */; };
 		B9CC90862C8F474000F39A5F /* game_day.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90482C8F474000F39A5F /* game_day.png */; };
 		B9CC90872C8F474000F39A5F /* three_daisies_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90162C8F474000F39A5F /* three_daisies_TN@3x.png */; };
-		B9CC90882C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-014.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F1E2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-014.png */; };
 		B9CC90892C8F474000F39A5F /* poppy_leaves-2_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FE42C8F474000F39A5F /* poppy_leaves-2_TN.png */; };
 		B9CC908A2C8F474000F39A5F /* poppy_leaves-2_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FE52C8F474000F39A5F /* poppy_leaves-2_TN@2x.png */; };
 		B9CC908B2C8F474000F39A5F /* go_team_banner_homecoming.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90542C8F474000F39A5F /* go_team_banner_homecoming.png */; };
 		B9CC908C2C8F474000F39A5F /* rosebud_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FF52C8F474000F39A5F /* rosebud_TN@2x.png */; };
-		B9CC908D2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-025_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8ED22C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-025_TN.png */; };
 		B9CC908E2C8F474000F39A5F /* aster_flower_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F6E2C8F474000F39A5F /* aster_flower_TN@3x.png */; };
-		B9CC908F2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-5_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EBE2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-5_TN.png */; };
-		B9CC90902C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-8_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EDE2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-8_TN@2x.png */; };
 		B9CC90912C8F474000F39A5F /* i_heart_football_2_px_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90662C8F474000F39A5F /* i_heart_football_2_px_TN@2x.png */; };
-		B9CC90922C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-7_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EDD2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-7_TN@2x.png */; };
-		B9CC90932C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-023_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EED2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-023_TN@2x.png */; };
-		B9CC90942C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-9_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EC22C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-9_TN.png */; };
-		B9CC90952C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-030.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F2E2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-030.png */; };
-		B9CC90962C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-8_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EC12C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-8_TN.png */; };
 		B9CC90972C8F474000F39A5F /* flower_ring_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FA12C8F474000F39A5F /* flower_ring_TN.png */; };
 		B9CC90982C8F474000F39A5F /* football_character_homecoming_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC903A2C8F474000F39A5F /* football_character_homecoming_TN.png */; };
 		B9CC90992C8F474000F39A5F /* sun_hearts_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC900B2C8F474000F39A5F /* sun_hearts_TN@3x.png */; };
-		B9CC909A2C8F474000F39A5F /* Panda.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EB72C8F474000F39A5F /* Panda.png */; };
 		B9CC909B2C8F474000F39A5F /* heart_bouquet_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FC22C8F474000F39A5F /* heart_bouquet_TN@3x.png */; };
 		B9CC909C2C8F474000F39A5F /* tulips_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90222C8F474000F39A5F /* tulips_TN@3x.png */; };
 		B9CC909D2C8F474000F39A5F /* measles_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F472C8F474000F39A5F /* measles_TN.png */; };
 		B9CC909E2C8F474000F39A5F /* sun_rays_face_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC900D2C8F474000F39A5F /* sun_rays_face_TN.png */; };
-		B9CC909F2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-3.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F132C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-3.png */; };
-		B9CC90A02C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-013_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EC62C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-013_TN.png */; };
-		B9CC90A12C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-2_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8ED82C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-2_TN@2x.png */; };
 		B9CC90A22C8F474000F39A5F /* palm-tree-2_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FD92C8F474000F39A5F /* palm-tree-2_TN@2x.png */; };
 		B9CC90A32C8F474000F39A5F /* bouquet.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F772C8F474000F39A5F /* bouquet.png */; };
 		B9CC90A42C8F474000F39A5F /* three_flower_bunch_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC901A2C8F474000F39A5F /* three_flower_bunch_TN@3x.png */; };
 		B9CC90A52C8F474000F39A5F /* germs_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F372C8F474000F39A5F /* germs_TN.png */; };
-		B9CC90A62C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-012_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EFF2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-012_TN@3x.png */; };
 		B9CC90A72C8F474000F39A5F /* medicine.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F4A2C8F474000F39A5F /* medicine.png */; };
 		B9CC90A82C8F474000F39A5F /* medicine_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F4B2C8F474000F39A5F /* medicine_TN.png */; };
-		B9CC90A92C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-030_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EF42C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-030_TN@2x.png */; };
-		B9CC90AA2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-014_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EE42C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-014_TN@2x.png */; };
-		B9CC90AB2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-026_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F0D2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-026_TN@3x.png */; };
 		B9CC90AC2C8F474000F39A5F /* three_flower_bunch.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90172C8F474000F39A5F /* three_flower_bunch.png */; };
-		B9CC90AD2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-018_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F052C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-018_TN@3x.png */; };
-		B9CC90AE2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-023_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8ED02C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-023_TN.png */; };
-		B9CC90AF2C8F474000F39A5F /* glasses_blossom_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EB12C8F474000F39A5F /* glasses_blossom_TN@2x.png */; };
-		B9CC90B02C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-2_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EBB2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-2_TN.png */; };
 		B9CC90B12C8F474000F39A5F /* flower_leaves_element.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F9C2C8F474000F39A5F /* flower_leaves_element.png */; };
-		B9CC90B22C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-015_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EE52C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-015_TN@2x.png */; };
-		B9CC90B32C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-011.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F1B2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-011.png */; };
 		B9CC90B42C8F474000F39A5F /* tissue_box_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F642C8F474000F39A5F /* tissue_box_TN@2x.png */; };
-		B9CC90B52C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-018_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EE82C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-018_TN@2x.png */; };
 		B9CC90B62C8F474000F39A5F /* cloud-sun_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F8A2C8F474000F39A5F /* cloud-sun_TN@3x.png */; };
 		B9CC90B72C8F474000F39A5F /* wave_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90242C8F474000F39A5F /* wave_TN.png */; };
 		B9CC90B82C8F474000F39A5F /* i_heart_football_2_px_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90672C8F474000F39A5F /* i_heart_football_2_px_TN@3x.png */; };
 		B9CC90B92C8F474000F39A5F /* were_no1_homecoming_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC907F2C8F474000F39A5F /* were_no1_homecoming_TN@3x.png */; };
 		B9CC90BA2C8F474000F39A5F /* sun.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90032C8F474000F39A5F /* sun.png */; };
-		B9CC90BB2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-27_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EF12C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-27_TN@2x.png */; };
 		B9CC90BC2C8F474000F39A5F /* Mushrooms-b_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FD42C8F474000F39A5F /* Mushrooms-b_TN.png */; };
 		B9CC90BD2C8F474000F39A5F /* football_character_homecoming_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC903B2C8F474000F39A5F /* football_character_homecoming_TN@2x.png */; };
 		B9CC90BE2C8F474000F39A5F /* heart_football3_px_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC905F2C8F474000F39A5F /* heart_football3_px_TN@3x.png */; };
 		B9CC90BF2C8F474000F39A5F /* measles_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F482C8F474000F39A5F /* measles_TN@2x.png */; };
 		B9CC90C02C8F474000F39A5F /* Football.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90382C8F474000F39A5F /* Football.png */; };
 		B9CC90C12C8F474000F39A5F /* flower_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FA62C8F474000F39A5F /* flower_TN@3x.png */; };
-		B9CC90C22C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-3_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EBC2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-3_TN.png */; };
-		B9CC90C32C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-021_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8ECE2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-021_TN.png */; };
 		B9CC90C42C8F474000F39A5F /* rose_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FEC2C8F474000F39A5F /* rose_TN.png */; };
 		B9CC90C52C8F474000F39A5F /* palm-tree-2_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FDA2C8F474000F39A5F /* palm-tree-2_TN@3x.png */; };
 		B9CC90C62C8F474000F39A5F /* poppy_leaves-2.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FE32C8F474000F39A5F /* poppy_leaves-2.png */; };
@@ -1849,13 +1821,11 @@
 		B9CC90CD2C8F474000F39A5F /* rose_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FED2C8F474000F39A5F /* rose_TN@2x.png */; };
 		B9CC90CE2C8F474000F39A5F /* poppy_leaves-2_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FE62C8F474000F39A5F /* poppy_leaves-2_TN@3x.png */; };
 		B9CC90CF2C8F474000F39A5F /* kleenex_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F3D2C8F474000F39A5F /* kleenex_TN@3x.png */; };
-		B9CC90D02C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-9_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EFC2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-9_TN@3x.png */; };
 		B9CC90D12C8F474000F39A5F /* plum-blossom_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FE02C8F474000F39A5F /* plum-blossom_TN.png */; };
 		B9CC90D22C8F474000F39A5F /* football_flames_px_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC903E2C8F474000F39A5F /* football_flames_px_TN.png */; };
 		B9CC90D32C8F474000F39A5F /* skateboard_px_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC906D2C8F474000F39A5F /* skateboard_px_TN.png */; };
 		B9CC90D42C8F474000F39A5F /* nauseous_emoji_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F4F2C8F474000F39A5F /* nauseous_emoji_TN.png */; };
 		B9CC90D52C8F474000F39A5F /* flag_px_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90312C8F474000F39A5F /* flag_px_TN.png */; };
-		B9CC90D62C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-024_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F0B2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-024_TN@3x.png */; };
 		B9CC90D72C8F474000F39A5F /* starhp_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FFC2C8F474000F39A5F /* starhp_TN.png */; };
 		B9CC90D82C8F474000F39A5F /* bouquet_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F782C8F474000F39A5F /* bouquet_TN.png */; };
 		B9CC90D92C8F474000F39A5F /* rosebud_leaves.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FF02C8F474000F39A5F /* rosebud_leaves.png */; };
@@ -1870,48 +1840,34 @@
 		B9CC90E22C8F474000F39A5F /* cactus_family_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F7C2C8F474000F39A5F /* cactus_family_TN.png */; };
 		B9CC90E32C8F474000F39A5F /* sun_face.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90042C8F474000F39A5F /* sun_face.png */; };
 		B9CC90E42C8F474000F39A5F /* gift-dog.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EAA2C8F474000F39A5F /* gift-dog.png */; };
-		B9CC90E52C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-025_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EEF2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-025_TN@2x.png */; };
 		B9CC90E62C8F474000F39A5F /* hibiscus_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FC42C8F474000F39A5F /* hibiscus_TN.png */; };
-		B9CC90E72C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-9_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EDF2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-9_TN@2x.png */; };
 		B9CC90E82C8F474000F39A5F /* floating_flowers_2_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F9A2C8F474000F39A5F /* floating_flowers_2_TN@3x.png */; };
 		B9CC90E92C8F474000F39A5F /* leaves_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FC82C8F474000F39A5F /* leaves_TN.png */; };
 		B9CC90EA2C8F474000F39A5F /* were_no1_homecoming.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC907C2C8F474000F39A5F /* were_no1_homecoming.png */; };
 		B9CC90EB2C8F474000F39A5F /* feather_blue_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F8D2C8F474000F39A5F /* feather_blue_TN.png */; };
 		B9CC90EC2C8F474000F39A5F /* sun_rays_face_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC900F2C8F474000F39A5F /* sun_rays_face_TN@3x.png */; };
-		B9CC90ED2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-022.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F262C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-022.png */; };
-		B9CC90EE2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-024_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EEE2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-024_TN@2x.png */; };
 		B9CC90EF2C8F474000F39A5F /* sick_mask_emoji_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F552C8F474000F39A5F /* sick_mask_emoji_TN@3x.png */; };
 		B9CC90F02C8F474000F39A5F /* feather_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F8C2C8F474000F39A5F /* feather_blue.png */; };
-		B9CC90F12C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-8_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EFB2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-8_TN@3x.png */; };
 		B9CC90F22C8F474000F39A5F /* Flowers_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FB52C8F474000F39A5F /* Flowers_TN@2x.png */; };
 		B9CC90F32C8F474000F39A5F /* lilly.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FCB2C8F474000F39A5F /* lilly.png */; };
 		B9CC90F42C8F474000F39A5F /* rose_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FEE2C8F474000F39A5F /* rose_TN@3x.png */; };
 		B9CC90F52C8F474000F39A5F /* rainbow_2_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FE92C8F474000F39A5F /* rainbow_2_TN@2x.png */; };
 		B9CC90F62C8F474000F39A5F /* kleenex.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F3A2C8F474000F39A5F /* kleenex.png */; };
-		B9CC90F72C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-012_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EC52C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-012_TN.png */; };
 		B9CC90F82C8F474000F39A5F /* star_yellow_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FF92C8F474000F39A5F /* star_yellow_TN@2x.png */; };
-		B9CC90F92C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-4.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F142C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-4.png */; };
 		B9CC90FA2C8F474000F39A5F /* stars_n_balls_px.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90782C8F474000F39A5F /* stars_n_balls_px.png */; };
 		B9CC90FB2C8F474000F39A5F /* flowers_left_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FAD2C8F474000F39A5F /* flowers_left_TN.png */; };
-		B9CC90FC2C8F474000F39A5F /* Panda_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EB82C8F474000F39A5F /* Panda_TN.png */; };
 		B9CC90FD2C8F474000F39A5F /* palmtree.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FDB2C8F474000F39A5F /* palmtree.png */; };
-		B9CC90FE2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-029_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F102C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-029_TN@3x.png */; };
-		B9CC90FF2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-012.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F1C2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-012.png */; };
 		B9CC91002C8F474000F39A5F /* sun_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90122C8F474000F39A5F /* sun_TN@3x.png */; };
-		B9CC91012C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-8.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F182C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-8.png */; };
 		B9CC91022C8F474000F39A5F /* tea_honey_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F5C2C8F474000F39A5F /* tea_honey_TN@2x.png */; };
 		B9CC91032C8F474000F39A5F /* spirit_week_2_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90772C8F474000F39A5F /* spirit_week_2_TN@3x.png */; };
 		B9CC91042C8F474000F39A5F /* soup_bowl_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F592C8F474000F39A5F /* soup_bowl_TN@3x.png */; };
-		B9CC91052C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-023_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F0A2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-023_TN@3x.png */; };
 		B9CC91062C8F474000F39A5F /* floating_flowers_2_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F992C8F474000F39A5F /* floating_flowers_2_TN@2x.png */; };
 		B9CC91072C8F474000F39A5F /* jersey_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90692C8F474000F39A5F /* jersey_TN.png */; };
 		B9CC91082C8F474000F39A5F /* wedding_bouquet_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC902E2C8F474000F39A5F /* wedding_bouquet_TN@3x.png */; };
-		B9CC91092C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-026_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8ED32C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-026_TN.png */; };
 		B9CC910A2C8F474000F39A5F /* feather2.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F932C8F474000F39A5F /* feather2.png */; };
 		B9CC910B2C8F474000F39A5F /* feather_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F922C8F474000F39A5F /* feather_TN@3x.png */; };
 		B9CC910C2C8F474000F39A5F /* cactus_family_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F7D2C8F474000F39A5F /* cactus_family_TN@2x.png */; };
 		B9CC910D2C8F474000F39A5F /* heart_bouquet_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FC12C8F474000F39A5F /* heart_bouquet_TN@2x.png */; };
-		B9CC910E2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-014_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EC72C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-014_TN.png */; };
 		B9CC910F2C8F474000F39A5F /* cloud_sad_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F862C8F474000F39A5F /* cloud_sad_TN@3x.png */; };
 		B9CC91102C8F474000F39A5F /* cloud_angry_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F812C8F474000F39A5F /* cloud_angry_TN@2x.png */; };
 		B9CC91112C8F474000F39A5F /* thermometer_fire_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F602C8F474000F39A5F /* thermometer_fire_TN@2x.png */; };
@@ -1920,17 +1876,13 @@
 		B9CC91142C8F474000F39A5F /* wedding_bouquet_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC902D2C8F474000F39A5F /* wedding_bouquet_TN@2x.png */; };
 		B9CC91152C8F474000F39A5F /* kleenex_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F3C2C8F474000F39A5F /* kleenex_TN@2x.png */; };
 		B9CC91162C8F474000F39A5F /* cloud_angry.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F7F2C8F474000F39A5F /* cloud_angry.png */; };
-		B9CC91172C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-028_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8ED52C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-028_TN.png */; };
 		B9CC91182C8F474000F39A5F /* sun_face_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90052C8F474000F39A5F /* sun_face_TN.png */; };
 		B9CC91192C8F474000F39A5F /* letter_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F402C8F474000F39A5F /* letter_TN@2x.png */; };
 		B9CC911A2C8F474000F39A5F /* leaves_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FC92C8F474000F39A5F /* leaves_TN@2x.png */; };
 		B9CC911B2C8F474000F39A5F /* Mushrooms-b_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FD62C8F474000F39A5F /* Mushrooms-b_TN@3x.png */; };
 		B9CC911C2C8F474000F39A5F /* cactus_family.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F7B2C8F474000F39A5F /* cactus_family.png */; };
-		B9CC911D2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-017_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F042C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-017_TN@3x.png */; };
-		B9CC911E2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-015_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F022C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-015_TN@3x.png */; };
 		B9CC911F2C8F474000F39A5F /* spirit_week_2_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90752C8F474000F39A5F /* spirit_week_2_TN.png */; };
 		B9CC91202C8F474000F39A5F /* heart_football3_px.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC905C2C8F474000F39A5F /* heart_football3_px.png */; };
-		B9CC91212C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-013_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F002C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-013_TN@3x.png */; };
 		B9CC91222C8F474000F39A5F /* palmtree_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FDC2C8F474000F39A5F /* palmtree_TN.png */; };
 		B9CC91232C8F474000F39A5F /* go_team_banner_homecoming_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90572C8F474000F39A5F /* go_team_banner_homecoming_TN@3x.png */; };
 		B9CC91242C8F474000F39A5F /* rosebud.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FEF2C8F474000F39A5F /* rosebud.png */; };
@@ -1938,7 +1890,6 @@
 		B9CC91262C8F474000F39A5F /* plum-blossom.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FDF2C8F474000F39A5F /* plum-blossom.png */; };
 		B9CC91272C8F474000F39A5F /* sun_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90102C8F474000F39A5F /* sun_TN.png */; };
 		B9CC91282C8F474000F39A5F /* cloud_sad_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F852C8F474000F39A5F /* cloud_sad_TN@2x.png */; };
-		B9CC91292C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-024.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F282C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-024.png */; };
 		B9CC912A2C8F474000F39A5F /* sun_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90112C8F474000F39A5F /* sun_TN@2x.png */; };
 		B9CC912B2C8F474000F39A5F /* football_helmet_homecoming_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90422C8F474000F39A5F /* football_helmet_homecoming_TN.png */; };
 		B9CC912C2C8F474000F39A5F /* three_daisies_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90152C8F474000F39A5F /* three_daisies_TN@2x.png */; };
@@ -1948,10 +1899,7 @@
 		B9CC91302C8F474000F39A5F /* rainbow_2_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FEA2C8F474000F39A5F /* rainbow_2_TN@3x.png */; };
 		B9CC91312C8F474000F39A5F /* tulips.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC901F2C8F474000F39A5F /* tulips.png */; };
 		B9CC91322C8F474000F39A5F /* letter_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F3F2C8F474000F39A5F /* letter_TN.png */; };
-		B9CC91332C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-020_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EEA2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-020_TN@2x.png */; };
-		B9CC91342C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-2_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EF52C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-2_TN@3x.png */; };
 		B9CC91352C8F474000F39A5F /* cloud_angry_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F822C8F474000F39A5F /* cloud_angry_TN@3x.png */; };
-		B9CC91362C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-010.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F1A2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-010.png */; };
 		B9CC91372C8F474000F39A5F /* banner-copy_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F762C8F474000F39A5F /* banner-copy_TN@3x.png */; };
 		B9CC91382C8F474000F39A5F /* thermometer_fire_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F612C8F474000F39A5F /* thermometer_fire_TN@3x.png */; };
 		B9CC91392C8F474000F39A5F /* spirit_week_1_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90722C8F474000F39A5F /* spirit_week_1_TN@2x.png */; };
@@ -1959,11 +1907,8 @@
 		B9CC913B2C8F474000F39A5F /* hibiscus_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FC52C8F474000F39A5F /* hibiscus_TN@2x.png */; };
 		B9CC913C2C8F474000F39A5F /* band-aid2.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F322C8F474000F39A5F /* band-aid2.png */; };
 		B9CC913D2C8F474000F39A5F /* nauseous_emoji_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F502C8F474000F39A5F /* nauseous_emoji_TN@2x.png */; };
-		B9CC913E2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-017_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8ECA2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-017_TN.png */; };
-		B9CC913F2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-021.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F252C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-021.png */; };
 		B9CC91402C8F474000F39A5F /* star_yellow_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FF82C8F474000F39A5F /* star_yellow_TN.png */; };
 		B9CC91412C8F474000F39A5F /* glasses_2_px_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC904E2C8F474000F39A5F /* glasses_2_px_TN@2x.png */; };
-		B9CC91422C8F474000F39A5F /* mothersday_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EB52C8F474000F39A5F /* mothersday_TN@2x.png */; };
 		B9CC91432C8F474000F39A5F /* rosebud_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FF62C8F474000F39A5F /* rosebud_TN@3x.png */; };
 		B9CC91442C8F474000F39A5F /* gift-dog_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EAD2C8F474000F39A5F /* gift-dog_TN@3x.png */; };
 		B9CC91452C8F474000F39A5F /* feather.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F8B2C8F474000F39A5F /* feather.png */; };
@@ -1976,66 +1921,44 @@
 		B9CC914C2C8F474000F39A5F /* sun_hearts_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90092C8F474000F39A5F /* sun_hearts_TN.png */; };
 		B9CC914D2C8F474000F39A5F /* were_no1_homecoming_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC907E2C8F474000F39A5F /* were_no1_homecoming_TN@2x.png */; };
 		B9CC914E2C8F474000F39A5F /* wave_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90262C8F474000F39A5F /* wave_TN@3x.png */; };
-		B9CC914F2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-024_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8ED12C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-024_TN.png */; };
 		B9CC91502C8F474000F39A5F /* foam_finger_px_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90352C8F474000F39A5F /* foam_finger_px_TN.png */; };
-		B9CC91512C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-029_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8ED62C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-029_TN.png */; };
-		B9CC91522C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-010_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EFD2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-010_TN@3x.png */; };
 		B9CC91532C8F474000F39A5F /* helmet_px_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90612C8F474000F39A5F /* helmet_px_TN.png */; };
-		B9CC91542C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-019.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F232C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-019.png */; };
 		B9CC91552C8F474000F39A5F /* wedding_bouquet_color_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC902A2C8F474000F39A5F /* wedding_bouquet_color_TN@2x.png */; };
 		B9CC91562C8F474000F39A5F /* glasses_px_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90512C8F474000F39A5F /* glasses_px_TN.png */; };
 		B9CC91572C8F474000F39A5F /* flowers_left.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FAC2C8F474000F39A5F /* flowers_left.png */; };
-		B9CC91582C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-026_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EF02C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-026_TN@2x.png */; };
-		B9CC91592C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-014_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F012C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-014_TN@3x.png */; };
 		B9CC915A2C8F474000F39A5F /* i_heart_football_2_px.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90642C8F474000F39A5F /* i_heart_football_2_px.png */; };
-		B9CC915B2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-025.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F292C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-025.png */; };
-		B9CC915C2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-029.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F2D2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-029.png */; };
 		B9CC915D2C8F474000F39A5F /* wedding_bouquet_color_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90292C8F474000F39A5F /* wedding_bouquet_color_TN.png */; };
 		B9CC915E2C8F474000F39A5F /* flowers_right.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FB02C8F474000F39A5F /* flowers_right.png */; };
-		B9CC915F2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-013.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F1D2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-013.png */; };
 		B9CC91602C8F474000F39A5F /* thermometer_fire.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F5E2C8F474000F39A5F /* thermometer_fire.png */; };
 		B9CC91612C8F474000F39A5F /* cactus_family_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F7E2C8F474000F39A5F /* cactus_family_TN@3x.png */; };
-		B9CC91622C8F474000F39A5F /* glasses_blossom_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EB22C8F474000F39A5F /* glasses_blossom_TN@3x.png */; };
 		B9CC91632C8F474000F39A5F /* stars_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90002C8F474000F39A5F /* stars_TN.png */; };
 		B9CC91642C8F474000F39A5F /* moon_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FD02C8F474000F39A5F /* moon_TN.png */; };
-		B9CC91652C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-029_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EF32C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-029_TN@2x.png */; };
 		B9CC91662C8F474000F39A5F /* anzac_poppy-2_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F692C8F474000F39A5F /* anzac_poppy-2_TN@2x.png */; };
-		B9CC91672C8F474000F39A5F /* glasses_blossom.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EAF2C8F474000F39A5F /* glasses_blossom.png */; };
 		B9CC91682C8F474000F39A5F /* lilly_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FCC2C8F474000F39A5F /* lilly_TN.png */; };
 		B9CC91692C8F474000F39A5F /* feather_blue_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F8F2C8F474000F39A5F /* feather_blue_TN@3x.png */; };
-		B9CC916A2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-021_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F082C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-021_TN@3x.png */; };
-		B9CC916B2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-012_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EE22C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-012_TN@2x.png */; };
 		B9CC916C2C8F474000F39A5F /* Mushrooms-b.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FD32C8F474000F39A5F /* Mushrooms-b.png */; };
-		B9CC916D2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-027_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8ED42C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-027_TN.png */; };
 		B9CC916E2C8F474000F39A5F /* helmet_px_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90632C8F474000F39A5F /* helmet_px_TN@3x.png */; };
 		B9CC916F2C8F474000F39A5F /* floating_flowers_2.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F972C8F474000F39A5F /* floating_flowers_2.png */; };
 		B9CC91702C8F474000F39A5F /* skateboard_px_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC906E2C8F474000F39A5F /* skateboard_px_TN@2x.png */; };
 		B9CC91712C8F474000F39A5F /* cloud-sun_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F882C8F474000F39A5F /* cloud-sun_TN.png */; };
 		B9CC91722C8F474000F39A5F /* wedding_bouquet_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC902C2C8F474000F39A5F /* wedding_bouquet_TN.png */; };
 		B9CC91732C8F474000F39A5F /* thermometer_fire_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F5F2C8F474000F39A5F /* thermometer_fire_TN.png */; };
-		B9CC91742C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-6_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EDC2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-6_TN@2x.png */; };
 		B9CC91752C8F474000F39A5F /* starhp_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FFE2C8F474000F39A5F /* starhp_TN@3x.png */; };
 		B9CC91762C8F474000F39A5F /* bouquet_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F7A2C8F474000F39A5F /* bouquet_TN@3x.png */; };
 		B9CC91772C8F474000F39A5F /* flower_leaves_element_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F9E2C8F474000F39A5F /* flower_leaves_element_TN@2x.png */; };
 		B9CC91782C8F474000F39A5F /* spirit_week_1_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90712C8F474000F39A5F /* spirit_week_1_TN.png */; };
-		B9CC91792C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-011_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EFE2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-011_TN@3x.png */; };
 		B9CC917A2C8F474000F39A5F /* football_helmet_homecoming.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90412C8F474000F39A5F /* football_helmet_homecoming.png */; };
 		B9CC917B2C8F474000F39A5F /* hibiscus.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FC32C8F474000F39A5F /* hibiscus.png */; };
 		B9CC917C2C8F474000F39A5F /* moon.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FCF2C8F474000F39A5F /* moon.png */; };
-		B9CC917D2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-027.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F2B2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-027.png */; };
 		B9CC917E2C8F474000F39A5F /* lilly_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FCE2C8F474000F39A5F /* lilly_TN@3x.png */; };
-		B9CC917F2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-4_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EF72C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-4_TN@3x.png */; };
 		B9CC91802C8F474000F39A5F /* stars_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90022C8F474000F39A5F /* stars_TN@3x.png */; };
-		B9CC91812C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-028_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F0F2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-028_TN@3x.png */; };
 		B9CC91822C8F474000F39A5F /* helmet_px.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90602C8F474000F39A5F /* helmet_px.png */; };
 		B9CC91832C8F474000F39A5F /* rainbow_2.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FE72C8F474000F39A5F /* rainbow_2.png */; };
 		B9CC91842C8F474000F39A5F /* love_monster_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F432C8F474000F39A5F /* love_monster_TN.png */; };
 		B9CC91852C8F474000F39A5F /* band-aid2_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F342C8F474000F39A5F /* band-aid2_TN@2x.png */; };
 		B9CC91862C8F474000F39A5F /* banner-copy_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F742C8F474000F39A5F /* banner-copy_TN.png */; };
-		B9CC91872C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-3_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8ED92C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-3_TN@2x.png */; };
 		B9CC91882C8F474000F39A5F /* heart_football_px_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC905B2C8F474000F39A5F /* heart_football_px_TN@3x.png */; };
 		B9CC91892C8F474000F39A5F /* starhp_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FFD2C8F474000F39A5F /* starhp_TN@2x.png */; };
-		B9CC918A2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-020.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F242C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-020.png */; };
 		B9CC918B2C8F474000F39A5F /* rosebud_leaves_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FF32C8F474000F39A5F /* rosebud_leaves_TN@3x.png */; };
 		B9CC918C2C8F474000F39A5F /* banner-copy.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F732C8F474000F39A5F /* banner-copy.png */; };
 		B9CC918D2C8F474000F39A5F /* banner-copy_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F752C8F474000F39A5F /* banner-copy_TN@2x.png */; };
@@ -2046,17 +1969,13 @@
 		B9CC91922C8F474000F39A5F /* wave_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90252C8F474000F39A5F /* wave_TN@2x.png */; };
 		B9CC91932C8F474000F39A5F /* starhp.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FFB2C8F474000F39A5F /* starhp.png */; };
 		B9CC91942C8F474000F39A5F /* sun_hearts_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC900A2C8F474000F39A5F /* sun_hearts_TN@2x.png */; };
-		B9CC91952C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-016.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F202C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-016.png */; };
 		B9CC91962C8F474000F39A5F /* flowers_daisies_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FAB2C8F474000F39A5F /* flowers_daisies_TN@3x.png */; };
 		B9CC91972C8F474000F39A5F /* aster_flower_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F6D2C8F474000F39A5F /* aster_flower_TN@2x.png */; };
 		B9CC91982C8F474000F39A5F /* feather_blue_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F8E2C8F474000F39A5F /* feather_blue_TN@2x.png */; };
-		B9CC91992C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-022_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EEC2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-022_TN@2x.png */; };
 		B9CC919A2C8F474000F39A5F /* hibiscus_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FC62C8F474000F39A5F /* hibiscus_TN@3x.png */; };
 		B9CC919B2C8F474000F39A5F /* medicine_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F4C2C8F474000F39A5F /* medicine_TN@2x.png */; };
-		B9CC919C2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-021_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EEB2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-021_TN@2x.png */; };
 		B9CC919D2C8F474000F39A5F /* aster_flower.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F6B2C8F474000F39A5F /* aster_flower.png */; };
 		B9CC919E2C8F474000F39A5F /* wedding_bouquet.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90272C8F474000F39A5F /* wedding_bouquet.png */; };
-		B9CC919F2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-2.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F122C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-2.png */; };
 		B9CC91A02C8F474000F39A5F /* flowers_right_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FB12C8F474000F39A5F /* flowers_right_TN.png */; };
 		B9CC91A12C8F474000F39A5F /* foam_finger_px.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90342C8F474000F39A5F /* foam_finger_px.png */; };
 		B9CC91A22C8F474000F39A5F /* Flowers2_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FBA2C8F474000F39A5F /* Flowers2_TN@3x.png */; };
@@ -2064,7 +1983,6 @@
 		B9CC91A42C8F474000F39A5F /* leaves.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FC72C8F474000F39A5F /* leaves.png */; };
 		B9CC91A52C8F474000F39A5F /* flower_ring_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FA22C8F474000F39A5F /* flower_ring_TN@2x.png */; };
 		B9CC91A62C8F474000F39A5F /* tissue_box.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F622C8F474000F39A5F /* tissue_box.png */; };
-		B9CC91A72C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-030_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F112C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-030_TN@3x.png */; };
 		B9CC91A82C8F474000F39A5F /* three_rosebuds.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC901B2C8F474000F39A5F /* three_rosebuds.png */; };
 		B9CC91A92C8F474000F39A5F /* Football_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90462C8F474000F39A5F /* Football_TN@2x.png */; };
 		B9CC91AA2C8F474000F39A5F /* love_monster.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F422C8F474000F39A5F /* love_monster.png */; };
@@ -2079,13 +1997,9 @@
 		B9CC91B32C8F474000F39A5F /* Flowers_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FB42C8F474000F39A5F /* Flowers_TN.png */; };
 		B9CC91B42C8F474000F39A5F /* helmet_px_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90622C8F474000F39A5F /* helmet_px_TN@2x.png */; };
 		B9CC91B52C8F474000F39A5F /* germs.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F362C8F474000F39A5F /* germs.png */; };
-		B9CC91B62C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-022_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F092C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-022_TN@3x.png */; };
 		B9CC91B72C8F474000F39A5F /* jersey_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC906A2C8F474000F39A5F /* jersey_TN@2x.png */; };
-		B9CC91B82C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-018_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8ECB2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-018_TN.png */; };
 		B9CC91B92C8F474000F39A5F /* jersey.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90682C8F474000F39A5F /* jersey.png */; };
 		B9CC91BA2C8F474000F39A5F /* flowers_right_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FB32C8F474000F39A5F /* flowers_right_TN@3x.png */; };
-		B9CC91BB2C8F474000F39A5F /* glasses_blossom_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EB02C8F474000F39A5F /* glasses_blossom_TN.png */; };
-		B9CC91BC2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-015.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F1F2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-015.png */; };
 		B9CC91BD2C8F474000F39A5F /* football_flames_px_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC903F2C8F474000F39A5F /* football_flames_px_TN@2x.png */; };
 		B9CC91BE2C8F474000F39A5F /* cloud-sun_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F892C8F474000F39A5F /* cloud-sun_TN@2x.png */; };
 		B9CC91BF2C8F474000F39A5F /* anzac_poppy-2.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F672C8F474000F39A5F /* anzac_poppy-2.png */; };
@@ -2096,43 +2010,31 @@
 		B9CC91C42C8F474000F39A5F /* Flowers.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FA72C8F474000F39A5F /* Flowers.png */; };
 		B9CC91C52C8F474000F39A5F /* cloud_sad_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F842C8F474000F39A5F /* cloud_sad_TN.png */; };
 		B9CC91C62C8F474000F39A5F /* flower_ring.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FA02C8F474000F39A5F /* flower_ring.png */; };
-		B9CC91C72C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-011_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EE12C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-011_TN@2x.png */; };
 		B9CC91C82C8F474000F39A5F /* tissue_box_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F652C8F474000F39A5F /* tissue_box_TN@3x.png */; };
-		B9CC91C92C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-28_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EF22C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-28_TN@2x.png */; };
-		B9CC91CA2C8F474000F39A5F /* mothersday_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EB62C8F474000F39A5F /* mothersday_TN@3x.png */; };
 		B9CC91CB2C8F474000F39A5F /* skateboard_px.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC906C2C8F474000F39A5F /* skateboard_px.png */; };
 		B9CC91CC2C8F474000F39A5F /* feather_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F902C8F474000F39A5F /* feather_TN.png */; };
 		B9CC91CD2C8F474000F39A5F /* glasses_px.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90502C8F474000F39A5F /* glasses_px.png */; };
 		B9CC91CE2C8F474000F39A5F /* soup_bowl_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F572C8F474000F39A5F /* soup_bowl_TN.png */; };
-		B9CC91CF2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-027_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F0E2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-027_TN@3x.png */; };
 		B9CC91D02C8F474000F39A5F /* jersey_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC906B2C8F474000F39A5F /* jersey_TN@3x.png */; };
 		B9CC91D12C8F474000F39A5F /* gift-dog_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EAC2C8F474000F39A5F /* gift-dog_TN@2x.png */; };
-		B9CC91D22C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-016_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EC92C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-016_TN.png */; };
 		B9CC91D32C8F474000F39A5F /* spirit_week_2_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90762C8F474000F39A5F /* spirit_week_2_TN@2x.png */; };
 		B9CC91D42C8F474000F39A5F /* Football_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90452C8F474000F39A5F /* Football_TN.png */; };
-		B9CC91D52C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-016_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F032C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-016_TN@3x.png */; };
 		B9CC91D62C8F474000F39A5F /* football_helmet_homecoming_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90442C8F474000F39A5F /* football_helmet_homecoming_TN@3x.png */; };
-		B9CC91D72C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-028.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F2C2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-028.png */; };
 		B9CC91D82C8F474000F39A5F /* Mushrooms-b_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FD52C8F474000F39A5F /* Mushrooms-b_TN@2x.png */; };
 		B9CC91D92C8F474000F39A5F /* star_yellow_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FFA2C8F474000F39A5F /* star_yellow_TN@3x.png */; };
 		B9CC91DA2C8F474000F39A5F /* cloud-sun.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F872C8F474000F39A5F /* cloud-sun.png */; };
 		B9CC91DB2C8F474000F39A5F /* flower_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FA52C8F474000F39A5F /* flower_TN@2x.png */; };
 		B9CC91DC2C8F474000F39A5F /* foam_finger_px_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90362C8F474000F39A5F /* foam_finger_px_TN@2x.png */; };
-		B9CC91DD2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-017_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EE72C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-017_TN@2x.png */; };
 		B9CC91DE2C8F474000F39A5F /* tissue_box_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F632C8F474000F39A5F /* tissue_box_TN.png */; };
 		B9CC91DF2C8F474000F39A5F /* three_daisies_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90142C8F474000F39A5F /* three_daisies_TN.png */; };
 		B9CC91E02C8F474000F39A5F /* feather2_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F942C8F474000F39A5F /* feather2_TN.png */; };
-		B9CC91E12C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-022_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8ECF2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-022_TN.png */; };
 		B9CC91E22C8F474000F39A5F /* glasses_2_px.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC904C2C8F474000F39A5F /* glasses_2_px.png */; };
-		B9CC91E32C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-019_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EE92C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-019_TN@2x.png */; };
 		B9CC91E42C8F474000F39A5F /* game_day_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC904B2C8F474000F39A5F /* game_day_TN@3x.png */; };
 		B9CC91E52C8F474000F39A5F /* tea_honey.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F5A2C8F474000F39A5F /* tea_honey.png */; };
 		B9CC91E62C8F474000F39A5F /* stars.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FFF2C8F474000F39A5F /* stars.png */; };
 		B9CC91E72C8F474000F39A5F /* wedding_bouquet_color.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90282C8F474000F39A5F /* wedding_bouquet_color.png */; };
 		B9CC91E82C8F474000F39A5F /* measles.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F462C8F474000F39A5F /* measles.png */; };
 		B9CC91E92C8F474000F39A5F /* banner_2_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F712C8F474000F39A5F /* banner_2_TN@2x.png */; };
-		B9CC91EA2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-7.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F172C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-7.png */; };
-		B9CC91EB2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-011_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EC42C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-011_TN.png */; };
 		B9CC91EC2C8F474000F39A5F /* football_helmet_homecoming_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90432C8F474000F39A5F /* football_helmet_homecoming_TN@2x.png */; };
 		B9CC91ED2C8F474000F39A5F /* hanging_lillies_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FBD2C8F474000F39A5F /* hanging_lillies_TN@2x.png */; };
 		B9CC91EE2C8F474000F39A5F /* moon_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FD12C8F474000F39A5F /* moon_TN@2x.png */; };
@@ -2144,90 +2046,60 @@
 		B9CC91F42C8F474000F39A5F /* banner_2_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F702C8F474000F39A5F /* banner_2_TN.png */; };
 		B9CC91F52C8F474000F39A5F /* rosebud_leaves_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FF22C8F474000F39A5F /* rosebud_leaves_TN@2x.png */; };
 		B9CC91F62C8F474000F39A5F /* heart_football3_px_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC905D2C8F474000F39A5F /* heart_football3_px_TN.png */; };
-		B9CC91F72C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-030_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8ED72C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-030_TN.png */; };
 		B9CC91F82C8F474000F39A5F /* glasses_2_px_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC904F2C8F474000F39A5F /* glasses_2_px_TN@3x.png */; };
 		B9CC91F92C8F474000F39A5F /* go_team_banner_homecoming_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90552C8F474000F39A5F /* go_team_banner_homecoming_TN.png */; };
-		B9CC91FA2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-019_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F062C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-019_TN@3x.png */; };
 		B9CC91FB2C8F474000F39A5F /* flowers_left_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FAF2C8F474000F39A5F /* flowers_left_TN@3x.png */; };
 		B9CC91FC2C8F474000F39A5F /* love_monster_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F452C8F474000F39A5F /* love_monster_TN@3x.png */; };
 		B9CC91FD2C8F474000F39A5F /* star_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FF72C8F474000F39A5F /* star_yellow.png */; };
 		B9CC91FE2C8F474000F39A5F /* three_daisies.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90132C8F474000F39A5F /* three_daisies.png */; };
-		B9CC91FF2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-020_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8ECD2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-020_TN.png */; };
 		B9CC92002C8F474000F39A5F /* feather2_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F962C8F474000F39A5F /* feather2_TN@3x.png */; };
 		B9CC92012C8F474000F39A5F /* game_day_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC904A2C8F474000F39A5F /* game_day_TN@2x.png */; };
 		B9CC92022C8F474000F39A5F /* flowers_daisies_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FAA2C8F474000F39A5F /* flowers_daisies_TN@2x.png */; };
 		B9CC92032C8F474000F39A5F /* sick_mask_emoji_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F542C8F474000F39A5F /* sick_mask_emoji_TN@2x.png */; };
-		B9CC92042C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-017.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F212C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-017.png */; };
-		B9CC92052C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-013_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EE32C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-013_TN@2x.png */; };
 		B9CC92062C8F474000F39A5F /* foam_finger_px_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90372C8F474000F39A5F /* foam_finger_px_TN@3x.png */; };
 		B9CC92072C8F474000F39A5F /* banner_2.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F6F2C8F474000F39A5F /* banner_2.png */; };
-		B9CC92082C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-015_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EC82C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-015_TN.png */; };
 		B9CC92092C8F474000F39A5F /* palm-tree-2_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FD82C8F474000F39A5F /* palm-tree-2_TN.png */; };
-		B9CC920A2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-3_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EF62C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-3_TN@3x.png */; };
-		B9CC920B2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-5_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EDB2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-5_TN@2x.png */; };
 		B9CC920C2C8F474000F39A5F /* germs_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F392C8F474000F39A5F /* germs_TN@3x.png */; };
-		B9CC920D2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-019_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8ECC2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-019_TN.png */; };
-		B9CC920E2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-010_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EC32C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-010_TN.png */; };
-		B9CC920F2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-026.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F2A2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-026.png */; };
 		B9CC92102C8F474000F39A5F /* soup_bowl_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F582C8F474000F39A5F /* soup_bowl_TN@2x.png */; };
 		B9CC92112C8F474000F39A5F /* hanging_lillies_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FBE2C8F474000F39A5F /* hanging_lillies_TN@3x.png */; };
-		B9CC92122C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-6_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EBF2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-6_TN.png */; };
 		B9CC92132C8F474000F39A5F /* leaves_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FCA2C8F474000F39A5F /* leaves_TN@3x.png */; };
 		B9CC92142C8F474000F39A5F /* football_flames_px_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90402C8F474000F39A5F /* football_flames_px_TN@3x.png */; };
 		B9CC92152C8F474000F39A5F /* flower.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F9B2C8F474000F39A5F /* flower.png */; };
 		B9CC92162C8F474000F39A5F /* glasses_px_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90522C8F474000F39A5F /* glasses_px_TN@2x.png */; };
 		B9CC92172C8F474000F39A5F /* sick_mask_emoji.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F522C8F474000F39A5F /* sick_mask_emoji.png */; };
-		B9CC92182C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-6_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EF92C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-6_TN@3x.png */; };
-		B9CC92192C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-018.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F222C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-018.png */; };
 		B9CC921A2C8F474000F39A5F /* cloud_angry_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F802C8F474000F39A5F /* cloud_angry_TN.png */; };
 		B9CC921B2C8F474000F39A5F /* cloud_sad.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F832C8F474000F39A5F /* cloud_sad.png */; };
 		B9CC921C2C8F474000F39A5F /* stars_n_balls_px_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC907B2C8F474000F39A5F /* stars_n_balls_px_TN@3x.png */; };
-		B9CC921D2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-7_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EFA2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-7_TN@3x.png */; };
 		B9CC921E2C8F474000F39A5F /* glasses_px_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90532C8F474000F39A5F /* glasses_px_TN@3x.png */; };
 		B9CC921F2C8F474000F39A5F /* letter.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F3E2C8F474000F39A5F /* letter.png */; };
 		B9CC92202C8F474000F39A5F /* tea_honey_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F5D2C8F474000F39A5F /* tea_honey_TN@3x.png */; };
 		B9CC92212C8F474000F39A5F /* soup_bowl.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F562C8F474000F39A5F /* soup_bowl.png */; };
 		B9CC92222C8F474000F39A5F /* flower_leaves_element_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F9F2C8F474000F39A5F /* flower_leaves_element_TN@3x.png */; };
-		B9CC92232C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-5.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F152C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-5.png */; };
 		B9CC92242C8F474000F39A5F /* medicine_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F4D2C8F474000F39A5F /* medicine_TN@3x.png */; };
 		B9CC92252C8F474000F39A5F /* sun_rays_face.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC900C2C8F474000F39A5F /* sun_rays_face.png */; };
 		B9CC92262C8F474000F39A5F /* bouquet_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F792C8F474000F39A5F /* bouquet_TN@2x.png */; };
-		B9CC92272C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-7_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EC02C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-7_TN.png */; };
 		B9CC92282C8F474000F39A5F /* spirit_week_1_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90732C8F474000F39A5F /* spirit_week_1_TN@3x.png */; };
-		B9CC92292C8F474000F39A5F /* mothersday_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EB42C8F474000F39A5F /* mothersday_TN.png */; };
 		B9CC922A2C8F474000F39A5F /* measles_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F492C8F474000F39A5F /* measles_TN@3x.png */; };
 		B9CC922B2C8F474000F39A5F /* love_monster_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F442C8F474000F39A5F /* love_monster_TN@2x.png */; };
-		B9CC922C2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-023.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F272C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-023.png */; };
 		B9CC922D2C8F474000F39A5F /* floating_flowers_2_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F982C8F474000F39A5F /* floating_flowers_2_TN.png */; };
 		B9CC922E2C8F474000F39A5F /* hanging_lillies.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FBB2C8F474000F39A5F /* hanging_lillies.png */; };
 		B9CC922F2C8F474000F39A5F /* flowers_right_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FB22C8F474000F39A5F /* flowers_right_TN@2x.png */; };
-		B9CC92302C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-5_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EF82C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-5_TN@3x.png */; };
 		B9CC92312C8F474000F39A5F /* spirit_week_1.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90702C8F474000F39A5F /* spirit_week_1.png */; };
 		B9CC92322C8F474000F39A5F /* Football_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90472C8F474000F39A5F /* Football_TN@3x.png */; };
 		B9CC92332C8F474000F39A5F /* flowers_daisies_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FA92C8F474000F39A5F /* flowers_daisies_TN.png */; };
-		B9CC92342C8F474000F39A5F /* Panda_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EBA2C8F474000F39A5F /* Panda_TN@3x.png */; };
 		B9CC92352C8F474000F39A5F /* nauseous_emoji_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F512C8F474000F39A5F /* nauseous_emoji_TN@3x.png */; };
-		B9CC92362C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-6.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F162C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-6.png */; };
 		B9CC92372C8F474000F39A5F /* band-aid2_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F352C8F474000F39A5F /* band-aid2_TN@3x.png */; };
-		B9CC92382C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-4_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EDA2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-4_TN@2x.png */; };
-		B9CC92392C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-020_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F072C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-020_TN@3x.png */; };
 		B9CC923A2C8F474000F39A5F /* letter_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F412C8F474000F39A5F /* letter_TN@3x.png */; };
-		B9CC923B2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-4_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EBD2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-4_TN.png */; };
-		B9CC923C2C8F474000F39A5F /* Panda_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EB92C8F474000F39A5F /* Panda_TN@2x.png */; };
 		B9CC923D2C8F474000F39A5F /* wave.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90232C8F474000F39A5F /* wave.png */; };
 		B9CC923E2C8F474000F39A5F /* rainbow_2_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FE82C8F474000F39A5F /* rainbow_2_TN.png */; };
 		B9CC923F2C8F474000F39A5F /* wedding_bouquet_color_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC902B2C8F474000F39A5F /* wedding_bouquet_color_TN@3x.png */; };
-		B9CC92402C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-9.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F192C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-9.png */; };
 		B9CC92412C8F474000F39A5F /* were_no1_homecoming_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC907D2C8F474000F39A5F /* were_no1_homecoming_TN.png */; };
-		B9CC92422C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-016_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EE62C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-016_TN@2x.png */; };
-		B9CC92432C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-025_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F0C2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-025_TN@3x.png */; };
 		B9CC92442C8F474000F39A5F /* Flowers2_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FB92C8F474000F39A5F /* Flowers2_TN@2x.png */; };
 		B9CC92452C8F474000F39A5F /* anzac_poppy-2_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8F682C8F474000F39A5F /* anzac_poppy-2_TN.png */; };
 		B9CC92462C8F474000F39A5F /* imglyStickerCategory@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90832C8F474000F39A5F /* imglyStickerCategory@3x.png */; };
 		B9CC92472C8F474000F39A5F /* moon_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FD22C8F474000F39A5F /* moon_TN@3x.png */; };
 		B9CC92482C8F474000F39A5F /* flower_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FA42C8F474000F39A5F /* flower_TN.png */; };
 		B9CC92492C8F474000F39A5F /* heart_football_px_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90592C8F474000F39A5F /* heart_football_px_TN.png */; };
-		B9CC924A2C8F474000F39A5F /* mothersday.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8EB32C8F474000F39A5F /* mothersday.png */; };
 		B9CC924B2C8F474000F39A5F /* Flowers2_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC8FB82C8F474000F39A5F /* Flowers2_TN.png */; };
 		B9CC924C2C8F474000F39A5F /* i_heart_football_2_px_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90652C8F474000F39A5F /* i_heart_football_2_px_TN.png */; };
 		B9CC924D2C8F474000F39A5F /* three_flower_bunch_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = B9CC90182C8F474000F39A5F /* three_flower_bunch_TN.png */; };
@@ -4291,134 +4163,6 @@
 		B9CC8EAB2C8F474000F39A5F /* gift-dog_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gift-dog_TN.png"; sourceTree = "<group>"; };
 		B9CC8EAC2C8F474000F39A5F /* gift-dog_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gift-dog_TN@2x.png"; sourceTree = "<group>"; };
 		B9CC8EAD2C8F474000F39A5F /* gift-dog_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gift-dog_TN@3x.png"; sourceTree = "<group>"; };
-		B9CC8EAF2C8F474000F39A5F /* glasses_blossom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glasses_blossom.png; sourceTree = "<group>"; };
-		B9CC8EB02C8F474000F39A5F /* glasses_blossom_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glasses_blossom_TN.png; sourceTree = "<group>"; };
-		B9CC8EB12C8F474000F39A5F /* glasses_blossom_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "glasses_blossom_TN@2x.png"; sourceTree = "<group>"; };
-		B9CC8EB22C8F474000F39A5F /* glasses_blossom_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "glasses_blossom_TN@3x.png"; sourceTree = "<group>"; };
-		B9CC8EB32C8F474000F39A5F /* mothersday.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mothersday.png; sourceTree = "<group>"; };
-		B9CC8EB42C8F474000F39A5F /* mothersday_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mothersday_TN.png; sourceTree = "<group>"; };
-		B9CC8EB52C8F474000F39A5F /* mothersday_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mothersday_TN@2x.png"; sourceTree = "<group>"; };
-		B9CC8EB62C8F474000F39A5F /* mothersday_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mothersday_TN@3x.png"; sourceTree = "<group>"; };
-		B9CC8EB72C8F474000F39A5F /* Panda.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Panda.png; sourceTree = "<group>"; };
-		B9CC8EB82C8F474000F39A5F /* Panda_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Panda_TN.png; sourceTree = "<group>"; };
-		B9CC8EB92C8F474000F39A5F /* Panda_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Panda_TN@2x.png"; sourceTree = "<group>"; };
-		B9CC8EBA2C8F474000F39A5F /* Panda_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Panda_TN@3x.png"; sourceTree = "<group>"; };
-		B9CC8EBB2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-2_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-175x175-2_TN.png"; sourceTree = "<group>"; };
-		B9CC8EBC2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-3_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-175x175-3_TN.png"; sourceTree = "<group>"; };
-		B9CC8EBD2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-4_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-175x175-4_TN.png"; sourceTree = "<group>"; };
-		B9CC8EBE2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-5_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-175x175-5_TN.png"; sourceTree = "<group>"; };
-		B9CC8EBF2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-6_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-175x175-6_TN.png"; sourceTree = "<group>"; };
-		B9CC8EC02C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-7_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-175x175-7_TN.png"; sourceTree = "<group>"; };
-		B9CC8EC12C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-8_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-175x175-8_TN.png"; sourceTree = "<group>"; };
-		B9CC8EC22C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-9_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-175x175-9_TN.png"; sourceTree = "<group>"; };
-		B9CC8EC32C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-010_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-175x175-010_TN.png"; sourceTree = "<group>"; };
-		B9CC8EC42C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-011_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-175x175-011_TN.png"; sourceTree = "<group>"; };
-		B9CC8EC52C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-012_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-175x175-012_TN.png"; sourceTree = "<group>"; };
-		B9CC8EC62C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-013_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-175x175-013_TN.png"; sourceTree = "<group>"; };
-		B9CC8EC72C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-014_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-175x175-014_TN.png"; sourceTree = "<group>"; };
-		B9CC8EC82C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-015_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-175x175-015_TN.png"; sourceTree = "<group>"; };
-		B9CC8EC92C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-016_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-175x175-016_TN.png"; sourceTree = "<group>"; };
-		B9CC8ECA2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-017_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-175x175-017_TN.png"; sourceTree = "<group>"; };
-		B9CC8ECB2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-018_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-175x175-018_TN.png"; sourceTree = "<group>"; };
-		B9CC8ECC2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-019_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-175x175-019_TN.png"; sourceTree = "<group>"; };
-		B9CC8ECD2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-020_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-175x175-020_TN.png"; sourceTree = "<group>"; };
-		B9CC8ECE2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-021_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-175x175-021_TN.png"; sourceTree = "<group>"; };
-		B9CC8ECF2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-022_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-175x175-022_TN.png"; sourceTree = "<group>"; };
-		B9CC8ED02C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-023_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-175x175-023_TN.png"; sourceTree = "<group>"; };
-		B9CC8ED12C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-024_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-175x175-024_TN.png"; sourceTree = "<group>"; };
-		B9CC8ED22C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-025_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-175x175-025_TN.png"; sourceTree = "<group>"; };
-		B9CC8ED32C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-026_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-175x175-026_TN.png"; sourceTree = "<group>"; };
-		B9CC8ED42C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-027_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-175x175-027_TN.png"; sourceTree = "<group>"; };
-		B9CC8ED52C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-028_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-175x175-028_TN.png"; sourceTree = "<group>"; };
-		B9CC8ED62C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-029_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-175x175-029_TN.png"; sourceTree = "<group>"; };
-		B9CC8ED72C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-030_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-175x175-030_TN.png"; sourceTree = "<group>"; };
-		B9CC8ED82C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-2_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-350x350-2_TN@2x.png"; sourceTree = "<group>"; };
-		B9CC8ED92C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-3_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-350x350-3_TN@2x.png"; sourceTree = "<group>"; };
-		B9CC8EDA2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-4_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-350x350-4_TN@2x.png"; sourceTree = "<group>"; };
-		B9CC8EDB2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-5_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-350x350-5_TN@2x.png"; sourceTree = "<group>"; };
-		B9CC8EDC2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-6_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-350x350-6_TN@2x.png"; sourceTree = "<group>"; };
-		B9CC8EDD2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-7_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-350x350-7_TN@2x.png"; sourceTree = "<group>"; };
-		B9CC8EDE2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-8_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-350x350-8_TN@2x.png"; sourceTree = "<group>"; };
-		B9CC8EDF2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-9_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-350x350-9_TN@2x.png"; sourceTree = "<group>"; };
-		B9CC8EE02C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-010_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-350x350-010_TN@2x.png"; sourceTree = "<group>"; };
-		B9CC8EE12C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-011_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-350x350-011_TN@2x.png"; sourceTree = "<group>"; };
-		B9CC8EE22C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-012_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-350x350-012_TN@2x.png"; sourceTree = "<group>"; };
-		B9CC8EE32C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-013_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-350x350-013_TN@2x.png"; sourceTree = "<group>"; };
-		B9CC8EE42C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-014_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-350x350-014_TN@2x.png"; sourceTree = "<group>"; };
-		B9CC8EE52C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-015_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-350x350-015_TN@2x.png"; sourceTree = "<group>"; };
-		B9CC8EE62C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-016_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-350x350-016_TN@2x.png"; sourceTree = "<group>"; };
-		B9CC8EE72C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-017_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-350x350-017_TN@2x.png"; sourceTree = "<group>"; };
-		B9CC8EE82C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-018_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-350x350-018_TN@2x.png"; sourceTree = "<group>"; };
-		B9CC8EE92C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-019_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-350x350-019_TN@2x.png"; sourceTree = "<group>"; };
-		B9CC8EEA2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-020_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-350x350-020_TN@2x.png"; sourceTree = "<group>"; };
-		B9CC8EEB2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-021_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-350x350-021_TN@2x.png"; sourceTree = "<group>"; };
-		B9CC8EEC2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-022_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-350x350-022_TN@2x.png"; sourceTree = "<group>"; };
-		B9CC8EED2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-023_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-350x350-023_TN@2x.png"; sourceTree = "<group>"; };
-		B9CC8EEE2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-024_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-350x350-024_TN@2x.png"; sourceTree = "<group>"; };
-		B9CC8EEF2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-025_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-350x350-025_TN@2x.png"; sourceTree = "<group>"; };
-		B9CC8EF02C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-026_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-350x350-026_TN@2x.png"; sourceTree = "<group>"; };
-		B9CC8EF12C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-27_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-350x350-27_TN@2x.png"; sourceTree = "<group>"; };
-		B9CC8EF22C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-28_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-350x350-28_TN@2x.png"; sourceTree = "<group>"; };
-		B9CC8EF32C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-029_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-350x350-029_TN@2x.png"; sourceTree = "<group>"; };
-		B9CC8EF42C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-030_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-350x350-030_TN@2x.png"; sourceTree = "<group>"; };
-		B9CC8EF52C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-2_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-525x525-2_TN@3x.png"; sourceTree = "<group>"; };
-		B9CC8EF62C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-3_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-525x525-3_TN@3x.png"; sourceTree = "<group>"; };
-		B9CC8EF72C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-4_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-525x525-4_TN@3x.png"; sourceTree = "<group>"; };
-		B9CC8EF82C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-5_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-525x525-5_TN@3x.png"; sourceTree = "<group>"; };
-		B9CC8EF92C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-6_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-525x525-6_TN@3x.png"; sourceTree = "<group>"; };
-		B9CC8EFA2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-7_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-525x525-7_TN@3x.png"; sourceTree = "<group>"; };
-		B9CC8EFB2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-8_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-525x525-8_TN@3x.png"; sourceTree = "<group>"; };
-		B9CC8EFC2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-9_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-525x525-9_TN@3x.png"; sourceTree = "<group>"; };
-		B9CC8EFD2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-010_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-525x525-010_TN@3x.png"; sourceTree = "<group>"; };
-		B9CC8EFE2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-011_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-525x525-011_TN@3x.png"; sourceTree = "<group>"; };
-		B9CC8EFF2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-012_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-525x525-012_TN@3x.png"; sourceTree = "<group>"; };
-		B9CC8F002C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-013_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-525x525-013_TN@3x.png"; sourceTree = "<group>"; };
-		B9CC8F012C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-014_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-525x525-014_TN@3x.png"; sourceTree = "<group>"; };
-		B9CC8F022C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-015_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-525x525-015_TN@3x.png"; sourceTree = "<group>"; };
-		B9CC8F032C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-016_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-525x525-016_TN@3x.png"; sourceTree = "<group>"; };
-		B9CC8F042C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-017_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-525x525-017_TN@3x.png"; sourceTree = "<group>"; };
-		B9CC8F052C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-018_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-525x525-018_TN@3x.png"; sourceTree = "<group>"; };
-		B9CC8F062C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-019_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-525x525-019_TN@3x.png"; sourceTree = "<group>"; };
-		B9CC8F072C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-020_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-525x525-020_TN@3x.png"; sourceTree = "<group>"; };
-		B9CC8F082C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-021_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-525x525-021_TN@3x.png"; sourceTree = "<group>"; };
-		B9CC8F092C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-022_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-525x525-022_TN@3x.png"; sourceTree = "<group>"; };
-		B9CC8F0A2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-023_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-525x525-023_TN@3x.png"; sourceTree = "<group>"; };
-		B9CC8F0B2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-024_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-525x525-024_TN@3x.png"; sourceTree = "<group>"; };
-		B9CC8F0C2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-025_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-525x525-025_TN@3x.png"; sourceTree = "<group>"; };
-		B9CC8F0D2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-026_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-525x525-026_TN@3x.png"; sourceTree = "<group>"; };
-		B9CC8F0E2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-027_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-525x525-027_TN@3x.png"; sourceTree = "<group>"; };
-		B9CC8F0F2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-028_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-525x525-028_TN@3x.png"; sourceTree = "<group>"; };
-		B9CC8F102C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-029_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-525x525-029_TN@3x.png"; sourceTree = "<group>"; };
-		B9CC8F112C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-030_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-525x525-030_TN@3x.png"; sourceTree = "<group>"; };
-		B9CC8F122C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-700x700-2.png"; sourceTree = "<group>"; };
-		B9CC8F132C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-700x700-3.png"; sourceTree = "<group>"; };
-		B9CC8F142C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-700x700-4.png"; sourceTree = "<group>"; };
-		B9CC8F152C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-700x700-5.png"; sourceTree = "<group>"; };
-		B9CC8F162C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-700x700-6.png"; sourceTree = "<group>"; };
-		B9CC8F172C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-700x700-7.png"; sourceTree = "<group>"; };
-		B9CC8F182C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-700x700-8.png"; sourceTree = "<group>"; };
-		B9CC8F192C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-700x700-9.png"; sourceTree = "<group>"; };
-		B9CC8F1A2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-010.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-700x700-010.png"; sourceTree = "<group>"; };
-		B9CC8F1B2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-011.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-700x700-011.png"; sourceTree = "<group>"; };
-		B9CC8F1C2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-012.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-700x700-012.png"; sourceTree = "<group>"; };
-		B9CC8F1D2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-013.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-700x700-013.png"; sourceTree = "<group>"; };
-		B9CC8F1E2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-014.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-700x700-014.png"; sourceTree = "<group>"; };
-		B9CC8F1F2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-015.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-700x700-015.png"; sourceTree = "<group>"; };
-		B9CC8F202C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-016.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-700x700-016.png"; sourceTree = "<group>"; };
-		B9CC8F212C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-017.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-700x700-017.png"; sourceTree = "<group>"; };
-		B9CC8F222C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-018.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-700x700-018.png"; sourceTree = "<group>"; };
-		B9CC8F232C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-019.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-700x700-019.png"; sourceTree = "<group>"; };
-		B9CC8F242C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-020.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-700x700-020.png"; sourceTree = "<group>"; };
-		B9CC8F252C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-021.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-700x700-021.png"; sourceTree = "<group>"; };
-		B9CC8F262C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-022.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-700x700-022.png"; sourceTree = "<group>"; };
-		B9CC8F272C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-023.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-700x700-023.png"; sourceTree = "<group>"; };
-		B9CC8F282C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-700x700-024.png"; sourceTree = "<group>"; };
-		B9CC8F292C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-025.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-700x700-025.png"; sourceTree = "<group>"; };
-		B9CC8F2A2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-026.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-700x700-026.png"; sourceTree = "<group>"; };
-		B9CC8F2B2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-027.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-700x700-027.png"; sourceTree = "<group>"; };
-		B9CC8F2C2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-028.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-700x700-028.png"; sourceTree = "<group>"; };
-		B9CC8F2D2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-029.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-700x700-029.png"; sourceTree = "<group>"; };
-		B9CC8F2E2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-030.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sprocket-App-Mothers-Day-Stickers-700x700-030.png"; sourceTree = "<group>"; };
 		B9CC8F302C8F474000F39A5F /* customSticker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = customSticker.png; sourceTree = "<group>"; };
 		B9CC8F322C8F474000F39A5F /* band-aid2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "band-aid2.png"; sourceTree = "<group>"; };
 		B9CC8F332C8F474000F39A5F /* band-aid2_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "band-aid2_TN.png"; sourceTree = "<group>"; };
@@ -4804,7 +4548,6 @@
 			isa = PBXGroup;
 			children = (
 				B907DECB2A5ED0FB00F34FED /* BrushView.swift */,
-				B9CC8EA42C8D73D100F39A5F /* BrushView.xib */,
 			);
 			path = Brush;
 			sourceTree = "<group>";
@@ -4813,7 +4556,6 @@
 			isa = PBXGroup;
 			children = (
 				B91C19502CF76B7600FDE6AE /* CustomStickerViewController.swift */,
-				B91C19512CF76B7600FDE6AE /* CustomStickerViewController.xib */,
 				B91C19522CF76B7600FDE6AE /* CustomStickerViewControllerExtension.swift */,
 			);
 			path = CustomStickerViewController;
@@ -4837,8 +4579,6 @@
 				B91C56C12AA1DED400821B00 /* TopBar.swift */,
 				B91C56C22AA1DED400821B00 /* AngleRuler.swift */,
 				B91C56C32AA1DED400821B00 /* AspectRatioPicker.swift */,
-				B91C56F22AA2190E00821B00 /* QCropper.check.mark@2x.png */,
-				B91C56F32AA2190E00821B00 /* QCropper.check.mark@3x.png */,
 			);
 			path = CustomUI;
 			sourceTree = "<group>";
@@ -4852,7 +4592,6 @@
 				B91C56CF2AA1DED400821B00 /* CropperState.swift */,
 				B91C56D02AA1DED400821B00 /* CropperViewController.swift */,
 				258AC18B2BC7C74000F359B8 /* CropperViewControllerExtension.swift */,
-				B91E61492ABA8F12008D15BD /* CropperViewController.xib */,
 				B91C56D12AA1DED400821B00 /* AspectRatio.swift */,
 			);
 			path = Core;
@@ -4897,7 +4636,6 @@
 			isa = PBXGroup;
 			children = (
 				B9272D5F2A949E58001A927F /* FrameCell.swift */,
-				B9272D5E2A949E58001A927F /* FrameCell.xib */,
 			);
 			path = Frames;
 			sourceTree = "<group>";
@@ -4907,9 +4645,7 @@
 			children = (
 				B94806122A2A3C4E000B3BA3 /* AddSticker */,
 				B93A10D12A24DC2500FA9C13 /* StickersView.swift */,
-				B93A10D32A24DC3A00FA9C13 /* StickersView.xib */,
 				B9D1590A2A31FB2700DCD14A /* StickerOptions.swift */,
-				B9D1590C2A31FB3300DCD14A /* StickerOptions.xib */,
 			);
 			path = Stickers;
 			sourceTree = "<group>";
@@ -4918,7 +4654,6 @@
 			isa = PBXGroup;
 			children = (
 				B93A10D62A24DD3600FA9C13 /* StickersCell.swift */,
-				B93A10D72A24DD3600FA9C13 /* StickersCell.xib */,
 			);
 			path = Stickers;
 			sourceTree = "<group>";
@@ -4990,7 +4725,6 @@
 		B95CB02D2A0B972B002E8451 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				B97880AE29CDAAE600CADD20 /* GalleryViewController.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -5007,7 +4741,6 @@
 			isa = PBXGroup;
 			children = (
 				B9423BA529DF10300063475D /* PaperLengthCell.swift */,
-				B95CB0442A0BCBC5002E8451 /* PaperLengthCell.xib */,
 			);
 			path = UITableViewCell;
 			sourceTree = "<group>";
@@ -5066,7 +4799,6 @@
 			isa = PBXGroup;
 			children = (
 				B95DEAE22A04003300DFF25B /* TextColorCell.swift */,
-				B95DEAE12A04003300DFF25B /* TextColorCell.xib */,
 			);
 			path = TextColorCell;
 			sourceTree = "<group>";
@@ -5075,7 +4807,6 @@
 			isa = PBXGroup;
 			children = (
 				B95DEAE02A04003300DFF25B /* TextFontCell.swift */,
-				B95DEAE32A04003300DFF25B /* TextFontCell.xib */,
 			);
 			path = TextFontCell;
 			sourceTree = "<group>";
@@ -5087,7 +4818,6 @@
 				B95CB0462A0BCCAF002E8451 /* Model */,
 				B95CB0472A0BCCB6002E8451 /* ViewModel */,
 				B9423BA629DF10300063475D /* CustomPaperLengthViewController.swift */,
-				B95CB0422A0BB5DE002E8451 /* CustomPaperLengthViewController.xib */,
 			);
 			path = CustomPaperLength;
 			sourceTree = "<group>";
@@ -5105,7 +4835,6 @@
 			isa = PBXGroup;
 			children = (
 				B962DC6D2A55AB3F00126F24 /* AdjustsView.swift */,
-				B962DC6F2A55AB5300126F24 /* AdjustsView.xib */,
 			);
 			path = Adjusts;
 			sourceTree = "<group>";
@@ -5130,11 +4859,8 @@
 			isa = PBXGroup;
 			children = (
 				B9C9214B2ACC2E7E000D5D67 /* FrameView.swift */,
-				B91C1B892CF9A4ED00FDE6AE /* FrameView.xib */,
 				B9585EE62A93AAE50045D644 /* FrameOptions.swift */,
-				B9585EE72A93AAE50045D644 /* FrameOptions.xib */,
 				B9585EE92A93AAE60045D644 /* FramesView.swift */,
-				B9585EE82A93AAE50045D644 /* FramesView.xib */,
 			);
 			path = Frames;
 			sourceTree = "<group>";
@@ -5151,11 +4877,6 @@
 		B97385F42D44194C001522EB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B97385EF2D44194C001522EB /* lookup.png */,
-				B97385F02D44194C001522EB /* lookup_amatorka.png */,
-				B97385F12D44194C001522EB /* lookup_miss_etikate.png */,
-				B97385F22D44194C001522EB /* lookup_soft_elegance_1.png */,
-				B97385F32D44194C001522EB /* lookup_soft_elegance_2.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -5607,7 +5328,6 @@
 			children = (
 				B99AEAAE2A0A384E004560DB /* AddTextView */,
 				B9787FEE29CDAAC100CADD20 /* TextView.swift */,
-				B9787FED29CDAAC100CADD20 /* TextView.xib */,
 			);
 			path = TextView;
 			sourceTree = "<group>";
@@ -6086,7 +5806,6 @@
 			isa = PBXGroup;
 			children = (
 				B97880AA29CDAAE600CADD20 /* EditOptionsCell.swift */,
-				B99236522A0CCFD500F4B351 /* EditOptionsCell.xib */,
 			);
 			path = EditOptionsCell;
 			sourceTree = "<group>";
@@ -6094,7 +5813,6 @@
 		B994FA6B2ADEAA5500A342A5 /* AMColorPicker */ = {
 			isa = PBXGroup;
 			children = (
-				B994FA6C2ADEAA5500A342A5 /* AMColorPickerViewController.xib */,
 				B994FA6D2ADEAA5500A342A5 /* AMColorPickerProtocol.swift */,
 				B994FA6E2ADEAA5500A342A5 /* AMColorPickerViewController.swift */,
 				B994FA6F2ADEAA5500A342A5 /* image */,
@@ -6107,9 +5825,6 @@
 		B994FA6F2ADEAA5500A342A5 /* image */ = {
 			isa = PBXGroup;
 			children = (
-				B994FA702ADEAA5500A342A5 /* AMCP_cursor@2x.png */,
-				B994FA712ADEAA5500A342A5 /* AMCP_slider_thumb@2x.png */,
-				B994FA722ADEAA5500A342A5 /* AMCP_color_wheel@2x.png */,
 			);
 			path = image;
 			sourceTree = "<group>";
@@ -6117,13 +5832,10 @@
 		B994FA742ADEAA5500A342A5 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				B994FA752ADEAA5500A342A5 /* AMColorPickerWheelView.xib */,
 				B994FA762ADEAA5500A342A5 /* AMColorPickerWheelView.swift */,
-				B994FA772ADEAA5500A342A5 /* AMColorPickerTableView.xib */,
 				B994FA782ADEAA5500A342A5 /* AMColorPickerTableView.swift */,
 				B994FA792ADEAA5500A342A5 /* Slider */,
 				B994FA7B2ADEAA5500A342A5 /* Cell */,
-				B994FA7E2ADEAA5500A342A5 /* AMColorPickerRGBSliderView.xib */,
 				B994FA7F2ADEAA5500A342A5 /* AMColorPickerRGBSliderView.swift */,
 			);
 			path = view;
@@ -6140,7 +5852,6 @@
 		B994FA7B2ADEAA5500A342A5 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				B994FA7C2ADEAA5500A342A5 /* AMColorPickerTableViewCell.xib */,
 				B994FA7D2ADEAA5500A342A5 /* AMColorPickerTableViewCell.swift */,
 			);
 			path = Cell;
@@ -6185,6 +5896,46 @@
 		B998D6BC2A08FC1D00F8BEF3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B97385EF2D44194C001522EB /* lookup.png */,
+				B97385F02D44194C001522EB /* lookup_amatorka.png */,
+				B97385F12D44194C001522EB /* lookup_miss_etikate.png */,
+				B97385F22D44194C001522EB /* lookup_soft_elegance_1.png */,
+				B97385F32D44194C001522EB /* lookup_soft_elegance_2.png */,
+				B994FA702ADEAA5500A342A5 /* AMCP_cursor@2x.png */,
+				B994FA712ADEAA5500A342A5 /* AMCP_slider_thumb@2x.png */,
+				B994FA722ADEAA5500A342A5 /* AMCP_color_wheel@2x.png */,
+				B91C56F22AA2190E00821B00 /* QCropper.check.mark@2x.png */,
+				B91C56F32AA2190E00821B00 /* QCropper.check.mark@3x.png */,
+				B994FA6C2ADEAA5500A342A5 /* AMColorPickerViewController.xib */,
+				B994FA752ADEAA5500A342A5 /* AMColorPickerWheelView.xib */,
+				B994FA772ADEAA5500A342A5 /* AMColorPickerTableView.xib */,
+				B994FA7C2ADEAA5500A342A5 /* AMColorPickerTableViewCell.xib */,
+				B994FA7E2ADEAA5500A342A5 /* AMColorPickerRGBSliderView.xib */,
+				B91E61492ABA8F12008D15BD /* CropperViewController.xib */,
+				B95CB0442A0BCBC5002E8451 /* PaperLengthCell.xib */,
+				B95CB0422A0BB5DE002E8451 /* CustomPaperLengthViewController.xib */,
+				B95CB03C2A0BB164002E8451 /* CustomRulerCanvasViewController.xib */,
+				B97880AE29CDAAE600CADD20 /* GalleryViewController.storyboard */,
+				B91C19512CF76B7600FDE6AE /* CustomStickerViewController.xib */,
+				B962DC6F2A55AB5300126F24 /* AdjustsView.xib */,
+				B9CC8EA42C8D73D100F39A5F /* BrushView.xib */,
+				B9272D5E2A949E58001A927F /* FrameCell.xib */,
+				B93A10D72A24DD3600FA9C13 /* StickersCell.xib */,
+				B9E0F12E2A1767D9009B3FC0 /* OverlayCell.xib */,
+				B95DEAE12A04003300DFF25B /* TextColorCell.xib */,
+				B95DEAE32A04003300DFF25B /* TextFontCell.xib */,
+				B9A1D5D02A42EA630056E54E /* FilterCell.xib */,
+				B9A1D5D52A42EC970056E54E /* FilterView.xib */,
+				B99236522A0CCFD500F4B351 /* EditOptionsCell.xib */,
+				B9585EE82A93AAE50045D644 /* FramesView.xib */,
+				B9585EE72A93AAE50045D644 /* FrameOptions.xib */,
+				B91C1B892CF9A4ED00FDE6AE /* FrameView.xib */,
+				B9E0F1352A1796B9009B3FC0 /* OverlayView.xib */,
+				B93A10D32A24DC3A00FA9C13 /* StickersView.xib */,
+				B9D1590C2A31FB3300DCD14A /* StickerOptions.xib */,
+				B9787FED29CDAAC100CADD20 /* TextView.xib */,
+				B9CC925F2C9188B200F39A5F /* TextViewController.xib */,
+				B9CC8EA82C8F425B00F39A5F /* CAEditViewController.xib */,
 				B99A1E712C621B82001BCCC8 /* Frames_new */,
 				B99A1BD52C621B7E001BCCC8 /* Frames_new_L */,
 				B99A1B522C621B56001BCCC8 /* HP500_Shapes */,
@@ -8136,7 +7887,6 @@
 				B9BF4E572B0DEDB200117060 /* CAEditTextViewController.swift */,
 				B980DB5F2B2046B600BA0DF2 /* CAEditTransformViewController.swift */,
 				258AC1912BC7CB9100F359B8 /* CAEditTransformViewControllerExtension.swift */,
-				B9CC8EA82C8F425B00F39A5F /* CAEditViewController.xib */,
 			);
 			path = EditViewController;
 			sourceTree = "<group>";
@@ -8148,7 +7898,6 @@
 				B95CB04C2A0BD31B002E8451 /* Model */,
 				B95CB04B2A0BD314002E8451 /* ViewModel */,
 				B96D44F229FFB1EE007F9882 /* TextViewController.swift */,
-				B9CC925F2C9188B200F39A5F /* TextViewController.xib */,
 			);
 			path = TextViewController;
 			sourceTree = "<group>";
@@ -8195,7 +7944,6 @@
 			isa = PBXGroup;
 			children = (
 				B9A1D5CD2A42EA110056E54E /* FilterCell.swift */,
-				B9A1D5D02A42EA630056E54E /* FilterCell.xib */,
 			);
 			path = FilterCell;
 			sourceTree = "<group>";
@@ -8204,7 +7952,6 @@
 			isa = PBXGroup;
 			children = (
 				B9A1D5D32A42EC7B0056E54E /* FilterView.swift */,
-				B9A1D5D52A42EC970056E54E /* FilterView.xib */,
 			);
 			path = Filter;
 			sourceTree = "<group>";
@@ -8226,141 +7973,6 @@
 				B9CC8EAD2C8F474000F39A5F /* gift-dog_TN@3x.png */,
 			);
 			path = Animal;
-			sourceTree = "<group>";
-		};
-		B9CC8F2F2C8F474000F39A5F /* Chinese */ = {
-			isa = PBXGroup;
-			children = (
-				B9CC8EAF2C8F474000F39A5F /* glasses_blossom.png */,
-				B9CC8EB02C8F474000F39A5F /* glasses_blossom_TN.png */,
-				B9CC8EB12C8F474000F39A5F /* glasses_blossom_TN@2x.png */,
-				B9CC8EB22C8F474000F39A5F /* glasses_blossom_TN@3x.png */,
-				B9CC8EB32C8F474000F39A5F /* mothersday.png */,
-				B9CC8EB42C8F474000F39A5F /* mothersday_TN.png */,
-				B9CC8EB52C8F474000F39A5F /* mothersday_TN@2x.png */,
-				B9CC8EB62C8F474000F39A5F /* mothersday_TN@3x.png */,
-				B9CC8EB72C8F474000F39A5F /* Panda.png */,
-				B9CC8EB82C8F474000F39A5F /* Panda_TN.png */,
-				B9CC8EB92C8F474000F39A5F /* Panda_TN@2x.png */,
-				B9CC8EBA2C8F474000F39A5F /* Panda_TN@3x.png */,
-				B9CC8EBB2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-2_TN.png */,
-				B9CC8EBC2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-3_TN.png */,
-				B9CC8EBD2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-4_TN.png */,
-				B9CC8EBE2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-5_TN.png */,
-				B9CC8EBF2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-6_TN.png */,
-				B9CC8EC02C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-7_TN.png */,
-				B9CC8EC12C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-8_TN.png */,
-				B9CC8EC22C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-9_TN.png */,
-				B9CC8EC32C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-010_TN.png */,
-				B9CC8EC42C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-011_TN.png */,
-				B9CC8EC52C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-012_TN.png */,
-				B9CC8EC62C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-013_TN.png */,
-				B9CC8EC72C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-014_TN.png */,
-				B9CC8EC82C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-015_TN.png */,
-				B9CC8EC92C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-016_TN.png */,
-				B9CC8ECA2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-017_TN.png */,
-				B9CC8ECB2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-018_TN.png */,
-				B9CC8ECC2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-019_TN.png */,
-				B9CC8ECD2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-020_TN.png */,
-				B9CC8ECE2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-021_TN.png */,
-				B9CC8ECF2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-022_TN.png */,
-				B9CC8ED02C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-023_TN.png */,
-				B9CC8ED12C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-024_TN.png */,
-				B9CC8ED22C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-025_TN.png */,
-				B9CC8ED32C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-026_TN.png */,
-				B9CC8ED42C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-027_TN.png */,
-				B9CC8ED52C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-028_TN.png */,
-				B9CC8ED62C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-029_TN.png */,
-				B9CC8ED72C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-030_TN.png */,
-				B9CC8ED82C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-2_TN@2x.png */,
-				B9CC8ED92C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-3_TN@2x.png */,
-				B9CC8EDA2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-4_TN@2x.png */,
-				B9CC8EDB2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-5_TN@2x.png */,
-				B9CC8EDC2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-6_TN@2x.png */,
-				B9CC8EDD2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-7_TN@2x.png */,
-				B9CC8EDE2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-8_TN@2x.png */,
-				B9CC8EDF2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-9_TN@2x.png */,
-				B9CC8EE02C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-010_TN@2x.png */,
-				B9CC8EE12C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-011_TN@2x.png */,
-				B9CC8EE22C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-012_TN@2x.png */,
-				B9CC8EE32C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-013_TN@2x.png */,
-				B9CC8EE42C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-014_TN@2x.png */,
-				B9CC8EE52C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-015_TN@2x.png */,
-				B9CC8EE62C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-016_TN@2x.png */,
-				B9CC8EE72C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-017_TN@2x.png */,
-				B9CC8EE82C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-018_TN@2x.png */,
-				B9CC8EE92C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-019_TN@2x.png */,
-				B9CC8EEA2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-020_TN@2x.png */,
-				B9CC8EEB2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-021_TN@2x.png */,
-				B9CC8EEC2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-022_TN@2x.png */,
-				B9CC8EED2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-023_TN@2x.png */,
-				B9CC8EEE2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-024_TN@2x.png */,
-				B9CC8EEF2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-025_TN@2x.png */,
-				B9CC8EF02C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-026_TN@2x.png */,
-				B9CC8EF12C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-27_TN@2x.png */,
-				B9CC8EF22C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-28_TN@2x.png */,
-				B9CC8EF32C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-029_TN@2x.png */,
-				B9CC8EF42C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-030_TN@2x.png */,
-				B9CC8EF52C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-2_TN@3x.png */,
-				B9CC8EF62C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-3_TN@3x.png */,
-				B9CC8EF72C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-4_TN@3x.png */,
-				B9CC8EF82C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-5_TN@3x.png */,
-				B9CC8EF92C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-6_TN@3x.png */,
-				B9CC8EFA2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-7_TN@3x.png */,
-				B9CC8EFB2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-8_TN@3x.png */,
-				B9CC8EFC2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-9_TN@3x.png */,
-				B9CC8EFD2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-010_TN@3x.png */,
-				B9CC8EFE2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-011_TN@3x.png */,
-				B9CC8EFF2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-012_TN@3x.png */,
-				B9CC8F002C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-013_TN@3x.png */,
-				B9CC8F012C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-014_TN@3x.png */,
-				B9CC8F022C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-015_TN@3x.png */,
-				B9CC8F032C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-016_TN@3x.png */,
-				B9CC8F042C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-017_TN@3x.png */,
-				B9CC8F052C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-018_TN@3x.png */,
-				B9CC8F062C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-019_TN@3x.png */,
-				B9CC8F072C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-020_TN@3x.png */,
-				B9CC8F082C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-021_TN@3x.png */,
-				B9CC8F092C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-022_TN@3x.png */,
-				B9CC8F0A2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-023_TN@3x.png */,
-				B9CC8F0B2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-024_TN@3x.png */,
-				B9CC8F0C2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-025_TN@3x.png */,
-				B9CC8F0D2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-026_TN@3x.png */,
-				B9CC8F0E2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-027_TN@3x.png */,
-				B9CC8F0F2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-028_TN@3x.png */,
-				B9CC8F102C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-029_TN@3x.png */,
-				B9CC8F112C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-030_TN@3x.png */,
-				B9CC8F122C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-2.png */,
-				B9CC8F132C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-3.png */,
-				B9CC8F142C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-4.png */,
-				B9CC8F152C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-5.png */,
-				B9CC8F162C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-6.png */,
-				B9CC8F172C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-7.png */,
-				B9CC8F182C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-8.png */,
-				B9CC8F192C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-9.png */,
-				B9CC8F1A2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-010.png */,
-				B9CC8F1B2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-011.png */,
-				B9CC8F1C2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-012.png */,
-				B9CC8F1D2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-013.png */,
-				B9CC8F1E2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-014.png */,
-				B9CC8F1F2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-015.png */,
-				B9CC8F202C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-016.png */,
-				B9CC8F212C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-017.png */,
-				B9CC8F222C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-018.png */,
-				B9CC8F232C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-019.png */,
-				B9CC8F242C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-020.png */,
-				B9CC8F252C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-021.png */,
-				B9CC8F262C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-022.png */,
-				B9CC8F272C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-023.png */,
-				B9CC8F282C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-024.png */,
-				B9CC8F292C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-025.png */,
-				B9CC8F2A2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-026.png */,
-				B9CC8F2B2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-027.png */,
-				B9CC8F2C2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-028.png */,
-				B9CC8F2D2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-029.png */,
-				B9CC8F2E2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-030.png */,
-			);
-			path = Chinese;
 			sourceTree = "<group>";
 		};
 		B9CC8F312C8F474000F39A5F /* Custom */ = {
@@ -8728,7 +8340,6 @@
 			isa = PBXGroup;
 			children = (
 				B9CC8EAE2C8F474000F39A5F /* Animal */,
-				B9CC8F2F2C8F474000F39A5F /* Chinese */,
 				B9CC8F312C8F474000F39A5F /* Custom */,
 				B9CC8F662C8F474000F39A5F /* GetWell */,
 				B9CC902F2C8F474000F39A5F /* Nature */,
@@ -8766,7 +8377,6 @@
 			isa = PBXGroup;
 			children = (
 				B9E0F12D2A1767D9009B3FC0 /* OverlayCell.swift */,
-				B9E0F12E2A1767D9009B3FC0 /* OverlayCell.xib */,
 			);
 			path = OverlayCell;
 			sourceTree = "<group>";
@@ -8786,7 +8396,6 @@
 				B95CB0482A0BD2CD002E8451 /* Model */,
 				B95CB04A2A0BD2F3002E8451 /* ViewModel */,
 				B96475C629DC119F002D0BCB /* CustomRulerCanvasViewController.swift */,
-				B95CB03C2A0BB164002E8451 /* CustomRulerCanvasViewController.xib */,
 			);
 			path = CustomRulerCanvas;
 			sourceTree = "<group>";
@@ -8795,7 +8404,6 @@
 			isa = PBXGroup;
 			children = (
 				B9E0F1332A1796AE009B3FC0 /* OverlayView.swift */,
-				B9E0F1352A1796B9009B3FC0 /* OverlayView.xib */,
 			);
 			path = Overlay;
 			sourceTree = "<group>";
@@ -9252,69 +8860,41 @@
 				B99A22882C621B83001BCCC8 /* kindness_frame_11_7_L.png in Resources */,
 				B99A23932C621B83001BCCC8 /* HP500_App_21_1.png in Resources */,
 				B99A25962C621B83001BCCC8 /* HP500_App_63_1.png in Resources */,
-				B9CC90852C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-010_TN@2x.png in Resources */,
 				B9CC90862C8F474000F39A5F /* game_day.png in Resources */,
 				B9CC90872C8F474000F39A5F /* three_daisies_TN@3x.png in Resources */,
-				B9CC90882C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-014.png in Resources */,
 				B9CC90892C8F474000F39A5F /* poppy_leaves-2_TN.png in Resources */,
 				B9CC908A2C8F474000F39A5F /* poppy_leaves-2_TN@2x.png in Resources */,
 				B9CC908B2C8F474000F39A5F /* go_team_banner_homecoming.png in Resources */,
 				B9CC908C2C8F474000F39A5F /* rosebud_TN@2x.png in Resources */,
-				B9CC908D2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-025_TN.png in Resources */,
 				B9CC908E2C8F474000F39A5F /* aster_flower_TN@3x.png in Resources */,
-				B9CC908F2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-5_TN.png in Resources */,
-				B9CC90902C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-8_TN@2x.png in Resources */,
 				B9CC90912C8F474000F39A5F /* i_heart_football_2_px_TN@2x.png in Resources */,
-				B9CC90922C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-7_TN@2x.png in Resources */,
-				B9CC90932C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-023_TN@2x.png in Resources */,
-				B9CC90942C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-9_TN.png in Resources */,
-				B9CC90952C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-030.png in Resources */,
-				B9CC90962C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-8_TN.png in Resources */,
 				B9CC90972C8F474000F39A5F /* flower_ring_TN.png in Resources */,
 				B9CC90982C8F474000F39A5F /* football_character_homecoming_TN.png in Resources */,
 				B9CC90992C8F474000F39A5F /* sun_hearts_TN@3x.png in Resources */,
-				B9CC909A2C8F474000F39A5F /* Panda.png in Resources */,
 				B9CC909B2C8F474000F39A5F /* heart_bouquet_TN@3x.png in Resources */,
 				B9CC909C2C8F474000F39A5F /* tulips_TN@3x.png in Resources */,
 				B9CC909D2C8F474000F39A5F /* measles_TN.png in Resources */,
 				B9CC909E2C8F474000F39A5F /* sun_rays_face_TN.png in Resources */,
-				B9CC909F2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-3.png in Resources */,
-				B9CC90A02C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-013_TN.png in Resources */,
-				B9CC90A12C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-2_TN@2x.png in Resources */,
 				B9CC90A22C8F474000F39A5F /* palm-tree-2_TN@2x.png in Resources */,
 				B9CC90A32C8F474000F39A5F /* bouquet.png in Resources */,
 				B9CC90A42C8F474000F39A5F /* three_flower_bunch_TN@3x.png in Resources */,
 				B9CC90A52C8F474000F39A5F /* germs_TN.png in Resources */,
-				B9CC90A62C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-012_TN@3x.png in Resources */,
 				B9CC90A72C8F474000F39A5F /* medicine.png in Resources */,
 				B9CC90A82C8F474000F39A5F /* medicine_TN.png in Resources */,
-				B9CC90A92C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-030_TN@2x.png in Resources */,
-				B9CC90AA2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-014_TN@2x.png in Resources */,
-				B9CC90AB2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-026_TN@3x.png in Resources */,
 				B9CC90AC2C8F474000F39A5F /* three_flower_bunch.png in Resources */,
-				B9CC90AD2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-018_TN@3x.png in Resources */,
-				B9CC90AE2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-023_TN.png in Resources */,
-				B9CC90AF2C8F474000F39A5F /* glasses_blossom_TN@2x.png in Resources */,
-				B9CC90B02C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-2_TN.png in Resources */,
 				B9CC90B12C8F474000F39A5F /* flower_leaves_element.png in Resources */,
-				B9CC90B22C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-015_TN@2x.png in Resources */,
-				B9CC90B32C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-011.png in Resources */,
 				B9CC90B42C8F474000F39A5F /* tissue_box_TN@2x.png in Resources */,
-				B9CC90B52C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-018_TN@2x.png in Resources */,
 				B9CC90B62C8F474000F39A5F /* cloud-sun_TN@3x.png in Resources */,
 				B9CC90B72C8F474000F39A5F /* wave_TN.png in Resources */,
 				B9CC90B82C8F474000F39A5F /* i_heart_football_2_px_TN@3x.png in Resources */,
 				B9CC90B92C8F474000F39A5F /* were_no1_homecoming_TN@3x.png in Resources */,
 				B9CC90BA2C8F474000F39A5F /* sun.png in Resources */,
-				B9CC90BB2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-27_TN@2x.png in Resources */,
 				B9CC90BC2C8F474000F39A5F /* Mushrooms-b_TN.png in Resources */,
 				B9CC90BD2C8F474000F39A5F /* football_character_homecoming_TN@2x.png in Resources */,
 				B9CC90BE2C8F474000F39A5F /* heart_football3_px_TN@3x.png in Resources */,
 				B9CC90BF2C8F474000F39A5F /* measles_TN@2x.png in Resources */,
 				B9CC90C02C8F474000F39A5F /* Football.png in Resources */,
 				B9CC90C12C8F474000F39A5F /* flower_TN@3x.png in Resources */,
-				B9CC90C22C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-3_TN.png in Resources */,
-				B9CC90C32C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-021_TN.png in Resources */,
 				B9CC90C42C8F474000F39A5F /* rose_TN.png in Resources */,
 				B9CC90C52C8F474000F39A5F /* palm-tree-2_TN@3x.png in Resources */,
 				B9CC90C62C8F474000F39A5F /* poppy_leaves-2.png in Resources */,
@@ -9328,13 +8908,11 @@
 				B9CC90CD2C8F474000F39A5F /* rose_TN@2x.png in Resources */,
 				B9CC90CE2C8F474000F39A5F /* poppy_leaves-2_TN@3x.png in Resources */,
 				B9CC90CF2C8F474000F39A5F /* kleenex_TN@3x.png in Resources */,
-				B9CC90D02C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-9_TN@3x.png in Resources */,
 				B9CC90D12C8F474000F39A5F /* plum-blossom_TN.png in Resources */,
 				B9CC90D22C8F474000F39A5F /* football_flames_px_TN.png in Resources */,
 				B9CC90D32C8F474000F39A5F /* skateboard_px_TN.png in Resources */,
 				B9CC90D42C8F474000F39A5F /* nauseous_emoji_TN.png in Resources */,
 				B9CC90D52C8F474000F39A5F /* flag_px_TN.png in Resources */,
-				B9CC90D62C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-024_TN@3x.png in Resources */,
 				B9CC90D72C8F474000F39A5F /* starhp_TN.png in Resources */,
 				B9CC90D82C8F474000F39A5F /* bouquet_TN.png in Resources */,
 				B9CC90D92C8F474000F39A5F /* rosebud_leaves.png in Resources */,
@@ -9349,48 +8927,34 @@
 				B9CC90E22C8F474000F39A5F /* cactus_family_TN.png in Resources */,
 				B9CC90E32C8F474000F39A5F /* sun_face.png in Resources */,
 				B9CC90E42C8F474000F39A5F /* gift-dog.png in Resources */,
-				B9CC90E52C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-025_TN@2x.png in Resources */,
 				B9CC90E62C8F474000F39A5F /* hibiscus_TN.png in Resources */,
-				B9CC90E72C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-9_TN@2x.png in Resources */,
 				B9CC90E82C8F474000F39A5F /* floating_flowers_2_TN@3x.png in Resources */,
 				B9CC90E92C8F474000F39A5F /* leaves_TN.png in Resources */,
 				B9CC90EA2C8F474000F39A5F /* were_no1_homecoming.png in Resources */,
 				B9CC90EB2C8F474000F39A5F /* feather_blue_TN.png in Resources */,
 				B9CC90EC2C8F474000F39A5F /* sun_rays_face_TN@3x.png in Resources */,
-				B9CC90ED2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-022.png in Resources */,
-				B9CC90EE2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-024_TN@2x.png in Resources */,
 				B9CC90EF2C8F474000F39A5F /* sick_mask_emoji_TN@3x.png in Resources */,
 				B9CC90F02C8F474000F39A5F /* feather_blue.png in Resources */,
-				B9CC90F12C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-8_TN@3x.png in Resources */,
 				B9CC90F22C8F474000F39A5F /* Flowers_TN@2x.png in Resources */,
 				B9CC90F32C8F474000F39A5F /* lilly.png in Resources */,
 				B9CC90F42C8F474000F39A5F /* rose_TN@3x.png in Resources */,
 				B9CC90F52C8F474000F39A5F /* rainbow_2_TN@2x.png in Resources */,
 				B9CC90F62C8F474000F39A5F /* kleenex.png in Resources */,
-				B9CC90F72C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-012_TN.png in Resources */,
 				B9CC90F82C8F474000F39A5F /* star_yellow_TN@2x.png in Resources */,
-				B9CC90F92C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-4.png in Resources */,
 				B9CC90FA2C8F474000F39A5F /* stars_n_balls_px.png in Resources */,
 				B9CC90FB2C8F474000F39A5F /* flowers_left_TN.png in Resources */,
-				B9CC90FC2C8F474000F39A5F /* Panda_TN.png in Resources */,
 				B9CC90FD2C8F474000F39A5F /* palmtree.png in Resources */,
-				B9CC90FE2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-029_TN@3x.png in Resources */,
-				B9CC90FF2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-012.png in Resources */,
 				B9CC91002C8F474000F39A5F /* sun_TN@3x.png in Resources */,
-				B9CC91012C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-8.png in Resources */,
 				B9CC91022C8F474000F39A5F /* tea_honey_TN@2x.png in Resources */,
 				B9CC91032C8F474000F39A5F /* spirit_week_2_TN@3x.png in Resources */,
 				B9CC91042C8F474000F39A5F /* soup_bowl_TN@3x.png in Resources */,
-				B9CC91052C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-023_TN@3x.png in Resources */,
 				B9CC91062C8F474000F39A5F /* floating_flowers_2_TN@2x.png in Resources */,
 				B9CC91072C8F474000F39A5F /* jersey_TN.png in Resources */,
 				B9CC91082C8F474000F39A5F /* wedding_bouquet_TN@3x.png in Resources */,
-				B9CC91092C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-026_TN.png in Resources */,
 				B9CC910A2C8F474000F39A5F /* feather2.png in Resources */,
 				B9CC910B2C8F474000F39A5F /* feather_TN@3x.png in Resources */,
 				B9CC910C2C8F474000F39A5F /* cactus_family_TN@2x.png in Resources */,
 				B9CC910D2C8F474000F39A5F /* heart_bouquet_TN@2x.png in Resources */,
-				B9CC910E2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-014_TN.png in Resources */,
 				B9CC910F2C8F474000F39A5F /* cloud_sad_TN@3x.png in Resources */,
 				B9CC91102C8F474000F39A5F /* cloud_angry_TN@2x.png in Resources */,
 				B9CC91112C8F474000F39A5F /* thermometer_fire_TN@2x.png in Resources */,
@@ -9399,17 +8963,13 @@
 				B9CC91142C8F474000F39A5F /* wedding_bouquet_TN@2x.png in Resources */,
 				B9CC91152C8F474000F39A5F /* kleenex_TN@2x.png in Resources */,
 				B9CC91162C8F474000F39A5F /* cloud_angry.png in Resources */,
-				B9CC91172C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-028_TN.png in Resources */,
 				B9CC91182C8F474000F39A5F /* sun_face_TN.png in Resources */,
 				B9CC91192C8F474000F39A5F /* letter_TN@2x.png in Resources */,
 				B9CC911A2C8F474000F39A5F /* leaves_TN@2x.png in Resources */,
 				B9CC911B2C8F474000F39A5F /* Mushrooms-b_TN@3x.png in Resources */,
 				B9CC911C2C8F474000F39A5F /* cactus_family.png in Resources */,
-				B9CC911D2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-017_TN@3x.png in Resources */,
-				B9CC911E2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-015_TN@3x.png in Resources */,
 				B9CC911F2C8F474000F39A5F /* spirit_week_2_TN.png in Resources */,
 				B9CC91202C8F474000F39A5F /* heart_football3_px.png in Resources */,
-				B9CC91212C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-013_TN@3x.png in Resources */,
 				B9CC91222C8F474000F39A5F /* palmtree_TN.png in Resources */,
 				B9CC91232C8F474000F39A5F /* go_team_banner_homecoming_TN@3x.png in Resources */,
 				B9CC91242C8F474000F39A5F /* rosebud.png in Resources */,
@@ -9417,7 +8977,6 @@
 				B9CC91262C8F474000F39A5F /* plum-blossom.png in Resources */,
 				B9CC91272C8F474000F39A5F /* sun_TN.png in Resources */,
 				B9CC91282C8F474000F39A5F /* cloud_sad_TN@2x.png in Resources */,
-				B9CC91292C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-024.png in Resources */,
 				B9CC912A2C8F474000F39A5F /* sun_TN@2x.png in Resources */,
 				B9CC912B2C8F474000F39A5F /* football_helmet_homecoming_TN.png in Resources */,
 				B9CC912C2C8F474000F39A5F /* three_daisies_TN@2x.png in Resources */,
@@ -9427,10 +8986,7 @@
 				B9CC91302C8F474000F39A5F /* rainbow_2_TN@3x.png in Resources */,
 				B9CC91312C8F474000F39A5F /* tulips.png in Resources */,
 				B9CC91322C8F474000F39A5F /* letter_TN.png in Resources */,
-				B9CC91332C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-020_TN@2x.png in Resources */,
-				B9CC91342C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-2_TN@3x.png in Resources */,
 				B9CC91352C8F474000F39A5F /* cloud_angry_TN@3x.png in Resources */,
-				B9CC91362C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-010.png in Resources */,
 				B9CC91372C8F474000F39A5F /* banner-copy_TN@3x.png in Resources */,
 				B9CC91382C8F474000F39A5F /* thermometer_fire_TN@3x.png in Resources */,
 				B9CC91392C8F474000F39A5F /* spirit_week_1_TN@2x.png in Resources */,
@@ -9438,11 +8994,8 @@
 				B9CC913B2C8F474000F39A5F /* hibiscus_TN@2x.png in Resources */,
 				B9CC913C2C8F474000F39A5F /* band-aid2.png in Resources */,
 				B9CC913D2C8F474000F39A5F /* nauseous_emoji_TN@2x.png in Resources */,
-				B9CC913E2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-017_TN.png in Resources */,
-				B9CC913F2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-021.png in Resources */,
 				B9CC91402C8F474000F39A5F /* star_yellow_TN.png in Resources */,
 				B9CC91412C8F474000F39A5F /* glasses_2_px_TN@2x.png in Resources */,
-				B9CC91422C8F474000F39A5F /* mothersday_TN@2x.png in Resources */,
 				B9CC91432C8F474000F39A5F /* rosebud_TN@3x.png in Resources */,
 				B9CC91442C8F474000F39A5F /* gift-dog_TN@3x.png in Resources */,
 				B9CC91452C8F474000F39A5F /* feather.png in Resources */,
@@ -9455,66 +9008,44 @@
 				B9CC914C2C8F474000F39A5F /* sun_hearts_TN.png in Resources */,
 				B9CC914D2C8F474000F39A5F /* were_no1_homecoming_TN@2x.png in Resources */,
 				B9CC914E2C8F474000F39A5F /* wave_TN@3x.png in Resources */,
-				B9CC914F2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-024_TN.png in Resources */,
 				B9CC91502C8F474000F39A5F /* foam_finger_px_TN.png in Resources */,
-				B9CC91512C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-029_TN.png in Resources */,
-				B9CC91522C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-010_TN@3x.png in Resources */,
 				B9CC91532C8F474000F39A5F /* helmet_px_TN.png in Resources */,
-				B9CC91542C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-019.png in Resources */,
 				B9CC91552C8F474000F39A5F /* wedding_bouquet_color_TN@2x.png in Resources */,
 				B9CC91562C8F474000F39A5F /* glasses_px_TN.png in Resources */,
 				B9CC91572C8F474000F39A5F /* flowers_left.png in Resources */,
-				B9CC91582C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-026_TN@2x.png in Resources */,
-				B9CC91592C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-014_TN@3x.png in Resources */,
 				B9CC915A2C8F474000F39A5F /* i_heart_football_2_px.png in Resources */,
-				B9CC915B2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-025.png in Resources */,
-				B9CC915C2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-029.png in Resources */,
 				B9CC915D2C8F474000F39A5F /* wedding_bouquet_color_TN.png in Resources */,
 				B9CC915E2C8F474000F39A5F /* flowers_right.png in Resources */,
-				B9CC915F2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-013.png in Resources */,
 				B9CC91602C8F474000F39A5F /* thermometer_fire.png in Resources */,
 				B9CC91612C8F474000F39A5F /* cactus_family_TN@3x.png in Resources */,
-				B9CC91622C8F474000F39A5F /* glasses_blossom_TN@3x.png in Resources */,
 				B9CC91632C8F474000F39A5F /* stars_TN.png in Resources */,
 				B9CC91642C8F474000F39A5F /* moon_TN.png in Resources */,
-				B9CC91652C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-029_TN@2x.png in Resources */,
 				B9CC91662C8F474000F39A5F /* anzac_poppy-2_TN@2x.png in Resources */,
-				B9CC91672C8F474000F39A5F /* glasses_blossom.png in Resources */,
 				B9CC91682C8F474000F39A5F /* lilly_TN.png in Resources */,
 				B9CC91692C8F474000F39A5F /* feather_blue_TN@3x.png in Resources */,
-				B9CC916A2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-021_TN@3x.png in Resources */,
-				B9CC916B2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-012_TN@2x.png in Resources */,
 				B9CC916C2C8F474000F39A5F /* Mushrooms-b.png in Resources */,
-				B9CC916D2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-027_TN.png in Resources */,
 				B9CC916E2C8F474000F39A5F /* helmet_px_TN@3x.png in Resources */,
 				B9CC916F2C8F474000F39A5F /* floating_flowers_2.png in Resources */,
 				B9CC91702C8F474000F39A5F /* skateboard_px_TN@2x.png in Resources */,
 				B9CC91712C8F474000F39A5F /* cloud-sun_TN.png in Resources */,
 				B9CC91722C8F474000F39A5F /* wedding_bouquet_TN.png in Resources */,
 				B9CC91732C8F474000F39A5F /* thermometer_fire_TN.png in Resources */,
-				B9CC91742C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-6_TN@2x.png in Resources */,
 				B9CC91752C8F474000F39A5F /* starhp_TN@3x.png in Resources */,
 				B9CC91762C8F474000F39A5F /* bouquet_TN@3x.png in Resources */,
 				B9CC91772C8F474000F39A5F /* flower_leaves_element_TN@2x.png in Resources */,
 				B9CC91782C8F474000F39A5F /* spirit_week_1_TN.png in Resources */,
-				B9CC91792C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-011_TN@3x.png in Resources */,
 				B9CC917A2C8F474000F39A5F /* football_helmet_homecoming.png in Resources */,
 				B9CC917B2C8F474000F39A5F /* hibiscus.png in Resources */,
 				B9CC917C2C8F474000F39A5F /* moon.png in Resources */,
-				B9CC917D2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-027.png in Resources */,
 				B9CC917E2C8F474000F39A5F /* lilly_TN@3x.png in Resources */,
-				B9CC917F2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-4_TN@3x.png in Resources */,
 				B9CC91802C8F474000F39A5F /* stars_TN@3x.png in Resources */,
-				B9CC91812C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-028_TN@3x.png in Resources */,
 				B9CC91822C8F474000F39A5F /* helmet_px.png in Resources */,
 				B9CC91832C8F474000F39A5F /* rainbow_2.png in Resources */,
 				B9CC91842C8F474000F39A5F /* love_monster_TN.png in Resources */,
 				B9CC91852C8F474000F39A5F /* band-aid2_TN@2x.png in Resources */,
 				B9CC91862C8F474000F39A5F /* banner-copy_TN.png in Resources */,
-				B9CC91872C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-3_TN@2x.png in Resources */,
 				B9CC91882C8F474000F39A5F /* heart_football_px_TN@3x.png in Resources */,
 				B9CC91892C8F474000F39A5F /* starhp_TN@2x.png in Resources */,
-				B9CC918A2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-020.png in Resources */,
 				B9CC918B2C8F474000F39A5F /* rosebud_leaves_TN@3x.png in Resources */,
 				B9CC918C2C8F474000F39A5F /* banner-copy.png in Resources */,
 				B9CC918D2C8F474000F39A5F /* banner-copy_TN@2x.png in Resources */,
@@ -9525,17 +9056,13 @@
 				B9CC91922C8F474000F39A5F /* wave_TN@2x.png in Resources */,
 				B9CC91932C8F474000F39A5F /* starhp.png in Resources */,
 				B9CC91942C8F474000F39A5F /* sun_hearts_TN@2x.png in Resources */,
-				B9CC91952C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-016.png in Resources */,
 				B9CC91962C8F474000F39A5F /* flowers_daisies_TN@3x.png in Resources */,
 				B9CC91972C8F474000F39A5F /* aster_flower_TN@2x.png in Resources */,
 				B9CC91982C8F474000F39A5F /* feather_blue_TN@2x.png in Resources */,
-				B9CC91992C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-022_TN@2x.png in Resources */,
 				B9CC919A2C8F474000F39A5F /* hibiscus_TN@3x.png in Resources */,
 				B9CC919B2C8F474000F39A5F /* medicine_TN@2x.png in Resources */,
-				B9CC919C2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-021_TN@2x.png in Resources */,
 				B9CC919D2C8F474000F39A5F /* aster_flower.png in Resources */,
 				B9CC919E2C8F474000F39A5F /* wedding_bouquet.png in Resources */,
-				B9CC919F2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-2.png in Resources */,
 				B9CC91A02C8F474000F39A5F /* flowers_right_TN.png in Resources */,
 				B9CC91A12C8F474000F39A5F /* foam_finger_px.png in Resources */,
 				B9CC91A22C8F474000F39A5F /* Flowers2_TN@3x.png in Resources */,
@@ -9543,7 +9070,6 @@
 				B9CC91A42C8F474000F39A5F /* leaves.png in Resources */,
 				B9CC91A52C8F474000F39A5F /* flower_ring_TN@2x.png in Resources */,
 				B9CC91A62C8F474000F39A5F /* tissue_box.png in Resources */,
-				B9CC91A72C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-030_TN@3x.png in Resources */,
 				B9CC91A82C8F474000F39A5F /* three_rosebuds.png in Resources */,
 				B9CC91A92C8F474000F39A5F /* Football_TN@2x.png in Resources */,
 				B9CC91AA2C8F474000F39A5F /* love_monster.png in Resources */,
@@ -9558,13 +9084,9 @@
 				B9CC91B32C8F474000F39A5F /* Flowers_TN.png in Resources */,
 				B9CC91B42C8F474000F39A5F /* helmet_px_TN@2x.png in Resources */,
 				B9CC91B52C8F474000F39A5F /* germs.png in Resources */,
-				B9CC91B62C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-022_TN@3x.png in Resources */,
 				B9CC91B72C8F474000F39A5F /* jersey_TN@2x.png in Resources */,
-				B9CC91B82C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-018_TN.png in Resources */,
 				B9CC91B92C8F474000F39A5F /* jersey.png in Resources */,
 				B9CC91BA2C8F474000F39A5F /* flowers_right_TN@3x.png in Resources */,
-				B9CC91BB2C8F474000F39A5F /* glasses_blossom_TN.png in Resources */,
-				B9CC91BC2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-015.png in Resources */,
 				B9CC91BD2C8F474000F39A5F /* football_flames_px_TN@2x.png in Resources */,
 				B9CC91BE2C8F474000F39A5F /* cloud-sun_TN@2x.png in Resources */,
 				B9CC91BF2C8F474000F39A5F /* anzac_poppy-2.png in Resources */,
@@ -9575,43 +9097,31 @@
 				B9CC91C42C8F474000F39A5F /* Flowers.png in Resources */,
 				B9CC91C52C8F474000F39A5F /* cloud_sad_TN.png in Resources */,
 				B9CC91C62C8F474000F39A5F /* flower_ring.png in Resources */,
-				B9CC91C72C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-011_TN@2x.png in Resources */,
 				B9CC91C82C8F474000F39A5F /* tissue_box_TN@3x.png in Resources */,
-				B9CC91C92C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-28_TN@2x.png in Resources */,
-				B9CC91CA2C8F474000F39A5F /* mothersday_TN@3x.png in Resources */,
 				B9CC91CB2C8F474000F39A5F /* skateboard_px.png in Resources */,
 				B9CC91CC2C8F474000F39A5F /* feather_TN.png in Resources */,
 				B9CC91CD2C8F474000F39A5F /* glasses_px.png in Resources */,
 				B9CC91CE2C8F474000F39A5F /* soup_bowl_TN.png in Resources */,
-				B9CC91CF2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-027_TN@3x.png in Resources */,
 				B9CC91D02C8F474000F39A5F /* jersey_TN@3x.png in Resources */,
 				B9CC91D12C8F474000F39A5F /* gift-dog_TN@2x.png in Resources */,
-				B9CC91D22C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-016_TN.png in Resources */,
 				B9CC91D32C8F474000F39A5F /* spirit_week_2_TN@2x.png in Resources */,
 				B9CC91D42C8F474000F39A5F /* Football_TN.png in Resources */,
-				B9CC91D52C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-016_TN@3x.png in Resources */,
 				B9CC91D62C8F474000F39A5F /* football_helmet_homecoming_TN@3x.png in Resources */,
-				B9CC91D72C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-028.png in Resources */,
 				B9CC91D82C8F474000F39A5F /* Mushrooms-b_TN@2x.png in Resources */,
 				B9CC91D92C8F474000F39A5F /* star_yellow_TN@3x.png in Resources */,
 				B9CC91DA2C8F474000F39A5F /* cloud-sun.png in Resources */,
 				B9CC91DB2C8F474000F39A5F /* flower_TN@2x.png in Resources */,
 				B9CC91DC2C8F474000F39A5F /* foam_finger_px_TN@2x.png in Resources */,
-				B9CC91DD2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-017_TN@2x.png in Resources */,
 				B9CC91DE2C8F474000F39A5F /* tissue_box_TN.png in Resources */,
 				B9CC91DF2C8F474000F39A5F /* three_daisies_TN.png in Resources */,
 				B9CC91E02C8F474000F39A5F /* feather2_TN.png in Resources */,
-				B9CC91E12C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-022_TN.png in Resources */,
 				B9CC91E22C8F474000F39A5F /* glasses_2_px.png in Resources */,
-				B9CC91E32C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-019_TN@2x.png in Resources */,
 				B9CC91E42C8F474000F39A5F /* game_day_TN@3x.png in Resources */,
 				B9CC91E52C8F474000F39A5F /* tea_honey.png in Resources */,
 				B9CC91E62C8F474000F39A5F /* stars.png in Resources */,
 				B9CC91E72C8F474000F39A5F /* wedding_bouquet_color.png in Resources */,
 				B9CC91E82C8F474000F39A5F /* measles.png in Resources */,
 				B9CC91E92C8F474000F39A5F /* banner_2_TN@2x.png in Resources */,
-				B9CC91EA2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-7.png in Resources */,
-				B9CC91EB2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-011_TN.png in Resources */,
 				B9CC91EC2C8F474000F39A5F /* football_helmet_homecoming_TN@2x.png in Resources */,
 				B9CC91ED2C8F474000F39A5F /* hanging_lillies_TN@2x.png in Resources */,
 				B9CC91EE2C8F474000F39A5F /* moon_TN@2x.png in Resources */,
@@ -9623,84 +9133,55 @@
 				B9CC91F42C8F474000F39A5F /* banner_2_TN.png in Resources */,
 				B9CC91F52C8F474000F39A5F /* rosebud_leaves_TN@2x.png in Resources */,
 				B9CC91F62C8F474000F39A5F /* heart_football3_px_TN.png in Resources */,
-				B9CC91F72C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-030_TN.png in Resources */,
 				B9CC91F82C8F474000F39A5F /* glasses_2_px_TN@3x.png in Resources */,
 				B9CC91F92C8F474000F39A5F /* go_team_banner_homecoming_TN.png in Resources */,
-				B9CC91FA2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-019_TN@3x.png in Resources */,
 				B9CC91FB2C8F474000F39A5F /* flowers_left_TN@3x.png in Resources */,
 				B97387F62D4427C1001522EB /* README.md in Resources */,
 				B9CC91FC2C8F474000F39A5F /* love_monster_TN@3x.png in Resources */,
 				B9CC91FD2C8F474000F39A5F /* star_yellow.png in Resources */,
 				B9CC91FE2C8F474000F39A5F /* three_daisies.png in Resources */,
-				B9CC91FF2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-020_TN.png in Resources */,
 				B9CC92002C8F474000F39A5F /* feather2_TN@3x.png in Resources */,
 				B9CC92012C8F474000F39A5F /* game_day_TN@2x.png in Resources */,
 				B9CC92022C8F474000F39A5F /* flowers_daisies_TN@2x.png in Resources */,
 				B9CC92032C8F474000F39A5F /* sick_mask_emoji_TN@2x.png in Resources */,
-				B9CC92042C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-017.png in Resources */,
-				B9CC92052C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-013_TN@2x.png in Resources */,
 				B9CC92062C8F474000F39A5F /* foam_finger_px_TN@3x.png in Resources */,
 				B9CC92072C8F474000F39A5F /* banner_2.png in Resources */,
-				B9CC92082C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-015_TN.png in Resources */,
 				B9CC92092C8F474000F39A5F /* palm-tree-2_TN.png in Resources */,
-				B9CC920A2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-3_TN@3x.png in Resources */,
-				B9CC920B2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-5_TN@2x.png in Resources */,
 				B9CC920C2C8F474000F39A5F /* germs_TN@3x.png in Resources */,
-				B9CC920D2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-019_TN.png in Resources */,
-				B9CC920E2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-010_TN.png in Resources */,
-				B9CC920F2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-026.png in Resources */,
 				B9CC92102C8F474000F39A5F /* soup_bowl_TN@2x.png in Resources */,
 				B9CC92112C8F474000F39A5F /* hanging_lillies_TN@3x.png in Resources */,
-				B9CC92122C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-6_TN.png in Resources */,
 				B9CC92132C8F474000F39A5F /* leaves_TN@3x.png in Resources */,
 				B9CC92142C8F474000F39A5F /* football_flames_px_TN@3x.png in Resources */,
 				B9CC92152C8F474000F39A5F /* flower.png in Resources */,
 				B9CC92162C8F474000F39A5F /* glasses_px_TN@2x.png in Resources */,
 				B9CC92172C8F474000F39A5F /* sick_mask_emoji.png in Resources */,
-				B9CC92182C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-6_TN@3x.png in Resources */,
-				B9CC92192C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-018.png in Resources */,
 				B9CC921A2C8F474000F39A5F /* cloud_angry_TN.png in Resources */,
 				B9CC921B2C8F474000F39A5F /* cloud_sad.png in Resources */,
 				B9CC921C2C8F474000F39A5F /* stars_n_balls_px_TN@3x.png in Resources */,
-				B9CC921D2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-7_TN@3x.png in Resources */,
 				B9CC921E2C8F474000F39A5F /* glasses_px_TN@3x.png in Resources */,
 				B9CC921F2C8F474000F39A5F /* letter.png in Resources */,
 				B9CC92202C8F474000F39A5F /* tea_honey_TN@3x.png in Resources */,
 				B9CC92212C8F474000F39A5F /* soup_bowl.png in Resources */,
 				B9CC92222C8F474000F39A5F /* flower_leaves_element_TN@3x.png in Resources */,
-				B9CC92232C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-5.png in Resources */,
 				B9CC92242C8F474000F39A5F /* medicine_TN@3x.png in Resources */,
 				B9CC92252C8F474000F39A5F /* sun_rays_face.png in Resources */,
 				B9CC92262C8F474000F39A5F /* bouquet_TN@2x.png in Resources */,
-				B9CC92272C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-7_TN.png in Resources */,
 				B9CC92282C8F474000F39A5F /* spirit_week_1_TN@3x.png in Resources */,
-				B9CC92292C8F474000F39A5F /* mothersday_TN.png in Resources */,
 				B9CC922A2C8F474000F39A5F /* measles_TN@3x.png in Resources */,
 				B9CC922B2C8F474000F39A5F /* love_monster_TN@2x.png in Resources */,
-				B9CC922C2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-023.png in Resources */,
 				B9CC922D2C8F474000F39A5F /* floating_flowers_2_TN.png in Resources */,
 				B9CC922E2C8F474000F39A5F /* hanging_lillies.png in Resources */,
 				B9CC922F2C8F474000F39A5F /* flowers_right_TN@2x.png in Resources */,
-				B9CC92302C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-5_TN@3x.png in Resources */,
 				B9CC92312C8F474000F39A5F /* spirit_week_1.png in Resources */,
 				B9CC92322C8F474000F39A5F /* Football_TN@3x.png in Resources */,
 				B9CC92332C8F474000F39A5F /* flowers_daisies_TN.png in Resources */,
-				B9CC92342C8F474000F39A5F /* Panda_TN@3x.png in Resources */,
 				B9CC92352C8F474000F39A5F /* nauseous_emoji_TN@3x.png in Resources */,
-				B9CC92362C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-6.png in Resources */,
 				B9CC92372C8F474000F39A5F /* band-aid2_TN@3x.png in Resources */,
-				B9CC92382C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-4_TN@2x.png in Resources */,
-				B9CC92392C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-020_TN@3x.png in Resources */,
 				B9CC923A2C8F474000F39A5F /* letter_TN@3x.png in Resources */,
-				B9CC923B2C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-175x175-4_TN.png in Resources */,
-				B9CC923C2C8F474000F39A5F /* Panda_TN@2x.png in Resources */,
 				B9CC923D2C8F474000F39A5F /* wave.png in Resources */,
 				B9CC923E2C8F474000F39A5F /* rainbow_2_TN.png in Resources */,
 				B9CC923F2C8F474000F39A5F /* wedding_bouquet_color_TN@3x.png in Resources */,
-				B9CC92402C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-700x700-9.png in Resources */,
 				B9CC92412C8F474000F39A5F /* were_no1_homecoming_TN.png in Resources */,
-				B9CC92422C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-350x350-016_TN@2x.png in Resources */,
-				B9CC92432C8F474000F39A5F /* Sprocket-App-Mothers-Day-Stickers-525x525-025_TN@3x.png in Resources */,
 				B9CC92442C8F474000F39A5F /* Flowers2_TN@2x.png in Resources */,
 				B9CC92452C8F474000F39A5F /* anzac_poppy-2_TN.png in Resources */,
 				B9CC92462C8F474000F39A5F /* imglyStickerCategory@3x.png in Resources */,
@@ -9708,7 +9189,6 @@
 				B97385EC2D438AB4001522EB /* CAGlobalEditPhotoKit.podspec in Resources */,
 				B9CC92482C8F474000F39A5F /* flower_TN.png in Resources */,
 				B9CC92492C8F474000F39A5F /* heart_football_px_TN.png in Resources */,
-				B9CC924A2C8F474000F39A5F /* mothersday.png in Resources */,
 				B9CC924B2C8F474000F39A5F /* Flowers2_TN.png in Resources */,
 				B9CC924C2C8F474000F39A5F /* i_heart_football_2_px_TN.png in Resources */,
 				B9CC924D2C8F474000F39A5F /* three_flower_bunch_TN.png in Resources */,
