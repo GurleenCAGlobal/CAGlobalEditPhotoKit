@@ -635,7 +635,7 @@ extension CAEditViewController: StickerOptionsDelegate, AddStickerViewDelegate, 
         self.isFramesFetch = false
     }
     
-    func imagePickerController(
+    private func imagePickerController(
         _ picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
     ) {
@@ -671,7 +671,7 @@ extension CAEditViewController: StickerOptionsDelegate, AddStickerViewDelegate, 
 
 
 
-    func imagePickerControllerDidCancel(_: UIImagePickerController) {
+    private func imagePickerControllerDidCancel(_: UIImagePickerController) {
         self.dismiss(animated: true) {
             switch self.filterSelection {
             case .sticker:

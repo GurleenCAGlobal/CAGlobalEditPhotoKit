@@ -145,7 +145,7 @@ let stickerReplaceTags = 104
     func printImage(image: UIImage)
 }
 
-class CAEditViewController: BaseViewController, UIGestureRecognizerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+public class CAEditViewController: BaseViewController, UIGestureRecognizerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     // This outlet represents the collection view for all options for edit
     @IBOutlet weak var mainCollectionView: UICollectionView!
     //    // This outlet represents the main view where we are showing image and textView
@@ -570,7 +570,7 @@ class CAEditViewController: BaseViewController, UIGestureRecognizerDelegate, UIN
 
 
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         Editor.shared.stickerTextView = self.stickerTextView
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
@@ -578,7 +578,7 @@ class CAEditViewController: BaseViewController, UIGestureRecognizerDelegate, UIN
         self.calculatingMainImageViewSize()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    public override func viewWillAppear(_ animated: Bool) {
         self.isFilterFetched = false
         printIconTimer.invalidate() // just in case this button is tapped multiple times
         
@@ -590,7 +590,7 @@ class CAEditViewController: BaseViewController, UIGestureRecognizerDelegate, UIN
         self.updateRightBarButtonItem()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
+    public override func viewDidDisappear(_ animated: Bool) {
         self.isFilterFetched = false
         printIconTimer.invalidate()
     }

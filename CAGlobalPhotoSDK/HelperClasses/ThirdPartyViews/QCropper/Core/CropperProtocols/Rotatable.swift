@@ -140,7 +140,7 @@ extension Rotatable where Self: CropperViewController {
 
 
 extension Rotatable where Self: CAEditViewController {
-    internal func setStraightenAngle(_ angle: CGFloat) {
+    public func setStraightenAngle(_ angle: CGFloat) {
         overlay.cropBoxFrame = overlay.cropBoxFrame
         overlay.gridLinesAlpha = 1
         overlay.gridLinesCount = 8
@@ -177,7 +177,7 @@ extension Rotatable where Self: CAEditViewController {
         updatingLayerFrames(contentOffset: self.scrollView.contentOffset)
     }
 
-    internal func rotate90degrees(clockwise: Bool = true) {
+    public func rotate90degrees(clockwise: Bool = true) {
         bottomView.isUserInteractionEnabled = false
         guard let animationContainer = scrollView.superview else { return }
 

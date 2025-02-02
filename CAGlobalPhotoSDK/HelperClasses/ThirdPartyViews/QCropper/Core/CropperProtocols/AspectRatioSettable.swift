@@ -105,7 +105,7 @@ extension AspectRatioSettable where Self: CropperViewController {
 
 
 extension AspectRatioSettable where Self: CAEditViewController {
-    internal func setAspectRatio(_ aspectRatio: AspectRatio) {
+    public func setAspectRatio(_ aspectRatio: AspectRatio) {
         switch aspectRatio {
         case .original:
             var width: CGFloat
@@ -153,7 +153,7 @@ extension AspectRatioSettable where Self: CAEditViewController {
         }
     }
 
-    internal func setAspectRatioValue(_ aspectRatioValue: CGFloat) {
+    public func setAspectRatioValue(_ aspectRatioValue: CGFloat) {
         guard aspectRatioValue > 0 else { return }
 
         bottomView.isUserInteractionEnabled = false

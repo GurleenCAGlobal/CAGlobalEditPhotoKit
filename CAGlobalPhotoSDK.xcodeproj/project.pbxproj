@@ -373,7 +373,6 @@
 		B98498202CAE818100F4474C /* SDImageHEICCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = B98497712CAE818100F4474C /* SDImageHEICCoder.m */; };
 		B98498212CAE818100F4474C /* SDImageAWebPCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = B984975B2CAE818100F4474C /* SDImageAWebPCoder.m */; };
 		B98498222CAE818100F4474C /* SDWebImageOptionsProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = B984979B2CAE818100F4474C /* SDWebImageOptionsProcessor.m */; };
-		B98498232CAE818100F4474C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B98497402CAE818100F4474C /* README.md */; };
 		B98498242CAE818100F4474C /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = B984973F2CAE818100F4474C /* LICENSE */; };
 		B98498272CAE818100F4474C /* IHProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B98497382CAE818100F4474C /* IHProgressHUD.bundle */; };
 		B98817E32A56FE62003A2B83 /* AdjustManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98817E22A56FE62003A2B83 /* AdjustManager.swift */; };
@@ -2745,7 +2744,6 @@
 		B984973B2CAE818100F4474C /* ProgressAnimatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressAnimatedView.swift; sourceTree = "<group>"; };
 		B984973C2CAE818100F4474C /* RadialGradientLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadialGradientLayer.swift; sourceTree = "<group>"; };
 		B984973F2CAE818100F4474C /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		B98497402CAE818100F4474C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B98497422CAE818100F4474C /* NSButton+WebCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSButton+WebCache.h"; sourceTree = "<group>"; };
 		B98497432CAE818100F4474C /* NSButton+WebCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSButton+WebCache.m"; sourceTree = "<group>"; };
 		B98497442CAE818100F4474C /* NSData+ImageContentType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -5897,7 +5895,6 @@
 			children = (
 				B984973E2CAE818100F4474C /* IHProgressHUD */,
 				B984973F2CAE818100F4474C /* LICENSE */,
-				B98497402CAE818100F4474C /* README.md */,
 			);
 			path = IHProgressHUD;
 			sourceTree = "<group>";
@@ -9764,7 +9761,6 @@
 				B99A250E2C621B83001BCCC8 /* HP500_App_36_4.png in Resources */,
 				B99A23142C621B83001BCCC8 /* HP500_App_50_1_L.png in Resources */,
 				B99A25032C621B83001BCCC8 /* HP500_App_47_4.png in Resources */,
-				B98498232CAE818100F4474C /* README.md in Resources */,
 				B98498242CAE818100F4474C /* LICENSE in Resources */,
 				B98498272CAE818100F4474C /* IHProgressHUD.bundle in Resources */,
 				B99A21162C621B83001BCCC8 /* HP500_App_13_9_L.png in Resources */,

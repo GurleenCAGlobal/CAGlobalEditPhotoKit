@@ -37,7 +37,7 @@ extension Flipable where Self: CropperViewController {
 
 
 extension Flipable where Self: CAEditViewController {
-    internal func flip(directionHorizontal: Bool = true) {
+    public func flip(directionHorizontal: Bool = true) {
         let image = mainImageView.image
         fliped = (image?.imageOrientation == .upMirrored)
 

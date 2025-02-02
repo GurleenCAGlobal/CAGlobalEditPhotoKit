@@ -16,7 +16,7 @@ import AudioToolbox
 // MARK: - Auto Enhancement Option -
 
 extension CAEditViewController: AMColorPickerDelegate {
-    func colorPicker(_ colorPicker: AMColorPicker, didSelect color: UIColor, opacity: CGFloat)  {
+    public func colorPicker(_ colorPicker: AMColorPicker, didSelect color: UIColor, opacity: CGFloat)  {
         switch self.filterSelection {
         case .text:
             let textModel = TextModel()
@@ -63,11 +63,11 @@ extension CAEditViewController: EditOptionsCellDataSource {
 }
 
 extension CAEditViewController: UICollectionViewDataSource, UICollectionViewDelegate, EditOptionsCellDelegate {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.editViewModel.filterData.count
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EditOptionsCell.className, for: indexPath) as? EditOptionsCell else {
             let cell = EditOptionsCell()
             return cell
@@ -90,7 +90,7 @@ extension CAEditViewController: UICollectionViewDataSource, UICollectionViewDele
         return CGSize(width: 80, height: 100)
     }
 
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.option.isTransformActual = false
         let cell = collectionView.cellForItem(at: indexPath) as? EditOptionsCell
         let currentFilterSelection = FilterSelection(rawValue: indexPath.row) ?? .none

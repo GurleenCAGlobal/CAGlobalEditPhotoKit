@@ -8,7 +8,7 @@
 import UIKit
 import Photos
 
-class BaseViewController: UIViewController {
+public class BaseViewController: UIViewController {
     // MARK: - AdjustView Option Functionality -
     
     // Apply an effect to the image based on the selected option

@@ -96,7 +96,7 @@ extension StateRestorable where Self: CropperViewController {
 }
 
 extension StateRestorable where Self: CAEditViewController {
-    internal func isCurrentlyInState(_ state: CropperState?) -> Bool {
+    public func isCurrentlyInState(_ state: CropperState?) -> Bool {
         guard let state = state else { return false }
         let epsilon: CGFloat = 0.0001
 
@@ -122,7 +122,7 @@ extension StateRestorable where Self: CAEditViewController {
         return false
     }
 
-    internal func saveState() -> CropperState {
+    public func saveState() -> CropperState {
         let cs = CropperState(viewFrame: self.transformMainView.bounds,
                               angle: totalAngle,
                               rotationAngle: rotationAngle,
@@ -146,7 +146,7 @@ extension StateRestorable where Self: CAEditViewController {
         return cs
     }
 
-    internal func restoreState(_ state: CropperState, animated: Bool = false) {
+    public func restoreState(_ state: CropperState, animated: Bool = false) {
         let animationsBlock = { () -> Void in
             self.rotationAngle = state.rotationAngle
             self.straightenAngle = state.straightenAngle
