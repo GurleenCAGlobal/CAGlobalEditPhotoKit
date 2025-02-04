@@ -99,8 +99,10 @@ class FrameCell: UICollectionViewCell {
             nameLabel.isHidden = true
             heightConstraint.constant = 0
         } else {
-            let image = UIImage(named: subImage)
-            self.frameImageView.image = image?.resizeSticker(to: CGSize(width: (image?.size.width ?? 0) / 10, height: (image?.size.height ?? 0) / 10))
+            if let bundlePath = Bundle(for: EditOptionsCell.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle"), let bundle = Bundle(path: bundlePath) {
+                let image = UIImage(named: subImage, in: bundle, compatibleWith: nil)
+                self.frameImageView.image = image?.resizeSticker(to: CGSize(width: (image?.size.width ?? 0) / 10, height: (image?.size.height ?? 0) / 10))
+            }
             frameLabel.isHidden = true
             nameLabel.isHidden = (categoryName == nil)
             nameLabel.text = categoryName ?? ""
@@ -161,7 +163,10 @@ class FrameCell: UICollectionViewCell {
     func handleSelection(with data: String, isEdit: Bool) {
         // Toggle selection state
         isSelectedFrame = isEdit
-        self.frameImageView.image = UIImage(named: data)
+        let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+
+        self.frameImageView.image = UIImage(named: data, in: bundle, compatibleWith: nil)
 
         // Notify the delegate
         delegate?.didSelectCell(with: data, isEdit: isEdit)

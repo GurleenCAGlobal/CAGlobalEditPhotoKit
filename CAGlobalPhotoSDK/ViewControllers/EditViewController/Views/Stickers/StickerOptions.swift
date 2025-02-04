@@ -143,7 +143,10 @@ class StickerOptions: UIView {
         addSubview(mainView)
         self.setUpViews()
         self.colorData = colorManager.getColorsData()
-        let nib = UINib(nibName: TextColorCell.className, bundle: nil)
+        let bundlePath = Bundle(for: TextColorCell.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+        let bundle = bundlePath != nil ? Bundle(path: bundlePath!) : nil
+
+        let nib = UINib(nibName: TextColorCell.className, bundle: bundle)
         self.colorCollectionView.register(nib, forCellWithReuseIdentifier: TextColorCell.className)
         self.colorCollectionView.dataSource = self
         self.colorCollectionView.delegate = self
@@ -166,10 +169,13 @@ class StickerOptions: UIView {
         self.removeBackgroundButton.isHidden = true
         if isFromGallery == true {
             self.colorView.isHidden = true
+            let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+            let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+
             if isBackgroundRemoved ?? false {
-                self.removeBackgroundButton.setImage(UIImage.init(named: "removeBackground"), for: .normal)
+                self.removeBackgroundButton.setImage(UIImage.init(named: "removeBackground", in: bundle, compatibleWith: nil)!, for: .normal)
             } else {
-                self.removeBackgroundButton.setImage(UIImage.init(named: "unremoveBackground"), for: .normal)
+                self.removeBackgroundButton.setImage(UIImage.init(named: "unremoveBackground", in: bundle, compatibleWith: nil)!, for: .normal)
             }
             if isImageDepth! {
                 self.removeBackgroundButton.isHidden = false
@@ -223,7 +229,9 @@ class StickerOptions: UIView {
     }
     
     private func loadViewFromNib() -> UIView {
-        let bundle = Bundle(for: StickerOptions.self)
+        let bundlePath = Bundle(for: StickerOptions.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+        let bundle = bundlePath != nil ? Bundle(path: bundlePath!) : nil
+
         let nib = UINib(nibName: StickerOptions.className, bundle: bundle)
         guard let nibView = nib.instantiate(withOwner: self, options: nil).first as? UIView else {
             fatalError("Failed to load TextView from nib.")
@@ -247,11 +255,14 @@ class StickerOptions: UIView {
     }
 
     @IBAction func actionOnRemoveBackground(_ sender: Any) {
+        let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+
         if isButtonImageEqual(to: "unremoveBackground") {
-            self.removeBackgroundButton.setImage(UIImage.init(named: "removeBackground"), for: .normal)
+            self.removeBackgroundButton.setImage(UIImage.init(named: "removeBackground", in: bundle, compatibleWith: nil)!, for: .normal)
             self.delegate?.removeBackgroundFromImage()
         } else {
-            self.removeBackgroundButton.setImage(UIImage.init(named: "unremoveBackground"), for: .normal)
+            self.removeBackgroundButton.setImage(UIImage.init(named: "unremoveBackground", in: bundle, compatibleWith: nil)!, for: .normal)
             self.delegate?.unremoveBackgroundFromImage()
         }
     }

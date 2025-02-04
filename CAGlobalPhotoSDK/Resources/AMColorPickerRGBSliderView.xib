@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AMColorPickerRGBSliderView" customModule="HP_Sprocket_Panorama" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AMColorPickerRGBSliderView" customModule="CAGlobalEditPhotoKit">
             <connections>
                 <outlet property="blueLabel" destination="E1O-8h-Koz" id="ZLy-sl-XaT"/>
                 <outlet property="blueSlider" destination="OHP-dx-7OU" id="WwC-UT-7GJ"/>
@@ -103,7 +103,7 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LDq-LE-Wf6">
                                     <rect key="frame" x="0.0" y="18" width="343" height="30"/>
                                     <subviews>
-                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="XRp-8f-32D" customClass="AMColorPickerSlider" customModule="HP_Sprocket_Panorama" customModuleProvider="target">
+                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="XRp-8f-32D" customClass="AMColorPickerSlider" customModule="CAGlobalPhotoSDKResources" customModuleProvider="target">
                                             <rect key="frame" x="-2" y="0.0" width="307" height="31"/>
                                             <connections>
                                                 <action selector="changedSlider:" destination="-1" eventType="valueChanged" id="BIN-2e-sng"/>
@@ -134,7 +134,7 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="j5n-ZW-En3">
                                     <rect key="frame" x="0.0" y="18" width="343" height="30"/>
                                     <subviews>
-                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="jJR-Xz-HFB" customClass="AMColorPickerSlider" customModule="HP_Sprocket_Panorama" customModuleProvider="target">
+                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="jJR-Xz-HFB" customClass="AMColorPickerSlider" customModule="CAGlobalPhotoSDKResources" customModuleProvider="target">
                                             <rect key="frame" x="-2" y="0.0" width="307" height="31"/>
                                             <connections>
                                                 <action selector="changedSlider:" destination="-1" eventType="valueChanged" id="Dwq-Su-k7f"/>
@@ -165,7 +165,7 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yo8-ln-1kJ">
                                     <rect key="frame" x="0.0" y="18" width="343" height="30"/>
                                     <subviews>
-                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="255" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="OHP-dx-7OU" customClass="AMColorPickerSlider" customModule="HP_Sprocket_Panorama" customModuleProvider="target">
+                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="255" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="OHP-dx-7OU" customClass="AMColorPickerSlider" customModule="CAGlobalPhotoSDKResources" customModuleProvider="target">
                                             <rect key="frame" x="-2" y="0.0" width="307" height="31"/>
                                             <connections>
                                                 <action selector="changedSlider:" destination="-1" eventType="valueChanged" id="WXh-sI-akv"/>

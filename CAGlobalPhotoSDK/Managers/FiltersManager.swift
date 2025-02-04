@@ -48,7 +48,10 @@ class FiltersManager: NSObject {
 
 extension CIFilter {
     static func filter(withLUT name: String, dimension filterDimensions: Int) -> CIFilter? {
-        guard let image = UIImage(named: name),
+        let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+
+        guard let image = UIImage(named: name, in: bundle, compatibleWith: nil),
               let bitmap = createRGBABitmap(fromImage: image.cgImage),
               let data = createColorCubeData(from: bitmap, width: image.cgImage?.width ?? 0, height: image.cgImage?.height ?? 0, filterDimensions: filterDimensions) else {
             return nil

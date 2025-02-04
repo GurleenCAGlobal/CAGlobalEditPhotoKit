@@ -217,14 +217,17 @@ class TextView: UIView {
         } else {
             self.colorButton.backgroundColor = textModel.color
         }
+        let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+
         if textModel.alignment == .center {
-            self.alignmentButton.setImage(UIImage.init(named: "alignCenter"), for: .normal)
+            self.alignmentButton.setImage(UIImage.init(named: "alignCenter", in: bundle, compatibleWith: nil)!, for: .normal)
             self.delegate?.alignCenter()
         } else if textModel.alignment == .right {
-            self.alignmentButton.setImage(UIImage.init(named: "alignRight"), for: .normal)
+            self.alignmentButton.setImage(UIImage.init(named: "alignRight", in: bundle, compatibleWith: nil)!, for: .normal)
             self.delegate?.alignRight()
         } else if textModel.alignment == .left {
-            self.alignmentButton.setImage(UIImage.init(named: "alignLeft"), for: .normal)
+            self.alignmentButton.setImage(UIImage.init(named: "alignLeft", in: bundle, compatibleWith: nil)!, for: .normal)
             self.delegate?.alignLeft()
         }
         self.opacitySlider.value = Float(textModel.opacity)
@@ -356,16 +359,18 @@ class TextView: UIView {
                     } else {
                         self.colorButton.backgroundColor = txtLbl.textColor
                     }
+                    let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+                    let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
 
                     // Update alignment buttons and notify the delegate
                     if txtLbl.textAlignment == .center {
-                        self.alignmentButton.setImage(UIImage(named: "alignCenter"), for: .normal)
+                        self.alignmentButton.setImage(UIImage(named: "alignCenter", in: bundle, compatibleWith: nil)!, for: .normal)
                         self.delegate?.alignCenter()
                     } else if txtLbl.textAlignment == .right {
-                        self.alignmentButton.setImage(UIImage(named: "alignRight"), for: .normal)
+                        self.alignmentButton.setImage(UIImage(named: "alignRight", in: bundle, compatibleWith: nil)!, for: .normal)
                         self.delegate?.alignRight()
                     } else if txtLbl.textAlignment == .left {
-                        self.alignmentButton.setImage(UIImage(named: "alignLeft"), for: .normal)
+                        self.alignmentButton.setImage(UIImage(named: "alignLeft", in: bundle, compatibleWith: nil)!, for: .normal)
                         self.delegate?.alignLeft()
                     }
 
@@ -426,7 +431,9 @@ class TextView: UIView {
     }
     
     private func loadViewFromNib() -> UIView {
-        let bundle = Bundle(for: TextView.self)
+        let bundlePath = Bundle(for: TextView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+        let bundle = bundlePath != nil ? Bundle(path: bundlePath!) : nil
+
         let nib = UINib(nibName: TextView.className, bundle: bundle)
         guard let nibView = nib.instantiate(withOwner: self, options: nil).first as? UIView else {
             fatalError("Failed to load TextView from nib.")
@@ -435,12 +442,15 @@ class TextView: UIView {
     }
     
     private func initCollectionView() {
-        let nib = UINib(nibName: TextColorCell.className, bundle: nil)
+        let bundlePath = Bundle(for: StickerOptions.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+        let bundle = bundlePath != nil ? Bundle(path: bundlePath!) : nil
+
+        let nib = UINib(nibName: TextColorCell.className, bundle: bundle)
         self.colorCollectionView.register(nib, forCellWithReuseIdentifier: TextColorCell.className)
         self.colorCollectionView.dataSource = self
         self.colorCollectionView.delegate = self
         
-        let nib2 = UINib(nibName: TextFontCell.className, bundle: nil)
+        let nib2 = UINib(nibName: TextFontCell.className, bundle: bundle)
         textCollectionView.register(nib2, forCellWithReuseIdentifier: TextFontCell.className)
         textCollectionView.dataSource = self
         textCollectionView.delegate = self
@@ -479,7 +489,7 @@ class TextView: UIView {
     
     @IBAction func actionColorClicked(_ sender: Any) { 
         if textModel.selectedColorIndex == 0 {
-            self.colorButton.backgroundColor = (UIColor(named: .blackColorName)!)
+            self.colorButton.backgroundColor = (UIColor(named: .blackColorName, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!)
         }
         self.indexSelection = -1
         if self.isTextViewController == true {
@@ -515,15 +525,18 @@ class TextView: UIView {
     }
 
     @IBAction func actionAlignment(_ sender: UIButton) {
+        let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+
         opacityContainerView.hideView()
         if self.alignmentButton.currentImage?.description.contains("alignLeft") == true {
-            self.alignmentButton.setImage(UIImage.init(named: "alignCenter"), for: .normal)
+            self.alignmentButton.setImage(UIImage.init(named: "alignCenter", in: bundle, compatibleWith: nil)!, for: .normal)
             self.delegate?.alignCenter()
         } else if self.alignmentButton.currentImage?.description.contains("alignCenter") == true {
-            self.alignmentButton.setImage(UIImage.init(named: "alignRight"), for: .normal)
+            self.alignmentButton.setImage(UIImage.init(named: "alignRight", in: bundle, compatibleWith: nil)!, for: .normal)
             self.delegate?.alignRight()
         } else if self.alignmentButton.currentImage?.description.contains("alignRight") == true {
-            self.alignmentButton.setImage(UIImage.init(named: "alignLeft"), for: .normal)
+            self.alignmentButton.setImage(UIImage.init(named: "alignLeft", in: bundle, compatibleWith: nil)!, for: .normal)
             self.delegate?.alignLeft()
         }
         self.delegate?.tickAndCrossForSubOptions(isAlign: true)

@@ -15,7 +15,7 @@ struct BrushState {
 }
 
 struct TouchPointsAndColor {
-    var color: UIColor = UIColor(named: .blackColorName)!
+    var color: UIColor = UIColor(named: .blackColorName, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!
     var width: CGFloat?
     var opacity: CGFloat?
     var points: [CGPoint]?
@@ -45,7 +45,7 @@ class DrawingView: UIView {
 
     var lines = [TouchPointsAndColor]()
     var strokeWidth: CGFloat = 1.0
-    var strokeColor: UIColor = UIColor(named: .blackColorName)!
+    var strokeColor: UIColor = UIColor(named: .blackColorName, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!
     var strokeOpacity: CGFloat = 1.0
     weak var delegate: DrawingViewDelegate?
     var brushSharpness: CGFloat = 1.0

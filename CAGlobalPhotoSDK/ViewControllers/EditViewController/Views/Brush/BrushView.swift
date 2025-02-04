@@ -104,7 +104,6 @@ class BrushView: UIView {
     
     private var colorManager = ColorManager()
     private(set) var colorData = [UIColor]()
-    let strokesArray = [#imageLiteral(resourceName: "line 1"), #imageLiteral(resourceName: "line 2"), #imageLiteral(resourceName: "line 3"), #imageLiteral(resourceName: "line 4"), #imageLiteral(resourceName: "line 5")]
     var drawingView: DrawingView?
 
     weak var delegate: BrushViewDelegate?
@@ -140,7 +139,9 @@ class BrushView: UIView {
     }
     
     private func loadViewFromNib() -> UIView {
-        let bundle = Bundle(for: BrushView.self)
+        let bundlePath = Bundle(for: BrushView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+        let bundle = bundlePath != nil ? Bundle(path: bundlePath!) : nil
+
         let nib = UINib(nibName: BrushView.className, bundle: bundle)
         guard let nibView = nib.instantiate(withOwner: self, options: nil).first as? UIView else {
             fatalError("Failed to load TextView from nib.")
@@ -149,7 +150,10 @@ class BrushView: UIView {
     }
     
     private func initCollectionView() {
-        let nib = UINib(nibName: TextColorCell.className, bundle: nil)
+        let bundlePath = Bundle(for: TextColorCell.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+        let bundle = bundlePath != nil ? Bundle(path: bundlePath!) : nil
+
+        let nib = UINib(nibName: TextColorCell.className, bundle: bundle)
         collectionView.register(nib, forCellWithReuseIdentifier: TextColorCell.className)
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -170,7 +174,7 @@ class BrushView: UIView {
         self.brushTransparencyLabel.backgroundColor = self.colorButton.backgroundColor
         self.sharpnessColorLbl.backgroundColor = self.colorButton.backgroundColor
         self.sharpnessSlider.semanticContentAttribute = .forceRightToLeft
-        if self.colorButton.backgroundColor == UIColor(named: .blackColorName) {
+        if self.colorButton.backgroundColor == UIColor(named: .blackColorName, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil) {
             let indexPath1: IndexPath?
             indexPath1 = IndexPath.init(row: colorData.count - 1, section: 0)
             collectionView.scrollToItem(at: indexPath1!, at: .left, animated: true)
@@ -221,9 +225,9 @@ class BrushView: UIView {
     
     @IBAction func actionColorClicked(_ sender: UISlider) {
         if colorModel.selectedColorIndex == 0 {
-            self.colorButton.backgroundColor = (UIColor(named: .blackColorName)!)
+            self.colorButton.backgroundColor = (UIColor(named: .blackColorName, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!)
         }
-        if self.colorButton.backgroundColor == UIColor(named: .blackColorName) {
+        if self.colorButton.backgroundColor == UIColor(named: .blackColorName, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil) {
             let indexPath1: IndexPath?
             indexPath1 = IndexPath.init(row: colorData.count - 1, section: 0)
             collectionView.scrollToItem(at: indexPath1!, at: .left, animated: true)

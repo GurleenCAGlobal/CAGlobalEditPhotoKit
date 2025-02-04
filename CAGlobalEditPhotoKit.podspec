@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '15.0'
   s.source_files     = 'CAGlobalPhotoSDK/**/*.{h,m,swift}'
   s.resource_bundles = {
-  'CAGlobalPhotoSDKResources' => ['CAGlobalPhotoSDK/Resources/**/*.{xib,storyboard,xcassets,png,jpg}']
+  'CAGlobalPhotoSDKResources' => ['CAGlobalPhotoSDK/Resources/**/*.{xib,storyboard,xcassets,png,jpg,ttf,otf}']
   }
   s.frameworks       = 'UIKit', 'Foundation'
   s.swift_version = ['5.0']

@@ -92,7 +92,8 @@ class StickersView: UIView, UINavigationControllerDelegate, UIImagePickerControl
     }
     
     private func loadViewFromNib() -> UIView {
-        let bundle = Bundle(for: StickersView.self)
+        let bundlePath = Bundle(for: StickersView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+        let bundle = bundlePath != nil ? Bundle(path: bundlePath!) : nil
         let nib = UINib(nibName: StickersView.className, bundle: bundle)
         let nibView = nib.instantiate(withOwner: self, options: nil).first as? UIView
         return nibView ?? UIView()
@@ -232,12 +233,15 @@ class StickersView: UIView, UINavigationControllerDelegate, UIImagePickerControl
     }
     
     private func initCollectionView() {
-        let nib = UINib(nibName: StickersCell.className, bundle: nil)
+        let bundlePath = Bundle(for: StickersCell.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+        let bundle = bundlePath != nil ? Bundle(path: bundlePath!) : nil
+
+        let nib = UINib(nibName: StickersCell.className, bundle: bundle)
         stickerCollectionView.register(nib, forCellWithReuseIdentifier: StickersCell.className)
         stickerCollectionView.dataSource = self
         stickerCollectionView.delegate = self
         
-        let subNib = UINib(nibName: StickersCell.className, bundle: nil)
+        let subNib = UINib(nibName: StickersCell.className, bundle: bundle)
         subStickerCollectionView.register(subNib, forCellWithReuseIdentifier: StickersCell.className)
         subStickerCollectionView.dataSource = self
         subStickerCollectionView.delegate = self
@@ -352,7 +356,10 @@ extension StickersView: UICollectionViewDataSource {
                 }
             } else {
                 let data = self.stickerData[indexPath.row]
-                cell.configure(with: data, subImage:UIImage.init(named: "customSticker")! , isSubSelected: false)
+                let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+                let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+
+                cell.configure(with: data, subImage:UIImage.init(named: "customSticker", in: bundle, compatibleWith: nil)! , isSubSelected: false)
 
                 if indexPath.row>0 && self.customSticker.count == 0 {
                     if self.stickerNameURLData.count > indexPath.row - 1 {
@@ -363,7 +370,10 @@ extension StickersView: UICollectionViewDataSource {
                         if assestUrl?.count ?? 0 > 0 {
                             cell.configure(with: title, subImage: (assestUrl?[0])!, isSubSelected: false)
                         } else {
-                            cell.configure(with: title, subImage: UIImage.init(named: "load.png")!, isSubSelected: false)
+                            let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+                            let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+
+                            cell.configure(with: title, subImage: UIImage.init(named: "load.png", in: bundle, compatibleWith: nil)!, isSubSelected: false)
                         }
                     }
                 } else if indexPath.row > 1 && self.customSticker.count > 0 {
@@ -375,7 +385,7 @@ extension StickersView: UICollectionViewDataSource {
                         if assestUrl?.count ?? 0 > 0 {
                             cell.configure(with: title, subImage: (assestUrl?[0])!, isSubSelected: false)
                         } else {
-                            cell.configure(with: title, subImage: UIImage.init(named: "load.png")!, isSubSelected: false)
+                            cell.configure(with: title, subImage: UIImage.init(named: "load.png", in: bundle, compatibleWith: nil)!, isSubSelected: false)
                         }
                     }
                 }
@@ -414,10 +424,10 @@ extension StickersView: UICollectionViewDataSource {
                 let data = self.subStickerData[indexPath.row]
                 cell.configure(with: "", subImage: data, isSubSelected: true)
 //                if self.stickerSelection == 1 && self.customSticker.count > 0 {
-//                    cell.stickerImageView.tintColor = UIColor(named: .stickerColor)!
+//                    cell.stickerImageView.tintColor = UIColor(named: .stickerColor, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!
 //                }
 //                if self.stickerSelection == 0 && self.customSticker.count == 0 {
-//                    cell.stickerImageView.tintColor = UIColor(named: .stickerColor)!
+//                    cell.stickerImageView.tintColor = UIColor(named: .stickerColor, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!
 //                }
             }
             

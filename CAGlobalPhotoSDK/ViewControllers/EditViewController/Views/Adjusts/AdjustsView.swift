@@ -82,7 +82,9 @@ class AdjustsView: UIView {
     }
     
     private func loadViewFromNib() -> UIView {
-        let bundle = Bundle(for: AdjustsView.self)
+        let bundlePath = Bundle(for: AdjustsView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+        let bundle = bundlePath != nil ? Bundle(path: bundlePath!) : nil
+
         let nib = UINib(nibName: AdjustsView.className, bundle: bundle)
         guard let nibView = nib.instantiate(withOwner: self, options: nil).first as? UIView else {
             fatalError("Failed to load TextView from nib.")
@@ -91,10 +93,19 @@ class AdjustsView: UIView {
     }
     
     private func initCollectionView() {
-        let nib = UINib(nibName: EditOptionsCell.className, bundle: nil)
-        adjustCollectionView.register(nib, forCellWithReuseIdentifier: EditOptionsCell.className)
-        adjustCollectionView.dataSource = self
-        adjustCollectionView.delegate = self
+        if let bundlePath = Bundle(for: EditOptionsCell.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle"),
+           let bundle = Bundle(path: bundlePath) {
+            
+            // Register the NIB from the correct bundle
+            let nib = UINib(nibName: "EditOptionsCell", bundle: bundle)
+            adjustCollectionView.register(nib, forCellWithReuseIdentifier: EditOptionsCell.className)
+            adjustCollectionView.dataSource = self
+            adjustCollectionView.delegate = self
+
+        } else {
+            // Handle error if the bundle is not found
+            print("Error: Unable to find CAGlobalPhotoSDKResources.bundle")
+        }
     }
     
     func updateSliderValues() {

@@ -127,16 +127,16 @@ extension CAEditViewController: StickerOptionsDelegate, AddStickerViewDelegate, 
         }
         print(isSticker)
         
-        var color = UIColor(named: .white)
+        var color = UIColor(named: .white, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)
 
         // Set color based on selection
         if customStickerArray.count > 0 {
             if stickerSelection == "shapes" {
-                color = UIColor(named: .stickerColor)!
+                color = UIColor(named: .stickerColor, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!
             }
         } else {
             if stickerSelection == "shapes" {
-                color = UIColor(named: .stickerColor)!
+                color = UIColor(named: .stickerColor, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!
             }
         }
         if stickerUrl.count > 0 {
@@ -296,14 +296,14 @@ extension CAEditViewController: StickerOptionsDelegate, AddStickerViewDelegate, 
             addSticker.tintColor = oldImageTintColor
             if oldImageTintColor.isWhite() {
                 if addSticker.stickerSelection == "shapes" {
-                    let color = UIColor(named: .stickerColor)!
+                    let color = UIColor(named: .stickerColor, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!
                     addSticker.tintColor = color
                 }
             }
-            if oldImageTintColor == UIColor(named: .stickerColor)! {
+            if oldImageTintColor == UIColor(named: .stickerColor, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)! {
                 if addSticker.stickerSelection == "badges"  || addSticker.stickerSelection == "arrow" || addSticker.stickerSelection == "spray" {
                     addSticker.image = addSticker.image?.withRenderingMode(.alwaysTemplate)
-                    let color = UIColor(named: .white)!
+                    let color = UIColor(named: .white, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!
                     addSticker.tintColor = color
                 }
             }
@@ -537,9 +537,9 @@ extension CAEditViewController: StickerOptionsDelegate, AddStickerViewDelegate, 
             _ = colorManager.getColorsData()
 
             if textView.stickerName == "shapes" {
-                color = (UIColor(named: .stickerColor)!)
+                color = (UIColor(named: .stickerColor, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!)
             } else {
-                color = (UIColor(named: .white)!)
+                color = (UIColor(named: .white, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!)
             }
 
             // Logic for handling frame stickers

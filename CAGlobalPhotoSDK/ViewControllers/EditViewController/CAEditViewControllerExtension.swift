@@ -68,9 +68,9 @@ extension CAEditViewController: UICollectionViewDataSource, UICollectionViewDele
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EditOptionsCell.className, for: indexPath) as? EditOptionsCell else {
-            let cell = EditOptionsCell()
-            return cell
+        let identifier = "EditOptionsCell"
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? EditOptionsCell else {
+            fatalError("Failed to dequeue EditOptionsCell")
         }
         cell.delegate = self
         cell.dataSource = self
@@ -200,7 +200,10 @@ extension CAEditViewController: UICollectionViewDataSource, UICollectionViewDele
         }
         
         if mainPreviousImage == nil {
-            framePreviousImage = UIImage.init(named: "thumb")
+            let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+            let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+
+            framePreviousImage = UIImage.init(named: "thumb", in: bundle, compatibleWith: nil)!
         }
     }
 }

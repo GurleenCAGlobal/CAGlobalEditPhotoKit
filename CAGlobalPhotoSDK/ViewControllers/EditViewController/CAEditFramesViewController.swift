@@ -24,7 +24,10 @@ extension CAEditViewController: FramesViewDelegate, FrameOptionsDelegate, FrameV
         }
         self.backgroundView.transform = .identity
         var frameImage = UIImage()
-        frameImage = UIImage.init(named: image) ?? UIImage()
+        if let bundlePath = Bundle(for: EditOptionsCell.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle"), let bundle = Bundle(path: bundlePath) {
+            frameImage = UIImage(named: image, in: bundle, compatibleWith: nil)!
+
+        }
         var newImage = frameImage
         
         _ = atan2(framesImageViewAngleRatio.transform.b, framesImageViewAngleRatio.transform.a)

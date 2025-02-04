@@ -242,9 +242,9 @@ extension CAEditViewController: CropperViewControllerDelegate, RulerCanvasDelega
             _ = colorManager.getColorsData()
 
             if textView.stickerName == "shapes" {
-                color = (UIColor(named: .stickerColor)!)
+                color = (UIColor(named: .stickerColor, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!)
             } else {
-                color = (UIColor(named: .white)!)
+                color = (UIColor(named: .white, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!)
             }
             let view = self.stickerManager.addSticker(delegate:self, frame: frame, image: textView.image! ,isTransform: true , transform: transform, tag: stickerSavedTags, sticker: textView.stickerName ?? "", isSticker: textView.isSticker ?? false, color: textView.color ?? color)
             view.isSelected = false
@@ -451,7 +451,7 @@ extension CAEditViewController {
 
         self.view.setNeedsDisplay()
         self.view.layoutIfNeeded()
-        self.scrollViewContainer.scrollView = scrollView
+        //self.scrollViewContainer.scrollView = scrollView
 
 
 

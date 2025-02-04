@@ -51,7 +51,9 @@ public class AMColorPickerViewController: UIViewController, AMColorPicker {
     }
 
     override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
-        let bundle = Bundle(for: AMColorPickerViewController.self)
+        let bundlePath = Bundle(for: AMColorPickerViewController.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+        let bundle = bundlePath != nil ? Bundle(path: bundlePath!) : nil
+
         super.init(nibName: "AMColorPickerViewController", bundle: bundle)
     }
 

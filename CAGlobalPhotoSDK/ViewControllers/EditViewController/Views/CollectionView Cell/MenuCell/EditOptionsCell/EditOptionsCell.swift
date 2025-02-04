@@ -6,7 +6,6 @@
 //
 
 import UIKit
-//error: Filename "FilterView.swift" used twice: '/Users/emp/CAGlobalEditPhotoKit/CAGlobalPhotoSDK/ViewControllers/EditViewController/Views/Filter/FilterView.swift' and '/Users/emp/CAGlobalEditPhotoKit/CAGlobalPhotoSDK/ViewControllers/EditViewController/Views/Frames/FilterView.swift' (in target 'CAGlobalPhotoSDK' from project 'Pods')
 
 // Define a protocol for the cell's data source
 protocol EditOptionsCellDataSource: AnyObject {
@@ -46,29 +45,46 @@ class EditOptionsCell: UICollectionViewCell {
         let options = data
 
         self.nameLabel.text = options.name
-        self.editImageView.image = UIImage.init(named:(options.image.lowercased().trimmingCharacters(in: .whitespaces)))
+        if let bundlePath = Bundle(for: EditOptionsCell.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle"), let bundle = Bundle(path: bundlePath) {
+            let imageName = options.image.lowercased().trimmingCharacters(in: .whitespaces)
+            let image = UIImage(named: imageName, in: bundle, compatibleWith: nil)
+            self.editImageView.image = image
+        }
+        
         
         if options.name == "Paper Length" {
-            self.editImageView.image = UIImage.init(named:"set length".lowercased())
+            if let bundlePath = Bundle(for: EditOptionsCell.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle"), let bundle = Bundle(path: bundlePath) {
+                let image = UIImage(named: "set length", in: bundle, compatibleWith: nil)
+                self.editImageView.image = image
+            }
         }
         if options.name == "Add Photo" {
-            self.editImageView.image = UIImage.init(named:"addphoto".lowercased())
+            if let bundlePath = Bundle(for: EditOptionsCell.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle"), let bundle = Bundle(path: bundlePath) {
+                let image = UIImage(named: "addphoto", in: bundle, compatibleWith: nil)
+                self.editImageView.image = image
+            }
         }
                 
         if isAutoSelect {
-            self.dotLabel.isHidden = false
-            self.editImageView.tintColor = (UIColor(named: .selectionColor)!)
-            self.nameLabel.textColor = (UIColor(named: .selectionColor)!)
-            self.editImageView.image = UIImage.init(named: "autoFill")
+            //self.dotLabel.isHidden = false
+            self.editImageView.tintColor = (UIColor(named: .selectionColor, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!)
+            self.nameLabel.textColor = (UIColor(named: .selectionColor, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!)
+            let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+            let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+
+            self.editImageView.image = UIImage.init(named: "autoFill", in: bundle, compatibleWith: nil)!
         } else if isRedEyeSelect {
-            self.dotLabel.isHidden = true
-            self.editImageView.tintColor = (UIColor(named: .selectionColor)!)
-            self.nameLabel.textColor = (UIColor(named: .selectionColor)!)
+            //self.dotLabel.isHidden = true
+            self.editImageView.tintColor = (UIColor(named: .selectionColor, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!)
+            self.nameLabel.textColor = (UIColor(named: .selectionColor, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!)
         } else {
             if options.name == "Auto" {
-                self.editImageView.image = UIImage.init(named: "auto")
+                if let bundlePath = Bundle(for: EditOptionsCell.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle"), let bundle = Bundle(path: bundlePath) {
+                    let image = UIImage(named: "auto", in: bundle, compatibleWith: nil)
+                    self.editImageView.image = image
+                }
             }
-            self.dotLabel.isHidden = true
+            //self.dotLabel.isHidden = true
             self.editImageView.tintColor = .white
             self.nameLabel.textColor = .white
         }
@@ -79,7 +95,13 @@ class EditOptionsCell: UICollectionViewCell {
         // Use the data source to retrieve the cell's data
         let options = data
         self.nameLabel.text = options.name
-        self.editImageView.image = UIImage.init(named:(options.image.lowercased().trimmingCharacters(in: .whitespaces)))
+        let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+
+        let imageName = options.image.lowercased().trimmingCharacters(in: .whitespaces)
+        let image = UIImage(named: imageName, in: bundle, compatibleWith: nil)
+        self.editImageView.image = image
+
         self.editImageView.tintColor = (isSelect) ? .white : .lightGray
         self.nameLabel.textColor = (isSelect) ? .white : .lightGray
     }

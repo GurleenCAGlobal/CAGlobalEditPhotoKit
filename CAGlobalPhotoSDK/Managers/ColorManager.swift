@@ -32,33 +32,35 @@ extension String {
     static let stickerColor = "StickerColor"
     static let selectionColor = "selectionColor"
 }
-
+//let color = UIColor(named: "YourColorName", in: Bundle(path: Bundle(for: YourCustomView.self).path(forResource: "YourLibraryNameResources", ofType: "bundle") ?? ""), compatibleWith: nil)
 struct ColorManager {
-    static let customColorsList: [UIColor] = [
-        (UIColor(named: .blackColorName)!),
-        (UIColor(named: .stickerColor)!),
-        (UIColor(named: .yellow2ColorName)!),
-        (UIColor(named: .yellowColorName)!),
-        (UIColor(named: .skyColorName)!),
-        (UIColor(named: .redColorName)!),
-        (UIColor(named: .purpleColorName)!),
-        (UIColor(named: .pinkColorName)!),
-        (UIColor(named: .parrotColorName)!),
-        (UIColor(named: .orangeColorName)!),
-        (UIColor(named: .lightYellowColorName)!),
-        (UIColor(named: .lightPinkColorName)!),
-        (UIColor(named: .lightGreenColorName)!),
-        (UIColor(named: .lightGrayColorName)!),
-        (UIColor(named: .greenColorName)!),
-        (UIColor(named: .darkPurpleColorName)!),
-        (UIColor(named: .darkOrangeColorName)!),
-        (UIColor(named: .darkGrayColorName)!),
-        (UIColor(named: .darkBlueColorName)!),
-        (UIColor(named: .cyanColorName)!),
-        (UIColor(named: .blueColorName)!),
-        (UIColor(named: .white)!)
+    static let bundle = Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? "")
 
-    ]
+        static let customColorsList: [UIColor] = [
+            UIColor(named: .blackColorName, in: bundle, compatibleWith: nil)!,
+            UIColor(named: .stickerColor, in: bundle, compatibleWith: nil)!,
+            UIColor(named: .yellow2ColorName, in: bundle, compatibleWith: nil)!,
+            UIColor(named: .yellowColorName, in: bundle, compatibleWith: nil)!,
+            UIColor(named: .skyColorName, in: bundle, compatibleWith: nil)!,
+            UIColor(named: .redColorName, in: bundle, compatibleWith: nil)!,
+            UIColor(named: .purpleColorName, in: bundle, compatibleWith: nil)!,
+            UIColor(named: .pinkColorName, in: bundle, compatibleWith: nil)!,
+            UIColor(named: .parrotColorName, in: bundle, compatibleWith: nil)!,
+            UIColor(named: .orangeColorName, in: bundle, compatibleWith: nil)!,
+            UIColor(named: .lightYellowColorName, in: bundle, compatibleWith: nil)!,
+            UIColor(named: .lightPinkColorName, in: bundle, compatibleWith: nil)!,
+            UIColor(named: .lightGreenColorName, in: bundle, compatibleWith: nil)!,
+            UIColor(named: .lightGrayColorName, in: bundle, compatibleWith: nil)!,
+            UIColor(named: .greenColorName, in: bundle, compatibleWith: nil)!,
+            UIColor(named: .darkPurpleColorName, in: bundle, compatibleWith: nil)!,
+            UIColor(named: .darkOrangeColorName, in: bundle, compatibleWith: nil)!,
+            UIColor(named: .darkGrayColorName, in: bundle, compatibleWith: nil)!,
+            UIColor(named: .darkBlueColorName, in: bundle, compatibleWith: nil)!,
+            UIColor(named: .cyanColorName, in: bundle, compatibleWith: nil)!,
+            UIColor(named: .blueColorName, in: bundle, compatibleWith: nil)!,
+            UIColor.white
+        ]
+    
     // Storing colors for text option
     func getColorsData() -> [UIColor] {
         let color = ColorManager.customColorsList.map { options in

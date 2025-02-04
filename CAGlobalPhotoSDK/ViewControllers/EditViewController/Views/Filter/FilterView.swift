@@ -84,14 +84,19 @@ class FilterView: UIView {
     }
     
     private func loadViewFromNib() -> UIView {
-        let bundle = Bundle(for: FilterView.self)
+        let bundlePath = Bundle(for: FilterView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+        let bundle = bundlePath != nil ? Bundle(path: bundlePath!) : nil
+
         let nib = UINib(nibName: FilterView.className, bundle: bundle)
         let nibView = nib.instantiate(withOwner: self, options: nil).first as? UIView
         return nibView ?? UIView()
     }
     
     private func initCollectionView() {
-        let nib = UINib(nibName: FilterCell.className, bundle: nil)
+        let bundlePath = Bundle(for: FilterView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+        let bundle = bundlePath != nil ? Bundle(path: bundlePath!) : nil
+
+        let nib = UINib(nibName: FilterCell.className, bundle: bundle)
         filterCollectionView.register(nib, forCellWithReuseIdentifier: FilterCell.className)
         filterCollectionView.dataSource = self
         filterCollectionView.delegate = self
@@ -156,7 +161,10 @@ extension FilterView: UICollectionViewDataSource {
         cell.dataSource = self
         cell.delegate = self
         if indexPath.row == 0 {
-            cell.configure(with: "", selectedOverlay: self.selectedFilter, image: UIImage.init(named: "filters")!)
+            let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+            let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+
+            cell.configure(with: "", selectedOverlay: self.selectedFilter, image: UIImage.init(named: "filters", in: bundle, compatibleWith: nil)!)
         } else  {
             let data = self.filterData[indexPath.row - 1]
             let image = self.filterImages[indexPath.row - 1]

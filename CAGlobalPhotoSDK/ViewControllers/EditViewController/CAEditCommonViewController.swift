@@ -251,7 +251,7 @@ extension CAEditViewController {
 
     func drawDottedLine(start p0: CGPoint, end p1: CGPoint, view: UIView) {
         let shapeLayer = CAShapeLayer()
-        shapeLayer.strokeColor = UIColor(named: .stickerColor)?.cgColor
+        shapeLayer.strokeColor = UIColor(named: .stickerColor, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)?.cgColor
         shapeLayer.lineWidth = 1
         shapeLayer.lineDashPattern = [7, 3] // 7 is the length of dash, 3 is length of the gap.
 

@@ -81,14 +81,19 @@ class FrameView: UIView {
     }
 
     private func loadViewFromNib() -> UIView {
-        let bundle = Bundle(for: FrameView.self)
+        let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+        let bundle = bundlePath != nil ? Bundle(path: bundlePath!) : nil
+
         let nib = UINib(nibName: FrameView.className, bundle: bundle)
         let nibView = nib.instantiate(withOwner: self, options: nil).first as? UIView
         return nibView ?? UIView()
     }
     
     private func initCollectionView() {
-        let nib = UINib(nibName: FrameCell.className, bundle: nil)
+        let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+        let bundle = bundlePath != nil ? Bundle(path: bundlePath!) : nil
+
+        let nib = UINib(nibName: FrameCell.className, bundle: bundle)
         frameCollectionView.register(nib, forCellWithReuseIdentifier: FrameCell.className)
         frameCollectionView.dataSource = self
         frameCollectionView.delegate = self

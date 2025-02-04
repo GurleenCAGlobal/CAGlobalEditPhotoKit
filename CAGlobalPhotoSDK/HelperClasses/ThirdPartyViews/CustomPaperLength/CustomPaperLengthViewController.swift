@@ -96,7 +96,10 @@ public class CustomPaperLengthViewController: UIViewController,UIImagePickerCont
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
         
-        let nib = UINib(nibName: PaperLengthCell.className, bundle: nil)
+        let bundlePath = Bundle(for: PaperLengthCell.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+        let bundle = bundlePath != nil ? Bundle(path: bundlePath!) : nil
+
+        let nib = UINib(nibName: PaperLengthCell.className, bundle: bundle)
         tableViewSize.register(nib, forCellReuseIdentifier: PaperLengthCell.className)
         tableViewSize.dataSource = self
         tableViewSize.delegate = self

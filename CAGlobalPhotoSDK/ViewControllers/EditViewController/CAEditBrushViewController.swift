@@ -91,7 +91,7 @@ extension CAEditViewController: BrushViewDelegate, DrawingViewDelegate {
             self.option.selectedBrushColorIndex = 0
         }
         
-        self.viewPaintDrawing.strokeColor = value?.color ?? UIColor(named: .blackColorName)!
+        self.viewPaintDrawing.strokeColor = value?.color ?? UIColor(named: .blackColorName, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!
         self.viewPaintDrawing.strokeWidth = value?.width ?? 10
         self.viewPaintDrawing.strokeOpacity = value?.opacity ?? 1
         self.viewPaintDrawing.brushSharpness = value?.sharpness ?? 1
@@ -104,7 +104,7 @@ extension CAEditViewController: BrushViewDelegate, DrawingViewDelegate {
         let array = self.viewPaintDrawing.lines
         if array.count > 0 {
             // Use the color of the last drawn line
-            let lastColor = self.viewPaintDrawing.lines.last?.color ?? UIColor(named: .blackColorName)!
+            let lastColor = self.viewPaintDrawing.lines.last?.color ?? UIColor(named: .blackColorName, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!
             self.viewPaintDrawing.strokeColor = lastColor
             self.brushView.colorModel.selectedColorIndex = self.option.selectedBrushColorIndex
 
@@ -114,7 +114,7 @@ extension CAEditViewController: BrushViewDelegate, DrawingViewDelegate {
                 self.brushView.colorPickerView.backgroundColor = lastColor
                 self.brushView.colorButton.backgroundColor = lastColor
             } else {
-                self.brushView.colorPickerView.backgroundColor = UIColor(named: .blackColorName)!
+                self.brushView.colorPickerView.backgroundColor = UIColor(named: .blackColorName, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!
                 self.brushView.colorButton.backgroundColor = lastColor
             }
 
@@ -130,7 +130,7 @@ extension CAEditViewController: BrushViewDelegate, DrawingViewDelegate {
                 self.option.selectedBrushColorIndex = 0
             }
 
-            let selectedColor = value?.color ?? UIColor(named: .blackColorName)!
+            let selectedColor = value?.color ?? UIColor(named: .blackColorName, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!
             self.viewPaintDrawing.strokeColor = selectedColor
             self.brushView.colorModel.selectedColorIndex = self.option.selectedBrushColorIndex
             self.brushView.sharpnessColorLbl.backgroundColor = selectedColor
@@ -139,8 +139,8 @@ extension CAEditViewController: BrushViewDelegate, DrawingViewDelegate {
             self.brushView.colorOptionButton.hideView()
 
             // Default color settings for picker and button
-            self.brushView.colorPickerView.backgroundColor = UIColor(named: .blackColorName)!
-            self.brushView.colorButton.backgroundColor = UIColor(named: .blackColorName)!
+            self.brushView.colorPickerView.backgroundColor = UIColor(named: .blackColorName, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!
+            self.brushView.colorButton.backgroundColor = UIColor(named: .blackColorName, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!
         }
     }
     func setReset() {
@@ -290,10 +290,10 @@ extension CAEditViewController: BrushViewDelegate, DrawingViewDelegate {
         }
         if self.option.selectedBrushColorIndex == 0 {
             self.brushView.colorModel.selectedColorIndex = self.option.selectedBrushColorIndex
-            self.brushView.colorButton.backgroundColor = (UIColor(named: .blackColorName)!)
+            self.brushView.colorButton.backgroundColor = (UIColor(named: .blackColorName, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!)
             self.brushView.colorOptionButton.hideView()
-            self.brushView.colorPickerView.backgroundColor = (UIColor(named: .blackColorName)!)
-            self.brushView.colorButton.backgroundColor = (UIColor(named: .blackColorName)!)
+            self.brushView.colorPickerView.backgroundColor = (UIColor(named: .blackColorName, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!)
+            self.brushView.colorButton.backgroundColor = (UIColor(named: .blackColorName, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!)
         }
         self.isSubOptions = true
         self.constraintsBottomViewHeight.constant = 80

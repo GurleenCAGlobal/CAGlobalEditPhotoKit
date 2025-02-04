@@ -69,7 +69,10 @@ extension CAEditViewController {
                 default:
                     break
                 }
-                let finalImage = imageR.applyLUTFilter(LUT: UIImage(named: selectedFilter), volume: Float(self.selectedFilterOpacity))
+                let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+                let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+
+                let finalImage = imageR.applyLUTFilter(LUT: UIImage(named: selectedFilter, in: bundle, compatibleWith: nil)!, volume: Float(self.selectedFilterOpacity))
                 imageBackUp = finalImage
             }
             
@@ -197,7 +200,10 @@ extension CAEditViewController {
                 }
                 selectedFrame = imageName
                 print(imageName)
-                let frameImage = UIImage.init(named: imageName)
+                let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+                let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+
+                let frameImage = UIImage.init(named: imageName, in: bundle, compatibleWith: nil)
                 var newImage = frameImage
                 
                 if rotationAngle == 1.5707963267948966 {

@@ -91,7 +91,9 @@ class FrameOptions: UIView {
     }
     
     private func loadViewFromNib() -> UIView {
-        let bundle = Bundle(for: FrameOptions.self)
+        let bundlePath = Bundle(for: FrameOptions.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+        let bundle = bundlePath != nil ? Bundle(path: bundlePath!) : nil
+
         let nib = UINib(nibName: FrameOptions.className, bundle: bundle)
         guard let nibView = nib.instantiate(withOwner: self, options: nil).first as? UIView else {
             fatalError("Failed to load TextView from nib.")

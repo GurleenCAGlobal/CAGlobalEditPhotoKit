@@ -72,19 +72,24 @@ class FramesView: UIView, UINavigationControllerDelegate, UIImagePickerControlle
     }
     
     private func loadViewFromNib() -> UIView {
-        let bundle = Bundle(for: FramesView.self)
+        let bundlePath = Bundle(for: FramesView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+        let bundle = bundlePath != nil ? Bundle(path: bundlePath!) : nil
+
         let nib = UINib(nibName: FramesView.className, bundle: bundle)
         let nibView = nib.instantiate(withOwner: self, options: nil).first as? UIView
         return nibView ?? UIView()
     }
     
     private func initCollectionView() {
-        let nib = UINib(nibName: FrameCell.className, bundle: nil)
+        let bundlePath = Bundle(for: FrameCell.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+        let bundle = bundlePath != nil ? Bundle(path: bundlePath!) : nil
+
+        let nib = UINib(nibName: FrameCell.className, bundle: bundle)
         framesCollectionView.register(nib, forCellWithReuseIdentifier: FrameCell.className)
         framesCollectionView.dataSource = self
         framesCollectionView.delegate = self
         
-        let subNib = UINib(nibName: FrameCell.className, bundle: nil)
+        let subNib = UINib(nibName: FrameCell.className, bundle: bundle)
         subFramesCollectionView.register(subNib, forCellWithReuseIdentifier: FrameCell.className)
         subFramesCollectionView.dataSource = self
         subFramesCollectionView.delegate = self

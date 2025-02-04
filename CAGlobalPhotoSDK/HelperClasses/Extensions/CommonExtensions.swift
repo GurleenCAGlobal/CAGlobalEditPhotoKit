@@ -1451,8 +1451,11 @@ typealias PNAlertActionHandler = ((PNAlertAction, Bool) -> Void)
             button.setTitleColor(UIColor.alertbuttonColor, for: .normal)
             button.layer.borderColor = UIColor.alertbuttonColor.cgColor
             button.layer.cornerRadius = 3
-            button.setImage(UIImage(named: "unchecked500"), for: .normal)
-            button.setImage(UIImage(named: "checked500"), for: .selected)
+            let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+            let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+
+            button.setImage(UIImage(named: "unchecked500", in: bundle, compatibleWith: nil)!, for: .normal)
+            button.setImage(UIImage(named: "checked500", in: bundle, compatibleWith: nil)!, for: .selected)
             button.setTitle("  \(action.title ?? "")", for: .normal)
             button.setTitle("  \(action.title ?? "")", for: .selected)
             let bFont = UIFont(name: messageFontName, size: checkmarkButtonFontSize)

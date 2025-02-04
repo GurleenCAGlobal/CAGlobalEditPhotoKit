@@ -133,10 +133,10 @@ extension CAEditViewController: TextViewDelegate, AddTextViewDelegate, TextViewC
     func tickAndCrossForSubOptions(isAlign: Bool) {
         if self.selectedTextModel.selectedColorIndex == 0 {
             self.textView.textModel = self.selectedTextModel
-            self.textView.colorButton.backgroundColor = (UIColor(named: .blackColorName)!)
+            self.textView.colorButton.backgroundColor = (UIColor(named: .blackColorName, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!)
             self.textView.colorOptionButton.hideView()
-            self.textView.colorPickerView.backgroundColor = (UIColor(named: .blackColorName)!)
-            self.textView.colorButton.backgroundColor = (UIColor(named: .blackColorName)!)
+            self.textView.colorPickerView.backgroundColor = (UIColor(named: .blackColorName, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!)
+            self.textView.colorButton.backgroundColor = (UIColor(named: .blackColorName, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!)
         }
         self.isSubOptions = true
         self.constraintsBottomViewHeight.constant = 80
@@ -273,7 +273,9 @@ extension CAEditViewController: TextViewDelegate, AddTextViewDelegate, TextViewC
     }
     
     func showTextViewController(isSaveCross: Bool) {
-        let viewTextViewController = TextViewController(nibName: TextViewController.className, bundle: nil)
+        let bundlePath = Bundle(for: CAEditViewController.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+        let resourceBundle = bundlePath != nil ? Bundle(path: bundlePath!) : nil
+        let viewTextViewController = TextViewController(nibName: "TextViewController", bundle: resourceBundle)
         viewTextViewController.delegate = self
         viewTextViewController.isBtnCrossShowing = isSaveCross
         self.view.addSubview(viewTextViewController.view)

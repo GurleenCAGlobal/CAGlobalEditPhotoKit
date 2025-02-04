@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EditOptionsCell" id="jjW-qK-cIb" customClass="EditOptionsCell" customModule="CAGlobalPhotoSDK" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EditOptionsCell" id="jjW-qK-cIb" customClass="EditOptionsCell" customModule="CAGlobalEditPhotoKit">
             <rect key="frame" x="0.0" y="0.0" width="88" height="85"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -65,7 +65,7 @@
             </constraints>
             <size key="customSize" width="88" height="85"/>
             <connections>
-                <outlet property="dotLabel" destination="zpE-eb-REY" id="snh-MK-tgM"/>
+                <outlet property="dotLabel" destination="zpE-eb-REY" id="Ibn-b5-GXO"/>
                 <outlet property="editImageView" destination="egP-Ef-fH8" id="DET-dw-Fvc"/>
                 <outlet property="nameLabel" destination="sUn-3F-2ml" id="xAJ-Ff-wRK"/>
             </connections>

@@ -325,7 +325,7 @@ public class CAEditViewController: BaseViewController, UIGestureRecognizerDelega
     var selectedAddTextView : AddTextView?
     var selectedTextModel = TextModel()
     let brushView = BrushView()
-    var selectedStickerColorModel = UIColor(named: .white)!
+    var selectedStickerColorModel = UIColor(named: .white, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!
     var filterData = [String]()
     var filterImages = [UIImage]()
     var aCIImage = CIImage()
@@ -625,7 +625,6 @@ extension CAEditViewController {
         self.scrollView.isScrollEnabled = false
         self.addGesturesStickerTextView()
         self.addPanGestureMainEdit()
-        self.registerCollectionCell()
         self.setOrignalImage()
         self.calculatingMainImageViewSize() 
         self.initialState = saveState()
@@ -633,10 +632,14 @@ extension CAEditViewController {
         self.viewPaintDrawing.isUserInteractionEnabled = false
         self.addGesturesMainImageViewForSticker()
         self.selectedFrameOpacity = 1
+        self.registerCollectionCell()
     }
     
     private func updateRightBarButtonItem() {
-        self.printImageView.image = UIImage(named: "select")?.withRenderingMode(.alwaysOriginal)
+        let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+
+        self.printImageView.image = UIImage(named: "select", in: bundle, compatibleWith: nil)?.withRenderingMode(.alwaysOriginal)
     }
     
     // MARK: - Notification Functions -
@@ -659,9 +662,22 @@ extension CAEditViewController {
 extension CAEditViewController {
     func registerCollectionCell() {
         //Register Collection view cell
-        let nib = UINib(nibName: EditOptionsCell.className, bundle: nil)
-        self.mainCollectionView.register(nib, forCellWithReuseIdentifier: EditOptionsCell.className)
+        // Get the path to the bundle inside the pod
+        if let bundlePath = Bundle(for: EditOptionsCell.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle"),
+           let bundle = Bundle(path: bundlePath) {
+            
+            // Register the NIB from the correct bundle
+            let nib = UINib(nibName: "EditOptionsCell", bundle: bundle)
+            self.mainCollectionView.register(nib, forCellWithReuseIdentifier: "EditOptionsCell")
+            
+        } else {
+            // Handle error if the bundle is not found
+            print("Error: Unable to find CAGlobalPhotoSDKResources.bundle")
+        }
+
+        // Set the delegate and data source
         self.mainCollectionView.delegate = self
+        self.mainCollectionView.dataSource = self
         self.mainCollectionView.dataSource = self
     }
     
@@ -947,7 +963,7 @@ extension CAEditViewController {
             // Update the brush based on selection
             switch self.brushSelection {
             case .color:
-                self.viewPaintDrawing.strokeColor = value?.color ?? UIColor(named: .blackColorName)!
+                self.viewPaintDrawing.strokeColor = value?.color ?? UIColor(named: .blackColorName, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!
             case .sharpness:
                 self.viewPaintDrawing.brushSharpness = value?.sharpness ?? 1
             case .size:
@@ -993,7 +1009,7 @@ extension CAEditViewController {
 //            
 //            switch self.brushSelection {
 //            case .color:
-//                self.viewPaintDrawing.strokeColor = value?.color ?? UIColor(named: .blackColorName)!
+//                self.viewPaintDrawing.strokeColor = value?.color ?? UIColor(named: .blackColorName, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!
 //            case .sharpness:
 //                self.viewPaintDrawing.brushSharpness = value?.sharpness ?? 1
 //            case .size:
