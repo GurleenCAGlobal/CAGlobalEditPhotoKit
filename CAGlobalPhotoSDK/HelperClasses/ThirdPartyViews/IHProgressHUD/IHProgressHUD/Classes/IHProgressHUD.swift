@@ -164,8 +164,8 @@ public class IHProgressHUD : UIView {
         var localInstance : IHProgressHUD?
         if Thread.current.isMainThread {
             if IHProgressHUD.isNotAppExtension {
-            if let window = UIApplication.shared.delegate?.window {
-                localInstance = IHProgressHUD.init(frame: window?.bounds ?? CGRect.zero)
+                if let window = UIApplication.shared.keyWindow?.rootViewController?.view {
+                    localInstance = IHProgressHUD.init(frame: window.bounds ?? CGRect.zero)
             } else {
                 localInstance = IHProgressHUD()
                 }
@@ -176,8 +176,8 @@ public class IHProgressHUD : UIView {
         } else {
             DispatchQueue.main.sync {
                 if IHProgressHUD.isNotAppExtension {
-                if let window = UIApplication.shared.delegate?.window {
-                    localInstance = IHProgressHUD.init(frame: window?.bounds ?? CGRect.zero)
+                if let window = UIApplication.shared.keyWindow?.rootViewController?.view {
+                    localInstance = IHProgressHUD.init(frame: window.bounds ?? CGRect.zero)
                 } else {
                     localInstance = IHProgressHUD()
                     }
@@ -380,9 +380,16 @@ public class IHProgressHUD : UIView {
 
         #if os(iOS) // notAppExtension + iOS
         if IHProgressHUD.isNotAppExtension {
-            if let appDelegate = UIApplication.shared.delegate,
-               let window: UIWindow = appDelegate.window! {
-                frame = window.bounds
+            if ((UIApplication.shared.keyWindow?.rootViewController?.view) != nil) {
+                
+            }
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let keyWindow = windowScene.windows.first(where: { $0.isKeyWindow }) {
+                frame = keyWindow.bounds
+            } else if let rootView = UIApplication.shared.keyWindow?.rootViewController?.view {
+                frame = rootView.bounds
+            } else {
+                frame = UIScreen.main.bounds
             }
 
             if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
@@ -1270,8 +1277,13 @@ extension IHProgressHUD {
             controlView?.addTarget(self, action: #selector(controlViewDidReceiveTouchEvent(_:for:)), for: .touchDown)
         }
         if IHProgressHUD.isNotAppExtension {
-        if let windowBounds : CGRect = UIApplication.shared.delegate?.window??.bounds {
-            controlView?.frame = windowBounds
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let keyWindow = windowScene.windows.first(where: { $0.isKeyWindow }) {
+                controlView?.frame = keyWindow.bounds
+            } else if let rootView = UIApplication.shared.keyWindow?.rootViewController?.view {
+                controlView?.frame = rootView.bounds
+            } else {
+                controlView?.frame = UIScreen.main.bounds
             }
         }
         else {

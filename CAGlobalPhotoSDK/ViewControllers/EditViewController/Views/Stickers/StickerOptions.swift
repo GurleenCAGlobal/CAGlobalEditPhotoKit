@@ -274,7 +274,10 @@ class StickerOptions: UIView {
         }
         
         // Get the image to compare
-        guard let comparisonImage = UIImage(named: imageName) else {
+        let bundlePath = Bundle(for: CAEditViewController.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+        let resourceBundle = bundlePath != nil ? Bundle(path: bundlePath!) : nil
+
+        guard let comparisonImage = UIImage(named: imageName, in: resourceBundle, compatibleWith: nil) else {
             return false
         }
         
