@@ -201,7 +201,7 @@ extension CAEditViewController: UICollectionViewDataSource, UICollectionViewDele
         
         if mainPreviousImage == nil {
             let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
-            let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+            let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)
 
             framePreviousImage = UIImage.init(named: "thumb", in: bundle, compatibleWith: nil)!
         }

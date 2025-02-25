@@ -27,11 +27,5 @@ class CAEditViewModel: NSObject {
     func callFuncToGetAdjustsData() {
         self.adjustData = self.adjustsManager.getAdjustsData()
     }
-    
-    func commonBundle() -> Bundle {
-        let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
-        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
-        return bundle
-    }
 }
 

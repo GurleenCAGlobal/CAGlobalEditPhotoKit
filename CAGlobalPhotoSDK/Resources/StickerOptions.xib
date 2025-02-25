@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StickerOptions" customModule="CAGlobalPhotoSDK">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StickerOptions" customModule="Sprocket" customModuleProvider="target">
             <connections>
                 <outlet property="colorButton" destination="FjS-zf-AYW" id="MJL-Bb-z7E"/>
                 <outlet property="colorCollectionView" destination="PSi-xf-zCE" id="B2G-Zl-lq1"/>
@@ -31,13 +31,13 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="dbS-Ah-WOX">
-                    <rect key="frame" x="0.0" y="0.0" width="429" height="200"/>
+                    <rect key="frame" x="0.0" y="0.0" width="429" height="214"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zqe-Ql-bX7" userLabel="Color Collection Container">
-                            <rect key="frame" x="0.0" y="0.0" width="429" height="100"/>
+                            <rect key="frame" x="0.0" y="0.0" width="429" height="107"/>
                             <subviews>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PSi-xf-zCE">
-                                    <rect key="frame" x="108" y="20" width="301" height="80"/>
+                                    <rect key="frame" x="108" y="20" width="301" height="87"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="5" id="raf-gN-Jq5">
                                         <size key="itemSize" width="46" height="56"/>
@@ -119,10 +119,10 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VLB-2a-zx8" userLabel="Opacity Container">
-                            <rect key="frame" x="0.0" y="100" width="429" height="100"/>
+                            <rect key="frame" x="0.0" y="107" width="429" height="107"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="zdL-iA-MfR">
-                                    <rect key="frame" x="0.0" y="0.0" width="429" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="429" height="107"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h2B-13-RKs" userLabel="Opacity Container">
                                             <rect key="frame" x="0.0" y="0.0" width="429" height="45"/>
@@ -159,10 +159,10 @@
                                             </constraints>
                                         </view>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="yue-6r-hap">
-                                            <rect key="frame" x="148.66666666666666" y="59" width="131.99999999999997" height="41"/>
+                                            <rect key="frame" x="148.66666666666666" y="59" width="131.99999999999997" height="48"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O1H-qf-0ci">
-                                                    <rect key="frame" x="0.0" y="0.0" width="46" height="41"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="46" height="48"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="46" id="g3Y-xu-QjH"/>
                                                     </constraints>
@@ -174,7 +174,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pdm-gb-SSZ">
-                                                    <rect key="frame" x="86" y="0.0" width="46" height="41"/>
+                                                    <rect key="frame" x="86" y="0.0" width="46" height="48"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="46" id="5Aa-pT-9yw"/>
                                                         <constraint firstAttribute="width" constant="46" id="EsL-yK-mwq"/>
@@ -185,7 +185,7 @@
                                                     </connections>
                                                 </button>
                                                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A1U-Lb-d8f">
-                                                    <rect key="frame" x="132.00000000000003" y="-2.3333333333333428" width="46" height="46"/>
+                                                    <rect key="frame" x="132.00000000000003" y="1" width="46" height="46"/>
                                                     <subviews>
                                                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FjS-zf-AYW">
                                                             <rect key="frame" x="11" y="11" width="24" height="24"/>
@@ -227,7 +227,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZMd-4h-8Jh">
-                                                    <rect key="frame" x="132.00000000000003" y="-2.3333333333333428" width="46" height="46"/>
+                                                    <rect key="frame" x="132.00000000000003" y="1" width="46" height="46"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="46" id="6rZ-h1-FQV"/>
                                                         <constraint firstAttribute="height" constant="46" id="l0X-8W-sY8"/>

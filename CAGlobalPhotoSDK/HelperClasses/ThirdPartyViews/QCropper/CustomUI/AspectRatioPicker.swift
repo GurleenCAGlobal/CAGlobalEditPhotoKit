@@ -217,7 +217,7 @@ public class AspectRatioPicker: UIView {
         let backgroundInsets = UIEdgeInsets(top: CGFloat(backgroundImageSize), left: CGFloat(backgroundImageSize), bottom: CGFloat(backgroundImageSize), right: CGFloat(backgroundImageSize))
         let selectedBackgroundImage = selectedColorImage.resizableImage(withCapInsets: backgroundInsets)
         let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
-        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)
 
         let checkmark = UIImage(named: "QCropper.check.mark", in: bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
 

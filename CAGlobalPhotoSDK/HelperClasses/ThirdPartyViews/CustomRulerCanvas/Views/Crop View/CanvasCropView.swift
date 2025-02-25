@@ -865,12 +865,12 @@ extension UIColor {
 
 @objc extension UIView {
     
-    func scale(by scale: CGFloat) {
-        self.contentScaleFactor = scale
-        for subview in self.subviews {
-            subview.scale(by: scale)
-        }
-    }
+//    func scale(by scale: CGFloat) {
+//        self.contentScaleFactor = scale
+//        for subview in self.subviews {
+//            subview.scale(by: scale)
+//        }
+//    }
     
     @objc func takeScreenshot() -> UIImage {
         let newScale = UIScreen.main.scale

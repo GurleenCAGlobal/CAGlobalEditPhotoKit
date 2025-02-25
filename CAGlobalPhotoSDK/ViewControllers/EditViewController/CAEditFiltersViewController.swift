@@ -116,7 +116,7 @@ extension CAEditViewController: FilterViewDelegate {
                 if let image = self.imageOrignal {
                     let imageR = self.resizeImage(image: image, newWidth: 100)
                     let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
-                    let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+                    let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)
 
                     let finalImage = imageR.applyLUTFilter(LUT: UIImage(named: data, in: bundle, compatibleWith: nil)!, volume: 1.0)
                     self.filterImages.append(finalImage)

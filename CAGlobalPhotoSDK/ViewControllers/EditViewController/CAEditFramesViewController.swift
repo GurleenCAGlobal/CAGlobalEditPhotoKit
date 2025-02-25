@@ -24,10 +24,20 @@ extension CAEditViewController: FramesViewDelegate, FrameOptionsDelegate, FrameV
         }
         self.backgroundView.transform = .identity
         var frameImage = UIImage()
-        if let bundlePath = Bundle(for: EditOptionsCell.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle"), let bundle = Bundle(path: bundlePath) {
-            frameImage = UIImage(named: image, in: bundle, compatibleWith: nil)!
-
+        let bundlePath = Bundle(for: EditOptionsCell.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+        let bundle = bundlePath != nil ? Bundle(path: bundlePath!) : nil
+        if let fileURL = URL(string: image) {
+            if FileManager.default.fileExists(atPath: fileURL.path) {
+                if let image2 = UIImage(contentsOfFile: fileURL.path) {
+                    frameImage = image2
+                } else {
+                    print("Failed to load image.")
+                }
+            } else {
+                print("File does not exist at path: \(fileURL.path)")
+            }
         }
+
         var newImage = frameImage
         
         _ = atan2(framesImageViewAngleRatio.transform.b, framesImageViewAngleRatio.transform.a)

@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AMColorPickerRGBSliderView" customModule="CAGlobalEditPhotoKit">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AMColorPickerRGBSliderView" customModule="Sprocket" customModuleProvider="target">
             <connections>
                 <outlet property="blueLabel" destination="E1O-8h-Koz" id="ZLy-sl-XaT"/>
                 <outlet property="blueSlider" destination="OHP-dx-7OU" id="WwC-UT-7GJ"/>
@@ -103,7 +103,7 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LDq-LE-Wf6">
                                     <rect key="frame" x="0.0" y="18" width="343" height="30"/>
                                     <subviews>
-                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="XRp-8f-32D" customClass="AMColorPickerSlider" customModule="CAGlobalPhotoSDKResources" customModuleProvider="target">
+                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="XRp-8f-32D" customClass="AMColorPickerSlider" customModule="Sprocket" customModuleProvider="target">
                                             <rect key="frame" x="-2" y="0.0" width="307" height="31"/>
                                             <connections>
                                                 <action selector="changedSlider:" destination="-1" eventType="valueChanged" id="BIN-2e-sng"/>
@@ -134,7 +134,7 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="j5n-ZW-En3">
                                     <rect key="frame" x="0.0" y="18" width="343" height="30"/>
                                     <subviews>
-                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="jJR-Xz-HFB" customClass="AMColorPickerSlider" customModule="CAGlobalPhotoSDKResources" customModuleProvider="target">
+                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="jJR-Xz-HFB" customClass="AMColorPickerSlider" customModule="Sprocket" customModuleProvider="target">
                                             <rect key="frame" x="-2" y="0.0" width="307" height="31"/>
                                             <connections>
                                                 <action selector="changedSlider:" destination="-1" eventType="valueChanged" id="Dwq-Su-k7f"/>
@@ -165,7 +165,7 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yo8-ln-1kJ">
                                     <rect key="frame" x="0.0" y="18" width="343" height="30"/>
                                     <subviews>
-                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="255" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="OHP-dx-7OU" customClass="AMColorPickerSlider" customModule="CAGlobalPhotoSDKResources" customModuleProvider="target">
+                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="255" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="OHP-dx-7OU" customClass="AMColorPickerSlider" customModule="Sprocket" customModuleProvider="target">
                                             <rect key="frame" x="-2" y="0.0" width="307" height="31"/>
                                             <connections>
                                                 <action selector="changedSlider:" destination="-1" eventType="valueChanged" id="WXh-sI-akv"/>
@@ -243,7 +243,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

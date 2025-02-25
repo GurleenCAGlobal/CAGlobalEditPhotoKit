@@ -99,10 +99,22 @@ class FrameCell: UICollectionViewCell {
             nameLabel.isHidden = true
             heightConstraint.constant = 0
         } else {
-            if let bundlePath = Bundle(for: EditOptionsCell.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle"), let bundle = Bundle(path: bundlePath) {
-                let image = UIImage(named: subImage, in: bundle, compatibleWith: nil)
-                self.frameImageView.image = image?.resizeSticker(to: CGSize(width: (image?.size.width ?? 0) / 10, height: (image?.size.height ?? 0) / 10))
+            let bundlePath = Bundle(for: EditOptionsCell.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+            let bundle = bundlePath != nil ? Bundle(path: bundlePath!) : nil
+                //let image = UIImage(named: subImage, in: bundle, compatibleWith: nil)
+            print(subImage)
+            if let fileURL = URL(string: subImage) {
+                if FileManager.default.fileExists(atPath: fileURL.path) {
+                    if let image = UIImage(contentsOfFile: fileURL.path) {
+                        self.frameImageView.image = image.resizeSticker(to: CGSize(width: (image.size.width) / 10, height: (image.size.height) / 10))
+                    } else {
+                        print("Failed to load image.")
+                    }
+                } else {
+                    print("File does not exist at path: \(fileURL.path)")
+                }
             }
+                
             frameLabel.isHidden = true
             nameLabel.isHidden = (categoryName == nil)
             nameLabel.text = categoryName ?? ""
@@ -164,7 +176,7 @@ class FrameCell: UICollectionViewCell {
         // Toggle selection state
         isSelectedFrame = isEdit
         let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
-        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)
 
         self.frameImageView.image = UIImage(named: data, in: bundle, compatibleWith: nil)
 

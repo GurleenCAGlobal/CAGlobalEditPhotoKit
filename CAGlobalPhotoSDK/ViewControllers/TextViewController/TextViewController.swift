@@ -269,6 +269,8 @@ extension TextViewController: TextViewDelegate {
 //        removeGesturesMainImageViewForMagnify()
     }
 
+    
+    
     func didChangeTextProperties(textModel: TextModel) {
         textToEnterTexView.text = textModel.textString
         textToEnterTexView.textColor = textModel.color

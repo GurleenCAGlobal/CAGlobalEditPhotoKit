@@ -170,7 +170,7 @@ class StickerOptions: UIView {
         if isFromGallery == true {
             self.colorView.isHidden = true
             let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
-            let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+            let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)
 
             if isBackgroundRemoved ?? false {
                 self.removeBackgroundButton.setImage(UIImage.init(named: "removeBackground", in: bundle, compatibleWith: nil)!, for: .normal)
@@ -256,7 +256,7 @@ class StickerOptions: UIView {
 
     @IBAction func actionOnRemoveBackground(_ sender: Any) {
         let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
-        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)
 
         if isButtonImageEqual(to: "unremoveBackground") {
             self.removeBackgroundButton.setImage(UIImage.init(named: "removeBackground", in: bundle, compatibleWith: nil)!, for: .normal)

@@ -41,7 +41,7 @@ class FrameView: UIView {
     private var framesManager = FramesManager()
     private(set) var framesData = [String]()
 
-    var categoryList:[FrameCategoryModel]?
+    var categoryList = [FrameCategoryModel]()
 
     var selectedFrame = String()
     var selectedFrameOpacity = CGFloat()
@@ -51,7 +51,9 @@ class FrameView: UIView {
     var framesSelection = Int()
     var selectedRatioWith: CGFloat?
     var isLandscape: Bool?
-
+    var frameCategories = [PGCloudAssetCategory]()
+    var frameNameURLData = [[String:Any]]()
+    var frameURLData = [String]()
     // MARK: - Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -71,13 +73,89 @@ class FrameView: UIView {
         baseView.translatesAutoresizingMaskIntoConstraints = true
         addSubview(baseView)
         self.initCollectionView()
+            self.stickersAll()
+        
+        
+        // Usage
+        NotificationCenter.default.addObserver(self, selector: #selector(handleAdditionalStickersDownloadedNotification), name: Notification.Name("kPGImglyManagerFrameUpdatedNotification"), object: nil)
+    }
+    
+    @objc func handleAdditionalStickersDownloadedNotification(_ notification: Notification) {
+            NotificationCenter.default.post(name: Notification.Name("FrameDownloadingEndNotification"), object: nil, userInfo: nil)
+            self.stickersAll()
+    }
+    
+    @objc func stickersAll() {
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            let cac = PGCloudAssetClient.sharedInstance()
+            var catalog = PGCloudAssetCatalog()
+            if let catalog = cac?.currentCatalog() {
+                let activePrinterType = PGQueueController.shared().activePrinterType
+                
+                self?.frameCategories = catalog.categories(forAssetType: PGCloudAssetCategoryTypeFrame, andDeviceType: activePrinterType) ?? []
+                if let frameCategories = self?.frameCategories {
+                    for category in frameCategories {
+                        var cloudAssets = [PGCloudAssetImage]()
+                        cloudAssets = category.sortedImageAssets()
+                        _ = [UIImage]()
+                        var stickerAssestsURL = [String]()
+                        for sticker in cloudAssets {
+                            if sticker.supportsDeviceType(activePrinterType) {
+                                let localURL = URL(fileURLWithPath: PGCloudAssetClient.sharedInstance().storage.localUrl(forAsset: sticker))
+                                _ = URL(fileURLWithPath: PGCloudAssetClient.sharedInstance().storage.localThumbnailUrl(forAsset: sticker))
+                                _ = sticker.name
+                                stickerAssestsURL.append(localURL.absoluteString)
+                            }
+                        }
+                        if stickerAssestsURL.count > 0 {
+                            let frameCategory = FrameCategoryModel()
+                            frameCategory.categoryName = category.title
+
+                            var frameList = [FrameModel]()
+                            var categoryIcon: String?
+
+                            for i in 0..<stickerAssestsURL.count {
+                                let imageName = stickerAssestsURL[i]
+
+                                let frameModel = FrameModel(frame: imageName, opacity: 1.0)
+                                frameList.append(frameModel)
+
+                                // Set the category icon as the first frame imageName
+                                if i == 0 {
+                                    categoryIcon = imageName
+                                }
+                            }
+
+
+                            frameCategory.frameList = frameList
+                            frameCategory.categoryIcon = categoryIcon // Assign the icon to the category
+                            self?.categoryList.append(frameCategory)
+
+                            
+//                            var dictionary = [String: Any]()
+//                            dictionary["title"] = category.title
+//                            dictionary["stickerAssestsURL"] = stickerAssestsURL
+//                            self?.frameNameURLData.append(dictionary)
+//                            self?.framesData.append(category.title)
+                        }
+                        
+                        DispatchQueue.main.async {
+                            self?.frameCollectionView.reloadData()
+                        }
+                    }
+                }
+            } else {
+                // handle the case where catalog is nil
+            }
+        }
+        
     }
 
     func createFramesArray(isLandscape: Bool, selectedRatio: CGFloat, isEdit : Bool = false) {
         if isEdit == false {
             selectedCategoryDetail = nil
         }
-        self.categoryList = self.framesManager.getEmoticonDataNew(isLandscape: isLandscape, selectedRatio: selectedRatio)
+        //self.categoryList = self.framesManager.getEmoticonDataNew(isLandscape: isLandscape, selectedRatio: selectedRatio)
     }
 
     private func loadViewFromNib() -> UIView {
@@ -124,7 +202,7 @@ extension FrameView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // Return the number of cells in the table view
         if selectedCategoryDetail == nil {
-            return self.categoryList?.count ?? 0
+            return self.categoryList.count
         } else {
             return selectedCategoryDetail?.frameList?.count ?? 0
         }
@@ -143,11 +221,11 @@ extension FrameView: UICollectionViewDataSource {
             self.constraintsColorWidthBack.constant = 0
 
             // Configure category cells
-            let data = self.categoryList?[indexPath.row]
+            let data = self.categoryList[indexPath.row]
             cell.configure(with: "",
-                           subImage: data?.categoryIcon ?? "",
+                           subImage: data.categoryIcon ?? "",
                            isSubSelected: false,
-                           categoryName: data?.categoryName ?? "")
+                           categoryName: data.categoryName ?? "")
         } else {
             // Configure frame cells within a category
             let data = selectedCategoryDetail?.frameList?[indexPath.row]
@@ -176,7 +254,7 @@ extension FrameView: UICollectionViewDelegate {
             self.constraintsColorWidthBack.constant = 30
 
             // Set selected category
-            selectedCategoryDetail = categoryList?[indexPath.row]
+            selectedCategoryDetail = categoryList[indexPath.row]
             collectionView.reloadData()
 
             // Notify delegate

@@ -35,6 +35,14 @@ import UIKit
 
     var isFunFactScreen = Bool(false)
 
+    @objc var CollageImgHeight = CGFloat(0.0)
+    @objc var copilot_textFrameIds = [String]()
+    @objc var copilot_stickerIds = [String]()
+    @objc var copilot_fontIds = [String]()
+    @objc var refreshView = Bool()
+    @objc var copilot_frameIds = [String]()
+
+    
     func clearImglyCopilot() {
         copilotFrameIds.removeAll()
         copilotStickerIds.removeAll()

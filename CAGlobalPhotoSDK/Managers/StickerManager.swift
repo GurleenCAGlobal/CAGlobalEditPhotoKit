@@ -45,7 +45,7 @@ class StickerManager: NSObject {
     
     func getShapesData() -> [UIImage] {
         let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
-        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)
 
         let stickers = (1...64).compactMap { UIImage(named: "shape\($0)", in: bundle, compatibleWith: nil) }
         return stickers
@@ -53,7 +53,7 @@ class StickerManager: NSObject {
     
     func getEmoticonData() -> [UIImage] {
         let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
-        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)
 
         let stickers = (1...58).compactMap { UIImage(named: "stickerEmoticons\($0)", in: bundle, compatibleWith: nil) }
         return stickers
@@ -61,7 +61,7 @@ class StickerManager: NSObject {
     
     func getBadgesData() -> [UIImage] {
         let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
-        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)
 
         let stickers = (1...15).compactMap { UIImage(named: "stickerShapesBadge\($0)", in: bundle, compatibleWith: nil) }
         return stickers
@@ -69,7 +69,7 @@ class StickerManager: NSObject {
     
     func getArrowData() -> [UIImage] {
         let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
-        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)
 
         let stickers = (1...2).compactMap { UIImage(named: "stickerShapesArrow\($0)", in: bundle, compatibleWith: nil) }
         return stickers
@@ -77,7 +77,7 @@ class StickerManager: NSObject {
     
     func getSprayData() -> [UIImage] {
         let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
-        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)
 
         let stickers = (1...3).compactMap { UIImage(named: "stickerShapesSpray\($0)", in: bundle, compatibleWith: nil) }
         return stickers
@@ -85,7 +85,7 @@ class StickerManager: NSObject {
     
     func natureCategoryStickers() -> [UIImage] {
         let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
-        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)
 
         return [
             UIImage(named: "sun", in: bundle, compatibleWith: nil)!,
@@ -142,7 +142,7 @@ class StickerManager: NSObject {
     
     func sportsCategoryStickers() -> [UIImage] {
         let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
-        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)
 
         return [
             UIImage(named: "Football", in: bundle, compatibleWith: nil)!,
@@ -170,7 +170,7 @@ class StickerManager: NSObject {
     
     func getWellCategoryStickers() -> [UIImage] {
         let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
-        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)
 
         return [
             UIImage(named: "band-aid2", in: bundle, compatibleWith: nil)!,

@@ -70,7 +70,7 @@ extension CAEditViewController {
                     break
                 }
                 let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
-                let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+                let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)
 
                 let finalImage = imageR.applyLUTFilter(LUT: UIImage(named: selectedFilter, in: bundle, compatibleWith: nil)!, volume: Float(self.selectedFilterOpacity))
                 imageBackUp = finalImage
@@ -201,7 +201,7 @@ extension CAEditViewController {
                 selectedFrame = imageName
                 print(imageName)
                 let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
-                let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+                let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)
 
                 let frameImage = UIImage.init(named: imageName, in: bundle, compatibleWith: nil)
                 var newImage = frameImage
@@ -429,59 +429,9 @@ extension CAEditViewController {
     func captureEditImage() {
         let image = getFinalImage()
         finalImage = image
-        UIImageWriteToSavedPhotosAlbum(finalImage, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
-
+        self.customDelegate?.printImage(image: finalImage)
     }
     
-    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-        if let error = error {
-            // we got back an error!
-            let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .default))
-            present(ac, animated: true)
-        } else {
-            let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos.", preferredStyle: .alert)
-            let settingsAction = UIAlertAction(title: "Ok", style: .destructive) { (_) -> Void in
-                if let settingsUrl = URL(string: UIApplication.openSettingsURLString) {
-                    self.navigationController?.popViewController(animated: true)
-                }
-            }
-            ac.addAction(settingsAction)
-            present(ac, animated: true)
-        }
-    }
-    
-    func showSaveToGalleryDialog() {
-        let alert = PNAlertController.alertControllerWith(title: "Save as new photo?".localisedString(), message: "If you do not save you will lose to any new edits you have applied.".localisedString())
-        alert.crossButtonEnabled = true
-
-        let saveToGalleryAction = PNAlertAction(title: "Save to gallery".localisedString(), type: .bold) { _, _ in
-            let notificationName_saveImageToGallery = NSNotification.Name(rawValue: "photoEditViewController.saveImageToGallery")
-            let image = self.getFinalImage()
-            self.finalImage = image
-            UIImageWriteToSavedPhotosAlbum(self.finalImage, self, nil, nil)
-            NotificationCenter.default.post(name: notificationName_saveImageToGallery, object: self.finalImage, userInfo: nil)
-
-            if self.isFromPhotoBooth {
-                self.navigationController?.popViewController(animated: true)
-
-            } else {
-                self.navigationController?.popViewController(animated: true)
-            }
-        }
-        alert.addAction(saveToGalleryAction)
-
-        let doNotSaveAction = PNAlertAction(title: "Do not save".localisedString(), type: .borderd) { _, _ in
-            if self.isFromPhotoBooth {
-                self.navigationController?.popViewController(animated: true)
-            } else {
-                self.navigationController?.popViewController(animated: true)
-            }
-        }
-        alert.addAction(doNotSaveAction)
-        alert.presentFrom(self, completion: nil)
-    }
-
     func getStickerTextImage() -> UIImage {
         let scale = 1.0
         let stickerTextView = stickerTextView.takeScreenshotHD()

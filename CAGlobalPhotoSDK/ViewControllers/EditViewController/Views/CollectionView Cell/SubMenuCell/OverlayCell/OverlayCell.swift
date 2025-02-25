@@ -45,7 +45,7 @@ class OverlayCell: UICollectionViewCell {
             self.overlayLabel.isHidden = false
         } else {
             let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
-            let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+            let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)
 
             self.overlayImageView.image = UIImage.init(named: data, in: bundle, compatibleWith: nil)!
             self.overlayLabel.isHidden = true

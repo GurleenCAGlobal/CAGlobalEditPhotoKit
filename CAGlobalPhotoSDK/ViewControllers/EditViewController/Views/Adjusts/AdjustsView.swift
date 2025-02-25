@@ -93,8 +93,9 @@ class AdjustsView: UIView {
     }
     
     private func initCollectionView() {
-        if let bundlePath = Bundle(for: EditOptionsCell.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle"),
-           let bundle = Bundle(path: bundlePath) {
+        let bundlePath = Bundle(for: EditOptionsCell.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+        let bundle = bundlePath != nil ? Bundle(path: bundlePath!) : nil
+
             
             // Register the NIB from the correct bundle
             let nib = UINib(nibName: "EditOptionsCell", bundle: bundle)
@@ -102,10 +103,13 @@ class AdjustsView: UIView {
             adjustCollectionView.dataSource = self
             adjustCollectionView.delegate = self
 
-        } else {
-            // Handle error if the bundle is not found
-            print("Error: Unable to find CAGlobalPhotoSDKResources.bundle")
-        }
+//        } else {
+//            // Handle error if the bundle is not found
+//            let nib = UINib(nibName: "EditOptionsCell", bundle: nil)
+//            adjustCollectionView.register(nib, forCellWithReuseIdentifier: EditOptionsCell.className)
+//            adjustCollectionView.dataSource = self
+//            adjustCollectionView.delegate = self
+//        }
     }
     
     func updateSliderValues() {

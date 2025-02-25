@@ -218,7 +218,7 @@ class TextView: UIView {
             self.colorButton.backgroundColor = textModel.color
         }
         let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
-        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)
 
         if textModel.alignment == .center {
             self.alignmentButton.setImage(UIImage.init(named: "alignCenter", in: bundle, compatibleWith: nil)!, for: .normal)
@@ -360,7 +360,7 @@ class TextView: UIView {
                         self.colorButton.backgroundColor = txtLbl.textColor
                     }
                     let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
-                    let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+                    let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)
 
                     // Update alignment buttons and notify the delegate
                     if txtLbl.textAlignment == .center {
@@ -526,7 +526,7 @@ class TextView: UIView {
 
     @IBAction func actionAlignment(_ sender: UIButton) {
         let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
-        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)
 
         opacityContainerView.hideView()
         if self.alignmentButton.currentImage?.description.contains("alignLeft") == true {

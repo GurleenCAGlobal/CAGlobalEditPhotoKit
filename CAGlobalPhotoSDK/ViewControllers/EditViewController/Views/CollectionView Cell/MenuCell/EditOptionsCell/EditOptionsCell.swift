@@ -45,24 +45,26 @@ class EditOptionsCell: UICollectionViewCell {
         let options = data
 
         self.nameLabel.text = options.name
-        if let bundlePath = Bundle(for: EditOptionsCell.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle"), let bundle = Bundle(path: bundlePath) {
+        let bundlePath = Bundle(for: EditOptionsCell.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+        let bundle = bundlePath != nil ? Bundle(path: bundlePath!) : nil
+
             let imageName = options.image.lowercased().trimmingCharacters(in: .whitespaces)
             let image = UIImage(named: imageName, in: bundle, compatibleWith: nil)
             self.editImageView.image = image
-        }
+        
         
         
         if options.name == "Paper Length" {
-            if let bundlePath = Bundle(for: EditOptionsCell.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle"), let bundle = Bundle(path: bundlePath) {
+            let bundlePath = Bundle(for: EditOptionsCell.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+            let bundle = bundlePath != nil ? Bundle(path: bundlePath!) : nil
                 let image = UIImage(named: "set length", in: bundle, compatibleWith: nil)
                 self.editImageView.image = image
-            }
         }
         if options.name == "Add Photo" {
-            if let bundlePath = Bundle(for: EditOptionsCell.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle"), let bundle = Bundle(path: bundlePath) {
+            let bundlePath = Bundle(for: EditOptionsCell.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+            let bundle = bundlePath != nil ? Bundle(path: bundlePath!) : nil
                 let image = UIImage(named: "addphoto", in: bundle, compatibleWith: nil)
                 self.editImageView.image = image
-            }
         }
                 
         if isAutoSelect {
@@ -70,7 +72,7 @@ class EditOptionsCell: UICollectionViewCell {
             self.editImageView.tintColor = (UIColor(named: .selectionColor, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!)
             self.nameLabel.textColor = (UIColor(named: .selectionColor, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!)
             let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
-            let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+            let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)
 
             self.editImageView.image = UIImage.init(named: "autoFill", in: bundle, compatibleWith: nil)!
         } else if isRedEyeSelect {
@@ -79,10 +81,10 @@ class EditOptionsCell: UICollectionViewCell {
             self.nameLabel.textColor = (UIColor(named: .selectionColor, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!)
         } else {
             if options.name == "Auto" {
-                if let bundlePath = Bundle(for: EditOptionsCell.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle"), let bundle = Bundle(path: bundlePath) {
+                let bundlePath = Bundle(for: EditOptionsCell.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
+                let bundle = bundlePath != nil ? Bundle(path: bundlePath!) : nil
                     let image = UIImage(named: "auto", in: bundle, compatibleWith: nil)
                     self.editImageView.image = image
-                }
             }
             //self.dotLabel.isHidden = true
             self.editImageView.tintColor = .white
@@ -96,7 +98,7 @@ class EditOptionsCell: UICollectionViewCell {
         let options = data
         self.nameLabel.text = options.name
         let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
-        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+        let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)
 
         let imageName = options.image.lowercased().trimmingCharacters(in: .whitespaces)
         let image = UIImage(named: imageName, in: bundle, compatibleWith: nil)

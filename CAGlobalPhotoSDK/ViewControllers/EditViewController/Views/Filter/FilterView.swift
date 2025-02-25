@@ -162,7 +162,7 @@ extension FilterView: UICollectionViewDataSource {
         cell.delegate = self
         if indexPath.row == 0 {
             let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
-            let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+            let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)
 
             cell.configure(with: "", selectedOverlay: self.selectedFilter, image: UIImage.init(named: "filters", in: bundle, compatibleWith: nil)!)
         } else  {

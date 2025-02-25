@@ -34,9 +34,9 @@ class StickersView: UIView, UINavigationControllerDelegate, UIImagePickerControl
     private(set) var customSticker = [UIImage]()
     private(set) var subStickerData = [UIImage]()
     private(set) var subStickerDataToDisplay = [UIImage]()
-    //private(set) var subCloudsStickerData = [PGCloudAssetImage]()
+    private(set) var subCloudsStickerData = [PGCloudAssetImage]()
     private(set) var subStickersDataApi = [SubStickerModel]()
-    //var stickerCategories = [PGCloudAssetCategory]()
+    var stickerCategories = [PGCloudAssetCategory]()
     
     weak var delegate: StickersViewDelegate?
     var isEdit: Bool?
@@ -167,69 +167,69 @@ class StickersView: UIView, UINavigationControllerDelegate, UIImagePickerControl
              }
          }
          **/
-//        DispatchQueue.global(qos: .background).async { [weak self] in
-//            
-//            let cac = PGCloudAssetClient.sharedInstance()
-//            var catalog = PGCloudAssetCatalog()
-//            if let catalog = cac?.currentCatalog() {
-//                let activePrinterType = PGQueueController.shared().activePrinterType
-//                
-//                self?.stickerCategories = catalog.categories(forAssetType: PGCloudAssetCategoryTypeSticker, andDeviceType: activePrinterType) ?? []
-//                if let stickerCategories = self?.stickerCategories {
-//                    for category in stickerCategories {
-//                        self?.stickerURLData.append(category.thumbnailURL)
-//                        var cloudAssets = [PGCloudAssetImage]()
-//                        cloudAssets = category.sortedImageAssets()
-//                        var stickerThumnailURL = [UIImage]()
-//                        var stickerAssestsURL = [UIImage]()
-//                        for sticker in cloudAssets {
-//                            if sticker.supportsDeviceType(activePrinterType) {
-//                                let localURL = URL(fileURLWithPath: PGCloudAssetClient.sharedInstance().storage.localUrl(forAsset: sticker))
-//                                let localThumbnailURL = URL(fileURLWithPath: PGCloudAssetClient.sharedInstance().storage.localThumbnailUrl(forAsset: sticker))
-//                                _ = sticker.name
-//                                if sticker.name.hasSuffix("_color.png") || sticker.name.hasSuffix("_color") {
-//                                }
-//                                if let image_Data = try? Data(contentsOf: localURL) {
-//                                    let imagephoto = UIImage.init(data: image_Data)!
-//                                    stickerAssestsURL.append(imagephoto)
-//                                }
-//                                
-//                                if let image_Data = try? Data(contentsOf: localThumbnailURL) {
-//                                    let imagephoto = UIImage.init(data: image_Data)!
-//                                    switch UIDevice().type {
-//                                    case .iPhoneSE, .iPhone5, .iPhone5S:
-//                                        stickerThumnailURL.append(imagephoto.resizeSticker(to: CGSize(width: (imagephoto.size.width)/10, height: (imagephoto.size.height)/10))!)
-//                                    case .iPhone6, .iPhone6S:
-//                                        stickerThumnailURL.append(imagephoto.resizeSticker(to: CGSize(width: (imagephoto.size.width)/10, height: (imagephoto.size.height)/10))!)
-//                                    default:
-//                                        stickerThumnailURL.append(imagephoto)
-//                                    }
-//                                }
-//                            }
-//                        }
-//                        if stickerAssestsURL.count > 0 {
-//                            var dictionary = [String: Any]()
-//                            dictionary["title"] = category.title
-//                            dictionary["stickerAssestsURL"] = stickerAssestsURL
-//                            dictionary["stickerThumbnailURL"] = stickerThumnailURL
-//                            self?.stickerNameURLData.append(dictionary)
-//                            self?.stickerData.append(category.title)
-//                            let data2 = self?.stickerNameURLData[0]
-//                            let dictionary2 = data2
-//                            let assestUrl = dictionary2?["stickerThumbnailURL"] as? [UIImage]
-//                            self?.subStickerData = assestUrl ?? []
-//                            let stickerAssestsURL = dictionary2?["stickerAssestsURL"] as? [UIImage]
-//                            self?.subStickerDataToDisplay = stickerAssestsURL ?? []
-//                        }
-//                        DispatchQueue.main.async {
-//                            self?.stickerCollectionView.reloadData()
-//                        }
-//                    }
-//                }
-//            } else {
-//                // handle the case where catalog is nil
-//            }
-//        }
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            
+            let cac = PGCloudAssetClient.sharedInstance()
+            var catalog = PGCloudAssetCatalog()
+            if let catalog = cac?.currentCatalog() {
+                let activePrinterType = PGQueueController.shared().activePrinterType
+                
+                self?.stickerCategories = catalog.categories(forAssetType: PGCloudAssetCategoryTypeSticker, andDeviceType: activePrinterType) ?? []
+                if let stickerCategories = self?.stickerCategories {
+                    for category in stickerCategories {
+                        self?.stickerURLData.append(category.thumbnailURL)
+                        var cloudAssets = [PGCloudAssetImage]()
+                        cloudAssets = category.sortedImageAssets()
+                        var stickerThumnailURL = [UIImage]()
+                        var stickerAssestsURL = [UIImage]()
+                        for sticker in cloudAssets {
+                            if sticker.supportsDeviceType(activePrinterType) {
+                                let localURL = URL(fileURLWithPath: PGCloudAssetClient.sharedInstance().storage.localUrl(forAsset: sticker))
+                                let localThumbnailURL = URL(fileURLWithPath: PGCloudAssetClient.sharedInstance().storage.localThumbnailUrl(forAsset: sticker))
+                                _ = sticker.name
+                                if sticker.name.hasSuffix("_color.png") || sticker.name.hasSuffix("_color") {
+                                }
+                                if let image_Data = try? Data(contentsOf: localURL) {
+                                    let imagephoto = UIImage.init(data: image_Data)!
+                                    stickerAssestsURL.append(imagephoto)
+                                }
+                                
+                                if let image_Data = try? Data(contentsOf: localThumbnailURL) {
+                                    let imagephoto = UIImage.init(data: image_Data)!
+                                    switch UIDevice().type {
+                                    case .iPhoneSE, .iPhone5, .iPhone5S:
+                                        stickerThumnailURL.append(imagephoto.resizeSticker(to: CGSize(width: (imagephoto.size.width)/10, height: (imagephoto.size.height)/10))!)
+                                    case .iPhone6, .iPhone6S:
+                                        stickerThumnailURL.append(imagephoto.resizeSticker(to: CGSize(width: (imagephoto.size.width)/10, height: (imagephoto.size.height)/10))!)
+                                    default:
+                                        stickerThumnailURL.append(imagephoto)
+                                    }
+                                }
+                            }
+                        }
+                        if stickerAssestsURL.count > 0 {
+                            var dictionary = [String: Any]()
+                            dictionary["title"] = category.title
+                            dictionary["stickerAssestsURL"] = stickerAssestsURL
+                            dictionary["stickerThumbnailURL"] = stickerThumnailURL
+                            self?.stickerNameURLData.append(dictionary)
+                            self?.stickerData.append(category.title)
+                            let data2 = self?.stickerNameURLData[0]
+                            let dictionary2 = data2
+                            let assestUrl = dictionary2?["stickerThumbnailURL"] as? [UIImage]
+                            self?.subStickerData = assestUrl ?? []
+                            let stickerAssestsURL = dictionary2?["stickerAssestsURL"] as? [UIImage]
+                            self?.subStickerDataToDisplay = stickerAssestsURL ?? []
+                        }
+                        DispatchQueue.main.async {
+                            self?.stickerCollectionView.reloadData()
+                        }
+                    }
+                }
+            } else {
+                // handle the case where catalog is nil
+            }
+        }
     }
     
     private func initCollectionView() {
@@ -357,7 +357,7 @@ extension StickersView: UICollectionViewDataSource {
             } else {
                 let data = self.stickerData[indexPath.row]
                 let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
-                let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+                let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)
 
                 cell.configure(with: data, subImage:UIImage.init(named: "customSticker", in: bundle, compatibleWith: nil)! , isSubSelected: false)
 
@@ -371,7 +371,7 @@ extension StickersView: UICollectionViewDataSource {
                             cell.configure(with: title, subImage: (assestUrl?[0])!, isSubSelected: false)
                         } else {
                             let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
-                            let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)!
+                            let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)
 
                             cell.configure(with: title, subImage: UIImage.init(named: "load.png", in: bundle, compatibleWith: nil)!, isSubSelected: false)
                         }
