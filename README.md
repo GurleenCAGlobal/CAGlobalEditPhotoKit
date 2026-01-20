@@ -1,4 +1,4 @@
-# CAGlobal Photo Editor SDK - Handover Documentation
+# CAGlobal Photo Editor SDK - Documentation
 
 ## Table of Contents
 1. [Overview](#overview)
