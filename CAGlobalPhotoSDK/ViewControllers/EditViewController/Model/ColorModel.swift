@@ -16,4 +16,10 @@ class ColorModel: NSObject {
     
     // The selected color for the text
     var color = UIColor.white
+    
+    // Index of the selected color in the color options
+    var previousColorIndex = -1
+    
+    // The selected color for the text
+    var previousColor = UIColor.white
 }

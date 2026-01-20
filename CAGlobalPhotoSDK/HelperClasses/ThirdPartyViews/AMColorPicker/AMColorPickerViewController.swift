@@ -19,7 +19,7 @@ public class AMColorPickerViewController: UIViewController, AMColorPicker {
     weak public var delegate: AMColorPickerDelegate?
     public var selectedColor: UIColor = .white
     public var selectedOpacity: CGFloat = 1.0
-
+    public var isBackground = Bool()
     public var isCloseButtonShown: Bool = true {
         didSet {
             closeButton?.isHidden = !isCloseButtonShown
@@ -45,7 +45,8 @@ public class AMColorPickerViewController: UIViewController, AMColorPicker {
     @IBOutlet weak private var cpTableView: AMColorPickerTableView!
     @IBOutlet weak private var cpSliderView: AMColorPickerRGBSliderView!
     @IBOutlet weak private var segment: UISegmentedControl!
-
+    var color = UIColor()
+    var opacity = CGFloat()
     required public init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
     }
@@ -77,6 +78,8 @@ public class AMColorPickerViewController: UIViewController, AMColorPicker {
         cpSliderView.selectedColor = selectedColor
         cpTableView.selectedColor = selectedColor
         cpWheelView.selectedColor = selectedColor
+        self.color = selectedColor
+        self.opacity = selectedOpacity
 
 //        cpSliderView.selectedOpacity = selectedOpacity
 //        cpTableView.selectedOpacity = selectedOpacity
@@ -104,30 +107,29 @@ public class AMColorPickerViewController: UIViewController, AMColorPicker {
     }
     
     @IBAction private func tappedCloseButton(_ sender: UIButton) {
+        delegate?.colorPicker(self, didSelect: self.color, opacity: self.opacity, isBackground: self.isBackground)
         dismiss(animated: true, completion: nil)
     }
 }
 
 extension AMColorPickerViewController: AMColorPickerDelegate {
-    public func colorPicker(_ colorPicker: AMColorPicker, didSelect color: UIColor, opacity: CGFloat) {
+    public func colorPicker(_ colorPicker: any AMColorPicker, didSelect color: UIColor, opacity: CGFloat, isBackground: Bool) {
+        cpSliderView.isBackground = self.isBackground
+        cpWheelView.isBackground = self.isBackground
+        cpTableView.isBackground = self.isBackground
+
         if colorPicker == cpTableView {
             cpSliderView.selectedColor = color
             cpWheelView.selectedColor = color
-//            cpSliderView.selectedOpacity = opacity
-//            cpWheelView.selectedOpacity = opacity
         } else if colorPicker == cpSliderView {
             cpTableView.selectedColor = color
+            cpTableView.isBackground = isBackground
             cpWheelView.selectedColor = color
-//            cpTableView.selectedOpacity = opacity
-//            cpWheelView.selectedOpacity = opacity
-
         } else if colorPicker == cpWheelView {
             cpTableView.selectedColor = color
             cpSliderView.selectedColor = color
-//            cpTableView.selectedOpacity = opacity
-//            cpSliderView.selectedOpacity = opacity
         }
-        
-        delegate?.colorPicker(self, didSelect: color, opacity: opacity)
+        self.color = color
+        self.opacity = opacity
     }
 }

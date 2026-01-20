@@ -174,7 +174,7 @@ open class CanvasCropView: UIView, UIScrollViewDelegate, UIGestureRecognizerDele
     
     func getNewSizeWithDimensionLimit(limit:CGFloat,ratio:CGFloat) -> CGSize {
         
-        let printSize = CanvasRatioManager.shared.getSizeAccordingPrintWidth(ratio: ratio)
+        let printSize = CGSizeMake(0, 0)
         
         var divideValue = 5.5
         var size = CGSize()
@@ -527,7 +527,7 @@ extension CanvasCropView {
     }
     
     //** Size calculation using ratio with respect to device size
-    func calculteCanvasSize(aspectRatio: CGFloat, width: CGFloat?, height:CGFloat?, orienationaChange:Bool){
+    func calculteCanvasSize(aspectRatio: CGFloat, width: CGFloat?, height:CGFloat?, orienationaChange:Bool,contentMode:UIImageView.ContentMode?=nil){
         isRulerImgFitForLessThanDefault = false
         if let width = width {
             //Portrait
@@ -546,17 +546,11 @@ extension CanvasCropView {
         
         layoutOverlayViewsWithCropRect(viewWhiteCanvas.frame)
         if orienationaChange && (!isPositionChange && zoomScale == nil) {
-            setupImgViewAgainForCanvasSizeChange(contentMode: .scaleAspectFit, orienationaChange:orienationaChange)
-            print("dsdsd")
+            setupImgViewAgainForCanvasSizeChange(contentMode: contentMode ?? .scaleAspectFit, orienationaChange:orienationaChange)
         } else {
-            print("dddd")
             if orienationaChange == true {
-                setupImgViewAgainForCanvasSizeChange(contentMode: .scaleAspectFit, orienationaChange:orienationaChange)
-                print("vvv")
-
+                setupImgViewAgainForCanvasSizeChange(contentMode: contentMode ?? .scaleAspectFit, orienationaChange:orienationaChange)
             } else {
-                print("ffff")
-
                 viewWhiteCanvas.center = self.viewMain.center
                 viewImageGesture.frame = viewWhiteCanvas.frame
                 viewImageGesture.center = self.viewMain.center

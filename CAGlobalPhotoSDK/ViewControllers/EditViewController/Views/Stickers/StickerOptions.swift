@@ -12,17 +12,22 @@ protocol StickerOptionsDelegate: AnyObject {
      Called when the user starts changing the opacity of the text
      */
     func opacityWillStart(_: StickerOptions, isOpen: Bool)
-
+    
     /*
      Called when the user starts changing the opacity of the text
      */
     func opacityDidStart(_: StickerOptions, sliderValue: CGFloat)
-
+    
+    /*
+     Called when the user starts changing the opacity of the text
+     */
+    func opacityDidEnd(_: StickerOptions, sliderValue: CGFloat)
+    
     /*
      Called when the user starts the opacity of the text
      */
     func opacityClicked(isOpacity: Bool)
-
+    
     /*
      Called when the user to replace Sticker
      */
@@ -41,7 +46,7 @@ protocol StickerOptionsDelegate: AnyObject {
      Called when the user to apply colors
      */
     func applyColor(_: StickerOptions, colorModel: ColorModel)
-
+    
     /*
      Called when the user wants further colors
      */
@@ -61,7 +66,7 @@ protocol StickerOptionsDelegate: AnyObject {
      Called when the user to remove background color
      */
     func removeBackgroundFromImage()
-
+    
     /*
      Called when the user to unremove background color
      */
@@ -71,51 +76,73 @@ protocol StickerOptionsDelegate: AnyObject {
      Called when the user to remove pick color
      */
     func backButtonColor()
+    
+    /*
+     Called when the user wants further colors
+     */
+    func setFurtherColorSticker(color: UIColor, opacity: CGFloat)
+    
+    /*
+     Called when the user to remove pick color
+     */
+    func colorPickerSticker()
+    
+    /*
+     Called when the user to apply colors and font name
+     */
+    func selectColorAndSticker(_: StickerOptions, textModel: ColorModel)
+
 }
 
 class StickerOptions: UIView {
     
-
+    
     // MARK: Outlets
     
     // This outlet represents to the main view in the interface builder
     @IBOutlet weak var mainView: UIView!
-
+    
     // This outlet represents to the collection view for selecting colors
     @IBOutlet weak var colorCollectionView: UICollectionView!
-
+    
     // This outlet represents to the container view for displaying color options
     @IBOutlet weak var colorContainerView: UIView!
-
+    
     // This outlet represents to the container view for displaying opacity options
     @IBOutlet weak var opacityContainerView: UIView!
-
+    
     // This outlet represents to the container view for displaying general options
     @IBOutlet weak var optionContainerView: UIView!
-
+    
     // This outlet represents to the container view for displaying general options
     @IBOutlet weak var colorView: UIView!
     
     // This outlet represents to the button used for color selection
     @IBOutlet weak var colorButton: UIButton!
-
+    
     // This outlet represents to the button used for font selection
     @IBOutlet weak var fontButton: UIButton!
-
+    
     // This outlet represents to the slider used for stickers opacity
     @IBOutlet weak var opacitySlider: UISlider!
     
     // This outlet represents the height of Opacity
     @IBOutlet weak var constraintsOpacityHeight: NSLayoutConstraint!
-
+    
     // This outlet represents to the container view for picker color
     @IBOutlet weak var colorPickerView: UIView!
     
     // This outlet represents to the button used for color options selection
     @IBOutlet weak var colorOptionButton: UIButton!
-
+    
     // This outlet represents to the container view for background remover
     @IBOutlet weak var removeBackgroundButton: UIButton!
+    
+    // This outlet represents to the image used for color wheel selection
+    @IBOutlet weak var colorWheelImage: UIImageView!
+
+    // This outlet represents to the image used for color wheel selection
+    @IBOutlet weak var colorWheelSelectedImage: UIImageView!
 
     // MARK: Initialization
     weak var delegate: StickerOptionsDelegate?
@@ -123,7 +150,7 @@ class StickerOptions: UIView {
     private(set) var colorData = [UIColor]()
     var colorModel = ColorModel()
     var indexSelection = Int()
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.nibSetup()
@@ -151,14 +178,32 @@ class StickerOptions: UIView {
         self.colorCollectionView.dataSource = self
         self.colorCollectionView.delegate = self
         self.constraintsOpacityHeight.constant = 0
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(removeBackground), name: NSNotification.Name("handleBackgroundUpdate"), object: nil)
+        
+        
     }
     
     // MARK: Setup Methods
+    
+    
     
     func setUpViews() {
         self.colorContainerView.isHidden = true
         self.opacityContainerView.isHidden = true
         self.optionContainerView.isHidden = false
+    }
+    
+    func setUpColor(color: UIColor, model: ColorModel) {
+        self.colorPickerView.backgroundColor = .black
+        self.colorButton.backgroundColor = color
+        self.colorCollectionView.reloadData()
+    }
+    
+    func setUpPickerColor(color: UIColor, model: ColorModel) {
+        self.colorPickerView.backgroundColor = color
+        self.colorButton.backgroundColor = color
+        self.colorCollectionView.reloadData()
     }
     
     func setUpData(views : [UIView], stickerSelection: String, isFromGallery:Bool?=false,isImageDepth:Bool?=false,isBackgroundRemoved:Bool?=false) {
@@ -171,7 +216,6 @@ class StickerOptions: UIView {
             self.colorView.isHidden = true
             let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
             let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)
-
             if isBackgroundRemoved ?? false {
                 self.removeBackgroundButton.setImage(UIImage.init(named: "removeBackground", in: bundle, compatibleWith: nil)!, for: .normal)
             } else {
@@ -183,11 +227,17 @@ class StickerOptions: UIView {
                 self.removeBackgroundButton.isHidden = true
             }
         } else {
-            if stickerSelection == "customSticker" || stickerSelection == "emo" || stickerSelection == "cloud" {
-                self.colorView.isHidden = true
+            self.colorView.isHidden = true
+
+
+            if stickerSelection == "shapes" || stickerSelection == "customSticker" || stickerSelection == "emo" || stickerSelection == "fff" {
+                self.colorView.isHidden = false
                 self.removeBackgroundButton.isHidden = true
             }
-            
+            //            if stickerSelection == "customSticker" || stickerSelection == "emo" || stickerSelection == "cloud" {
+            //                self.colorView.isHidden = true
+            //                self.removeBackgroundButton.isHidden = true
+            //            }
             for _ in stickersFromApi {
                 if stickerSelection == "api" {
                     self.colorView.isHidden = true
@@ -201,16 +251,28 @@ class StickerOptions: UIView {
             if subview is AddSticker {
                 if let addSticker = subview as? AddSticker {
                     if addSticker.isSelected {
+                        self.colorWheelSelectedImage.backgroundColor = nil
+                        self.colorWheelImage.image = UIImage(named: "colorWheel")
+                        self.colorPickerView.backgroundColor = .clear
+                        self.colorOptionButton.hideView()
+                        if addSticker.selectedColorIndex == 100 {
+                            print("100")
+                            self.colorPickerView.backgroundColor = addSticker.tintColor
+                            self.colorOptionButton.showView()
+                        } else if addSticker.selectedColorIndex == 101 {
+                            self.colorWheelImage.image = UIImage(named: "Color Wheel - Selected")
+                            self.colorWheelSelectedImage.backgroundColor = addSticker.tintColor
+                        } else {
+                            print("1")
+                        }
                         self.opacitySlider.value = Float(addSticker.alpha)
                         self.colorButton.backgroundColor = addSticker.tintColor
-                        if self.colorOptionButton.isHidden == false {
-                            self.colorPickerView.backgroundColor = addSticker.tintColor
-                        }
+                        self.colorModel.color = addSticker.tintColor ?? UIColor.white
+                        self.colorModel.selectedColorIndex = addSticker.selectedColorIndex
                     }
                 }
             }
         }
-
     }
     
     func updatingColor(views : [UIView]) {
@@ -251,13 +313,11 @@ class StickerOptions: UIView {
     
     @IBAction func actionOnTopSticker(_ sender: Any) {
         self.delegate?.onTopSticker(self)
-
     }
-
+    
     @IBAction func actionOnRemoveBackground(_ sender: Any) {
         let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
         let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)
-
         if isButtonImageEqual(to: "unremoveBackground") {
             self.removeBackgroundButton.setImage(UIImage.init(named: "removeBackground", in: bundle, compatibleWith: nil)!, for: .normal)
             self.delegate?.removeBackgroundFromImage()
@@ -265,8 +325,18 @@ class StickerOptions: UIView {
             self.removeBackgroundButton.setImage(UIImage.init(named: "unremoveBackground", in: bundle, compatibleWith: nil)!, for: .normal)
             self.delegate?.unremoveBackgroundFromImage()
         }
+        
     }
-
+    
+    @objc func removeBackground(){
+        if isButtonImageEqual(to: "unremoveBackground") {
+            self.removeBackgroundButton.setImage(UIImage.init(named: "removeBackground"), for: .normal)
+            self.delegate?.removeBackgroundFromImage()
+        } else {
+            self.removeBackgroundButton.setImage(UIImage.init(named: "unremoveBackground"), for: .normal)
+            self.delegate?.unremoveBackgroundFromImage()
+        }
+    }
     func isButtonImageEqual(to imageName: String) -> Bool {
         // Get the current image of the button
         guard let currentImage = removeBackgroundButton.image(for: .normal) else {
@@ -284,7 +354,7 @@ class StickerOptions: UIView {
         // Compare the images
         return currentImage.isEqual(comparisonImage)
     }
-
+    
     @IBAction func actionColorClicked(_ sender: Any) {
         self.indexSelection = -1
         self.colorContainerView.isHidden = false
@@ -309,6 +379,10 @@ class StickerOptions: UIView {
         self.delegate?.opacityClicked(isOpacity: self.opacityContainerView.isHidden)
     }
     
+    @IBAction func actionSliderValueEnd(_ sender: UISlider) {
+        self.delegate?.opacityDidEnd(self, sliderValue: CGFloat(sender.value))
+    }
+    
     @IBAction func actionSliderValue(_ sender: UISlider) {
         self.delegate?.opacityDidStart(self, sliderValue: CGFloat(sender.value))
     }
@@ -323,13 +397,33 @@ class StickerOptions: UIView {
     @IBAction func colorpicker(_ sender: Any) {
         self.indexSelection = -1
         self.delegate?.pickColorFromStickers(callBack: {[weak self] value in
-            self?.updateFontColor(color: value)
-            self?.colorPickerView.backgroundColor = value
+            self?.updateFontColor(color: value.color)
+            self?.colorPickerView.backgroundColor = value.color
             self?.colorOptionButton.showView()
-            self?.colorModel.selectedColorIndex = 100
-            self?.colorModel.isColor = true
+            self?.colorModel.selectedColorIndex = value.selectedColorIndex
+            self?.colorModel.isColor = value.isColor
             self?.colorCollectionView.reloadData()
+            self?.colorWheelSelectedImage.backgroundColor = nil
+            self?.colorWheelImage.image = UIImage(named: "colorWheel")
         })
+    }
+    
+    @IBAction func wheelColorpicker(_ sender: Any) {
+        self.indexSelection = -1
+        self.delegate?.setFurtherColorSticker(color: self.colorModel.color, opacity: CGFloat(self.opacitySlider.value))
+
+
+        self.colorWheelImage.image = UIImage(named: "Color Wheel - Selected")
+        self.colorWheelSelectedImage.backgroundColor = self.colorModel.color
+        //self.colorPickerView.backgroundColor = self.textModel.color
+        self.colorOptionButton.hideView()
+        self.colorModel.selectedColorIndex = 101
+        self.colorModel.isColor = true
+        self.colorPickerView.backgroundColor = .clear
+        self.delegate?.colorPickerSticker()
+        self.delegate?.selectColorAndSticker(self, textModel: colorModel)
+      //  self.colorWheelSelectedImage.backgroundColor = self.colorButton.backgroundColor
+
     }
     
     func updateFontColor(color: UIColor) {
@@ -372,15 +466,17 @@ extension StickerOptions: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if self.indexSelection == indexPath.row {
-            self.delegate?.setFurtherColorSticker(color: self.colorButton.backgroundColor!)
-        } else {
             let cell = collectionView.cellForItem(at: indexPath) as? TextColorCell
             let data = self.colorData[indexPath.row]
             self.indexSelection = indexPath.row
             cell?.handleSelectionSticker(with: data, colorModel: colorModel)
             self.colorOptionButton.hideView()
-        }
+            self.colorWheelSelectedImage.backgroundColor = nil
+            self.colorWheelImage.image = UIImage(named: "colorWheel")
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 38, height: 56)
     }
 }
 
@@ -388,7 +484,7 @@ extension StickerOptions: TextColorCellDelegate {
     func didSelectCellSticker(with data: UIColor, colorModel: ColorModel) {
         colorModel.isColor = true
         colorModel.color = data
-        colorModel.selectedColorIndex = self.colorModel.selectedColorIndex
+        colorModel.selectedColorIndex = self.indexSelection
         self.colorButton.backgroundColor = data
         self.colorCollectionView.reloadData()
         self.delegate?.applyColor(self, colorModel: colorModel)

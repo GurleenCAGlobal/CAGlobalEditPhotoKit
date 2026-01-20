@@ -17,7 +17,7 @@ extension CAEditViewController {
         newView.brightness = Float(self.arrayBrightnesSliderSavedValues.last ?? 0.0)
         newView.contrast = Float(self.arrayContrastSliderSavedValues.last ?? 1.0)
         newView.saturation = Float(self.arraySaturationSliderSavedValues.last ?? 1.0)
-        newView.temperature = Float(self.arrayTemperatureSliderSavedValues.last ?? 0.0)
+        newView.temperature = Float(self.arrayTemperatureSliderSavedValues.last ?? 1.0)
         newView.exposure = Float(self.arrayExposureSliderSavedValues.last ?? 0.50)
         newView.updateSliderValues()
         self.bottomView.addSubview(newView)
@@ -31,9 +31,10 @@ extension CAEditViewController: AdjustsViewDelegate {
         self.arrayContrastSliderValues.append(CGFloat(1.0))
         self.arrayBrightnesSliderValues.append(CGFloat(0.0))
         self.arraySaturationSliderValues.append(CGFloat(1.0))
-        
+        self.arrayTemperatureSliderValues.append(CGFloat(1.0))
+
         imageTransform = imageOrignalBackUp
-        self.mainImageView.image = self.applyingAllFilters()
+        self.mainImageView.image = self.applyingAllFilters(false, true, false, false)
 
 //        if adjustSelection == .temperature {
 //        } else if adjustSelection == .saturation {
@@ -54,52 +55,50 @@ extension CAEditViewController: AdjustsViewDelegate {
     }
     
     func selectedAdjustment(_ sender: UISlider, adjustSelection: AdjustSelection) {
+        
         self.adjustSelection = adjustSelection
         if adjustSelection == .temperature {
             self.arrayTemperatureSliderValues.append(CGFloat(sender.value))
-            self.mainImageView.image = self.applyingAllFilters()
+            self.mainImageView.image = self.applyingAllFilters(false, true, false, false)
         } else if adjustSelection == .saturation {
             self.arraySaturationSliderValues.append(CGFloat(sender.value))
-            self.mainImageView.image = self.applyingAllFilters()
+            self.mainImageView.image = self.applyingAllFilters(false, true, false, false)
         } else if adjustSelection == .contrast {
             self.arrayContrastSliderValues.append(CGFloat(sender.value))
-            self.mainImageView.image = self.applyingAllFilters()
+            self.mainImageView.image = self.applyingAllFilters(false, true, false, false)
         } else if adjustSelection == .brightness {
             self.arrayBrightnesSliderValues.append(CGFloat(sender.value))
-            self.mainImageView.image = self.applyingAllFilters()
+            self.mainImageView.image = self.applyingAllFilters(false, true, false, false)
         } else if adjustSelection == .exposure {
             self.arrayExposureSliderValues.append(CGFloat(sender.value))
-            self.mainImageView.image = self.applyingAllFilters()
+            self.mainImageView.image = self.applyingAllFilters(false, true, false, false)
         }
         self.saveCrossView.showView()
         self.doneButton.isHidden = false
     }
     
     func applyAdjust() {
-        self.option.isAdjust = false
-        if self.arrayTemperatureSliderSavedValues.last != 0 {
-            self.option.isAdjust = true
+        
+        if self.arrayTemperatureSliderSavedValues.last != nil {
+            self.mainImageView.image = self.applyingAllFilters() // for auto
         }
         if self.arraySaturationSliderValues.last != 1 {
-            self.option.isAdjust = true
+            self.mainImageView.image = self.applyingAllFilters() // for auto
         }
         if self.arrayContrastSliderValues.last != 1 {
-            self.option.isAdjust = true
+            self.mainImageView.image = self.applyingAllFilters() // for auto
         }
         if self.arrayBrightnesSliderValues.last != 0 {
-            self.option.isAdjust = true
+            self.mainImageView.image = self.applyingAllFilters() // for auto
         }
-        if self.arrayExposureSliderValues.last != 0.5 {
-            self.option.isAdjust = true
+        if self.arrayExposureSliderValues.last != nil {
+            self.mainImageView.image = self.applyingAllFilters() // for auto
         }
-        self.arrayTemperatureSliderSavedValues.append(self.arrayTemperatureSliderValues.last ?? 0.0)
+        self.arrayTemperatureSliderSavedValues.append(self.arrayTemperatureSliderValues.last ?? 1.0)
         self.arraySaturationSliderSavedValues.append(self.arraySaturationSliderValues.last ?? 1.0)
         self.arrayContrastSliderSavedValues.append(self.arrayContrastSliderValues.last ?? 1.0)
         self.arrayBrightnesSliderSavedValues.append(self.arrayBrightnesSliderValues.last ?? 0.0)
         self.arrayExposureSliderSavedValues.append(self.arrayExposureSliderValues.last ?? 0.50)
-        self.addFilterUndoArray()
-        self.undoButton.isHidden = false
-        self.redoButton.isHidden = false
     }
     
     func resetAdjust() {
@@ -108,7 +107,8 @@ extension CAEditViewController: AdjustsViewDelegate {
         self.arrayContrastSliderValues.removeAll()
         self.arrayBrightnesSliderValues.removeAll()
         self.arrayExposureSliderValues.removeAll()
-        self.arrayTemperatureSliderValues.append(self.arrayTemperatureSliderSavedValues.last ?? 0.0)
+        
+        self.arrayTemperatureSliderValues.append(self.arrayTemperatureSliderSavedValues.last ?? 1.0)
         self.arraySaturationSliderValues.append(self.arraySaturationSliderSavedValues.last ?? 1.0)
         self.arrayContrastSliderValues.append(self.arrayContrastSliderSavedValues.last ?? 1.0)
         self.arrayBrightnesSliderValues.append(self.arrayBrightnesSliderSavedValues.last ?? 0.0)

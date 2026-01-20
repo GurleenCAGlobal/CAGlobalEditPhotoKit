@@ -63,6 +63,41 @@ public class BaseViewController: UIViewController {
     }
     
     // Apply auto enhancement to the image
+
+    func applyAutoEnhancement(to image: UIImage) -> UIImage? {
+        guard let ciImage = CIImage(image: image) else { return nil }
+
+        // Parameters (similar to Kotlin)
+        let brightness: Float = 0.1       // 10% boost (range -1 to 1)
+        let contrast: Float = 1.15        // 15% boost
+        let saturation: Float = 1.2       // 20% boost
+        let temperature: Float = 30       // Range: -100 to +100
+
+        // Apply brightness, contrast, saturation
+        let colorControlsFilter = CIFilter(name: "CIColorControls")
+        colorControlsFilter?.setValue(ciImage, forKey: kCIInputImageKey)
+        colorControlsFilter?.setValue(saturation, forKey: kCIInputSaturationKey)
+        colorControlsFilter?.setValue(contrast, forKey: kCIInputContrastKey)
+        colorControlsFilter?.setValue(brightness, forKey: kCIInputBrightnessKey)
+
+
+        guard let colorAdjustedImage = colorControlsFilter?.outputImage else { return nil }
+
+        // Apply temperature (white balance)
+        let tempFilter = CIFilter(name: "CITemperatureAndTint")
+        tempFilter?.setValue(colorAdjustedImage, forKey: kCIInputImageKey)
+
+        guard let outputImage = tempFilter?.outputImage else { return nil }
+
+        // Render final image
+        let context = CIContext()
+        if let cgImage = context.createCGImage(outputImage, from: outputImage.extent) {
+            return UIImage(cgImage: cgImage)
+        }
+
+        return nil
+    }
+
     func autoEnhance(image: UIImage, all: Bool = false, isRedEye: Bool) -> UIImage? {
         if var ciImage = CIImage(image: image) {
             let dictionary = [CIImageAutoAdjustmentOption.redEye: isRedEye]
@@ -133,16 +168,18 @@ public class BaseViewController: UIViewController {
     }
     
     // Calculate the height required for a given text with a specific font and width
-    func heightForView(text: String, font: UIFont, width: CGFloat) -> CGFloat {
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
+    func heightForText(text: String, font: UIFont, maxWidth: CGFloat) -> CGSize {
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: maxWidth, height: CGFloat.greatestFiniteMagnitude))
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.font = font
         label.text = text
-        
         label.sizeToFit()
-        return label.frame.height
+
+        // Return the actual size it fits in
+        return label.bounds.size
     }
+
     
     // Get the rotation value from a given transform
     func rotation(from transform: CGAffineTransform) -> Double {
@@ -324,40 +361,49 @@ public class BaseViewController: UIViewController {
         view.insertSubview(blurEffectView, at: 0)
     }
 
-    func sizeForView(text: String, font: UIFont, maxSize: CGSize? = nil, forTransform: Bool = false) -> (CGSize, Bool) {
-        let label = UILabel()
+    func sizeForView(text: String, font: UIFont, maxSize: CGSize? = nil, forTransform: Bool = false, padding: CGFloat = 20.0) -> (CGSize, Bool) {
+        // Create an instance of the custom PaddedLabel
+        let label = PaddedLabel()
+        label.padding = UIEdgeInsets(top: 0, left: padding, bottom: 0, right: padding) // Set padding values for left and right
         label.numberOfLines = 0
+        label.textAlignment = .left // Adjust alignment as needed
         label.lineBreakMode = .byWordWrapping
         label.font = font
         label.text = text
 
+        // Check for maximum size constraints
         if let maxSize = maxSize {
             // Constrain to maxSize if provided
             label.frame = CGRect(x: 0, y: 0, width: maxSize.width, height: maxSize.height)
             label.sizeToFit()
-            let width = min(label.frame.width, maxSize.width)
-            let height = min(label.frame.height, maxSize.height)
 
-            if height > (maxSize.height - 20) {
+            // Adjust width and height based on padding and maxSize
+            let width = min(label.frame.width, maxSize.width) + label.padding.left + label.padding.right
+            let height = min(label.frame.height, maxSize.height) + label.padding.top + label.padding.bottom
+
+            // Ensure that the label fits within the max size
+            if height > (maxSize.height - padding) {
                 return (CGSize(width: width, height: height), false)
             }
+
+            // Return the size with padding applied
             return (CGSize(width: width, height: height), true)
         } else {
-            // Dynamic sizing for transform or unconstrained use
+            // No max size, dynamically calculate size
             label.sizeToFit()
-            let width = label.frame.width
-            let height = label.frame.height
+            let width = label.frame.width + label.padding.left + label.padding.right
+            let height = label.frame.height + label.padding.top + label.padding.bottom
 
+            // Apply padding for transform scenario
             if forTransform {
-                if height > 20 {
-                    return (CGSize(width: width, height: height), false)
-                }
-                return (CGSize(width: width, height: height), true)
-            } else {
-                return (CGSize(width: width, height: height), true)
+                return (CGSize(width: width, height: height), false)
             }
+
+            // Return the size with padding applied normally
+            return (CGSize(width: width, height: height), true)
         }
     }
+
 
     
 //    func sizeForView(text: String, font: UIFont, maxSize: CGSize) -> (CGSize,Bool) {
@@ -395,4 +441,20 @@ public class BaseViewController: UIViewController {
 
 
     
+}
+
+class PaddedLabel: UILabel {
+    var padding = UIEdgeInsets.zero
+
+    override func drawText(in rect: CGRect) {
+        let insetRect = rect.inset(by: padding)
+        super.drawText(in: insetRect)
+    }
+
+    override var intrinsicContentSize: CGSize {
+        let size = super.intrinsicContentSize
+        let width = size.width + padding.left + padding.right
+        let height = size.height + padding.top + padding.bottom
+        return CGSize(width: width, height: height)
+    }
 }

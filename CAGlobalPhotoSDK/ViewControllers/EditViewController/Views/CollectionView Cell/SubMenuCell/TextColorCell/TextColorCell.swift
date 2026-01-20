@@ -14,13 +14,13 @@ protocol TextColorCellDataSource: AnyObject {
 
 // Define a protocol for the cell's delegate
 protocol TextColorCellDelegate: AnyObject {
-    func didSelectCell(with data: UIColor, textModel: TextModel)
+    func didSelectCell(with data: UIColor, textModel: TextModel, isTextColor: Bool)
     func didSelectCellBrush(with data: UIColor, colorModel: ColorModel)
     func didSelectCellSticker(with data: UIColor, colorModel: ColorModel)
 }
 
 extension TextColorCellDelegate {
-    func didSelectCell(with data: UIColor, textModel: TextModel) {
+    func didSelectCell(with data: UIColor, textModel: TextModel, isTextColor: Bool) {
         
     }
     
@@ -41,6 +41,9 @@ class TextColorCell: UICollectionViewCell {
     /// The view representing the color.
     @IBOutlet weak var colorView: UIView!
     
+    /// The view representing the color.
+    @IBOutlet weak var noColorView: UIView!
+    
     /// The button used to select the color.
     @IBOutlet weak var selectedButton: UIButton!
     
@@ -49,6 +52,8 @@ class TextColorCell: UICollectionViewCell {
     weak var delegate: TextColorCellDelegate?
       
     func configure(with data: UIColor, textModel: TextModel, isSelect: Bool, isPrevious: Bool) {
+        self.noColorView.isHidden = true
+        self.colorView.isHidden = false
         // Set the background color of the colorView
         self.colorView.backgroundColor = data
         self.selectedButton.isHidden = true
@@ -64,8 +69,8 @@ class TextColorCell: UICollectionViewCell {
     }
 
     // Handle user interaction
-    func handleSelection(with data: UIColor, textModel: TextModel) {
-        delegate?.didSelectCell(with: data, textModel: textModel)
+    func handleSelection(with data: UIColor, textModel: TextModel, isTextColor: Bool = true) {
+        delegate?.didSelectCell(with: data, textModel: textModel, isTextColor: isTextColor)
     }
     
     func handleSelectionBrush(with data: UIColor, colorModel: ColorModel) {

@@ -96,7 +96,7 @@ extension StateRestorable where Self: CropperViewController {
 }
 
 extension StateRestorable where Self: CAEditViewController {
-    public func isCurrentlyInState(_ state: CropperState?) -> Bool {
+    internal func isCurrentlyInState(_ state: CropperState?) -> Bool {
         guard let state = state else { return false }
         let epsilon: CGFloat = 0.0001
 
@@ -122,7 +122,7 @@ extension StateRestorable where Self: CAEditViewController {
         return false
     }
 
-    public func saveState() -> CropperState {
+    internal func saveState() -> CropperState {
         let cs = CropperState(viewFrame: self.transformMainView.bounds,
                               angle: totalAngle,
                               rotationAngle: rotationAngle,
@@ -146,7 +146,7 @@ extension StateRestorable where Self: CAEditViewController {
         return cs
     }
 
-    public func restoreState(_ state: CropperState, animated: Bool = false) {
+    internal func restoreState(_ state: CropperState, animated: Bool = false) {
         let animationsBlock = { () -> Void in
             self.rotationAngle = state.rotationAngle
             self.straightenAngle = state.straightenAngle
@@ -181,6 +181,24 @@ extension StateRestorable where Self: CAEditViewController {
             } else {
                 self.scrollViewContainer.transform = CGAffineTransformIdentity
             }
+        }
+
+        if animated {
+            UIView.animate(withDuration: 0.25, animations: animationsBlock)
+        } else {
+            animationsBlock()
+        }
+    }
+    
+    internal func restoreStateScroll(_ state: CropperState, animated: Bool = false) {
+        let animationsBlock = { () -> Void in
+            self.scrollView.minimumZoomScale = state.scrollViewMinimumZoomScale
+            self.scrollView.maximumZoomScale = state.scrollViewMaximumZoomScale
+            self.scrollView.zoomScale = state.scrollViewZoomScale
+            self.scrollView.transform = state.scrollViewTransform
+            self.scrollView.bounds = state.scrollViewBounds
+            self.scrollView.contentOffset = state.scrollViewContentOffset
+            self.scrollView.center = state.scrollViewCenter
         }
 
         if animated {

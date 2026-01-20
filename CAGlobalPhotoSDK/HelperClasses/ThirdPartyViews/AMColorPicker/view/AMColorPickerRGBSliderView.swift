@@ -27,6 +27,7 @@ public class AMColorPickerRGBSliderView: XibLioadView, AMColorPicker {
             displayColor(selectedColor)
         }
     }
+    public var isBackground: Bool = false
 
     override public var bounds: CGRect {
         didSet {
@@ -110,7 +111,7 @@ public class AMColorPickerRGBSliderView: XibLioadView, AMColorPicker {
     // MARK: - SetColor
     private func didSelect(color: UIColor) {
         selectedColor = color
-        delegate?.colorPicker(self, didSelect: color, opacity: CGFloat(opacitySlider.value) / 100.0)
+        delegate?.colorPicker(self, didSelect: color, opacity: CGFloat(opacitySlider.value) / 100.0, isBackground: isBackground)
     }
     
     private func setSliderColor(color: UIColor) {

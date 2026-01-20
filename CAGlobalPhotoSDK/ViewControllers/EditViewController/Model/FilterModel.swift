@@ -14,5 +14,5 @@ struct FilterModel: Decodable {
     let name: String
     
     // The image associated with the filter
-    let image: String
+    var image: String
 }

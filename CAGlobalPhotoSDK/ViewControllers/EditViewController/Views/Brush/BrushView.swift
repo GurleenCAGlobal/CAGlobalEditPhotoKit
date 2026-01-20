@@ -101,9 +101,19 @@ class BrushView: UIView {
     
     // This outlet represents to the button used for color options selection
     @IBOutlet weak var colorOptionButton: UIButton!
-    
+
+    // This outlet represents to the button used for color wheel selection
+    @IBOutlet weak var colorWheelButton: UIButton!
+
+    // This outlet represents to the image used for color wheel selection
+    @IBOutlet weak var colorWheelImage: UIImageView!
+
+    // This outlet represents to the image used for color wheel selection
+    @IBOutlet weak var colorWheelSelectedImage: UIImageView!
+
     private var colorManager = ColorManager()
     private(set) var colorData = [UIColor]()
+    let strokesArray = [#imageLiteral(resourceName: "line 1"), #imageLiteral(resourceName: "line 2"), #imageLiteral(resourceName: "line 3"), #imageLiteral(resourceName: "line 4"), #imageLiteral(resourceName: "line 5")]
     var drawingView: DrawingView?
 
     weak var delegate: BrushViewDelegate?
@@ -135,7 +145,6 @@ class BrushView: UIView {
         selectedIndexPath = IndexPath(row: 20, section: 0)
        // self.colorButton.backgroundColor = colorData[0]
         initCollectionView()
-        
     }
     
     private func loadViewFromNib() -> UIView {
@@ -158,29 +167,41 @@ class BrushView: UIView {
         collectionView.dataSource = self
         collectionView.delegate = self
     }
-    
+
     func setupUI() {
         originalSharpness = CGFloat(sharpnessSlider.value)
-
         self.brushSizeLabel.layer.cornerRadius = CGFloat(widthSlider.value)
         self.sharpnessColorLbl.layer.masksToBounds = true
         self.brushSizeLabel.layer.masksToBounds = true
         self.widthConstraints.constant = CGFloat(widthSlider.value * 2)
         self.heightConstraints.constant = CGFloat(widthSlider.value * 2)
         self.brushSizeLabel.backgroundColor = self.colorButton.backgroundColor
-
         self.brushTransparencyLabel.alpha = CGFloat(opacitySlider.value)
         self.sharpnessColorLbl.layer.cornerRadius = 12
         self.brushTransparencyLabel.backgroundColor = self.colorButton.backgroundColor
         self.sharpnessColorLbl.backgroundColor = self.colorButton.backgroundColor
         self.sharpnessSlider.semanticContentAttribute = .forceRightToLeft
-        if self.colorButton.backgroundColor == UIColor(named: .blackColorName, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil) {
-            let indexPath1: IndexPath?
-            indexPath1 = IndexPath.init(row: colorData.count - 1, section: 0)
-            collectionView.scrollToItem(at: indexPath1!, at: .left, animated: true)
-        }
-        self.collectionView.reloadData()
+        if colorModel.selectedColorIndex == 100 {
+            self.colorPickerView.backgroundColor = self.colorButton.backgroundColor
+            self.colorWheelSelectedImage.backgroundColor = nil
+            self.colorWheelImage.image = UIImage(named: "colorWheel")
+            self.colorOptionButton.showView()
 
+        } else if colorModel.selectedColorIndex == 101 {
+            self.colorWheelImage.image = UIImage(named: "Color Wheel - Selected")
+            self.colorWheelSelectedImage.backgroundColor = self.colorButton.backgroundColor
+            self.colorPickerView.backgroundColor = .black
+            self.colorOptionButton.hideView()
+
+        } else {
+            self.colorWheelSelectedImage.backgroundColor = nil
+            self.colorWheelImage.image = UIImage(named: "colorWheel")
+            self.colorPickerView.backgroundColor = .black
+            self.colorOptionButton.hideView()
+
+        }
+            
+        self.collectionView.reloadData()
     }
 
 
@@ -188,18 +209,36 @@ class BrushView: UIView {
     @IBAction func colorpicker(_ sender: Any) {
         self.delegate?.pickColorForBrush(callBack: {[weak self] value in
             self?.selectedIndexPath = nil
-            self?.colorPickerView.backgroundColor = value
-            self?.sharpnessColorLbl.backgroundColor = value
-            self?.brushTransparencyLabel.backgroundColor = value
-            self?.brushSizeLabel.backgroundColor = value
+            self?.colorPickerView.backgroundColor = value.color
+            self?.sharpnessColorLbl.backgroundColor = value.color
+            self?.brushTransparencyLabel.backgroundColor = value.color
+            self?.brushSizeLabel.backgroundColor = value.color
+            self?.colorWheelSelectedImage.backgroundColor = nil
+            self?.colorWheelImage.image = UIImage(named: "colorWheel")
             self?.colorOptionButton.showView()
             self?.colorModel.selectedColorIndex = 100
             self?.colorModel.isColor = true
-            self?.updateFontColor(color: value)
+            self?.updateFontColor(color: value.color)
             self?.collectionView.reloadData()
         })
     }
-    
+
+    @IBAction func wheelColorpicker(_ sender: Any) {
+
+
+        self.selectedIndexPath = nil
+        self.colorModel.selectedColorIndex = 100
+        self.delegate?.setFurtherColor()
+       // colorWheelImage.image = UIImage(named: "Color Wheel - Selected")
+       // colorWheelSelectedImage.backgroundColor = self.sharpnessColorLbl.backgroundColor
+        self.colorPickerView.backgroundColor = .black
+        self.colorOptionButton.hideView()
+        colorModel.isColor = true
+        self.collectionView.reloadData()
+
+        
+    }
+
     func updateFontColor(color: UIColor) {
         self.colorButton.backgroundColor = color
         self.collectionView.reloadData()
@@ -224,14 +263,10 @@ class BrushView: UIView {
     }
     
     @IBAction func actionColorClicked(_ sender: UISlider) {
-        if colorModel.selectedColorIndex == 0 {
-            self.colorButton.backgroundColor = (UIColor(named: .blackColorName, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!)
-        }
-        if self.colorButton.backgroundColor == UIColor(named: .blackColorName, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil) {
-            let indexPath1: IndexPath?
-            indexPath1 = IndexPath.init(row: colorData.count - 1, section: 0)
-            collectionView.scrollToItem(at: indexPath1!, at: .left, animated: true)
-        }
+//        if colorModel.selectedColorIndex == 0 {
+//            self.colorButton.backgroundColor = (UIColor(named: .blackColorName)!)
+//        }
+        
         self.selectedIndexPath = nil
         self.sizeContainerView.isHidden = true
         self.colorContainerView.isHidden = false
@@ -239,6 +274,7 @@ class BrushView: UIView {
         self.opacityContainerView.isHidden = true
         self.sharpnessContainerView.isHidden = true
         self.delegate?.tickAndCrossForSubOptionsBrush(name: "color")
+
         self.collectionView.reloadData()
     }
     
@@ -253,7 +289,6 @@ class BrushView: UIView {
     }
     
     @IBAction func actionBack(_ sender: UISlider) {
-        
         self.sizeContainerView.isHidden = true
         self.colorContainerView.isHidden = true
         self.optionContainerView.isHidden = false
@@ -324,8 +359,20 @@ class BrushView: UIView {
             }
         }
     }
- 
 
+    
+    // Method to update sliders
+    func updateSliders(strokeWidth: CGFloat, strokeOpacity: CGFloat, brushSharpness: CGFloat,color:UIColor) {
+        self.colorButton.backgroundColor = color
+        widthSlider.value = Float(strokeWidth)
+        opacitySlider.value = Float(strokeOpacity)
+        sharpnessSlider.value = Float(brushSharpness)
+
+        // Update the UI elements that depend on these values
+        brushSizeLabel.layer.cornerRadius = strokeWidth
+        brushTransparencyLabel.alpha = strokeOpacity
+        sharpnessColorLbl.layer.cornerRadius = brushSharpness
+    }
 }
 
 extension BrushView: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -361,14 +408,19 @@ extension BrushView: UICollectionViewDelegate, UICollectionViewDataSource {
 
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 38, height: 56)
+    }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // Deselect the previously selected cell, if any
-        
+        self.colorWheelSelectedImage.backgroundColor = nil
+        self.colorWheelImage.image = UIImage(named: "colorWheel")
 
         // If the same cell is selected again, notify the delegate
         if selectedIndexPath?.row == indexPath.row {
-            self.delegate?.setFurtherColor()
+          //  self.delegate?.setFurtherColor()
         } else {
 
             // Update selectedIndexPath to the new index and reload
@@ -399,7 +451,7 @@ extension BrushView: TextColorCellDelegate {
     func didSelectCell(with data: UIColor, textModel: TextModel) {
       //No Data
     }
-    
+
     func didSelectCellBrush(with data: UIColor, colorModel: ColorModel) {
         colorModel.isColor = true
         colorModel.color = data
@@ -409,9 +461,9 @@ extension BrushView: TextColorCellDelegate {
         self.sharpnessColorLbl.backgroundColor = self.colorButton.backgroundColor
         self.brushTransparencyLabel.backgroundColor = self.colorButton.backgroundColor
         self.delegate?.applyColor(self, colorModel: colorModel)
-        
         self.collectionView.reloadData()
     }
+
     func setSharpness(sliderValue: CGFloat) {
         print("Sharpness set to: \(sliderValue)")
         self.drawingView?.brushSharpness = sliderValue // Adjust sharpness value

@@ -8,45 +8,32 @@
 import UIKit
 
 enum CustomFont: String, CaseIterable {
-    //    case notoSansBold = "Verdana"
-    //    case blackJack = "Hoefler Text"
-    //    case tusj = "Georgia"
-    //    case graphik = "Chalkduster"
-    //    case helvetica = "Helvetica"
-    //    case museo = "Noteworthy"
-    //    case nexaLight = "Papyrus"
-    //    case openSansLight = "Times New Roman"
-    //    case openSans = "Bradley Hand"
-    //    case sofia = "Futura"
     case AbrilFatfaceRegular = "AbrilFatface-Regular"
     case AgbalumoRegular = "Agbalumo-Regular"
     case AlatsiRegular = "Alatsi-Regular"
     case AleoRegular = "Aleo-Medium"
-    case BangersRegular = "Bangers-Regular"
+    case BangersRegular = "Bangers-Regular" //5
     case Baskerville = "Baskerville"
     case BebasNeueRegular = "BebasNeue-Regular"
     case Bodoni72 = "BodoniSvtyTwoITCTT-Book"
-    case BradleyHandBold = "BradleyHandITCTT-Bold"
+    case BradleyHandBold = "BradleyHandITCTT-Bold" //9
     case BubblegumSansRegular = "BubblegumSans-Regular"
     case BungeeRegular = "Bungee-Regular"
     case CalistogaRegular = "Calistoga-Regular"
-    case CaveatRegular = "Caveat-SemiBold"
+    case CaveatRegular = "Caveat-SemiBold" // 13
     case ComfortaaRegular = "Comfortaa-Medium"
     case Copperplate = "Copperplate"
     case Flama_11 = "Flama-Bold"
     case Futura = "Futura-Medium"
-    case GaladaRegular = "Galada-Regular"
+    case GaladaRegular = "Galada-Regular" // 18
     case Georgia = "Georgia"
     case GillSans = "GillSans"
-    case GreatVibesRegular = "GreatVibes-Regular"
+    case GreatVibesRegular = "GreatVibes-Regular" //21
     case IndieFlowerRegular = "IndieFlower"
     case LiterataRegular = "Literata24pt-Black"
     case MarcellusRegular = "Marcellus-Regular"
-    //case MarkerFelt = "MarkerFelt"
     case Optima = "Optima-Regular"
     case OswaldRegular = "Oswald-Light"
-    //case Thonburi = "Thonburi"
-    
 }
 
 struct FontManager {

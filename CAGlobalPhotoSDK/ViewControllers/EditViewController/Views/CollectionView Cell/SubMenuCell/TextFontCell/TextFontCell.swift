@@ -41,7 +41,7 @@ class TextFontCell: UICollectionViewCell {
             self.selectedButton.isHidden = false
             self.selectedButton.backgroundColor = #colorLiteral(red: 0.465190351, green: 0.9172363877, blue: 0.9757485986, alpha: 1)
             self.fontPreviewLabel.textColor = .black
-            self.selectedButton.layer.cornerRadius = 25
+            self.selectedButton.layer.cornerRadius = 24
 
         } else {
             self.selectedButton.isHidden = true

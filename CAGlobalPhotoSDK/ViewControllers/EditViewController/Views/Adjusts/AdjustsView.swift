@@ -49,28 +49,33 @@ class AdjustsView: UIView {
     @IBOutlet weak var opacitySaturationSlider: UISlider!
     // This outlet represents to the slider used for adjusting opacity
     @IBOutlet weak var opacityExposureSlider: UISlider!
+    // This outlet represents to the slider used for adjusting opacity
+    @IBOutlet weak var resetButton: UIButton!
     
     // MARK: Properties
     weak var delegate: AdjustsViewDelegate?
     private var editViewModel = CAEditViewModel()
     var adjustSelection = AdjustSelection(rawValue: -1)
-    var brightness = Float()
-    var contrast = Float()
-    var saturation = Float()
-    var temperature = Float()
-    var exposure = Float()
-    
+        
+    var brightness: Float = 0.0
+    var contrast: Float = 1.0
+    var saturation: Float = 1.0
+    var temperature: Float = 1.0
+    var exposure: Float = 0.0
+
+
+
     // MARK: Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
         nibSetup()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         nibSetup()
     }
-    
+
     private func nibSetup() {
         backgroundColor = .clear
         mainView = loadViewFromNib()
@@ -80,7 +85,7 @@ class AdjustsView: UIView {
         addSubview(mainView)
         initCollectionView()
     }
-    
+
     private func loadViewFromNib() -> UIView {
         let bundlePath = Bundle(for: AdjustsView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
         let bundle = bundlePath != nil ? Bundle(path: bundlePath!) : nil
@@ -91,7 +96,7 @@ class AdjustsView: UIView {
         }
         return nibView
     }
-    
+
     private func initCollectionView() {
         let bundlePath = Bundle(for: EditOptionsCell.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
         let bundle = bundlePath != nil ? Bundle(path: bundlePath!) : nil
@@ -113,7 +118,7 @@ class AdjustsView: UIView {
     }
     
     func updateSliderValues() {
-        
+
         self.opacityBrightnessSlider.minimumValue = -0.5
         self.opacityBrightnessSlider.maximumValue = 0.5
         self.opacityContrastSlider.minimumValue = 0.5
@@ -122,14 +127,25 @@ class AdjustsView: UIView {
         self.opacitySaturationSlider.maximumValue = 2
         self.opacityExposureSlider.minimumValue = -2
         self.opacityExposureSlider.maximumValue = 2
-        
+
         self.opacityContrastSlider.value = self.contrast
         self.opacityBrightnessSlider.value = self.brightness
         self.opacitySaturationSlider.value = self.saturation
         self.opacityTemperatureSlider.value = self.temperature
         self.opacityExposureSlider.value = self.exposure
+        
+        if opacitySaturationSlider.value == 1.0 &&
+           opacityContrastSlider.value == 1.0 &&
+           opacityBrightnessSlider.value == 0.0 &&
+           opacityTemperatureSlider.value == 1.0 {
+            resetButton.alpha = 0.5
+            resetButton.isUserInteractionEnabled = false
+        } else {
+            resetButton.alpha = 1
+            resetButton.isUserInteractionEnabled = true
+        }
     }
-    
+
     // MARK: Actions
     @IBAction func actionCrossContainer(_ sender: UISlider) {
         self.adjustCollectionViewContainerView.isHidden = false
@@ -143,16 +159,40 @@ class AdjustsView: UIView {
         DispatchQueue.main.async {
             self.delegate?.selectedAdjustment(sender, adjustSelection: self.adjustSelection ?? .none)
         }
+        
+        if opacitySaturationSlider.value == 1.0 &&
+           opacityContrastSlider.value == 1.0 &&
+           opacityBrightnessSlider.value == 0.0 &&
+           opacityTemperatureSlider.value == 1.0 {
+
+            resetButton.alpha = 0.5
+            resetButton.isUserInteractionEnabled = false
+        } else {
+            resetButton.alpha = 1
+            resetButton.isUserInteractionEnabled = true
+        }
     }
     @IBAction func actionReset(_ sender: UISlider) {
-            self.opacitySaturationSlider.value = 1.0
-            self.opacityContrastSlider.value = 1.0
-            self.opacityBrightnessSlider.value = 0.0
-        
+        self.opacitySaturationSlider.value = 1.0
+        self.opacityContrastSlider.value = 1.0
+        self.opacityBrightnessSlider.value = 0.0
+        self.opacityTemperatureSlider.value = 1.0
+        if opacitySaturationSlider.value == 1.0 &&
+           opacityContrastSlider.value == 1.0 &&
+           opacityBrightnessSlider.value == 0.0 &&
+           opacityTemperatureSlider.value == 1.0 {
+
+            resetButton.alpha = 0.5
+            resetButton.isUserInteractionEnabled = false
+        } else {
+            resetButton.alpha = 1
+            resetButton.isUserInteractionEnabled = true
+        }
         self.delegate?.resetAdjustment(adjustSelection: self.adjustSelection ?? .none)
     }
-    
+
     @IBAction func actionBrightness(_ sender: UISlider) {
+        isAutoSelectGlobal = true
         let currentAdjustSelection = AdjustSelection(rawValue: 0) ?? .none
         self.adjustSelection = currentAdjustSelection
         self.adjustCollectionViewContainerView.isHidden = true
@@ -174,6 +214,7 @@ class AdjustsView: UIView {
         }
     }
     @IBAction func actionContrast(_ sender: UISlider) {
+        isAutoSelectGlobal = true
         let currentAdjustSelection = AdjustSelection(rawValue: 1) ?? .none
         self.adjustSelection = currentAdjustSelection
         self.adjustCollectionViewContainerView.isHidden = true
@@ -195,7 +236,30 @@ class AdjustsView: UIView {
         }
     }
     @IBAction func actionSaturation(_ sender: UISlider) {
+        isAutoSelectGlobal = true
         let currentAdjustSelection = AdjustSelection(rawValue: 2) ?? .none
+        self.adjustSelection = currentAdjustSelection
+        self.adjustCollectionViewContainerView.isHidden = true
+        self.sliderBrightnessContainerView.isHidden = true
+        self.sliderContrastContainerView.isHidden = true
+        self.sliderTempratureContainerView.isHidden = true
+        self.sliderSaturationContainerView.isHidden = true
+        self.sliderExposureContainerView.isHidden = true
+        if currentAdjustSelection == .temperature {
+            self.sliderTempratureContainerView.isHidden = false
+        } else if currentAdjustSelection == .saturation {
+            self.sliderSaturationContainerView.isHidden = false
+        } else if currentAdjustSelection == .contrast {
+            self.sliderContrastContainerView.isHidden = false
+        } else if currentAdjustSelection == .brightness {
+            self.sliderBrightnessContainerView.isHidden = false
+        } else if currentAdjustSelection == .exposure {
+            self.sliderExposureContainerView.isHidden = false
+        }
+    }
+    @IBAction func actionTemprature(_ sender: UISlider) {
+        isAutoSelectGlobal = true
+        let currentAdjustSelection = AdjustSelection(rawValue: 3) ?? .none
         self.adjustSelection = currentAdjustSelection
         self.adjustCollectionViewContainerView.isHidden = true
         self.sliderBrightnessContainerView.isHidden = true
@@ -222,13 +286,13 @@ extension AdjustsView: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         self.editViewModel.adjustData.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EditOptionsCell.className, for: indexPath) as? EditOptionsCell else {
             let cell = EditOptionsCell()
             return cell
         }
-        
+
         cell.delegate = self
         cell.dataSource = self
         let data = self.editViewModel.adjustData[indexPath.row]
@@ -236,15 +300,15 @@ extension AdjustsView: UICollectionViewDataSource, UICollectionViewDelegate {
 
         return cell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 80, height: 80)
     }
-    
+
     @objc(collectionView:layout:insetForSectionAtIndex:)  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets{
         return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     }
-    
+
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
 
         let totalCellWidth = 80 * self.editViewModel.adjustData.count
@@ -255,7 +319,7 @@ extension AdjustsView: UICollectionViewDataSource, UICollectionViewDelegate {
 
         return UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: rightInset)
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as? EditOptionsCell
         let currentAdjustSelection = AdjustSelection(rawValue: indexPath.row) ?? .none
@@ -271,6 +335,28 @@ extension AdjustsView: EditOptionsCellDataSource {
 }
 
 extension AdjustsView: EditOptionsCellDelegate {
+
+//    func showToast(message: String, duration: Double = 2.0) {
+//        let toastLabel = UILabel(frame: CGRect(x: mainView.frame.size.width/2 - 75,
+//                                               y: mainView.frame.size.height-100,
+//                                               width: 150, height: 35))
+//        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+//        toastLabel.textColor = UIColor.white
+//        toastLabel.textAlignment = .center
+//        toastLabel.font = UIFont.systemFont(ofSize: 14.0)
+//        toastLabel.text = message
+//        toastLabel.alpha = 1.0
+//        toastLabel.layer.cornerRadius = 10
+//        toastLabel.clipsToBounds = true
+//        mainView.addSubview(toastLabel)
+//        UIView.animate(withDuration: 0.5, delay: duration, options: .curveEaseOut, animations: {
+//            toastLabel.alpha = 0.0
+//        }, completion: { _ in
+//            toastLabel.removeFromSuperview()
+//        })
+//    }
+
+
     func didSelectCellAdjust(adjustSelection: AdjustSelection, currentAdjustSelection: AdjustSelection) {
         self.adjustSelection = currentAdjustSelection
         self.adjustCollectionViewContainerView.isHidden = true

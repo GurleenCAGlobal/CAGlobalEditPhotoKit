@@ -200,6 +200,8 @@ open class ZoomImageView : UIScrollView, UIScrollViewDelegate {
   // MARK: - UIScrollViewDelegate
   @objc dynamic public func scrollViewDidZoom(_ scrollView: UIScrollView) {
     imageView.center = contentCenter(forBoundingSize: bounds.size, contentSize: contentSize)
+      print("Updated Zoom Scale: \(scrollView.zoomScale)")
+
   }
 
   @objc dynamic public func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {

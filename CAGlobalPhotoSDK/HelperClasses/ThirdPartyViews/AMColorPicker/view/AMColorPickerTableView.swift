@@ -28,7 +28,7 @@ public class AMColorPickerTableView: XibLioadView, AMColorPicker {
             displayColor(selectedColor)
         }
     }
-
+    public var isBackground: Bool = false
     @IBOutlet weak private var headerView: UIView!
     @IBOutlet weak private var opacityLabel: UILabel!
     @IBOutlet weak private var opacitySlider: UISlider!
@@ -63,7 +63,7 @@ public class AMColorPickerTableView: XibLioadView, AMColorPicker {
         let rgba = color.rgba
         let alpha = CGFloat(opacitySlider.value) / 100.0
         selectedColor = UIColor(red: rgba.red, green: rgba.green, blue: rgba.blue, alpha: alpha)
-        delegate?.colorPicker(self, didSelect: selectedColor, opacity: alpha)
+        delegate?.colorPicker(self, didSelect: selectedColor, opacity: alpha, isBackground: self.isBackground)
     }
     
     private func displayColor(_ color: UIColor) {

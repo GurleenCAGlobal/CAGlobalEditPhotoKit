@@ -66,6 +66,7 @@ extension CAEditViewController {
 extension CAEditViewController: UIScrollViewDelegate {
     
     public func viewForZooming(in scroll: UIScrollView) -> UIView? {
+        print("view for zoom")
         if scroll == self.scrollView && self.option.isTransformActual == true {
             if self.option.isTransformActual == false {
                 return nil
@@ -76,13 +77,15 @@ extension CAEditViewController: UIScrollViewDelegate {
     }
     
     public func scrollViewWillBeginZooming(_ scroll: UIScrollView, with _: UIView?) {
+        print("scrolling will begin zooming")
         if scroll == self.scrollView && self.option.isTransformActual == true {
             cancelUniqueActivity()
-            bottomView.isUserInteractionEnabled = false
+            bottomView.isUserInteractionEnabled = true
         }
     }
     
     public func scrollViewDidEndZooming(_ scroll: UIScrollView, with _: UIView?, atScale _: CGFloat) {
+        print("scrolling end zooming")
         if scroll == self.scrollView && self.option.isTransformActual == true {
             matchScrollViewAndCropView(animated: true, completion: {
                 self.uniqueActivityAndThenRun {
@@ -100,13 +103,15 @@ extension CAEditViewController: UIScrollViewDelegate {
     }
     
     public func scrollViewWillBeginDragging(_ scroll: UIScrollView) {
+        print("scrolling begin")
         if scroll == self.scrollView && self.option.isTransformActual == true {
             cancelUniqueActivity()
-            bottomView.isUserInteractionEnabled = false
+            bottomView.isUserInteractionEnabled = true
         }
     }
     
     public func scrollViewDidEndDragging(_ scroll: UIScrollView, willDecelerate decelerate: Bool) {
+        print("scrolling end drag")
         if scroll == self.scrollView && self.option.isTransformActual == true {
             if !decelerate {
                 matchScrollViewAndCropView(animated: true, completion: {
@@ -120,10 +125,18 @@ extension CAEditViewController: UIScrollViewDelegate {
                     }
                 })
             }
+        } else {
+            //self.handleOnTap()
         }
     }
     
     public func scrollViewDidEndDecelerating(_ scroll: UIScrollView) {
+        print("scrolling end decelerating")
+        
+        //scrollView.setContentOffset(scrollView.contentOffset, animated: false)
+        if self.option.isTransformActual == false {
+            self.handleOnTap()
+        }
         if scroll == self.scrollView && self.option.isTransformActual == true {
             matchScrollViewAndCropView(animated: true, completion: {
                 self.uniqueActivityAndThenRun {
@@ -152,12 +165,11 @@ extension CAEditViewController: UIScrollViewDelegate {
         
         let scaleX = maxCropRegion.size.width / targetCropBoxFrame.size.width
         let scaleY = maxCropRegion.size.height / targetCropBoxFrame.size.height
-        
         let scale = min(scaleX, scaleY)
-        
+
         // calculate the new bounds of crop view
-        let newCropBounds = CGRect(x: 0, y: 0, width: scale * targetCropBoxFrame.size.width, height: scale * targetCropBoxFrame.size.height)
-        
+        let newCropBounds = CGRect(x: 20, y: 59, width: scale * targetCropBoxFrame.size.width, height: scale * targetCropBoxFrame.size.height)
+
         // calculate the new bounds of scroll view
         let rotatedRect = newCropBounds.applying(CGAffineTransform(rotationAngle: totalAngle))
         let width = rotatedRect.size.width
@@ -193,6 +205,9 @@ extension CAEditViewController: UIScrollViewDelegate {
             self.scrollView.contentOffset = self.safeContentOffsetForScrollView(contentOffset)
         }, completion: { _ in
             completion?()
+            currentZoomScale = self.scrollView.zoomScale // Store updated zoom scale
+            print("Updated Zoom Scale: \(currentZoomScale)")
+            print("Updated Zoom Scale: \(self.scrollView.zoomScale)")
         })
         
         manualZoomed = true

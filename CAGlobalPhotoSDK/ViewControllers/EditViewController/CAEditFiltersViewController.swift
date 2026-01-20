@@ -5,7 +5,7 @@
 //  Created by Gurleen Singh on 08/04/24.
 //
 
-// MARK: - Filter Option  
+// MARK: - Filter Option
  
 import UIKit
 
@@ -20,6 +20,7 @@ extension CAEditViewController: FilterViewDelegate {
     }
     
     func setUpFilterView() {
+        //self.stickerTextView.isUserInteractionEnabled = false
         self.saveCrossView.showView()
         self.removeBottomSubViews()
         self.doneButton.isHidden = false
@@ -55,7 +56,6 @@ extension CAEditViewController: FilterViewDelegate {
         }
     }
     
-    //anu
 //    func selectedFilterImage(nameString: String, isEmpty:Bool, sliderValue: CGFloat) {
 //        self.selectedFilterOpacity = sliderValue
 //        if isEmpty {
@@ -80,21 +80,53 @@ extension CAEditViewController: FilterViewDelegate {
         self.doneButton.isHidden = false
     }
     
+//    func applyFilter() {
+//
+//        if self.selectedFilter == "" {
+//            self.option.isFilter = false
+//        } else {
+//            self.option.isFilter = true
+//        }
+//        
+//        self.option.appliedFilterDetails.append((filterName: self.selectedFilter, opacityValue: self.selectedFilterOpacity))
+//    }
+    
     func applyFilter() {
+        let filter = self.option.appliedFilterDetails.last
+        // Store current state before changes for undo
+        let previousFilter = filter?.filterName
+        let previousOpacity = filter?.opacityValue
 
+        // Register Undo Operation
+        undoRedoManager.registerUndo(withTarget: self) { target in
+            target.selectedFilter = previousFilter ?? ""
+            target.selectedFilterOpacity = previousOpacity ?? 1.0
+            target.applyFilter() // Optional if you want to re-trigger UI changes
+            self.selectedFilter = previousFilter ?? ""
+            self.mainImageView.image = self.applyingAllFilters(false, true, false)
+            // Apply the new filter logic
+            if previousFilter == "" {
+                self.globalUndoRedo(currentFilterSelection: .none)
+                self.removeBottomSubViews()
+            } else {
+                self.globalUndoRedo(currentFilterSelection: .filter)
+                self.removeBottomSubViews()
+                self.setUpFilterView()
+            }
+        }
+
+        // Apply the new filter logic
         if self.selectedFilter == "" {
             self.option.isFilter = false
         } else {
             self.option.isFilter = true
         }
-        
+
         self.option.appliedFilterDetails.append((filterName: self.selectedFilter, opacityValue: self.selectedFilterOpacity))
         
-        // Integrate undo/redo for adding filter action
-        //Editor.currentFilterSelection = .filter // Set the current selection
-        self.addFilterUndoArray()
-        self.undoButton.isHidden = false
-        self.redoButton.isHidden = false
+        undoRedoManager.setActionName("Filter")
+        self.isEnableRedoUndo()
+
     }
     
     func resetFilter() {
@@ -114,11 +146,8 @@ extension CAEditViewController: FilterViewDelegate {
             self.filterImages.removeAll()
             for data in self.filterData {
                 if let image = self.imageOrignal {
-                    let imageR = self.resizeImage(image: image, newWidth: 100)
-                    let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
-                    let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)
-
-                    let finalImage = imageR.applyLUTFilter(LUT: UIImage(named: data, in: bundle, compatibleWith: nil)!, volume: 1.0)
+                    let imageR = self.resizeImage(image: image, newWidth: 60)
+                    let finalImage = imageR.applyLUTFilter(LUT: UIImage(named: data), volume: 1.0)
                     self.filterImages.append(finalImage)
                 }
             }

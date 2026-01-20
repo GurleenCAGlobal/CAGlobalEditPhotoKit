@@ -16,28 +16,30 @@ protocol FrameViewDelegate: AnyObject {
 }
 
 var selectedCategoryDetail:FrameCategoryModel?
+var selectedNoneFrame = ""
+var previousSelectedFrame = ""
 
 class FrameView: UIView {
-        
+
     // MARK: - Outlets
-    
+
     // Outlet for the base view of the frames view
     @IBOutlet weak var baseView: UIView!
-    
+
     // Outlets for the collection View
     @IBOutlet weak var frameCollectionView: UICollectionView!
-    
+
     // Outlet for the opacity view of the frames view
     @IBOutlet weak var opacityView: UIView!
-    
+
     // Outlet for the opacity slider of the frames view
     @IBOutlet weak var opacitySlider: UISlider!
 
     @IBOutlet weak var backButton: UIButton!
-    
+
     // This outlet represents the bottom of main view
     @IBOutlet weak var constraintsColorWidthBack: NSLayoutConstraint!
-    
+
     private var framesManager = FramesManager()
     private(set) var framesData = [String]()
 
@@ -54,6 +56,8 @@ class FrameView: UIView {
     var frameCategories = [PGCloudAssetCategory]()
     var frameNameURLData = [[String:Any]]()
     var frameURLData = [String]()
+    var previouslySelectedCategory: FrameCategoryModel?
+    var isBackButtonClicked = false
     // MARK: - Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -64,7 +68,7 @@ class FrameView: UIView {
         super.init(coder: aDecoder)
         nibSetup()
     }
-    
+
     private func nibSetup() {
         backgroundColor = .clear
         baseView = loadViewFromNib()
@@ -73,7 +77,7 @@ class FrameView: UIView {
         baseView.translatesAutoresizingMaskIntoConstraints = true
         addSubview(baseView)
         self.initCollectionView()
-            self.stickersAll()
+        self.stickersAll()
         
         
         // Usage
@@ -86,15 +90,21 @@ class FrameView: UIView {
     }
     
     @objc func stickersAll() {
+        global_shouldCancelFrameResizing = false
         DispatchQueue.global(qos: .background).async { [weak self] in
             let cac = PGCloudAssetClient.sharedInstance()
-            var catalog = PGCloudAssetCatalog()
+            _ = PGCloudAssetCatalog()
             if let catalog = cac?.currentCatalog() {
                 let activePrinterType = PGQueueController.shared().activePrinterType
                 
                 self?.frameCategories = catalog.categories(forAssetType: PGCloudAssetCategoryTypeFrame, andDeviceType: activePrinterType) ?? []
                 if let frameCategories = self?.frameCategories {
                     for category in frameCategories {
+                        if global_shouldCancelFrameResizing {
+                            print("Download cancelled.")
+                            break
+                        }
+
                         var cloudAssets = [PGCloudAssetImage]()
                         cloudAssets = category.sortedImageAssets()
                         _ = [UIImage]()
@@ -110,33 +120,32 @@ class FrameView: UIView {
                         if stickerAssestsURL.count > 0 {
                             let frameCategory = FrameCategoryModel()
                             frameCategory.categoryName = category.title
-
+                            
                             var frameList = [FrameModel]()
                             var categoryIcon: String?
-
+                            let frameModel = FrameModel(frame: "none", opacity: 1.0)
+                            frameList.append(frameModel)
                             for i in 0..<stickerAssestsURL.count {
                                 let imageName = stickerAssestsURL[i]
-
+                                
                                 let frameModel = FrameModel(frame: imageName, opacity: 1.0)
                                 frameList.append(frameModel)
-
+                                
                                 // Set the category icon as the first frame imageName
                                 if i == 0 {
                                     categoryIcon = imageName
                                 }
                             }
-
-
+                            
+                            
                             frameCategory.frameList = frameList
                             frameCategory.categoryIcon = categoryIcon // Assign the icon to the category
                             self?.categoryList.append(frameCategory)
-
-                            
-//                            var dictionary = [String: Any]()
-//                            dictionary["title"] = category.title
-//                            dictionary["stickerAssestsURL"] = stickerAssestsURL
-//                            self?.frameNameURLData.append(dictionary)
-//                            self?.framesData.append(category.title)
+                            DispatchQueue.main.async {
+                                if self?.isBackButtonClicked == false, self?.selectedFrame != "none" {
+                                    self?.createFramesArray()
+                                }
+                            }
                         }
                         
                         DispatchQueue.main.async {
@@ -151,13 +160,45 @@ class FrameView: UIView {
         
     }
 
-    func createFramesArray(isLandscape: Bool, selectedRatio: CGFloat, isEdit : Bool = false) {
-        if isEdit == false {
-            selectedCategoryDetail = nil
-        }
-        //self.categoryList = self.framesManager.getEmoticonDataNew(isLandscape: isLandscape, selectedRatio: selectedRatio)
-    }
+//    func createFramesArray(isLandscape: Bool, selectedRatio: CGFloat, isEdit : Bool = false) {
+//        if isEdit == false {
+//            selectedCategoryDetail = nil
+//        }
+//        //self.categoryList = self.framesManager.getEmoticonDataNew(isLandscape: isLandscape, selectedRatio: selectedRatio)
+//    }
 
+    func createFramesArray() {
+        //self.categoryList = self.framesManager.getEmoticonDataNew(isLandscape: isLandscape, selectedRatio: selectedRatio)
+        for category in self.categoryList {
+            for cat in category.frameList ?? [] {
+                let frameImage = cat.frame as? String ?? ""
+                if selectedFrame != "none",selectedFrame == frameImage {
+                    previouslySelectedCategory = category
+                }
+            }
+        }
+        
+        if let savedCategory = previouslySelectedCategory {
+            if selectedNoneFrame != "none" {
+                selectedCategoryDetail = savedCategory
+                self.backButton.isHidden = false
+                self.constraintsColorWidthBack.constant = 30
+                self.delegate?.selectedFramesCategory(with: savedCategory.categoryName ?? "")
+            } else {
+                selectedCategoryDetail = nil
+                self.backButton.isHidden = true
+                //self.constraintsColorWidthBack.constant = 0
+            }
+
+        } else {
+            selectedCategoryDetail = nil
+            self.backButton.isHidden = true
+            //self.constraintsColorWidthBack.constant = 0
+        }
+
+        frameCollectionView.reloadData()
+    }
+    
     private func loadViewFromNib() -> UIView {
         let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
         let bundle = bundlePath != nil ? Bundle(path: bundlePath!) : nil
@@ -166,7 +207,6 @@ class FrameView: UIView {
         let nibView = nib.instantiate(withOwner: self, options: nil).first as? UIView
         return nibView ?? UIView()
     }
-    
     private func initCollectionView() {
         let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
         let bundle = bundlePath != nil ? Bundle(path: bundlePath!) : nil
@@ -176,11 +216,11 @@ class FrameView: UIView {
         frameCollectionView.dataSource = self
         frameCollectionView.delegate = self
     }
-    
+
     @IBAction func actionSliderValue(_ sender: UISlider) {
 
     }
-    
+
     @IBAction func actionChange(_ sender: UISlider) {
         self.frameCollectionView.isHidden = false
         self.opacityView.isHidden = true
@@ -188,14 +228,14 @@ class FrameView: UIView {
     }
 
     @IBAction func actionBackButton(_ sender: UIButton) {
-        // Reset to category selection
+        self.isBackButtonClicked = true
         self.backButton.isHidden = true
         self.constraintsColorWidthBack.constant = 0
         selectedCategoryDetail = nil
         frameCollectionView.reloadData()
         self.delegate?.backButtonSubCategory()
-    }
 
+    }
 }
 
 extension FrameView: UICollectionViewDataSource {
@@ -222,10 +262,7 @@ extension FrameView: UICollectionViewDataSource {
 
             // Configure category cells
             let data = self.categoryList[indexPath.row]
-            cell.configure(with: "",
-                           subImage: data.categoryIcon ?? "",
-                           isSubSelected: false,
-                           categoryName: data.categoryName ?? "")
+            cell.configure(with: "", subImage: data.categoryIcon ?? "", isSubSelected: false, categoryName: data.categoryName ?? "")
         } else {
             // Configure frame cells within a category
             let data = selectedCategoryDetail?.frameList?[indexPath.row]
@@ -235,7 +272,7 @@ extension FrameView: UICollectionViewDataSource {
             } else {
                 cell.isSelectedFrame = false
             }
-            
+
             cell.configure(with: frameImage,
                            subImage: frameImage,
                            isSubSelected: false)
@@ -250,35 +287,22 @@ extension FrameView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if selectedCategoryDetail == nil {
             // Category selected
+            selectedCategoryDetail = categoryList[indexPath.row]
             self.backButton.isHidden = false
             self.constraintsColorWidthBack.constant = 30
-
-            // Set selected category
-            selectedCategoryDetail = categoryList[indexPath.row]
+            let categoryName = selectedCategoryDetail?.categoryName ?? ""
             collectionView.reloadData()
 
-            // Notify delegate
-            let categoryName = selectedCategoryDetail?.categoryName ?? ""
             self.delegate?.selectedFramesCategory(with: categoryName)
         } else {
-//            // Frame selected within the category
-//            for index in 0..<collectionView.numberOfItems(inSection: indexPath.section) {
-//                if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: indexPath.section)) as? FrameCell {
-//                    // Update selection state
-//                    cell.isSelectedFrame = index == indexPath.item
-//                }
-//            }
-
-            // Notify delegate
             if let data = selectedCategoryDetail?.frameList?[indexPath.row] {
                 let frameImage = data.frame as? String ?? ""
                 selectedFrame = frameImage
-
+                selectedNoneFrame = frameImage
+                
                 self.delegate?.selectedFramesImage(image: frameImage, isEdit: self.isEdit ?? false)
             }
             collectionView.reloadData()
-
-            // Scroll to center
             collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
     }
@@ -288,12 +312,12 @@ extension FrameView: UICollectionViewDelegate {
 
 
 extension FrameView: FrameCellDataSource, FrameCellDelegate {
-    
+
     func getImage() -> [String] {
         // Return the image for the cell at the specified index path
         return self.framesData
     }
-    
+
     func didSelectCellCategory(with data: String) {
         self.delegate?.selectedFramesCategory(with: data)
         frameCollectionView.reloadData()
@@ -302,7 +326,7 @@ extension FrameView: FrameCellDataSource, FrameCellDelegate {
     func didSelectCellApi(with data: UIImage, isEdit: Bool) {
         self.delegate?.selectedFramesImageApi(image: data)
     }
-    
+
     func didSelectCell(with data: String, isEdit:Bool) {
         // Handle cell selection
         self.delegate?.selectedFramesImage(image: data, isEdit: isEdit)

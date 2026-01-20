@@ -115,57 +115,6 @@ class Editor {
 
     }
     
-    // Apply the action (based on type and data)
-    private static func applyAction(_ action: EditAction) {
-        switch action.type {
-        case .add:
-            switch currentFilterSelection {
-            case .gallery:
-                applyStickerAction(action)
-            case .sticker:
-                applyStickerAction(action)
-            case .text:
-                applyTextAction(action)
-            case .frame:
-                applyFrameAction(action)
-            case .brush:
-                applyBrushAction(action)
-            case .transform:
-                applyTransformAction(action)
-            case .filter:
-                applyFilterAction(action)
-            case .none:
-                print("No filter selected; action not applied.")
-            case .auto: break
-                
-            case .adjust: break
-                
-            }
-        case .opacity:
-            applyOpacityAction(action)
-        case .mirror:
-            print("Applying mirror action")
-        case .color:
-            applyColorAction(action)
-        case .font:
-            print("Applying font action")
-        case .alignment:
-            print("Applying alignment action")
-        case .pan:
-            applyPanAction(action)
-        case .pinch:
-            print("Applying pinch action")
-        case .rotate:
-            print("Applying rotate action")
-        case .orientation:
-            print("Applying orientation action")
-        case .brushSize:
-            print("Applying brush size action")
-        case .sharpness:
-            print("Applying sharpness action")
-        }
-    }
-    
     // Reverse the action effect
     private static func reverseAction(_ action: EditAction) {
         if let stickerView = (action.data as? [String: Any])?["view"] as? UIView {

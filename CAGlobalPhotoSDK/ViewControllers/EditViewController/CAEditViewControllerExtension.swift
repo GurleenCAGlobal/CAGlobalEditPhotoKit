@@ -13,19 +13,28 @@ import AudioToolbox
 
 // MARK: - Options functionality
 // MARK: Gallery Options (if we are using blank image) -
-// MARK: - Auto Enhancement Option -
 
 extension CAEditViewController: AMColorPickerDelegate {
-    public func colorPicker(_ colorPicker: AMColorPicker, didSelect color: UIColor, opacity: CGFloat)  {
+    
+    func colorPicker(_ colorPicker: any AMColorPicker, didSelect color: UIColor, opacity: CGFloat, isBackground: Bool) {
         switch self.filterSelection {
         case .text:
             let textModel = TextModel()
             let rgba = color.rgba
             let alpha = rgba.alpha / 100.0
-            textModel.color = UIColor(red: rgba.red, green: rgba.green, blue: rgba.blue, alpha: alpha)
-            textModel.selectedColorIndex = 101
-            textModel.previousColor = self.selectedTextModel.previousColor
-            textModel.previousSelectedColorIndex = self.selectedTextModel.previousSelectedColorIndex
+            if isBackground == true {
+                textModel.backgroungColor = UIColor(red: rgba.red, green: rgba.green, blue: rgba.blue, alpha: alpha)
+                textModel.selectedBackGrounfColorIndex = 101
+                textModel.previousBackgroundColor = self.selectedTextModel.previousBackgroundColor
+                textModel.previousSelectedBackgroundColorIndex = self.selectedTextModel.previousSelectedBackgroundColorIndex
+
+            } else {
+                textModel.color = UIColor(red: rgba.red, green: rgba.green, blue: rgba.blue, alpha: alpha)
+                textModel.selectedColorIndex = 101
+                textModel.previousColor = self.selectedTextModel.previousColor
+                textModel.previousSelectedColorIndex = self.selectedTextModel.previousSelectedColorIndex
+            }
+            
             textModel.selectedFontIndex = self.selectedTextModel.selectedFontIndex
             textModel.previousSelectedFontIndex = self.selectedTextModel.previousSelectedFontIndex
             textModel.textString = self.selectedTextModel.textString
@@ -33,28 +42,68 @@ extension CAEditViewController: AMColorPickerDelegate {
             textModel.fontCustom = self.selectedTextModel.fontCustom
             textModel.previousFont = self.selectedTextModel.previousFont
             self.selectedTextModel = textModel
-            self.stickersText(text: .setColor,textModel: self.selectedTextModel, color: color, index: 101, isText: true)
+            
+            let colorModel = ColorModel()
+            colorModel.selectedColorIndex = 101
+            colorModel.isColor = true
+            colorModel.color = color
+            if isBackground == true {
+                self.stickersText(text: .setBackgroundColor, textModel: self.selectedTextModel, color: colorModel, index: 101, isText: true)
+                self.textView.colorBackWheelImage.image = UIImage(named: "Color Wheel - Selected")
+                self.textView.colorBackWheelSelectedImage.backgroundColor = color
+
+            } else {
+                self.stickersText(text: .setColor, textModel: self.selectedTextModel, color: colorModel, index: 101, isText: true)
+                self.textView.colorWheelImage.image = UIImage(named: "Color Wheel - Selected")
+                self.textView.colorWheelSelectedImage.backgroundColor = color
+
+            }
             self.textView.setUpTextAndColor(views: self.stickerTextView.subviews)
+            if let defaultCropperState = self.initialState {
+                self.restoreState(defaultCropperState)
+            }
+            self.backgroundView.transform = .identity
         case .brush:
+            self.brushView.updateFontColor(color: color)
             self.drawingViewWillBeginDraw()
             self.option.selectedBrushColorIndex = 101
+            self.viewPaintDrawing.colorIndex = 101
             self.viewPaintDrawing.strokeColor = color
-            self.viewPaintDrawing.strokeOpacity = opacity
+            self.viewPaintDrawing.strokeOpacity = self.viewPaintDrawing.strokeOpacity
             self.brushView.colorButton.backgroundColor = self.viewPaintDrawing.strokeColor
             self.brushView.sharpnessColorLbl.backgroundColor = self.viewPaintDrawing.strokeColor
             self.brushView.brushTransparencyLabel.backgroundColor = self.viewPaintDrawing.strokeColor
             self.brushView.brushSizeLabel.backgroundColor = self.viewPaintDrawing.strokeColor
+            self.brushView.colorWheelImage.image = UIImage(named: "Color Wheel - Selected")
+            self.brushView.colorWheelSelectedImage.backgroundColor = color
+            self.viewPaintDrawing.isUserInteractionEnabled = true
+            self.stickerTextView.isUserInteractionEnabled = false
+            self.magnifyingGlass.magnifiedView = nil
+            self.removeGesturesMainImageViewForMagnify()
         case .sticker:
-            self.selectedStickerColorModel = color
-            self.stickersText(text: .setColor, color: color, isText: false)
+//            let rgba = color.rgba
+//            let alpha = rgba.alpha / 100.0
+//            let color = UIColor(red: rgba.red, green: rgba.green, blue: rgba.blue, alpha: alpha)
+
+            self.selectedStickerColor = color
+            
+            let colorModel = ColorModel()
+            colorModel.selectedColorIndex = 101
+            colorModel.isColor = true
+            colorModel.color = color
+            
+            self.stickersText(text: .setColor, color: colorModel, index: 101, isText: false)
+            self.stickerOption.colorWheelImage.image = UIImage(named: "Color Wheel - Selected")
+            self.stickerOption.colorWheelSelectedImage.backgroundColor = color
+            self.stickerOption.setUpColor(color: color, model: colorModel)
+
         default:
             break
         }
     }
 }
 
-
-// MARK: - UICollectionViewDataSource and UICollectionViewDelegate  -
+// MARK: - UICollectionViewDataSource and UICollectionViewDelegate -
 
 extension CAEditViewController: EditOptionsCellDataSource {
     func getFilterData() -> [FilterModel] {
@@ -63,14 +112,14 @@ extension CAEditViewController: EditOptionsCellDataSource {
 }
 
 extension CAEditViewController: UICollectionViewDataSource, UICollectionViewDelegate, EditOptionsCellDelegate {
-    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.editViewModel.filterData.count
     }
 
-    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let identifier = "EditOptionsCell"
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? EditOptionsCell else {
-            fatalError("Failed to dequeue EditOptionsCell")
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EditOptionsCell.className, for: indexPath) as? EditOptionsCell else {
+            let cell = EditOptionsCell()
+            return cell
         }
         cell.delegate = self
         cell.dataSource = self
@@ -90,28 +139,20 @@ extension CAEditViewController: UICollectionViewDataSource, UICollectionViewDele
         return CGSize(width: 80, height: 100)
     }
 
-    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.option.isTransformActual = false
         let cell = collectionView.cellForItem(at: indexPath) as? EditOptionsCell
         let currentFilterSelection = FilterSelection(rawValue: indexPath.row) ?? .none
-        cell?.handleSelection(filterSelection: self.filterSelection ?? .none,currentFilterSelection: currentFilterSelection, editOptions: self.option)
+        cell?.handleSelection(filterSelection: self.filterSelection ?? .none, currentFilterSelection: currentFilterSelection, editOptions: self.option)
     }
 
     // MARK: Cell Delegates
     func didSelectCell(filterSelection: FilterSelection, currentFilterSelection: FilterSelection, editOptions: EditOptions) {
-        self.removeGesturesMainImageViewForMagnify()
         self.resetImageView()
         self.unsavedOptions()
         self.filterSelection = currentFilterSelection
         self.stickerTextView.isUserInteractionEnabled = true
         self.mainCollectionView.isHidden = true
-        self.undoButton.isHidden = false
-        self.redoButton.isHidden = false
-        self.textModel.undoStack.removeAll()
-        self.textModel.redoStack.removeAll()
-        undoStackFrames.removeAll()
-        redoStackFrames.removeAll()
-       // enableDisableUIControl()
         self.editOptions()
         if let defaultCropperState = self.initialState {
             self.restoreState(defaultCropperState)
@@ -119,91 +160,55 @@ extension CAEditViewController: UICollectionViewDataSource, UICollectionViewDele
         self.backgroundView.transform = .identity
     }
 
+    // MARK: - Main View Bottom Sub option
     func editOptions() {
         self.mainPreviousImage = mainImageView.image
-        self.undoButton.isHidden = false
-        self.redoButton.isHidden = false
         self.hideCrossTickOnly()
+        self.isShownRedoUndo()
         self.mainCollectionView.reloadData()
         switch self.filterSelection {
         case .gallery:
+            self.isShownRedoUndo()
             UINavigationBar.appearance().tintColor = UIColor.blue
             self.mainCollectionView.isHidden = false
             self.openPhotoLibrary(isEdit: false)
+            if let defaultCropperState = self.initialState {
+                self.restoreState(defaultCropperState)
+            }
+            self.backgroundView.transform = .identity
         case .transform:
+            self.isShowingRedoUndo()
             self.setUpTransformView()
         case .text:
+            self.isShownRedoUndo()
             self.setUpTextView(isSaveCross: self.saveCrossView.isHidden)
         case .sticker:
-            self.undoButton.isHidden = true
-            self.redoButton.isHidden = true
+            self.isShownRedoUndo()
             self.setUpStickerView()
         case .frame:
-            self.undoButton.isHidden = true
-            self.redoButton.isHidden = true
+            self.isShowingRedoUndo()
             self.setUpFrameView()
         case .brush:
-            
+            self.isShownRedoUndo()
+            isEnableRedoUndo()
             self.removePanGestureMainEdit()
             self.setUpBrushView()
         case .auto:
-            self.mainPreviousImage = mainImageView.image
+            self.isShowingRedoUndo()
             self.option.isAuto = !self.option.isAuto
             self.mainImageView.image = self.applyingAllFilters()
             self.saveEdit()
-            self.addFilterUndoArray(option: "auto")
         case .filter:
-            self.undoButton.isHidden = true
-            self.redoButton.isHidden = true
+            self.isShownRedoUndo()
             self.setUpFilter()
         case .adjust:
-            self.undoButton.isHidden = true
-            self.redoButton.isHidden = true
+            self.isShowingRedoUndo()
             self.setUpAdjustsView()
         default:
+            self.isShowingRedoUndo()
             self.filterSelection = FilterSelection(rawValue: -1)
             break
         }
         self.mainCollectionView.reloadData()
-    }
-    
-    func addFilterUndoArray(option: String = "") {
-        let data: [String: Any] = [
-            "view": mainImageView,
-            "image": mainImageView.image,
-            "previousImage": mainPreviousImage!,
-            "option" : option
-        ]
-        let action = EditAction(type: .add, filterSelection: .none, data: data)
-        globalUndoStack.append(action)
-    }
-    
-    func addStickerUndoArray() {
-        let data: [String: Any] = [
-            "view": stickerTextView,
-            "image": stickerTextView,
-            "previousImage": stickerTextView
-        ]
-        let action = EditAction(type: .add, filterSelection: .none, data: data)
-        globalUndoStack.append(action)
-    }
-    
-    func setPreviousViewInUndo() {
-        if globalUndoStack.count > 0 {
-            guard let lastAction = globalUndoStack.last else { return }
-            if (lastAction.data as? [String: Any])?["view"] is UIImageView {
-                if let data = lastAction.data as? [String: Any] {
-                    let previousFrame = data["image"] as? UIImage
-                    mainPreviousImage = previousFrame
-                }
-            }
-        }
-        
-        if mainPreviousImage == nil {
-            let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
-            let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)
-
-            framePreviousImage = UIImage.init(named: "thumb", in: bundle, compatibleWith: nil)!
-        }
     }
 }

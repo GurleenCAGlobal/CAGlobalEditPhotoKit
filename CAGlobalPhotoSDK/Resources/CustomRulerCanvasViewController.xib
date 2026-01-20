@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,6 +23,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomRulerCanvasViewController" customModule="HP_Sprocket_Panorama" customModuleProvider="target">
             <connections>
                 <outlet property="activityIndicator" destination="XKd-QK-8ye" id="lh2-3A-yYe"/>
+                <outlet property="maxValue" destination="mez-uk-6JT" id="QEK-FU-yEP"/>
+                <outlet property="maxValue1" destination="Nzi-4B-uQb" id="A78-hR-dYM"/>
+                <outlet property="minimumValue" destination="36i-W1-zrT" id="1va-hh-LlV"/>
+                <outlet property="minimumValue1" destination="5LJ-IX-TtK" id="vny-C6-Zhn"/>
                 <outlet property="nextButton" destination="w5D-mV-5Bk" id="aNb-IU-shm"/>
                 <outlet property="sliderCustomRange" destination="4fb-nU-LrG" id="43U-Pl-nAr"/>
                 <outlet property="view" destination="qgO-OQ-v9K" id="c3u-ck-rBQ"/>
@@ -230,8 +234,20 @@
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=".5&quot;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5LJ-IX-TtK">
+                                    <rect key="frame" x="0.0" y="78.333333333333371" width="17.666666666666668" height="15.666666666666671"/>
+                                    <fontDescription key="fontDescription" name="HPSimplified-Bold" family="HP Simplified" pointSize="14"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9&quot;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mez-uk-6JT">
                                     <rect key="frame" x="369.33333333333331" y="59.666666666666735" width="13.666666666666686" height="15.666666666666664"/>
+                                    <fontDescription key="fontDescription" name="HPSimplified-Bold" family="HP Simplified" pointSize="14"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9&quot;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nzi-4B-uQb">
+                                    <rect key="frame" x="379.33333333333331" y="78.333333333333371" width="13.666666666666686" height="15.666666666666671"/>
                                     <fontDescription key="fontDescription" name="HPSimplified-Bold" family="HP Simplified" pointSize="14"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -251,11 +267,15 @@
                                 <constraint firstItem="4fb-nU-LrG" firstAttribute="width" secondItem="kd2-VZ-dVe" secondAttribute="width" multiplier="1.05141" id="F0z-zc-A3O"/>
                                 <constraint firstItem="kd2-VZ-dVe" firstAttribute="centerY" secondItem="d1k-5V-y0Z" secondAttribute="centerY" id="G8F-5E-A2z"/>
                                 <constraint firstItem="Op4-2r-dZb" firstAttribute="centerY" secondItem="d1k-5V-y0Z" secondAttribute="centerY" id="Hlk-2O-TQJ"/>
+                                <constraint firstItem="5LJ-IX-TtK" firstAttribute="top" secondItem="36i-W1-zrT" secondAttribute="bottom" constant="3" id="KSv-ln-VGE"/>
                                 <constraint firstAttribute="trailing" secondItem="mez-uk-6JT" secondAttribute="trailing" constant="10" id="Ns5-na-Ona"/>
+                                <constraint firstItem="5LJ-IX-TtK" firstAttribute="leading" secondItem="d1k-5V-y0Z" secondAttribute="leading" id="cCk-FS-sbt"/>
                                 <constraint firstItem="4fb-nU-LrG" firstAttribute="centerX" secondItem="d1k-5V-y0Z" secondAttribute="centerX" id="d2D-WR-Ezw"/>
                                 <constraint firstItem="kd2-VZ-dVe" firstAttribute="centerX" secondItem="d1k-5V-y0Z" secondAttribute="centerX" id="dOx-H9-Jkc"/>
+                                <constraint firstItem="Nzi-4B-uQb" firstAttribute="top" secondItem="mez-uk-6JT" secondAttribute="bottom" constant="3" id="iHc-B3-Ic8"/>
                                 <constraint firstItem="36i-W1-zrT" firstAttribute="leading" secondItem="d1k-5V-y0Z" secondAttribute="leading" constant="10" id="jf5-2n-dcf"/>
                                 <constraint firstItem="36i-W1-zrT" firstAttribute="centerY" secondItem="Op4-2r-dZb" secondAttribute="centerY" id="rfT-et-R5E"/>
+                                <constraint firstAttribute="trailing" secondItem="Nzi-4B-uQb" secondAttribute="trailing" id="z7G-JC-hFl"/>
                                 <constraint firstItem="Op4-2r-dZb" firstAttribute="centerX" secondItem="d1k-5V-y0Z" secondAttribute="centerX" id="zwL-pN-Z2N"/>
                             </constraints>
                         </view>
@@ -310,6 +330,11 @@
             <point key="canvasLocation" x="74" y="-12"/>
         </view>
     </objects>
+    <designables>
+        <designable name="4fb-nU-LrG">
+            <size key="intrinsicContentSize" width="-1" height="30"/>
+        </designable>
+    </designables>
     <resources>
         <image name="back" width="32" height="32"/>
         <image name="slider_custom_horizontal_bar" width="301.66665649414062" height="1.3333333730697632"/>

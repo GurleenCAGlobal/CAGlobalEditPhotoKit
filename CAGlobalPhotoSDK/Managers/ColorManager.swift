@@ -13,6 +13,7 @@ extension String {
     static let cyanColorName = "Cyan"
     static let darkBlueColorName = "DarkBlue"
     static let darkGrayColorName = "DarkGray"
+    static let defaultBackgroundColorName = "DefaultBackground"
     static let darkOrangeColorName = "DarkOrange"
     static let darkPurpleColorName = "DarkPurple"
     static let greenColorName = "Green"
@@ -32,7 +33,7 @@ extension String {
     static let stickerColor = "StickerColor"
     static let selectionColor = "selectionColor"
 }
-//let color = UIColor(named: "YourColorName", in: Bundle(path: Bundle(for: YourCustomView.self).path(forResource: "YourLibraryNameResources", ofType: "bundle") ?? ""), compatibleWith: nil)
+
 struct ColorManager {
     static let bundle = Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? "")
 
@@ -41,7 +42,6 @@ struct ColorManager {
             UIColor(named: .stickerColor, in: bundle, compatibleWith: nil)!,
             UIColor(named: .yellow2ColorName, in: bundle, compatibleWith: nil)!,
             UIColor(named: .yellowColorName, in: bundle, compatibleWith: nil)!,
-            UIColor(named: .skyColorName, in: bundle, compatibleWith: nil)!,
             UIColor(named: .redColorName, in: bundle, compatibleWith: nil)!,
             UIColor(named: .purpleColorName, in: bundle, compatibleWith: nil)!,
             UIColor(named: .pinkColorName, in: bundle, compatibleWith: nil)!,

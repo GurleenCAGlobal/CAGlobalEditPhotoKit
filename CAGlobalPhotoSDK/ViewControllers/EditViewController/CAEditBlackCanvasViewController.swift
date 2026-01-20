@@ -28,7 +28,7 @@ extension CAEditViewController {
         
     }
     
-    private func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive event: UIEvent) -> Bool {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive event: UIEvent) -> Bool {
         switch self.filterSelection {
         case .transform:
             return true
@@ -37,7 +37,7 @@ extension CAEditViewController {
         case .sticker:
             return true
         case .frame:
-            return false
+            return true
         case .brush:
             return true
         default:

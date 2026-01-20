@@ -22,7 +22,7 @@ import UIKit
     var hadChanges = Bool(false)
     var finalEditImage = UIImage()
     var selectedRatioWith = CGFloat(0.0)
-
+    @objc var fromCamera = Bool(false)
     var isPhotoboothCapturing = Bool(false)
     var copilotTextFrameIds = [String]()
 
@@ -37,10 +37,16 @@ import UIKit
 
     @objc var CollageImgHeight = CGFloat(0.0)
     @objc var copilot_textFrameIds = [String]()
+
     @objc var copilot_stickerIds = [String]()
     @objc var copilot_fontIds = [String]()
     @objc var refreshView = Bool()
     @objc var copilot_frameIds = [String]()
+    
+    @objc var isApConnection = Bool(false)
+    
+    @objc var connectedPrinters: NSMutableArray = []
+    @objc var currentPrinter: String = ""
 
     
     func clearImglyCopilot() {

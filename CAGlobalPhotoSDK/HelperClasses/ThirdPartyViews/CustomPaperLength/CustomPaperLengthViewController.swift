@@ -64,6 +64,7 @@ public class CustomPaperLengthViewController: UIViewController,UIImagePickerCont
     var goToPreview: Bool = false
     var isImageEditedToSave: Bool = false
     var isImageEditedFromEditor: Bool = false
+    @objc var isCloudError:Bool = false
     
     open var image: UIImage? {
         didSet {
@@ -91,6 +92,7 @@ public class CustomPaperLengthViewController: UIViewController,UIImagePickerCont
     // MARK: - View Life Cycle
     public override func viewDidLoad() {
         super.viewDidLoad()
+                
         canvasView.isPaperLengthView = true
         canvasView.delegate = self
         activityIndicator.isHidden = false
@@ -111,7 +113,9 @@ public class CustomPaperLengthViewController: UIViewController,UIImagePickerCont
             self.activityIndicator.stopAnimating()
             self.setOriginalImageParameters()
         }
+        
         self.doubleGesture()
+                
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -263,23 +267,24 @@ public class CustomPaperLengthViewController: UIViewController,UIImagePickerCont
     
     @IBAction func actionNextButton(_ sender: Any) {
         GlobalHelper.sharedManager.selectedRatioWith = self.selectedRatioWith ?? 0
-//        let viewController = CAEditViewController(nibName: CAEditViewController.className, bundle: nil)
-//        if let newImage = canvasView?.finalImage {
-//            viewController.imageOrignal = newImage
-//            viewController.imageOrignalBackUp = newImage
-//            let isImageEdited = self.isImageEdited(newImage, goingToEditor: true)
-//            viewController.selectedRatioWith = self.selectedRatioWith ?? 0
-//            viewController.selectedRatioWith2 = self.selectedRatioWith ?? 0
-//            viewController.isLandscape = self.isLandscape
-//            viewController.isLandscape2 = self.isLandscape
-//            viewController.isBlankCanvasRuler = false
-//            viewController.isImageAlreadyEdited = isImageEdited
-//            self.navigationController?.pushViewController(viewController, animated: true)
-//        }
+        let viewController = CAEditViewController(nibName: CAEditViewController.className, bundle: nil)
+        if let newImage = canvasView?.finalImage {
+            viewController.imageOrignal = newImage
+            viewController.imageOrignalBackUp = newImage
+            let isImageEdited = self.isImageEdited(newImage, goingToEditor: true)
+            viewController.selectedRatioWith = self.selectedRatioWith ?? 0
+            viewController.selectedRatioWith2 = self.selectedRatioWith ?? 0
+            viewController.isLandscape = self.isLandscape
+            viewController.isLandscape2 = self.isLandscape
+            viewController.isBlankCanvasRuler = false
+            viewController.isImageAlreadyEdited = isImageEdited
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
     
     @IBAction func actionBackButton(_ sender: Any) {
-        self.dismiss(animated: true)
+       // self.dismiss(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc func actionOrientationChnage(_ sender: Any) {
@@ -295,6 +300,8 @@ public class CustomPaperLengthViewController: UIViewController,UIImagePickerCont
             
             if selectedTag == SuggetedLength().bestFit.tag {
                 if (originalCanvasOrientation == .landscape && isLandscape) || (originalCanvasOrientation == .portrait && !isLandscape){
+                    debugPrint("Nothing working ")
+                    canvasView.setupImgViewAgainForCanvasSizeChange(contentMode: .scaleAspectFill, orienationaChange:false)
                 } else {
                     canvasView.setupImgViewAgainForCanvasSizeChange(contentMode: .scaleAspectFit, orienationaChange:false)
                 }
@@ -305,6 +312,7 @@ public class CustomPaperLengthViewController: UIViewController,UIImagePickerCont
         } else {
             isFillImage = true
             canvasView.setupImgViewAgainForCanvasSizeChange(contentMode: .scaleAspectFill, orienationaChange:false)
+            debugPrint("what to do ")
         }
     }
 }
@@ -454,6 +462,12 @@ extension CustomPaperLengthViewController: PaperLengthDelegate {
 extension CustomPaperLengthViewController {
     
     func orientationFloatingButton(){
+        
+        if self.isCloudError == true {
+            self.showICloudDownloadDialog()
+            return
+        }
+        
         let xAxis = xAxisFloating
         let yAxis = screenHeight - tableViewSize.frame.height - yAxisFloating
         floatingButtonsView.frame = CGRect(x: xAxis, y: yAxis , width: widthFloating, height: heightFloating)
@@ -481,5 +495,25 @@ extension CustomPaperLengthViewController {
         if let window = UIApplication.shared.delegate?.window {
             window?.addSubview(floatingButtonsView)
         }
+        
+
     }
+    
+    func showICloudDownloadDialog() {
+        let title = "No Internet Connection"
+        let message = "There was an error downloading this photo from your iCloud Photo Library.\nPlease try again later."
+        
+        let alert = PNAlertController(title: title, message: message)
+        alert.crossButtonEnabled = false
+        
+        let yesAction = PNAlertAction(title: "Dismiss", type: .bold) { action, selected in
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+        yesAction.buttonFillMode = .half
+        alert.addAction(yesAction)
+        
+        navigationController?.present(alert, animated: false)
+    }
+
 }

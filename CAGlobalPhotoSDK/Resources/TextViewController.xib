@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,6 +16,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TextViewController" customModule="CAGlobalPhotoSDK" customModuleProvider="target">
             <connections>
                 <outlet property="bottomView" destination="hGQ-xL-mAT" id="Fvz-zE-yBa"/>
+                <outlet property="constraintTextViewHeight" destination="wB8-g5-GFB" id="z9c-VK-LOc"/>
+                <outlet property="constraintTextViewWidth" destination="MAd-SD-zYJ" id="NFm-HO-Hpv"/>
                 <outlet property="constraintsBottomViewBottom" destination="RZ7-MF-4Oe" id="18r-0c-IGj"/>
                 <outlet property="constraintsBottomViewHeight" destination="vVS-dr-aWq" id="I74-pH-xmf"/>
                 <outlet property="doneButton" destination="jfM-eI-Zbi" id="36k-6L-avF"/>
@@ -30,14 +32,15 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ku3-J3-YWh">
-                    <rect key="frame" x="0.0" y="92" width="393" height="726"/>
+                    <rect key="frame" x="0.0" y="92" width="393" height="692"/>
                     <color key="backgroundColor" white="0.0" alpha="0.098872102649006616" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="apQ-X3-d6u">
-                    <rect key="frame" x="20" y="112" width="353" height="200"/>
+                    <rect key="frame" x="96.666666666666686" y="112" width="200" height="200"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <color key="tintColor" red="0.72156862749999995" green="0.79607843140000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
+                        <constraint firstAttribute="width" constant="200" id="MAd-SD-zYJ"/>
                         <constraint firstAttribute="height" constant="200" id="wB8-g5-GFB"/>
                     </constraints>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -171,7 +174,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hGQ-xL-mAT">
-                    <rect key="frame" x="0.0" y="488" width="393" height="80"/>
+                    <rect key="frame" x="0.0" y="454" width="393" height="80"/>
                     <viewLayoutGuide key="safeArea" id="gTv-xN-Q06"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -182,10 +185,8 @@
             <viewLayoutGuide key="safeArea" id="4lt-8S-Xo8"/>
             <color key="backgroundColor" white="0.0" alpha="0.20035699503311258" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="4lt-8S-Xo8" firstAttribute="trailing" secondItem="apQ-X3-d6u" secondAttribute="trailing" constant="20" id="3ji-3u-Fwz"/>
                 <constraint firstItem="EFk-QK-J8i" firstAttribute="leading" secondItem="e0H-4D-AXh" secondAttribute="leading" id="42j-m3-GRf"/>
                 <constraint firstItem="apQ-X3-d6u" firstAttribute="top" secondItem="yFi-cB-fiQ" secondAttribute="bottom" constant="20" id="5tQ-FF-rxc"/>
-                <constraint firstItem="apQ-X3-d6u" firstAttribute="leading" secondItem="4lt-8S-Xo8" secondAttribute="leading" constant="20" id="8X3-S8-7qQ"/>
                 <constraint firstItem="ku3-J3-YWh" firstAttribute="top" secondItem="yFi-cB-fiQ" secondAttribute="bottom" id="CjX-GX-fDf"/>
                 <constraint firstAttribute="trailing" secondItem="EFk-QK-J8i" secondAttribute="trailing" id="E37-ur-xI2"/>
                 <constraint firstItem="ku3-J3-YWh" firstAttribute="leading" secondItem="4lt-8S-Xo8" secondAttribute="leading" id="Ee5-gC-x5q"/>

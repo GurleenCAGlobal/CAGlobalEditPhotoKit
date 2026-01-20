@@ -9,7 +9,7 @@ import UIKit
 // MARK: - Transform Option -
 
 extension CAEditViewController: CropperViewControllerDelegate, RulerCanvasDelegate {
-
+    
     func setUpTransformView() {
         self.scrollView.isScrollEnabled = true
         self.mainImageView.transform = CGAffineTransformIdentity;
@@ -20,11 +20,11 @@ extension CAEditViewController: CropperViewControllerDelegate, RulerCanvasDelega
         self.blackCrossTickTransform.isHidden = false
         self.transformOptions.isHidden = false
         self.overlay.gridLinesAlpha = 1
-        overlay.blur = false
-        overlay.gridLinesAlpha = 0
-        overlay.cropBoxAlpha = 0
-        bottomView.isUserInteractionEnabled = false
-
+        self.overlay.blur = false
+        self.overlay.gridLinesAlpha = 0
+        self.overlay.cropBoxAlpha = 0
+        self.bottomView.isUserInteractionEnabled = false
+        
         UIView.animate(withDuration: 0.25, animations: {
         }, completion: { _ in
             UIView.animate(withDuration: 0.25, animations: {
@@ -35,13 +35,13 @@ extension CAEditViewController: CropperViewControllerDelegate, RulerCanvasDelega
                 self.bottomView.isUserInteractionEnabled = true
             })
         })
-
+        
         let imageHeigth = self.overlay.cropBox.size.height
         let imageWidth = self.overlay.cropBox.size.width
-
+        
         if imageHeigth > imageWidth {
             //-- Portrait
-            isLandscape = false
+            self.isLandscape = false
             self.verticalView.layer.borderWidth = 2
             self.horizontalView.layer.borderWidth = 0
             self.resetView.layer.borderWidth = 0
@@ -49,14 +49,14 @@ extension CAEditViewController: CropperViewControllerDelegate, RulerCanvasDelega
             selectedRation = round(((imageHeigth/imageWidth) * 2) * 10) / 10.0
         } else {
             //-- landscape
-            isLandscape = true
+            self.isLandscape = true
             self.verticalView.layer.borderWidth     = 0
             self.horizontalView.layer.borderWidth   = 2
             self.resetView.layer.borderWidth        = 0
             self.setPaperView.layer.borderWidth     = 0
-            selectedRation = round(((imageWidth/imageHeigth) * 2) * 10) / 10.0
+            self.selectedRation = round(((imageWidth/imageHeigth) * 2) * 10) / 10.0
         }
-
+        
         if let defaultCropperState = self.cropperState {
             self.restoreState(defaultCropperState)
         }
@@ -67,7 +67,7 @@ extension CAEditViewController: CropperViewControllerDelegate, RulerCanvasDelega
             self.aspectRatioPickerDidSelectedAspectRatio(.ratio(width: selectedRation, height: 2))
         }
     }
-
+    
     func setUpTransformViewBlank(image: UIImage) {
         self.option.isTransform = false
         self.option.isTransformActual = true
@@ -78,7 +78,7 @@ extension CAEditViewController: CropperViewControllerDelegate, RulerCanvasDelega
         self.overlay.gridLinesAlpha = 1
         self.overlay.cropBoxAlpha = 1
     }
-
+    
     func cropperDidConfirm(_ cropper: CropperViewController, state: CropperState?, selectedRatioWith: CGFloat) {
         self.selectedRatioWith = selectedRatioWith
         let imageCrop: UIImage!
@@ -94,8 +94,8 @@ extension CAEditViewController: CropperViewControllerDelegate, RulerCanvasDelega
             }
         }
     }
-
-
+    
+    
     func fetchAspectRatioFromImage(image: UIImage) {
         let imageHeigth = image.size.height
         let imageWidth = image.size.width
@@ -113,7 +113,7 @@ extension CAEditViewController: CropperViewControllerDelegate, RulerCanvasDelega
         self.isLandscape = isLandscape
         self.selectedRatioWith = bestFitRatioValue ?? 0
     }
-
+    
     func didSelectClockwiseRotate() {
         let img = mainImageView.image
         let flippedImage = self.setEffectOn(image:img!, effect:.rotate)
@@ -130,12 +130,12 @@ extension CAEditViewController: CropperViewControllerDelegate, RulerCanvasDelega
             break
         }
     }
-
+    
     func didSelectVerticallyFlip() {
         let img = mainImageView.image
         let flippedImage = self.setEffectOn(image:img!, effect:.flip)
         self.mainImageView.image = flippedImage
-
+        
         let orientation = flippedImage.imageOrientation
         switch orientation {
         case .up:
@@ -148,12 +148,12 @@ extension CAEditViewController: CropperViewControllerDelegate, RulerCanvasDelega
             break
         }
     }
-
+    
     func didSelectHorizontallyFlip() {
         let img = mainImageView.image
         let flippedImage = self.setEffectOn(image:img!, effect:.mirror)
         self.mainImageView.image = flippedImage
-
+        
         let orientation = flippedImage.imageOrientation
         switch orientation {
         case .up:
@@ -166,7 +166,7 @@ extension CAEditViewController: CropperViewControllerDelegate, RulerCanvasDelega
             break
         }
     }
-
+    
     func dismissWithUpdatedRatio(paperLengthImageMovementTransform: CGAffineTransform,
                                  paperLengthImageRotation: CGAffineTransform,
                                  previousImageViewTransform: CGAffineTransform,
@@ -181,7 +181,7 @@ extension CAEditViewController: CropperViewControllerDelegate, RulerCanvasDelega
         let gettingImage : UIImage
         gettingImage = self.imageOrignal
         let oldImageSize = gettingImage.size
-
+        
         self.mainImageScale = 1.0
         self.stickerScale = 1.0
         self.textScale = 1.0
@@ -200,7 +200,7 @@ extension CAEditViewController: CropperViewControllerDelegate, RulerCanvasDelega
         self.isLandscape = isLandscape
         self.mainImageView.image = self.applyingAllFilters(false,false,true)
         cropContentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-
+        
         cropRegionInsets = .zero
         maxCropRegion = .zero
         defaultCropBoxCenter = .zero
@@ -209,47 +209,16 @@ extension CAEditViewController: CropperViewControllerDelegate, RulerCanvasDelega
         let newGettingImage : UIImage
         newGettingImage = self.imageOrignal
         let newImageSize = newGettingImage.size
-
+        
         let differencWidth = oldImageSize.width - newImageSize.width
         let differencHeight = oldImageSize.height - newImageSize.height
         print(differencWidth,differencHeight)
-
+        
         self.saveEdit()
         if self.framesImageViewAngleRatio.image != nil {
             if let frame = selectedFrame as? String {
                 self.toResetFrames(frame: frame)
             }
-        }
-    }
-
-
-    func updateFramesSticker(xAxis: CGFloat, yAxis: CGFloat) {
-        for textView in self.option.stickerDetail {
-            let textViewDetail = textView.sticker
-            let transform = textViewDetail!.transform
-            let origin = textViewDetail?.frame.origin
-            let size = textViewDetail?.frame.size
-            print((origin?.x ?? 0) - xAxis)
-            let frame = CGRect(x: (origin?.x ?? 0) - xAxis , y: (origin?.y ?? 0) - yAxis , width: (size?.width ?? 0), height: (size?.height ?? 0))
-
-            var color = UIColor.white
-            if customStickerArray.count > 0 {
-
-            } else {
-
-            }
-            let colorManager = ColorManager()
-            _ = colorManager.getColorsData()
-
-            if textView.stickerName == "shapes" {
-                color = (UIColor(named: .stickerColor, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!)
-            } else {
-                color = (UIColor(named: .white, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!)
-            }
-            let view = self.stickerManager.addSticker(delegate:self, frame: frame, image: textView.image! ,isTransform: true , transform: transform, tag: stickerSavedTags, sticker: textView.stickerName ?? "", isSticker: textView.isSticker ?? false, color: textView.color ?? color)
-            view.isSelected = false
-            view.alpha = textView.alpha ?? 1.0
-            self.stickerView.addSubview(view)
         }
     }
 
@@ -272,12 +241,7 @@ extension CAEditViewController: CropperViewControllerDelegate, RulerCanvasDelega
     func updateTextViewText(addSticker: AddTextView, newText: String) {
         // Register the current state before making changes
         let oldText = addSticker.text
-
-        undoManager?.registerUndo(withTarget: self) { targetSelf in
-            // Undo block to revert the text change
-            targetSelf.updateTextViewText(addSticker: addSticker, newText: oldText ?? "")
-        }
-
+        
         // Change the text
         addSticker.text = newText
     }
@@ -285,12 +249,7 @@ extension CAEditViewController: CropperViewControllerDelegate, RulerCanvasDelega
     // Example function to update the text color and register undo/redo actions
     func updateTextViewColor(addSticker: AddTextView, newColor: UIColor) {
         guard let oldColor = addSticker.textColor else { return }
-
-        undoManager?.registerUndo(withTarget: self) { targetSelf in
-            // Undo block to revert the color change
-            targetSelf.updateTextViewColor(addSticker: addSticker, newColor: oldColor)
-        }
-
+        
         // Change the color
         addSticker.textColor = newColor
     }
@@ -298,12 +257,7 @@ extension CAEditViewController: CropperViewControllerDelegate, RulerCanvasDelega
     // Example function to update the font and register undo/redo actions
     func updateTextViewFont(addSticker: AddTextView, newFont: UIFont) {
         guard let oldFont = addSticker.font else { return }
-
-        undoManager?.registerUndo(withTarget: self) { targetSelf in
-            // Undo block to revert the font change
-            targetSelf.updateTextViewFont(addSticker: addSticker, newFont: oldFont)
-        }
-
+        
         // Change the font
         addSticker.font = newFont
     }
@@ -451,17 +405,17 @@ extension CAEditViewController {
 
         self.view.setNeedsDisplay()
         self.view.layoutIfNeeded()
-        //self.scrollViewContainer.scrollView = scrollView
-
-
-
-//        self.constraintTop.isHidden = false
-//        self.bottomConstraint.isHidden = false
-//        self.leadingConstraint.isHidden = false
-//        self.trailingConstraint.isHidden = false
-//        self.centerXConstraint.isHidden = false
-//        self.centerYConstraint.isHidden = false
-
+        self.scrollViewContainer.scrollView = scrollView
+        
+        
+        
+        //        self.constraintTop.isHidden = false
+        //        self.bottomConstraint.isHidden = false
+        //        self.leadingConstraint.isHidden = false
+        //        self.trailingConstraint.isHidden = false
+        //        self.centerXConstraint.isHidden = false
+        //        self.centerYConstraint.isHidden = false
+        
         self.scrollViewContainer.addGestureRecognizer(cropBoxPanGesture)
         self.scrollView.panGestureRecognizer.require(toFail: cropBoxPanGesture)
         self.scrollViewContainer.frame = CGRectMake(0, 0, self.transformMainView.frame.size.width, self.transformMainView.frame.size.height)
@@ -494,15 +448,15 @@ extension CAEditViewController {
             //--
             self.scrollViewContainer.addSubview(self.scrollView)
             self.scrollViewContainer.addSubview(self.framesImageViewAngleRatio)
-            self.mainImageView.addSubview(self.stickerTextView)
-            self.mainImageView.addSubview(self.viewPaintDrawing)
+            self.scrollViewContainer.addSubview(self.stickerTextView)
+            self.scrollViewContainer.addSubview(self.viewPaintDrawing)
             //--
             self.backgroundView.addSubview(self.overlay)
-
-
-
-
-
+            
+            
+            
+            
+            
             self.resetToDefaultLayout()
         }
     }
@@ -694,13 +648,14 @@ extension CAEditViewController {
         self.framesImageViewAngleRatio.center = scrollViewContainer.center
         if isResetClick == false {
 
+            
             self.stickerTextView.transform = .identity
             self.stickerTextView.frame = newRect
-            self.stickerTextView.center = mainImageView.center
+            self.stickerTextView.center = scrollViewContainer.center
 
             self.viewPaintDrawing.transform = .identity
             self.viewPaintDrawing.frame = newRect
-            self.viewPaintDrawing.center = mainImageView.center
+            self.viewPaintDrawing.center = scrollViewContainer.center
             self.viewPaintDrawing.setPaint()
 
             self.framesImageView.transform = .identity
@@ -763,6 +718,12 @@ extension CAEditViewController {
 //                                   trailingConstraint,
 //                                   centerXConstraint,
 //                                   centerYConstraint])
+        
+        self.stickerTextView.transform = .identity
+        self.stickerTextView.frame = overlay.cropBox.frame
+        self.stickerTextView.center = scrollView.center
+        self.viewPaintDrawing.transform = .identity
+        self.viewPaintDrawing.frame = overlay.cropBox.frame
 
     }
 
@@ -794,6 +755,7 @@ extension CAEditViewController {
 
     @objc
     func rotateButtonPressed(_: UIButton) {
+        _ = isFlipped || isMirrored || isFlippedSelected
         rotate90degrees()
     }
 
@@ -825,16 +787,34 @@ extension CAEditViewController {
             }
         }
     }
-
+    
     func photoTranslation() -> CGPoint {
         let rect = mainImageView.convert(mainImageView.bounds, to: self.transformMainView)
         let point = CGPoint(x: rect.origin.x + rect.size.width / 2, y: rect.origin.y + rect.size.height / 2)
         let zeroPoint = CGPoint(x: transformMainView.frame.width / 2, y: defaultCropBoxCenter.y)
-
+        
         return CGPoint(x: point.x - zeroPoint.x, y: point.y - zeroPoint.y)
     }
-
+    
     @IBAction func actionAspectRatioLandscape(_ sender: UIButton) {
+        self.landscapeAspectRatio()
+        if self.framesImageViewAngleRatio.image != nil {
+            if let frame = selectedFrame as? String {
+                //toResetFrames(frame: frame)
+            }
+        }
+    }
+    
+    @IBAction func actionAspectRatioPotrait(_ sender: UIButton) {
+        self.portraitAspectRatio()
+        if self.framesImageViewAngleRatio.image != nil {
+            if let frame = selectedFrame as? String {
+                //toResetFrames(frame: frame)
+            }
+        }
+    }
+    
+    func landscapeAspectRatio(isRotate: Bool = false) {
         self.framesImageView.isHidden = true
         self.framesImageViewAngleRatio.isHidden = false
         self.isLandscape = true
@@ -844,14 +824,9 @@ extension CAEditViewController {
         self.setPaperView.layer.borderWidth     = 0
         self.aspectRatioPickerDidSelectedAspectRatio(.ratio(width: selectedRation, height: 2))
         self.updatingLayerFrames(contentOffset: self.scrollView.contentOffset)
-        if self.framesImageViewAngleRatio.image != nil {
-            if let frame = selectedFrame as? String {
-                toResetFrames(frame: frame)
-            }
-        }
     }
-
-    @IBAction func actionAspectRatioPotrait(_ sender: UIButton) {
+    
+    func portraitAspectRatio(isRotate: Bool = false) {
         self.framesImageView.isHidden = true
         self.framesImageViewAngleRatio.isHidden = false
         self.isLandscape = false
@@ -861,11 +836,11 @@ extension CAEditViewController {
         self.setPaperView.layer.borderWidth = 0
         self.aspectRatioPickerDidSelectedAspectRatio(.ratio(width: 2, height: selectedRation))
         self.updatingLayerFrames(contentOffset: self.scrollView.contentOffset)
-        if self.framesImageViewAngleRatio.image != nil {
-            if let frame = selectedFrame as? String {
-                toResetFrames(frame: frame)
-            }
-        }
+//        if self.framesImageViewAngleRatio.image != nil {
+//            if let frame = selectedFrame as? String {
+//                toResetFrames(frame: frame)
+//            }
+//        }
     }
 
     @IBAction func actionBlankCanvas(_ sender: UIButton) {
@@ -881,7 +856,7 @@ extension CAEditViewController {
         self.framesImageViewAngleRatio.isHidden = false
         self.isRotationImage = true
         self.rotateButtonPressed(sender)
-        self.updatingLayerFrames(contentOffset: self.scrollView.contentOffset)
+        self.updateAspectRatioSelectionOnRotation()
     }
 
     @IBAction func actionReset(_ sender: UIButton) {
@@ -1015,18 +990,31 @@ extension CAEditViewController {
             self.setPaperView.layer.borderWidth     = 0
         }
     }
-
+    
+    func updateAspectRatioSelectionOnRotation() {
+        let imageHeigth = self.overlay.cropBox.size.height
+        let imageWidth = self.overlay.cropBox.size.width
+        
+        if imageHeigth > imageWidth {
+            //-- Portrait
+            self.portraitAspectRatio()
+        } else {
+            self.landscapeAspectRatio()
+        }
+    }
+    
     func updatingLayerFrames(contentOffset: CGPoint){
+        
         self.mainImageScaledSizeForText = overlay.cropBox.bounds.size
         let newRect = CGRect(x: 0, y: 0, width: overlay.cropBox.bounds.width, height: overlay.cropBox.bounds.height)
         _ = CGRect(x: 0, y: 0, width: self.scrollView.bounds.width, height: self.scrollView.bounds.height)
-
+        
         self.framesImageViewAngleRatio.frame = newRect
         self.framesImageViewAngleRatio.center = scrollViewContainer.center
-
+        
         let imageHeigth = self.overlay.cropBox.size.height
         let imageWidth = self.overlay.cropBox.size.width
-
+        
         if imageHeigth > imageWidth {
             //-- Portrait
             isLandscape = false
@@ -1034,7 +1022,7 @@ extension CAEditViewController {
             self.horizontalView.layer.borderWidth = 0
             self.resetView.layer.borderWidth = 0
             self.setPaperView.layer.borderWidth = 0
-            //self.selectedRatioWith = round(((imageHeigth/imageWidth) * 2) * 10) / 10.0
+            self.selectedRatioWith = round(((imageHeigth/imageWidth) * 2) * 10) / 10.0
         } else {
             //-- landscape
             isLandscape = true
@@ -1042,7 +1030,7 @@ extension CAEditViewController {
             self.horizontalView.layer.borderWidth   = 2
             self.resetView.layer.borderWidth        = 0
             self.setPaperView.layer.borderWidth     = 0
-            //self.selectedRatioWith = round(((imageWidth/imageHeigth) * 2) * 10) / 10.0
+            self.selectedRatioWith = round(((imageWidth/imageHeigth) * 2) * 10) / 10.0
         }
         
         if self.framesImageViewAngleRatio.image != nil {

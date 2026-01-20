@@ -14,7 +14,7 @@ public protocol AMColorPicker: NSObject {
 }
 
 public protocol AMColorPickerDelegate: AnyObject {
-    func colorPicker(_ colorPicker: AMColorPicker, didSelect color: UIColor, opacity: CGFloat)
+    func colorPicker(_ colorPicker: AMColorPicker, didSelect color: UIColor, opacity: CGFloat, isBackground: Bool)
 }
 
 extension UIColor {

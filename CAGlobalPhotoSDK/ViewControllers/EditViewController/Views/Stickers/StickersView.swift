@@ -10,7 +10,7 @@ import UIKit
 // Define a protocol for the cell's data source
 protocol StickersViewDelegate: AnyObject {
     func selectedStickerImage(image: UIImage, stickerSelection: String, stickerUrl: String,isImageDepth:Bool?)
-    func editStickerImage(oldImage: UIImage, oldImageTintColor: UIColor, image: UIImage, stickerSelection: String, isImageDepth:Bool?,isBackgroundRemoved:Bool?,isGallery:Bool?)
+    func editStickerImage(oldImage: UIImage, orignaloldImage: UIImage, oldImageTintColor: UIColor, image: UIImage,orignalImage: UIImage , stickerSelection: String, pStickerSelection: String, isImageDepth:Bool?,isBackgroundRemoved:Bool?,isGallery:Bool?)
     func openCameraForCustomSticker(isEdit:Bool)
 }
 
@@ -28,15 +28,18 @@ class StickersView: UIView, UINavigationControllerDelegate, UIImagePickerControl
     @IBOutlet weak var subStickerCollectionView: UICollectionView!
     
     private var stickerManager = StickerManager()
+    var customStickerVC = CustomStickerViewController()
     var stickerData = [String]()
     var stickerURLData = [String]()
     var stickerNameURLData = [[String:Any]]()
     private(set) var customSticker = [UIImage]()
     private(set) var subStickerData = [UIImage]()
+    private(set) var subStickerNames = [String]()
     private(set) var subStickerDataToDisplay = [UIImage]()
     private(set) var subCloudsStickerData = [PGCloudAssetImage]()
     private(set) var subStickersDataApi = [SubStickerModel]()
     var stickerCategories = [PGCloudAssetCategory]()
+    
     
     weak var delegate: StickersViewDelegate?
     var isEdit: Bool?
@@ -167,16 +170,22 @@ class StickersView: UIView, UINavigationControllerDelegate, UIImagePickerControl
              }
          }
          **/
+        global_shouldCancelStickerResizing = false
         DispatchQueue.global(qos: .background).async { [weak self] in
-            
+
             let cac = PGCloudAssetClient.sharedInstance()
             var catalog = PGCloudAssetCatalog()
             if let catalog = cac?.currentCatalog() {
                 let activePrinterType = PGQueueController.shared().activePrinterType
-                
+
                 self?.stickerCategories = catalog.categories(forAssetType: PGCloudAssetCategoryTypeSticker, andDeviceType: activePrinterType) ?? []
                 if let stickerCategories = self?.stickerCategories {
                     for category in stickerCategories {
+                        if global_shouldCancelStickerResizing {
+                            print("Download cancelled.")
+                            break
+                        }
+
                         self?.stickerURLData.append(category.thumbnailURL)
                         var cloudAssets = [PGCloudAssetImage]()
                         cloudAssets = category.sortedImageAssets()
@@ -193,7 +202,7 @@ class StickersView: UIView, UINavigationControllerDelegate, UIImagePickerControl
                                     let imagephoto = UIImage.init(data: image_Data)!
                                     stickerAssestsURL.append(imagephoto)
                                 }
-                                
+
                                 if let image_Data = try? Data(contentsOf: localThumbnailURL) {
                                     let imagephoto = UIImage.init(data: image_Data)!
                                     switch UIDevice().type {
@@ -225,6 +234,18 @@ class StickersView: UIView, UINavigationControllerDelegate, UIImagePickerControl
                             self?.stickerCollectionView.reloadData()
                         }
                     }
+                    let isContain = self?.stickerData.contains(where: { value in
+                        if value == "Sports" {
+                            return true
+                        }
+                        return false //Change to false if wants to add these three stickers
+                    })
+                    if isContain == false {
+                        self?.stickerData.insert("Sports", at: self?.stickerData.count ?? 0)
+                        self?.stickerData.insert("Nature", at: self?.stickerData.count ?? 0)
+                        self?.stickerData.insert("Get Well", at: self?.stickerData.count ?? 0)
+
+                    }
                 }
             } else {
                 // handle the case where catalog is nil
@@ -248,13 +269,18 @@ class StickersView: UIView, UINavigationControllerDelegate, UIImagePickerControl
     }
     
     func configureCustomStickerArray() {
-        if let outData = UserDefaults.standard.data(forKey: "kUserData") {
-            // customStickerArray = NSKeyedUnarchiver.unarchiveObject(with: outData) as! [UIImage]
+        if UserDefaults.standard.integer(forKey: kPGCSMLastStickerNumberKey) != 0 {
+            customStickerArray = self.customStickerVC.loadStickers()
         }
         if customStickerArray.count > 0 {
-            if stickerData[1] != "Custom" {
-                self.stickerData.insert("Custom", at: 1)
+            if stickerData.count > 1 { // Check if there's a second element
+                if stickerData[1] != "Custom" {
+                    self.stickerData.insert("Custom", at: 1)
+                }
+            } else {
+                self.stickerData.append("Custom") // Add if the array is too small
             }
+
             self.customSticker = customStickerArray
             if self.stickerSelection == 0 {
                 self.stickerSelection = 1
@@ -273,6 +299,7 @@ class StickersView: UIView, UINavigationControllerDelegate, UIImagePickerControl
                 self.customSticker.removeAll()
             }
         }
+
         let isContain = self.stickerData.contains(where: { value in
             if value == "Sports" {
                 return true
@@ -300,6 +327,8 @@ class StickersView: UIView, UINavigationControllerDelegate, UIImagePickerControl
         self.stickerCollectionView.reloadData()
         self.subStickerCollectionView.reloadData()
     }
+
+    
 }
 
 extension StickersView: UICollectionViewDataSource {
@@ -410,6 +439,7 @@ extension StickersView: UICollectionViewDataSource {
                 } else {
                     cell.layer.borderWidth = 0
                 }
+
             }
         case self.subStickerCollectionView:
             cell.heightConstraint.constant = 0
@@ -465,21 +495,27 @@ extension StickersView: UICollectionViewDelegate {
                     let data2 = self.stickerNameURLData[indexPath.row - 2]
                     let dictionary = data2
                     let assestUrl = dictionary["stickerThumbnailURL"] as? [UIImage]
+                    let stickerAssestsURL = dictionary["stickerAssestsURL"] as? [UIImage]
+                    let stickerNames = dictionary["stickerNames"] as? [String]
+                    self.subStickerNames = stickerNames ?? []
                     self.subStickerData = assestUrl ?? []
                     
-                    let stickerAssestsURL = dictionary["stickerAssestsURL"] as? [UIImage]
+                    //let stickerAssestsURL = dictionary["stickerAssestsURL"] as? [UIImage]
                     self.subStickerDataToDisplay = stickerAssestsURL ?? []
                     
                     self.stickerSelectionString = "cloud"
                 } else if indexPath.row == self.stickerData.count - 3 {
                     self.subStickerData = self.stickerManager.sportsCategoryStickers()
                     self.subStickerDataToDisplay = self.stickerManager.sportsCategoryStickers()
+                    self.stickerSelectionString = "staticSticker"
                 } else if indexPath.row == self.stickerData.count - 2 {
                     self.subStickerData = self.stickerManager.natureCategoryStickers()
                     self.subStickerDataToDisplay = self.stickerManager.natureCategoryStickers()
+                    self.stickerSelectionString = "staticSticker"
                 } else if indexPath.row == self.stickerData.count - 1 {
                     self.subStickerData = self.stickerManager.getWellCategoryStickers()
                     self.subStickerDataToDisplay = self.stickerManager.getWellCategoryStickers()
+                    self.stickerSelectionString = "staticSticker"
                 }
             } else {
                 if indexPath.row == 0 {
@@ -492,21 +528,27 @@ extension StickersView: UICollectionViewDelegate {
                     let data2 = self.stickerNameURLData[indexPath.row - 1]
                     let dictionary = data2
                     let assestUrl = dictionary["stickerThumbnailURL"] as? [UIImage]
+                    let stickerAssestsURL = dictionary["stickerAssestsURL"] as? [UIImage]
+                    let stickerNames = dictionary["stickerNames"] as? [String]
+                    self.subStickerNames = stickerNames ?? []
                     self.subStickerData = assestUrl ?? []
                     
-                    let stickerAssestsURL = dictionary["stickerAssestsURL"] as? [UIImage]
+                    //let stickerAssestsURL = dictionary["stickerAssestsURL"] as? [UIImage]
                     self.subStickerDataToDisplay = stickerAssestsURL ?? []
 
                     self.stickerSelectionString = "cloud"
                 } else if indexPath.row == self.stickerData.count - 3 {
                     self.subStickerData = self.stickerManager.sportsCategoryStickers()
                     self.subStickerDataToDisplay = self.stickerManager.sportsCategoryStickers()
+                    self.stickerSelectionString = "staticSticker"
                 } else if indexPath.row == self.stickerData.count - 2 {
                     self.subStickerData = self.stickerManager.natureCategoryStickers()
                     self.subStickerDataToDisplay = self.stickerManager.natureCategoryStickers()
+                    self.stickerSelectionString = "staticSticker"
                 } else if indexPath.row == self.stickerData.count - 1 {
                     self.subStickerData = self.stickerManager.getWellCategoryStickers()
                     self.subStickerDataToDisplay = self.stickerManager.getWellCategoryStickers()
+                    self.stickerSelectionString = "staticSticker"
                 }
             }
             self.subStickerCollectionView.isHidden = false
@@ -522,15 +564,20 @@ extension StickersView: UICollectionViewDelegate {
             self.stickerSelection = indexPath.row
             self.subStickerCollectionView.reloadData()
         case self.subStickerCollectionView:
-
-            if self.stickerData.count != stickerSelection {
-                let data = self.subStickerData[indexPath.row]
+            if self.stickerData.count == stickerSelection {
+                if subStickersDataApi.count > 0 {
+                    let data = subStickersDataApi[indexPath.row]
+                    
+                }
+            } else {
+                let data = self.subStickerDataToDisplay[indexPath.row]
                 if customStickerArray.count > 0 {
                     cell?.handleSelection(with: data, isEdit: self.isEdit ?? false, isCustomSticker: true, urlString: "")
                 } else {
                     cell?.handleSelection(with: data, isEdit: self.isEdit ?? false, isCustomSticker: false, urlString: "")
                 }
             }
+
         default:
             break;
         }
@@ -568,7 +615,7 @@ extension StickersView: StickersCellDelegate {
             if isCustomSticker == true {
                 self.stickerSelection = 0
             }
-            self.delegate?.editStickerImage(oldImage: self.oldImage, oldImageTintColor: self.oldImageTintColor, image: data, stickerSelection: self.stickerSelectionString, isImageDepth: isImageDepth,isBackgroundRemoved: false, isGallery: false)
+            self.delegate?.editStickerImage(oldImage: self.oldImage, orignaloldImage: self.oldImage, oldImageTintColor: self.oldImageTintColor, image: data, orignalImage: data, stickerSelection: self.stickerSelectionString, pStickerSelection: self.stickerSelectionString, isImageDepth: isImageDepth,isBackgroundRemoved: false, isGallery: false)
         }
     }
 }

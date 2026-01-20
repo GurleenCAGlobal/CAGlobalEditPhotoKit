@@ -46,6 +46,7 @@ class CustomStickerViewController: UIViewController,UIImagePickerControllerDeleg
     @IBOutlet weak var infoButton: UIImageView!
     @IBOutlet weak var closeButton: UIImageView!
     @IBOutlet weak var videoView: UIView!
+    let frameRenderingSemaphore = DispatchSemaphore(value: 1)
     var camera: GPUImageStillCamera?
     var filters: [GPUImageOutput] = []
     lazy var cropFilter: GPUImageCropFilter = {
@@ -57,17 +58,13 @@ class CustomStickerViewController: UIViewController,UIImagePickerControllerDeleg
         thresholdFilter = GPUImageLuminanceThresholdFilter()
         thresholdFilter.threshold = CGFloat(kPGCustomerStickerThreshold)
         
-        if !hasCamera() {
             thresholdFilter.useNextFrameForImageCapture()
-        }
         return thresholdFilter
     }()
     
     lazy var closingFilter: GPUImageClosingFilter = {
         closingFilter = GPUImageClosingFilter(radius: UInt(kPGCustomStickerClosingRadius))
-        if !hasCamera() {
             closingFilter.useNextFrameForImageCapture()
-        }
         return closingFilter
     }()
     
@@ -75,9 +72,7 @@ class CustomStickerViewController: UIViewController,UIImagePickerControllerDeleg
         var filters = [GPUImageErosionFilter]()
         for _ in 0..<kPGCustomStickerErosionCount {
             let filter = GPUImageErosionFilter(radius: UInt(kPGCustomStickerErosionRadius))
-            if !hasCamera() {
                 filter?.useNextFrameForImageCapture()
-            }
             filters.append(filter!)
         }
         erosionFilters = filters
@@ -86,18 +81,14 @@ class CustomStickerViewController: UIViewController,UIImagePickerControllerDeleg
     
     lazy var invertFilter: GPUImageColorInvertFilter = {
         invertFilter = GPUImageColorInvertFilter()
-        if !hasCamera() {
             invertFilter.useNextFrameForImageCapture()
-        }
         return invertFilter
     }()
     
     lazy var rgbFilter: GPUImageRGBFilter = {
         rgbFilter = GPUImageRGBFilter()
         //rgbFilter.setRed(0, green: 0, blue: 1)
-        if !hasCamera() {
             rgbFilter.useNextFrameForImageCapture()
-        }
         return rgbFilter
     }()
     
@@ -113,9 +104,7 @@ class CustomStickerViewController: UIViewController,UIImagePickerControllerDeleg
     lazy var monochromeFilter: GPUImageMonochromeFilter = {
         monochromeFilter = GPUImageMonochromeFilter()
         //monochromeFilter.color = GPUVector4
-        if !hasCamera() {
             monochromeFilter.useNextFrameForImageCapture()
-        }
         return monochromeFilter
     }()
     
@@ -256,9 +245,11 @@ class CustomStickerViewController: UIViewController,UIImagePickerControllerDeleg
         case .authorized:
             self.camera?.capturePhotoAsImageProcessedUp(toFilter: self.lastFilter()) { processedImage, _ in
                 globalGpuFilter = self.lastFilter()
-                self.processResult(processedImage!)
-                self.saveMode = true
-                self.isCapturing = false
+                if let transparentSticker = self.removeBlackBackground(from: processedImage!) {
+                    self.processResult(transparentSticker)
+                    self.saveMode = true
+                    self.isCapturing = false
+                }
             }
         case .restricted: break
             
@@ -313,8 +304,7 @@ class CustomStickerViewController: UIViewController,UIImagePickerControllerDeleg
             self.noButton.isEnabled = false
         }) { _ in
             self.navigationController?.popViewController(animated: true)
-//            UIImage *filteredPhoto = [filterOutput imageFromCurrentlyProcessedOutput];
-//            self.saveSticker(sticker: self.stickerImage!, thumbnail: self.thumbnailImage!)
+            self.saveSticker(sticker: self.stickerImage!, thumbnail: self.thumbnailImage!)
             self.delegate?.getCustomSticker(stickerImage: self.stickerImage!, thumbnailImage: self.thumbnailImage!)
         }
         camera?.stopCapture()
@@ -354,7 +344,7 @@ class CustomStickerViewController: UIViewController,UIImagePickerControllerDeleg
     func addMask(to view: UIView, color: UIColor) {
         let overlayPath = UIBezierPath(rect: view.bounds)
         let width = view.bounds.size.width - 2.0 * kPGCustomStickerCameraInset
-        let top = self.resultImageView.frame.origin.y + 50
+        let top = self.resultImageView.frame.origin.y// + 50
         let transparentPath = UIBezierPath(rect: CGRect(x: kPGCustomStickerCameraInset, y: top, width: width, height: width))
         overlayPath.append(transparentPath)
         overlayPath.usesEvenOddFillRule = true
@@ -380,7 +370,7 @@ class CustomStickerViewController: UIViewController,UIImagePickerControllerDeleg
     
     func addCorners(to view: UIView) {
         let width = view.bounds.size.width - 2.0 * kPGCustomStickerCameraCornerInset
-        let top = self.resultImageView.frame.origin.y + 50 - kPGCustomStickerCameraCornerMargin
+        let top = self.resultImageView.frame.origin.y /*+ 50*/ - kPGCustomStickerCameraCornerMargin
         let path = UIBezierPath()
         // top left
         path.move(to: CGPoint(x: kPGCustomStickerCameraCornerInset + kPGCustomStickerCameraCornerLength, y: top))
@@ -453,7 +443,6 @@ class CustomStickerViewController: UIViewController,UIImagePickerControllerDeleg
         filters.append(contentsOf: self.erosionFilters)
         filters.append(self.invertFilter)
         filters.append(self.rgbFilter)
-        filters.append(self.chromaKeyFilter)
         filters.append(self.monochromeFilter)
         self.filters = filters
     }
@@ -571,29 +560,94 @@ class CustomStickerViewController: UIViewController,UIImagePickerControllerDeleg
     
     func saveSticker(sticker: UIImage, thumbnail: UIImage) {
         let number = nextStickerNumber()
-        // Appending a random suffix to prevent caching by imgly
-        let image = self.thresholdFilter.imageFromCurrentFramebuffer()
 
-        let data = image?.withTintColor(.white).pngData()
-        let url = self.stickerDirectoryURL().appendingPathComponent("fileName.png")
-
-        do {
-            try data?.write(to: url, options: .atomic)
-        } catch {
-            print("Error writing thumbnail image: \(error)")
-        }
-        
-        let dataThumb = thumbnail.pngData()
-        let urlThumb = self.stickerDirectoryURL().appendingPathComponent("fileNameurlThumb.png")
-
-        do {
-            try dataThumb?.write(to: urlThumb, options: .atomic)
-        } catch {
-            print("Error writing thumbnail image: \(error)")
+        // Save sticker image
+        if let stickerData = sticker.pngData() {
+            let stickerURL = stickerDirectoryURL().appendingPathComponent("sticker_\(number).png")
+            try? stickerData.write(to: stickerURL, options: .atomic)
         }
 
+        // Save thumbnail image
+        if let thumbData = thumbnail.pngData() {
+            let thumbURL = stickerDirectoryURL().appendingPathComponent("thumb_\(number).png")
+            try? thumbData.write(to: thumbURL, options: .atomic)
+        }
+
+        // Save latest number to UserDefaults
         UserDefaults.standard.set(number, forKey: kPGCSMLastStickerNumberKey)
         UserDefaults.standard.synchronize()
     }
+    
+    func loadStickers() -> [UIImage] {
+        let fileManager = FileManager.default
+        let directory = stickerDirectoryURL()
 
+        do {
+            let files = try fileManager.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil)
+            let stickerFiles = files.filter { $0.lastPathComponent.hasPrefix("sticker_") && $0.pathExtension == "png" }
+            
+            return stickerFiles.compactMap { UIImage(contentsOfFile: $0.path) }
+        } catch {
+            print("Error loading stickers: \(error)")
+            return []
+        }
+    }
+    
+    func loadThumbnails() -> [UIImage] {
+        let fileManager = FileManager.default
+        let directory = stickerDirectoryURL()
+
+        do {
+            let files = try fileManager.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil)
+            let thumbFiles = files.filter { $0.lastPathComponent.hasPrefix("thumb_") && $0.pathExtension == "png" }
+            
+            return thumbFiles.compactMap { UIImage(contentsOfFile: $0.path) }
+        } catch {
+            print("Error loading thumbnails: \(error)")
+            return []
+        }
+    }
+
+    func removeBlackBackground(from image: UIImage) -> UIImage? {
+        guard let cgImage = image.cgImage else { return nil }
+
+        let width = cgImage.width
+        let height = cgImage.height
+        let bitsPerComponent = 8
+        let bytesPerPixel = 4
+        let bytesPerRow = width * bytesPerPixel
+
+        guard let context = CGContext(
+            data: nil,
+            width: width,
+            height: height,
+            bitsPerComponent: bitsPerComponent,
+            bytesPerRow: bytesPerRow,
+            space: CGColorSpaceCreateDeviceRGB(),
+            bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue
+        ) else { return nil }
+
+        let rect = CGRect(x: 0, y: 0, width: width, height: height)
+        context.draw(cgImage, in: rect)
+
+        guard let pixelBuffer = context.data else { return nil }
+        let pixels = pixelBuffer.bindMemory(to: UInt8.self, capacity: width * height * bytesPerPixel)
+
+        for y in 0..<height {
+            for x in 0..<width {
+                let offset = (y * width + x) * bytesPerPixel
+                let r = pixels[offset]
+                let g = pixels[offset + 1]
+                let b = pixels[offset + 2]
+
+                // If it's black (or near black), make it transparent
+                if r < 30 && g < 30 && b < 30 {
+                    pixels[offset + 3] = 0 // Alpha = 0 (transparent)
+                }
+            }
+        }
+
+        guard let newCGImage = context.makeImage() else { return nil }
+        return UIImage(cgImage: newCGImage, scale: image.scale, orientation: image.imageOrientation)
+    }
 }

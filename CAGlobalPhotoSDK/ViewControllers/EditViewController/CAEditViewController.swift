@@ -11,32 +11,30 @@ import Accelerate
 import AudioToolbox
 
 
-let kCLImageToolAnimationDuration: CGFloat = 0.3
-var printerDPI = 500
-var printerWidth = 2.0447 //Print head width in inches
-var isShowingSocialPhotos = false
-var isSortByOldestFirst = Bool()
-let kPGCSMLastStickerNumberKey = "com.caglobal.CAGlobalPhotoSDK"
-let kPGCustomStickerManagerDirectory = "stickers"
-let kCustomStickerManagerPrefixLength = 8
-let kCustomStickerManagerThumbnailSuffix = "_TN"
-let kCustomStickerManagerUniqueHashLength = 4
+var currentZoomScale: CGFloat = 1.0 // Stores the current zoom scale of the editing canvas
+var isImageSaved = false // Tracks whether the edited image has been saved
+var isImageAltered = false // Tracks if the image has been modified after loading
+var finalImage: UIImage? // Stores the final image that will be saved or printed
+var autoOrAdjust: Bool? // true = auto filter applied, false = manual adjustment
+let kCLImageToolAnimationDuration: CGFloat = 0.3 // Standard animation duration for edit tools
+var printerDPI = 500 // Printer dots per inch setting
+var printerWidth = 2.0447 // Print head width in inches
+var isShowingSocialPhotos = false // Used for photo source handling (social media)
+var isSortByOldestFirst = Bool() // Determines sort order of displayed photos
+
+let kPGCSMLastStickerNumberKey = "com.caglobal.CAGlobalPhotoSDK" // UserDefaults key for last sticker used
+let kPGCustomStickerManagerDirectory = "stickers" // Folder for custom sticker files
+let kCustomStickerManagerPrefixLength = 8 // Prefix used for unique file naming
+let kCustomStickerManagerThumbnailSuffix = "_TN" // Suffix for sticker thumbnail files
+let kCustomStickerManagerUniqueHashLength = 4 // Unique hash length for identifying sticker files
+
 var customStickerArray = [UIImage]()
-var undoMng: UndoManager?
-
-var undoStackFrames: [FrameModel] = []
-var redoStackFrames: [FrameModel] = []
-var undoStackBrush: [TouchPointsAndColor] = []
-var redoStackBrush: [TouchPointsAndColor] = []
-var currentBrushState: TouchPointsAndColor?
-
 
 var currentFilterState: FilterState = FilterState(filterName: "", opacity: 1.0)
 var filterOpacityValue:CGFloat = 1.0  // Keep track of the current opacity
 var selectedFilter = String()
-
-
-
+var global_shouldCancelStickerResizing = false
+var global_shouldCancelFrameResizing = false
 struct EditStaticStrings {
     static let color = "color"
     static let previousColor = "previousColor"
@@ -51,6 +49,12 @@ struct EditStaticStrings {
     static let selectedPreviousFontIndex = "selectedPreviousFontIndex"
     static let selectedOpacity = "selectedOpacity"
     static let selectedAlignment = "selectedAlignment"
+    
+    static let backgroundColor = "backgroundColor"
+    static let previousBackgroundColor = "previousBackgroundColor"
+    static let selectedBackgroundColorIndex = "selectedBackgroundColorIndex"
+    static let selectedBackgroundPreviousColorIndex = "selectedBackgroundPreviousColorIndex"
+
 }
 
 enum FilterSelection: Int {
@@ -66,6 +70,7 @@ enum FilterSelection: Int {
     case none = -1
 
 }
+
 
 enum BrushSelection: Int {
     case color = 0
@@ -97,11 +102,13 @@ enum TextStickersOption {
     case withoutTick
     case saved
     case setColor
+    case setBackgroundColor
     case setFont
     case setLeft
     case setRight
     case setCenter
     case setOpacity
+    case setOpacityEnd
     case mirror
     case onTop
     case align
@@ -122,6 +129,21 @@ class CLBlurCircle: UIView {
     var color: UIColor?
 }
 
+struct StickerFlipState {
+    let image: UIImage
+    let transform: CGAffineTransform
+    let center: CGPoint
+}
+
+struct StickerEditState {
+    let image: UIImage
+    let tintColor: UIColor
+    let stickerSelection: String
+    let isBackgroundRemoved: Bool
+    let transform: CGAffineTransform
+    let stickerRef: AddSticker
+}
+
 let textSavedTags = 20
 let textTempTags = 200
 let textEditTags = 21
@@ -136,15 +158,17 @@ let stickerTempEditTags = 101
 let stickerMoveSavedTags = 102
 let stickerMoveTempTags = 103
 let stickerReplaceTags = 104
+
 @objc protocol EditImageDelegate: AnyObject {
-    
+
     /*
      Called when the user to apply colors and font name
      */
-    func printImage(image: UIImage)
+    func printImage(image: UIImage, hasframe:Bool)
+    func backcallback(isSave:Bool)
 }
 
-public class CAEditViewController: BaseViewController, UIGestureRecognizerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class CAEditViewController: BaseViewController, UIGestureRecognizerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     // This outlet represents the collection view for all options for edit
     @IBOutlet weak var mainCollectionView: UICollectionView!
     //    // This outlet represents the main view where we are showing image and textView
@@ -234,10 +258,10 @@ public class CAEditViewController: BaseViewController, UIGestureRecognizerDelega
     @IBOutlet weak var brushSharpenessView: UIView!
     // This outlet represents the Brush Sharpness Imageview
     @IBOutlet weak var brushSharpenessImageView: UIImageView!
-//    // This outlet represents the top title
-//    @IBOutlet weak var frameTitleLabel: UILabel!
-//    // This outlet represents the top title
-//    @IBOutlet weak var frameTitleLabel2: UILabel!
+    //    // This outlet represents the top title
+    //    @IBOutlet weak var frameTitleLabel: UILabel!
+    //    // This outlet represents the top title
+    //    @IBOutlet weak var frameTitleLabel2: UILabel!
     @IBOutlet weak var constraintsBottomtransform: NSLayoutConstraint!
 
     @IBOutlet weak var setPaperView: UIView!
@@ -252,38 +276,40 @@ public class CAEditViewController: BaseViewController, UIGestureRecognizerDelega
 
 
     // -- Main
+     var alignmentHideTimer: Timer?
+
     var previousTextDetail: [(txtVw: AddTextView, text: String?, frame: CGRect?, font: UIFont?, index: Int?, color: UIColor?, colorIn: Int?, previousColor: UIColor?, previousColorIndex: Int?, trnf: CGAffineTransform?, slider: CGFloat?, opacity: CGFloat?, textAlignment: NSTextAlignment?, fontCustom: String?, previousfont: String?, textString: String?, previousTextString: String?, selectedFontIndex: Int?, selectedPreviousFontIndex: Int?)]? = nil
     var previousFrame: CGRect? = nil
     var previousBrushStrokes: [TouchPointsAndColor] = []
-   // var filterView: FilterView?
+    // var filterView: FilterView?
 
     private lazy var filterView: FilterView = {
         let view = FilterView()
         return view
     }()
 
+    // Define the snapping threshold and duration
+    let snappingThreshold: CGFloat = 8.0
+    let snappingDuration: TimeInterval = 2.0
 
+    var areAlignmentLinesVisible = false
+
+    var isHandlesVisible = true
+   // open lazy var overlayForStickerText: Overlay = Overlay(frame: .zero)
 
     var angle: CGFloat = 0.0
     var textModel = TextModel()
-//    public var imageOrignalBackUp: UIImage!
-//    public var imageBlankCanvas: UIImage!
-//    public var imageOrignal: UIImage!
     @objc var imageOrignalBackUp: UIImage!
     @objc var imageBlankCanvas: UIImage!
     @objc var imageOrignal: UIImage!
-
     var imageTransform: UIImage!
     var imageBlur: UIImage!
     var finalImage: UIImage!
     var mainPreviousImage: UIImage!
     var framePreviousImage: UIImage!
     var lastScale = CGFloat()
-//    public var selectedRatioWith: CGFloat = 0
-//    public var selectedRatioWith2: CGFloat = 0
     @objc var selectedRatioWith: CGFloat = 0
     @objc var selectedRatioWith2: CGFloat = 0
-
     var orignalSelectedRatioWith: CGFloat?
     var mainImageScaledSize = CGSize()
     //    var selectedFrame: Any?
@@ -306,10 +332,10 @@ public class CAEditViewController: BaseViewController, UIGestureRecognizerDelega
     var overlaySliderValue: CGFloat!
     var stickersSliderValue: CGFloat!
     private var contextObserver = 0
-    
+    var framesImageViewBackup = UIImageView()
     var stickerForegroundCache: [UIImage: Bool] = [:]
 
-    
+
     let option = EditOptions()
     var filterSelection = FilterSelection(rawValue: -1)
     var brushSelection = BrushSelection(rawValue: -1)
@@ -322,7 +348,7 @@ public class CAEditViewController: BaseViewController, UIGestureRecognizerDelega
     var adjustSelection: AdjustSelection!
     var cropperState: CropperState?
     var stickerManager = StickerManager()
-    
+
     var circleView = CircularBlurView()
     let stickerView = StickersView()
     var textView = TextView()
@@ -331,7 +357,9 @@ public class CAEditViewController: BaseViewController, UIGestureRecognizerDelega
     var selectedAddTextView : AddTextView?
     var selectedTextModel = TextModel()
     let brushView = BrushView()
-    var selectedStickerColorModel = UIColor(named: .white, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!
+    var selectedStickerColor = UIColor(named: .white, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!
+    var selectedSickerColorModel = ColorModel()
+    var previousSickerColorModel = ColorModel()
     var filterData = [String]()
     var filterImages = [UIImage]()
     var aCIImage = CIImage()
@@ -365,11 +393,10 @@ public class CAEditViewController: BaseViewController, UIGestureRecognizerDelega
     var mainImageViewSize: CGSize!
     var maskView: UIView!
     var selectedCanvasColor = UIColor()
-   // var undoMng = UndoManager()
     var stickerSelection = Int()
     var stickerColorSelection = Int()
     var pointSize: CGFloat = 0
-    
+
     var isEditAddPhoto: Bool?
     var isRotationImage: Bool?
     var isPlusAddPhoto: Bool? = false
@@ -377,47 +404,55 @@ public class CAEditViewController: BaseViewController, UIGestureRecognizerDelega
     var isFramesFetch: Bool?
     var isCropRatio: Bool?
     var isFilterFetched: Bool = false
-//    public var isBlankCanvasRuler: Bool = true
     @objc var isBlankCanvasRuler: Bool = true
-
     var isImageAlreadyEdited: Bool = false
-//    public var isLandscape: Bool = false
-//    public var isLandscape2: Bool = false
     @objc var isLandscape: Bool = false
     @objc var isLandscape2: Bool = false
-
     var isReplacingSticker: Bool?
+    var isResetWithAuto: Bool = true
     let isOldFrame = true
     var isCircular: Bool?
     var isFinalImage: Bool = false
+    var isPanEnableWhileHandlers: Bool = true
     var player: AVPlayer!
     var isSubOptions = false
     var isCategoryFrame = false
     var panBeginningPoint: CGPoint = .zero
     var panBeginningCropBoxEdge: CropBoxEdge = .none
     var panBeginningCropBoxFrame: CGRect = .zero
-    
-    
+
+    var isHoldingMovement = false
+    var holdAnimator: UIViewPropertyAnimator?
+    var lastSnappedPosition: CGPoint?
+//    var holdTimer: Timer?
+//    var isNearEdge = false
+//    var isSnapped = false
+
     public var currentAspectRatioValue: CGFloat = 1.0
     public var isCropBoxPanEnabled: Bool = true
     public var cropContentInset: UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+
+    public var cropContentInsetStickerText: UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    var cropRegionInsetsStickerText: UIEdgeInsets = .zero
+    var maxCropRegionStickerText: CGRect = .zero
+    var defaultCropBoxCenterStickerText: CGPoint = .zero
+    var defaultCropBoxSizeStickerText: CGSize = .zero
     
+
     let cropBoxHotArea: CGFloat = 50
     let cropBoxMinSize: CGFloat = 20
     let barHeight: CGFloat = 44
-    
+
     var cropRegionInsets: UIEdgeInsets = .zero
     var maxCropRegion: CGRect = .zero
     var defaultCropBoxCenter: CGPoint = .zero
     var defaultCropBoxSize: CGSize = .zero
-    
+
     var straightenAngle: CGFloat = 0.0
     var rotationAngle: CGFloat = 0.0
     var flipAngle: CGFloat = 0.0
     var fliped: Bool = false
-//    public var isFromPhotoBooth: Bool = false
     @objc var isFromPhotoBooth: Bool = false
-
     var manualZoomed: Bool = false
     var initialState: CropperState?
     var indexcount = Int()
@@ -436,7 +471,7 @@ public class CAEditViewController: BaseViewController, UIGestureRecognizerDelega
     var mainImageScale: CGFloat = 1.0
     let maxScale: CGFloat = 100
     let minScale: CGFloat = 0.5
-    
+
     var currentTransform: CGAffineTransform? = nil
     var pinchStartImageCenter: CGPoint = CGPoint(x: 0, y: 0)
     let maxScaleImage: CGFloat = 6.0
@@ -448,13 +483,18 @@ public class CAEditViewController: BaseViewController, UIGestureRecognizerDelega
             return (isBlankCanvasRuler || !isBlankCanvasRuler)
         }
     }
+
+    var stickerTagCounter = 1000 // Start from 1000 to avoid potential conflicts
+
+    var lastAdjustedImage: UIImage?
+    var lastAutoAppliedImage: UIImage? // To store Auto-applied image
+    
     var isFlipped = false
     var isMirrored = false
     var isFlippedSelected = false
     var isMirroredSelected = false
-    //public var customDelegate: EditImageDelegate?
+    var isRotateWithCorrectFrame = false
     @objc var customDelegate: EditImageDelegate?
-
     var selectedRation = 0.0
     var delegate: StickersCellDelegate?
     open lazy var transformBottomView: UIView = {
@@ -468,12 +508,12 @@ public class CAEditViewController: BaseViewController, UIGestureRecognizerDelega
             overlay.free = !aspectRatioLocked
         }
     }
-    
+
     let boundaryRect: CGRect = CGRect(x: 0, y: 0, width: 300, height: 300) // Adjust the boundary rect as needed
 
-    
+
     // MARK: - Private Methods
-    
+
     open var cropBoxFrame: CGRect {
         get {
             return overlay.cropBoxFrame
@@ -482,79 +522,79 @@ public class CAEditViewController: BaseViewController, UIGestureRecognizerDelega
             overlay.cropBoxFrame = safeCropBoxFrame(newValue)
         }
     }
-    
+
     var totalAngle: CGFloat {
         return autoHorizontalOrVerticalAngle(straightenAngle + rotationAngle + flipAngle)
     }
-    
+
     lazy var scrollView: UIScrollView = {
         let sv = UIScrollView(frame: CGRect(x: 0, y: 0, width: self.defaultCropBoxSize.width, height: self.defaultCropBoxSize.height))
         sv.delegate = self
         sv.center = self.transformMainView.convert(defaultCropBoxCenter, to: scrollViewContainer)
-        sv.bounces = true
-        sv.bouncesZoom = true
+        sv.bounces = false
+        sv.bouncesZoom = false
         sv.layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        sv.alwaysBounceVertical = true
-        sv.alwaysBounceHorizontal = true
+        sv.alwaysBounceVertical = false
+        sv.alwaysBounceHorizontal = false
         sv.minimumZoomScale = 1
-        sv.maximumZoomScale = 20
+        sv.maximumZoomScale = 3
         sv.showsVerticalScrollIndicator = false
         sv.showsHorizontalScrollIndicator = false
         sv.contentSize = self.defaultCropBoxSize
         return sv
     }()
-    
+
     lazy var mainImageView: UIImageView = {
         let iv = UIImageView(image: self.imageOrignal)
         iv.backgroundColor = .clear
         iv.clipsToBounds = true
         return iv
     }()
-    
+
     var cropBoxPanGesture = UIPanGestureRecognizer()
     open lazy var overlay: Overlay = Overlay(frame: self.backgroundView.bounds)
     lazy var framesImageView: UIImageView = {
         let view = UIImageView(frame: CGRect(x: 0, y: -20, width: 100, height: 100))
         return view
     }()
-    
+
     lazy var framesImageViewAngleRatio: UIImageView = {
         let view = UIImageView(frame: CGRect(x: 0, y: -20, width: 100, height: 100))
         return view
     }()
-    
+
     lazy var stickerTextView: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         view.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin, .flexibleLeftMargin, .flexibleRightMargin, .flexibleWidth]
         return view
     }()
-    
+
     lazy var viewPaintDrawing: DrawingView = {
         let view = DrawingView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         view.backgroundColor = .clear
         view.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin, .flexibleLeftMargin, .flexibleRightMargin, .flexibleWidth]
         return view
     }()
-    
+
     open var isCurrentlyInDefalutState: Bool {
         isCurrentlyInState(defaultCropperState)
     }
-    
+
     public lazy var angleRuler: AngleRuler = {
         let ar = AngleRuler(frame: CGRect(x: 0, y: 0, width: 147, height: 52))
-        
+
         ar.addTarget(self, action: #selector(angleRulerValueChanged(_:)), for: .valueChanged)
         ar.addTarget(self, action: #selector(angleRulerTouchEnded(_:)), for: [.editingDidEnd])
         return ar
     }()
-    
+
     public lazy var aspectRatioPicker: AspectRatioPicker = {
         let picker = AspectRatioPicker(frame: CGRect(x: 0, y: 0, width: view.width, height: 80))
         picker.isHidden = true
         picker.delegate = self
         return picker
     }()
-    
+
     @objc
     func angleRulerValueChanged(_: AnyObject) {
         self.framesImageView.isHidden = true
@@ -562,7 +602,7 @@ public class CAEditViewController: BaseViewController, UIGestureRecognizerDelega
         self.scrollViewContainer.isUserInteractionEnabled = false
         self.setStraightenAngle(CGFloat(angleRuler.value * CGFloat.pi / 180.0))
     }
-    
+
     @objc
     func angleRulerTouchEnded(_: AnyObject) {
         UIView.animate(withDuration: 0.25, animations: {
@@ -573,7 +613,7 @@ public class CAEditViewController: BaseViewController, UIGestureRecognizerDelega
             self.overlay.gridLinesCount = 2
         })
     }
-    
+
     var paperLengthImageRotation:CGAffineTransform?
     var paperLengthImageMovement:CGAffineTransform?
     var scrollViewZoomScale:CGFloat?
@@ -581,47 +621,57 @@ public class CAEditViewController: BaseViewController, UIGestureRecognizerDelega
     var isFillImage: Bool = false
     var previousImageViewTransform: CGAffineTransform?
     var transformZoomScale: CGFloat?
-
-
-
-
-    public override func viewDidLoad() {
+    var stickerPanGesture: UIPanGestureRecognizer?
+    // Instantiate StickerEditor
+    var undoRedoManager = UndoManager()
+    var previousOpacity = CGFloat()
+    var stickerPinchScale: CGFloat = 1.0
+    var stickerPreviousPinchScale: CGFloat = 1.0
+    var stickerTextPinchGesture = UIPinchGestureRecognizer()
+    var isProcessingImage = false // Flag to track image processing state
+    var tapMainGesture = UITapGestureRecognizer()
+    override func viewDidLoad() {
         super.viewDidLoad()
-        Editor.shared.stickerTextView = self.stickerTextView
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.initialLoad()
         self.calculatingMainImageViewSize()
+        NotificationCenter.default.addObserver(self, selector: #selector(handleDisablePanGesture(_:)), name: NSNotification.Name("disabelPanGesture"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleUpdatedFrames(_:)), name: NSNotification.Name("updatedFrames"), object: nil)
+        previousSelectedFrame = ""
+
     }
-    
-    public override func viewWillAppear(_ animated: Bool) {
+
+    override func viewWillAppear(_ animated: Bool) {
         self.isFilterFetched = false
         printIconTimer.invalidate() // just in case this button is tapped multiple times
-        
+
         // start the timer
         printIconTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
     }
-    
+
     @objc func timerAction() {
         self.updateRightBarButtonItem()
     }
-    
-    public override func viewDidDisappear(_ animated: Bool) {
+
+    override func viewDidDisappear(_ animated: Bool) {
         self.isFilterFetched = false
         printIconTimer.invalidate()
+        global_shouldCancelStickerResizing = true
+        global_shouldCancelFrameResizing = true
     }
 }
 
 // MARK: - Initial Load -
 extension CAEditViewController {
     func initialLoad() {
-        // anu commnet for sprint6
-        // drawDottedLine(start: CGPoint(x: self.centerDashLineMargin.bounds.minX, y: self.centerDashLineMargin.bounds.minY), end: CGPoint(x: self.centerDashLineMargin.bounds.maxX, y: self.centerDashLineMargin.bounds.minY), view: self.centerDashLineMargin)
+        self.isEditAddPhoto = false
+        drawDottedLine(start: CGPoint(x: self.centerDashLineMargin.bounds.minX, y: self.centerDashLineMargin.bounds.minY), end: CGPoint(x: self.centerDashLineMargin.bounds.maxX, y: self.centerDashLineMargin.bounds.minY), view: self.centerDashLineMargin)
 
         filterSelection = FilterSelection(rawValue: -1)
-
-        undoButton.isHidden = true
-        redoButton.isHidden = true
-        //enableDisableUIControl()
+        
+        self.isShowingRedoUndo()
+        self.isEnableRedoUndo()
+        
         zoomScale = nil
         mainImageScale = 1.0
         stickerScale = 1.0
@@ -640,14 +690,16 @@ extension CAEditViewController {
         self.scrollView.isScrollEnabled = false
         self.addGesturesStickerTextView()
         self.addPanGestureMainEdit()
+        self.registerCollectionCell()
         self.setOrignalImage()
-        self.calculatingMainImageViewSize() 
+        self.calculatingMainImageViewSize()
         self.initialState = saveState()
         self.updatingTransform()
         self.viewPaintDrawing.isUserInteractionEnabled = false
         self.addGesturesMainImageViewForSticker()
         self.selectedFrameOpacity = 1
-        self.registerCollectionCell()
+        self.posGesturesToStickerTextView()
+        NotificationCenter.default.addObserver(self, selector: #selector(saveCurrentStateForUndo), name: NSNotification.Name("saveCurrentStateForUndo"), object: nil)
     }
     
     private func updateRightBarButtonItem() {
@@ -656,16 +708,16 @@ extension CAEditViewController {
 
         self.printImageView.image = UIImage(named: "select", in: bundle, compatibleWith: nil)?.withRenderingMode(.alwaysOriginal)
     }
-    
+
     // MARK: - Notification Functions -
     @objc func handleContextChangedNotification(_ notification: Notification) {
         self.updateRightBarButtonItem()
     }
-    
+
     @objc func handleDeviceChangedNotification(_ notification: Notification) {
         self.updateRightBarButtonItem()
     }
-    
+
     @objc func handleDeviceAddedNotification(_ notification: Notification) {
         self.updateRightBarButtonItem()
     }
@@ -677,21 +729,12 @@ extension CAEditViewController {
 extension CAEditViewController {
     func registerCollectionCell() {
         //Register Collection view cell
-        // Get the path to the bundle inside the pod
-        let bundlePath = Bundle(for: EditOptionsCell.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
-        let bundle = bundlePath != nil ? Bundle(path: bundlePath!) : nil
-
-            // Register the NIB from the correct bundle
-            let nib = UINib(nibName: "EditOptionsCell", bundle: bundle)
-            self.mainCollectionView.register(nib, forCellWithReuseIdentifier: "EditOptionsCell")
-            
-
-        // Set the delegate and data source
+        let nib = UINib(nibName: EditOptionsCell.className, bundle: nil)
+        self.mainCollectionView.register(nib, forCellWithReuseIdentifier: EditOptionsCell.className)
         self.mainCollectionView.delegate = self
         self.mainCollectionView.dataSource = self
-        self.mainCollectionView.dataSource = self
     }
-    
+
     func setOrignalImage() {
         self.orignalSelectedRatioWith = self.selectedRatioWith
         self.transformMainView.translatesAutoresizingMaskIntoConstraints = false
@@ -699,7 +742,7 @@ extension CAEditViewController {
         self.mainImageView.image = self.imageOrignal
         self.imageTransform = self.imageOrignal
         self.imageOrignalBackUp = self.imageOrignal
-        
+
         isLandscape = (self.imageOrignal.size.height > self.imageOrignal.size.width) ? false : true
         self.updateAspectRatioSelection(isLandscape: self.isLandscape)
     }
@@ -710,10 +753,11 @@ extension CAEditViewController {
 extension CAEditViewController {
     //MARK: - Main Cross
     @IBAction func actionBackButton(_ sender: Any) {
-        globalUndoStack.removeAll()
-        globalRedoStack.removeAll()
+        self.customDelegate?.backcallback(isSave: false)
+        self.dismiss(animated: true)
         if self.hasChanges() {
-            self.dismiss(animated: true)
+            print(isFrame())
+            //showSaveToGalleryDialog()
         } else {
             if self.isFromPhotoBooth {
                 self.dismiss(animated: true)
@@ -721,25 +765,39 @@ extension CAEditViewController {
                 self.dismiss(animated: true)
             }
         }
+         
     }
-    
+
     @IBAction func actionRemoveText(_ sender: Any) {
-        if self.viewPaintDrawing.isUserInteractionEnabled == true {
+         
+        self.isEnableRedoUndo()
+        
+        if self.viewPaintDrawing.isUserInteractionEnabled == true || self.magnifyingGlass.magnifiedView != nil {
+            if magnifyingGlass.magnifiedView != nil {
+                self.saveCrossView.showView()
+                self.saveCrossSubOptionsView.hideView()
+            }
             let array = self.viewPaintDrawing.lines
             if array.count > 0 {
                 self.drawingViewWillBeginDraw()
                 self.option.removedBrushDetails.append(self.viewPaintDrawing.lines.last!)
                 self.viewPaintDrawing.undoDraw()
-                
+                //self.saveDeleteStateForUndo()
             }
         } else {
             let subViews = self.stickerTextView.subviews
             for subview in subViews {
+                self.isShowingRedoUndo()
                 if subview is AddSticker {
                     if let addSticker = subview as? AddSticker {
                         if addSticker.isSelected {
                             addSticker.removeFromSuperview()
                             self.setupAddDeleteFlipAndOnTopButtons(isHidden: true)
+                            if subViews.count == 1 {
+                                isShowingRedoUndo()
+                                isEnableRedoUndo()
+                            }
+
                         }
                     }
                 }
@@ -748,6 +806,10 @@ extension CAEditViewController {
                         if addText.isSelected {
                             addText.removeFromSuperview()
                             self.setupAddDeleteFlipAndOnTopButtons(isHidden: true)
+                            if subViews.count == 1 {
+                                isShowingRedoUndo()
+                                isEnableRedoUndo()
+                            }
                         }
                     }
                 }
@@ -756,78 +818,68 @@ extension CAEditViewController {
             self.saveEdit()
         }
     }
-    
-    // MARK: Tick functionality
-//    @IBAction func btnSaveEditsClicked(_ sender: Any) {
-////        undoButton.isHidden = true
-////        redoButton.isHidden = true
-//        if let defaultCropperState = self.initialState {
-//            self.restoreState(defaultCropperState)
-//        }
-//        self.backgroundView.transform = .identity
-//        self.saveEdit()
-//       // textModel.saveStateForUndo()
-//    }
+
+    // MARK: Mid options Tick functionality
     @IBAction func btnSaveEditsClicked(_ sender: Any) {
-
-//        undoButton.isHidden = true
-//        redoButton.isHidden = true
-//        self.textModel.undoStack.removeAll()
-//        self.textModel.redoStack.removeAll()
-//        undoStackFrames.removeAll()
-//        redoStackFrames.removeAll()
-//        // Capture current state for undo
-//            if let currentCropperState = self.currentState() {
-//                undoMng?.registerUndo(withTarget: self, handler: { target in
-//                    target.restoreState(currentCropperState, animated: false)
-//                 //   target.enableDisableUIControl() // Update the UI accordingly
-//                })
+//        if let handles = self.selectedAddTextView?.handles {
+//            let shouldHide = !handles.allSatisfy { $0.isHidden }
+//            handles.forEach { $0.isHidden = shouldHide }
+//            if shouldHide {
 //            }
+//        }
+        self.selectedAddTextView?.outlineLayer?.isHidden = true
+        selectedAddTextView = nil
 
-            // Restore the initial state if available
-            if let defaultCropperState = self.initialState {
-                self.restoreState(defaultCropperState)
-            }
+        self.selectedAddSticker?.handles.forEach { $0.isHidden = true }
+        selectedAddSticker = nil
+        self.isEnableRedoUndo()
+        
+        // Restore the initial state if available
+        if let defaultCropperState = self.initialState {
+            self.restoreState(defaultCropperState)
+        }
+        self.backgroundView.transform = .identity
+        // Apply edits based on the selected filter
+        self.saveEdit()
 
-            self.backgroundView.transform = .identity
-
-            // Apply edits based on the selected filter
-            self.saveEdit()
     }
     
     // MARK: Cross functionality
     @IBAction func btnCrossEditsClicked(_ sender: Any) {
+         
+        self.isShowingRedoUndo()
+        
+        self.selectedAddTextView?.handles.forEach { $0.isHidden = true }
+        self.selectedAddSticker?.handles.forEach { $0.isHidden = true }
+        selectedAddTextView = nil
+       // selectedAddSticker = nil
         if let defaultCropperState = self.initialState {
             self.restoreState(defaultCropperState)
         }
         self.backgroundView.transform = .identity
         self.hideCrossTick()
     }
-    
-    // MARK: Tick functionality
+
+    // MARK: Sub options Tick functionality
     @IBAction func actionSubOptionsTick(_ sender: Any) {
 
-        undoButton.isHidden = true
-        redoButton.isHidden = true
-        self.textModel.undoStack.removeAll()
-        self.textModel.redoStack.removeAll()
-        undoStackFrames.removeAll()
-        redoStackFrames.removeAll()
-        undoMng?.beginUndoGrouping()
+        self.selectedAddSticker?.handles.forEach { $0.isHidden = true }
 
         switch self.filterSelection {
         case .text:
+            self.isShownRedoUndo()
             self.deleteAndAddButtons.isHidden = false
             self.isSubOptions = false
             self.magnifyingGlass.magnifiedView = nil
             self.removeGesturesMainImageViewForMagnify()
-            self.mainImageView.addGestureRecognizer(self.framePanGesture)
+            self.scrollViewContainer.addGestureRecognizer(self.framePanGesture)
 
             // Apply the text sub-options (such as font, color, size)
-            self.applySubOptionsForText()
+            // self.applySubOptionsForText()
+
             self.textView.actionCrossForText()
 
-//            // Register undo for text changes
+            // Register undo for text changes
 //            undoMng?.registerUndo(withTarget: self, handler: { target in
 //                target.undoTextChanges()
 //              //  self.enableDisableUIControl()
@@ -835,7 +887,8 @@ extension CAEditViewController {
 
             self.saveCrossView.showView()
             self.saveCrossSubOptionsView.hideView()
-            //self.stickersText(text: .showDeleteButton, isText: true)
+            
+//          self.stickersText(text: .showDeleteButton, isText: true)
 //            self.deleteAndAddButtons.isHidden = false
 //            self.isSubOptions = false
 //            self.magnifyingGlass.magnifiedView = nil
@@ -853,11 +906,11 @@ extension CAEditViewController {
             if let defaultCropperState = self.initialState {
                 self.restoreState(defaultCropperState)
 
-//                // Register undo for frame changes
-//                undoMng?.registerUndo(withTarget: self, handler: { target in
-//                    target.undoFrameChanges()
-//                   // self.enableDisableUIControl()
-//                })
+                //                // Register undo for frame changes
+                //                undoMng?.registerUndo(withTarget: self, handler: { target in
+                //                    target.undoFrameChanges()
+                //                   // self.enableDisableUIControl()
+                //                })
             }
 
             self.backgroundView.transform = .identity
@@ -869,12 +922,12 @@ extension CAEditViewController {
                         self.saveCrossSubOptionsView.hideView()
                         stop = true
                     } else {
-//                        let data: [String: Any] = [
-//                            "view": framesImageViewAngleRatio,
-//                            "image": framesImageViewAngleRatio.image,
-//                            "previousImage": framePreviousImage!
-//                        ]
-//                        Editor.performAction(type: .add, data: data)
+                        //                        let data: [String: Any] = [
+                        //                            "view": framesImageViewAngleRatio,
+                        //                            "image": framesImageViewAngleRatio.image,
+                        //                            "previousImage": framePreviousImage!
+                        //                        ]
+                        //                        Editor.performAction(type: .add, data: data)
                         self.setUpStickerOptionsAfterSelection(isReset: false)
                         stop = true
                     }
@@ -885,47 +938,42 @@ extension CAEditViewController {
                     self.saveCrossView.hideView()
                     self.saveCrossSubOptionsView.hideView()
                     stop = true
-                    undoButton.isHidden = false
-                    redoButton.isHidden = false
 
                 }
             }
-//            let currentFrameState = FrameModel(frame: selectedFrame2, opacity: selectedFrameOpacity)
-//            print("Applying frames...")
-//            undoStackFrames.append(currentFrameState)
+            //            let currentFrameState = FrameModel(frame: selectedFrame2, opacity: selectedFrameOpacity)
+            //            print("Applying frames...")
+            //            undoStackFrames.append(currentFrameState)
         case .brush:
-//            // Add new brush stroke
-//            self.viewPaintDrawing.lines.append(TouchPointsAndColor(color: self.viewPaintDrawing.strokeColor, points: [CGPoint]()))
-//
-//            // Perform brush-related actions
-            self.brushSelection = BrushSelection(rawValue: -1)
-            self.brushView.actionOnSubOptionTick()
-//
-//            // Register undo for brush strokes
-//            undoMng?.registerUndo(withTarget: self, handler: { target in
-//                target.undoBrushChanges()
-//              //  self.enableDisableUIControl()
-//            })
+            self.isShownRedoUndo()
+            // Add new brush stroke
+            //self.viewPaintDrawing.lines.append(TouchPointsAndColor(color: self.viewPaintDrawing.strokeColor, points: [CGPoint]()))
 
+            // Perform brush-related actions
+            self.brushView.actionOnSubOptionTick()
+
+            // Register undo for brush strokes
             self.saveCrossView.showView()
             self.saveCrossSubOptionsView.hideView()
-
         default:
             break
         }
 
         // End grouping of undoable actions
-        undoMng?.endUndoGrouping()
+        //undoMng?.endUndoGrouping()
     }
 
 
-    
+
     // MARK: Cross functionality
     @IBAction func actionSubOptionsCross(_ sender: Any) {
-        self.textModel.undoStack.removeAll()
-        self.textModel.redoStack.removeAll()
-        undoStackFrames.removeAll()
-        redoStackFrames.removeAll()
+        self.btnCrossEditsClicked(sender)
+        return;
+
+        self.selectedAddTextView?.handles.forEach { $0.isHidden = true }
+        selectedAddTextView = nil
+        self.selectedAddSticker?.handles.forEach { $0.isHidden = true }
+        selectedAddSticker = nil
         self.saveCrossView.showView()
         self.saveCrossSubOptionsView.hideView()
         switch self.filterSelection {
@@ -938,16 +986,26 @@ extension CAEditViewController {
 
             self.selectedTextModel.color = self.selectedTextModel.previousColor
             self.selectedTextModel.selectedColorIndex = self.selectedTextModel.previousSelectedColorIndex
-            print("textModel.selectedColorIndex",textModel.selectedColorIndex)
             self.denyColorAndText(textModel: self.selectedTextModel)
             self.textView.actionCrossForText()
-            
+
+            self.stickersText(text: .showDeleteButtonOnTap, isText: true)
+
+            // Unhide the delete and add buttons
+            self.deleteAndAddButtons.isHidden = false
+
+            self.selectedAddTextView?.isSelected = true
+            self.selectedAddTextView?.borderView.isHidden = false
+//            self.selectedAddTextView?.layer.borderColor = UIColor.init(red: 0 / 255.0, green: 177 / 255.0, blue: 255 / 255.0, alpha: 1).cgColor
+//            self.selectedAddTextView?.layer.borderWidth = 1
+            self.setupAddDeleteFlipAndOnTopButtons(isHidden: false) // Show buttons for the selected text
+
         case .frame:
             if let defaultCropperState = self.initialState {
                 self.restoreState(defaultCropperState)
             }
             if isFrameOptionView() {
-                self.setUpFrameView(isEdit: false)
+                self.setUpFrameView(isEdit: true)
             } else {
                 if isCategoryFrame == false {
                     isCategoryFrame = true
@@ -955,7 +1013,6 @@ extension CAEditViewController {
                     self.filterSelection = .frame
                     currentFrameView?.frameCollectionView.reloadData()
                 } else {
-                    //self.isRotationImage = true
                     self.removeEditSteps()
                     self.hideCrossTick()
                     self.saveCrossView.hideView()
@@ -1010,16 +1067,16 @@ extension CAEditViewController {
             break
 
 //        case .brush:
-//            
+//
 //            let value = self.option.appliedBrushDetails.last
-//            
+//
 //            if self.option.appliedBrushDetails.count == 0 {
 //                self.option.selectedBrushColorIndex = 0
 //            }
-//            
+//
 //            switch self.brushSelection {
 //            case .color:
-//                self.viewPaintDrawing.strokeColor = value?.color ?? UIColor(named: .blackColorName, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!
+//                self.viewPaintDrawing.strokeColor = value?.color ?? UIColor(named: .blackColorName)!
 //            case .sharpness:
 //                self.viewPaintDrawing.brushSharpness = value?.sharpness ?? 1
 //            case .size:
@@ -1029,7 +1086,7 @@ extension CAEditViewController {
 //            default:
 //                break
 //            }
-//            
+//
 //            self.brushView.colorModel.selectedColorIndex = self.option.selectedBrushColorIndex
 //            self.brushView.colorButton.backgroundColor = self.viewPaintDrawing.strokeColor
 //            self.brushView.widthSlider.value = Float(self.viewPaintDrawing.strokeWidth )
@@ -1038,10 +1095,10 @@ extension CAEditViewController {
 //                self.brushView.sharpnessSlider.value = 1.0
 //            }   else {
 //                self.brushView.sharpnessSlider.value = Float(self.viewPaintDrawing.brushSharpness )
-//                
+//
 //            }
 //
-//            
+//
 //            self.brushSelection = BrushSelection(rawValue: -1)
 //            self.brushView.actionOnSubOptionTick()
 //            self.saveCrossView.showView()
@@ -1056,9 +1113,9 @@ extension CAEditViewController {
         default:
             break
         }
-        
+
     }
-    
+
     func isFrameOptionView() -> Bool {
         let subViews = self.bottomView.subviews
         for subview in subViews {
@@ -1068,8 +1125,8 @@ extension CAEditViewController {
         }
         return false
     }
-    
-    
+
+
     // MARK: Tick functionality
     @IBAction func actionTransformTick(_ sender: Any) {
         self.scrollView.isScrollEnabled = false
@@ -1077,12 +1134,13 @@ extension CAEditViewController {
         self.option.isTransformActual = false
         self.isFlippedSelected = self.isFlipped
         self.isMirroredSelected = self.isMirrored
+        // Store current state before changes for undo
+        let previousState = self.initialState
+        self.saveTransformStateForUndo()
         self.cropperState = saveState()
         self.initialState = saveState()
         self.mainCollectionView.isHidden = false
-
-        self.undoButton.isHidden = true
-        self.redoButton.isHidden = true
+        
         self.crossTickTransform.isHidden = true
         self.blackCrossTickTransform.isHidden = true
         self.transformOptions.isHidden = true
@@ -1095,7 +1153,7 @@ extension CAEditViewController {
         } else {
             self.option.isTransform = true
         }
-
+        
         UIView.animate(withDuration: 0.25, animations: {
         }, completion: { _ in
             UIView.animate(withDuration: 0.25, animations: {
@@ -1108,12 +1166,62 @@ extension CAEditViewController {
                 self.overlay.blur = true
             })
         })
-        self.minScaleImage = sqrt(abs(self.mainImageView.transform.a * self.mainImageView.transform.d - self.mainImageView.transform.b * self.mainImageView.transform.c))
+        self.minScaleImage = sqrt(abs(self.scrollView.transform.a * self.scrollView.transform.d - self.scrollView.transform.b * self.scrollView.transform.c))
         self.filterSelection = FilterSelection(rawValue: -1)
- }
+        self.applyFrames(isUndoRedo: false)
+        
+        
+//        // Register Undo Operation
+//        undoRedoManager.registerUndo(withTarget: self) { target in
+//            target.initialState = previousState
+//            if let cropperState = target.initialState {
+//                self.option.isTransform = true
+//                self.restoreState(cropperState)
+//                self.updateButtons()
+//                
+//                self.globalUndoRedo(currentFilterSelection: .transform)
+//                self.removeBottomSubViews()
+//                self.setUpTransformView()
+//                target.restoreTransformStateForUndoRedo(cropperState: self.initialState!)
+//            }
+//        }
+    }
     
+    @objc func saveTransformStateForUndo() {
+        let currentCropperState = self.initialState!
+        undoRedoManager.registerUndo(withTarget: self) { target in
+            target.restoreTransformStateForUndoRedo(cropperState: currentCropperState)
+        }
+        undoRedoManager.setActionName("Transform")
+        self.isEnableRedoUndo()
+    }
+    
+    func restoreTransformStateForUndoRedo(cropperState: CropperState) {
+        let previousState = self.initialState!
+        self.initialState = cropperState
+
+        // Apply the restored state
+        self.option.isTransform = true
+        self.restoreState(cropperState)
+
+        self.updateButtons()
+        
+        self.globalUndoRedo(currentFilterSelection: .transform)
+        self.removeBottomSubViews()
+        self.setUpTransformView()
+
+        undoRedoManager.registerUndo(withTarget: self) { target in
+            target.restoreTransformStateForUndoRedo(cropperState: previousState)
+        }
+        self.isEnableRedoUndo()
+    }
+
     // MARK: Cross functionality
     @IBAction func actionTransformCross(_ sender: Any) {
+        self.selectedAddTextView?.handles.forEach { $0.isHidden = true }
+        selectedAddTextView = nil
+        self.selectedAddSticker?.handles.forEach { $0.isHidden = true }
+        selectedAddSticker = nil
         self.scrollView.isScrollEnabled = false
         self.stickerTextView.isUserInteractionEnabled = true
         self.option.isTransformActual = false
@@ -1130,10 +1238,10 @@ extension CAEditViewController {
             }
             self.backgroundView.transform = .identity
         }
-        
+
         let imageHeigth = self.overlay.cropBox.size.height
         let imageWidth = self.overlay.cropBox.size.width
-        
+
         if imageHeigth > imageWidth {
             //-- Portrait
             isLandscape = false
@@ -1143,53 +1251,106 @@ extension CAEditViewController {
             isLandscape = true
             //self.selectedRatioWith = round(((imageWidth/imageHeigth) * 2) * 10) / 10.0
         }
-        
-        if self.framesImageViewAngleRatio.image != nil {
-            if let frame = selectedFrame as? String {
-                self.toResetFrames(frame: frame)
-            }
-        }
-        
-        self.mainCollectionView.isHidden = false
 
-        self.undoButton.isHidden = true
-        self.redoButton.isHidden = true
+        self.resetFramesOnCross()
+//        if self.framesImageViewAngleRatio.image != nil {
+//            if let frame = selectedFrame as? String {
+//                self.toResetFrames(frame: frame)
+//            }
+//        }
+
+        self.mainCollectionView.isHidden = false
         self.crossTickTransform.isHidden = true
         self.blackCrossTickTransform.isHidden = true
         self.transformOptions.isHidden = true
         self.filterSelection = FilterSelection(rawValue: -1)
+        self.backgroundView.transform = .identity
+        self.handleOnTap()
+    }
+
+    func handleOnTap() {
+        self.isShowingRedoUndo()
+        self.isEnableRedoUndo()
+        
+        if let handles = self.selectedAddTextView?.handles {
+            let shouldHide = !handles.allSatisfy { $0.isHidden }
+            handles.forEach { $0.isHidden = shouldHide }
+        }
+        
+        
+        if self.magnifyingGlass.magnifiedView == nil {
+            self.selectedAddSticker?.handles.forEach { $0.isHidden = true }
+            selectedAddSticker = nil
+
+            if let defaultCropperState = self.initialState {
+                self.restoreState(defaultCropperState)
+            }
+            self.backgroundView.transform = .identity
+            
+//            switch self.filterSelection {
+//            case .sticker:
+//                self.applySticker()
+//                self.applyImageView()
+//                self.hideCrossTickOnly()
+//                self.removeBottomSubViews()
+//                self.filterSelection = FilterSelection(rawValue: -1)
+//                self.mainCollectionView.isHidden = false
+//                self.isShowingRedoUndo()
+//                self.mainCollectionView.reloadData()
+//                
+//            case .gallery:
+//                self.applySticker()
+//                self.applyImageView()
+//                self.hideCrossTickOnly()
+//                self.removeBottomSubViews()
+//                self.filterSelection = FilterSelection(rawValue: -1)
+//                self.mainCollectionView.isHidden = false
+//                self.isShowingRedoUndo()
+//                self.mainCollectionView.reloadData()
+//            case .text:
+//                self.isShowingRedoUndo()
+//                self.applySubOptionsForText()
+//                self.applyText()
+//                self.applyImageView()
+//                self.hideCrossTickOnly()
+//                self.removeBottomSubViews()
+//                self.filterSelection = FilterSelection(rawValue: -1)
+//                self.mainCollectionView.isHidden = false
+//                self.mainCollectionView.reloadData()
+//            default:
+//                break
+//            }
+            
+            isEnableRedoUndo()
+            isShowingRedoUndo()
+        }
     }
     //MARK: - Main tick
     @IBAction func actionDoneButton(_ sender: Any) {
-        globalUndoStack.removeAll()
-        globalRedoStack.removeAll()
+         
 
-        self.textModel.undoStack.removeAll()
-        self.textModel.redoStack.removeAll()
-        undoStackFrames.removeAll()
-        redoStackFrames.removeAll()
         self.isFinalImage = true
         self.captureEditImage()
         //self.printPreviewButtonAction()
     }
-    
+
     func capture(view: UIView) -> UIImage?  {
         let snapview = UIView.init(frame: view.frame)
-        
+
         let renderer = UIGraphicsImageRenderer(size: snapview.bounds.size)
         let image = renderer.image { _ in
             view.addSubview(snapview)
             view.drawHierarchy(in: snapview.bounds, afterScreenUpdates: true)
             snapview.removeFromSuperview()
         }
-        
+
         if let data = image.jpegData(compressionQuality: 0.8) {
             let iageHigh = UIImage(data: data)
             return iageHigh
         }
         return image
     }
-    
+
     func capture(image: UIImage, cropBoxFrame:CGRect) -> UIImage?  {
         let mainView = UIView(frame: CGRectMake(0, 0, cropBoxFrame.size.width, cropBoxFrame.size.height))
         let imageView = UIImageView(frame: CGRectMake(0, 0, cropBoxFrame.size.width, cropBoxFrame.size.height))
@@ -1199,7 +1360,7 @@ extension CAEditViewController {
         let screenshot = mainView.takeScreenshot()
         return screenshot
     }
-    
+
 
 
     private func currentState() -> CropperState? {
@@ -1224,223 +1385,35 @@ extension CAEditViewController {
             imageCenter: self.mainImageView.center, // Capture image center if needed
             isFlip: isFlippedSelected,
             isMirror: isMirroredSelected
-
         )
     }
 
-    func saveStateForUndoBrush() {
-            if let currentState = currentBrushState {
-                undoStackBrush.append(currentState)
-                redoStackBrush.removeAll() // Clear redo stack on new action
-            }
-        }
+    func draw(with color: UIColor, size: CGFloat, path: UIBezierPath) {
 
-        func undo() {
-            guard !undoStackBrush.isEmpty else { return }
-            let lastState = undoStackBrush.removeLast()
-            redoStackBrush.append(lastState)
-            applyState(lastState)
-        }
-
-        func redo() {
-            guard !redoStackBrush.isEmpty else { return }
-            let lastState = redoStackBrush.removeLast()
-            undoStackBrush.append(lastState)
-            applyState(lastState)
-        }
-
-        private func applyState(_ state: TouchPointsAndColor) {
-            // Apply the brush settings from the state
-            currentBrushState = state
-            // Redraw the canvas with the path from the state
-          //  redrawCanvas(with: state.path)
-        }
-
-        func draw(with color: UIColor, size: CGFloat, path: UIBezierPath) {
-//            let newState = TouchPointsAndColor(color: color, points: 0.0)
-//            saveStateForUndoBrush() // Save the state before drawing
-//            currentBrushState = newState
-            // Draw on the canvas
-           //drawOnCanvas(with: newState)
-        }
- 
-
-    // Reverse the action effect
-    func reverseAction(_ action: EditAction) {
-        
-        if let data = action.data as? [String: Any] {
-            if let view = data["view"] as? UIImageView {
-                let previousFrame = data["previousImage"] as? UIImage
-                if data["option"] as? String == "auto" {
-                    self.option.isAuto = false
-                } else {
-                    self.option.isAuto = false
-                }
-                self.mainCollectionView.reloadData()
-                view.image = previousFrame
-            }
-        }
-//        
-//        
-//        if let data = action.data as? [String: Any] {
-//            if var view = data["view"] as? UIView {
-//                let previousFrame = data["previousImage"] as? UIView
-//                stickerTextView = previousFrame!
-//            }
-//        }
-        
-//        if let stickerView = (action.data as? [String: Any])?["view"] as? UIView {
-//            stickerView.removeFromSuperview()
-//        }
-        
-        
-//        if var filterView = (action.data as? [String: Any])?["view"] as? UIView {
-//            if let data = action.data as? [String: Any] {
-//                let frame = data["image"] as? UIView
-//                filterView = frame!
-//            }
-//        }
     }
-    
+
+
     @IBAction func btnUndoAction(_ sender:UIButton) {
-        guard let lastAction = globalUndoStack.last else { return }
-
-        // Remove the last action from the undo stack
-        globalUndoStack.removeLast()
-
-        // Add the action to the redo stack
-        globalRedoStack.append(lastAction)
-
-        // Reverse the action
-        reverseAction(lastAction)
-
-//        switch self.filterSelection {
-//        case .filter:
-//        case .frame:
-//            Editor.undo()
-//            updateFrameView()
-////            if !undoStackFrames.isEmpty {
-//                let currentFrameState = FrameModel(frame: selectedFrame2, opacity: selectedFrameOpacity)
-//                redoStackFrames.append(currentFrameState)
-//            //selectedFrame2 = currentFrameState
-////                selectedFrameOpacity = restoredFrameModel.opacity
-////                updateFrameView()
-////            } else {
-////                print("Undo stack is empty.")
-////            }
-//
-//        case .text:
-//            Editor.undo()
-////            print(textModel.undoStack.count,"textModel.undoStack.count")
-////            if textModel.undoStack.count > 0 {
-////                textModel.undo()
-////                updateFramesText()
-////            }
-//
-//        case .brush:
-//            if self.viewPaintDrawing.isUserInteractionEnabled == true {
-//                let array = self.viewPaintDrawing.lines
-//                if array.count > 0 {
-//                    self.drawingViewWillBeginDraw()
-//                    if let lastLine = self.viewPaintDrawing.lines.last {
-//                        self.option.removedBrushDetails.append(lastLine)
-//                        self.viewPaintDrawing.undoDraw()
-//                        redoStackBrush.append(lastLine)
-//                    }
-//                }
-//            }
-//        case .sticker:
-//            Editor.undo()
-//        case .gallery:
-//            Editor.undo()
-//        default:
-//           // Editor.globalUndo()
-//            break
-//        }
+        if undoRedoManager.canUndo {
+            undoRedoManager.undo()
+        }
+        isEnableRedoUndo()
     }
 
     @IBAction func btnRedoAction(_ sender:UIButton) {
-        Editor.redo()
-
-//        switch self.filterSelection {
-//        case .filter:
-//            Editor.redo()
-////            guard !redoStackFilter.isEmpty else { return }
-////
-////            // Save current state for undo
-////            undoStackFilter.append(currentFilterState.copyState())
-////
-////            // Restore next state
-////            let nextState = redoStackFilter.removeLast()
-////            self.selectedFilter = nextState.filterName
-////            self.selectedFilterOpacity = nextState.opacity
-////
-////            currentFilterState = nextState
-////            // Re-apply all filters to the image
-////            self.mainImageView.image = self.applyingAllFilters()
-////           // enableDisableUIControl()
-//
-//        case .frame:
-//            Editor.redo()
-//            updateFrameView()
-////            guard !redoStackFrames.isEmpty else {
-////                print("Redo stack for frames is empty.")
-////                return
-////            }
-////
-////            // Retrieve the last state for redo
-////            let lastRedoState = redoStackFrames.removeLast()
-////            guard lastRedoState is FrameModel else {
-////                print("Invalid redo state for frame.")
-////                return
-////            }
-//
-////            print("Redo restored frame: \(String(describing: lastRedoState.frame)), opacity: \(lastRedoState.opacity)")
-////
-////            // Save the current state to the undo stack before restoring
-////            let currentFrameState = FrameModel(frame: selectedFrame, opacity: selectedFrameOpacity)
-////            undoStackFrames.append(currentFrameState)
-////
-////            // Restore the state from redo stack
-////            selectedFrame = lastRedoState.frame
-////            selectedFrameOpacity = lastRedoState.opacity
-////
-////            // Call updateFrameView() to refresh the view with the restored frame
-////            updateFrameView()
-//          //  enableDisableUIControl()
-//
-//        case .brush: 
-//            if redoStackBrush.count > 0 {
-//                let lastUndoneLine = redoStackBrush.removeLast() // Get the last undone line
-//                self.viewPaintDrawing.lines.append(lastUndoneLine) // Add it back to the lines
-//                self.viewPaintDrawing.setNeedsDisplay() // Redraw the view
-//            }
-//        case .text:
-//            Editor.redo()
-////            print(textModel.redoStack.count,"textModel.redoStack.count")
-////            if textModel.redoStack.count > 0 {
-////                textModel.redo()
-////                updateFramesText()
-////              //  enableDisableUIControl() // Update the UI accordingly
-////            }
-//        case .sticker:
-//            Editor.redo()
-//        case .gallery:
-//            Editor.redo()
-//        default:
-//            Editor.globalRedo()
-//            break
-//        }
+        if undoRedoManager.canRedo {
+            undoRedoManager.redo()
+        }
+        isEnableRedoUndo()
     }
 
     // Button options's action
-    
+    // CALL WHEN CROSS ON ANY MENU OPTIONS--> EXAMPLE STICKERS DATA
     @IBAction func actionBackStickers(_ sender: Any) {
         if self.isReplacingSticker == false {
             self.mainCollectionView.isHidden = false
 
-            self.undoButton.isHidden = true
-            self.redoButton.isHidden = true
+            self.isShowingRedoUndo()
             self.stickersText(text: .hideDeleteButton, isText: false)
             for view in self.stickerBaseView.subviews {
                 view.removeFromSuperview()
@@ -1464,24 +1437,33 @@ extension CAEditViewController {
             }
         }
     }
-    
+
     @IBAction func actionAdd(_ sender: Any) {
+         
+        self.isEnableRedoUndo()
+        self.selectedAddTextView?.handles.forEach { $0.isHidden = true }
+        selectedAddTextView = nil
+        self.selectedAddSticker?.handles.forEach { $0.isHidden = true }
+
         switch self.filterSelection {
         case .sticker:
             self.applySticker()
             self.setUpStickerView()
+            self.isShownRedoUndo()
         case .gallery:
             self.applySticker(isGalleryAddButton: true)
             self.isPlusAddPhoto = true
             self.openPhotoLibrary(isEdit: false)
+            self.isShownRedoUndo()
         case .text:
             self.applyText()
             self.setUpTextView(isSaveCross: self.saveCrossView.isHidden)
         default:
+
             break
         }
     }
-    
+
     @IBAction func actionMirror(_ sender: Any) {
         switch self.filterSelection {
         case .sticker:
@@ -1494,7 +1476,7 @@ extension CAEditViewController {
             break
         }
     }
-    
+
     @IBAction func actionOnTop(_ sender: Any) {
         switch self.filterSelection {
         case .sticker:
@@ -1508,37 +1490,3 @@ extension CAEditViewController {
         }
     }
 }
-
-// MARK: - Options functionality
-// MARK: Gallery Options (if we are using blank image) -
-// MARK: - Auto Enhancement Option -
-//
-//extension CAEditViewController: AMColorPickerDelegate {
-//    func colorPicker(_ colorPicker: AMColorPicker, didSelect color: UIColor) {
-//        switch self.filterSelection {
-//        case .text:
-//            let textModel = TextModel()
-//            textModel.color = color
-//            textModel.selectedColorIndex = 101
-//            textModel.previousColor = self.selectedTextModel.previousColor
-//            textModel.previousSelectedColorIndex = self.selectedTextModel.previousSelectedColorIndex
-//            
-//            textModel.selectedFontIndex = self.selectedTextModel.selectedFontIndex
-//            textModel.previousselectedFontIndex = self.selectedTextModel.previousselectedFontIndex
-//            textModel.textString = self.selectedTextModel.textString
-//            textModel.previousTextString = self.selectedTextModel.previousTextString
-//            textModel.fontCustom = self.selectedTextModel.fontCustom
-//            textModel.previousfont = self.selectedTextModel.previousfont
-//            self.selectedTextModel = textModel
-//            self.stickersText(text: .setColor, color: color, index: 101, isText: true)
-//        case .brush:
-//            self.drawingViewWillBeginDraw()
-//            self.viewPaintDrawing.strokeColor = color
-//        case .sticker:
-//            self.selectedStickerColorModel = color
-//            self.stickersText(text: .setColor, color: color, isText: false)
-//        default:
-//            break
-//        }
-//    }
-//}

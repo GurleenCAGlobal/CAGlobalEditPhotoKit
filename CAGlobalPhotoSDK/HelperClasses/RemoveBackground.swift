@@ -33,7 +33,6 @@ class BackgroundRemover {
         return UIImage()
     }
 
-    @available(iOS 15.0, *)
     func removeBackground(from image: UIImage, completion: @escaping (UIImage?) -> Void) {
         guard let normalizedCGImage = image.normalized().cgImage else {
             completion(nil)
@@ -111,7 +110,6 @@ class BackgroundRemover {
 
 
  
-    @available(iOS 15.0, *)
     func hasForeground(in image: UIImage, completion: @escaping (Bool) -> Void) {
         guard let cgImage = image.cgImage else {
             completion(false)

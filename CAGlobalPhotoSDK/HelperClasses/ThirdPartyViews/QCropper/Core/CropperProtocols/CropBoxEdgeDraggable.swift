@@ -348,14 +348,16 @@ extension CropBoxEdgeDraggable where Self: CAEditViewController {
 
         switch panBeginningCropBoxEdge {
         case .left:
-            frame.origin.x = originFrame.origin.x + xDelta
-            frame.size.width = max(cropBoxMinSize, originFrame.size.width - xDelta)
             if aspectRatioLocked {
                 panHorizontal = true
                 xDelta = max(xDelta, 0)
                 let scaleOrigin = CGPoint(x: originFrame.maxX, y: originFrame.midY)
                 frame.size.height = frame.size.width / aspectRatio
                 frame.origin.y = scaleOrigin.y - (frame.size.height * 0.5)
+                frame.size.width = max(cropBoxMinSize, originFrame.size.width - xDelta)
+            } else {
+                frame.origin.x = originFrame.origin.x + xDelta
+                frame.size.width = max(cropBoxMinSize, originFrame.size.width - xDelta)
             }
 
         case .right:

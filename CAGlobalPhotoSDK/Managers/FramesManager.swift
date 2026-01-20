@@ -104,14 +104,14 @@ class FramesManager: NSObject {
         var frameCategoryList = [FrameCategoryModel]()
 
         // Function to add frame category details
-        func addFrameCategory(name: String, frameCount: Int, format: String, insertNone: Bool = true) {
+        func addFrameCategory(name: String, frameCount: Int, startCount: Int = 1, format: String, insertNone: Bool = true) {
             let frameCategory = FrameCategoryModel()
             frameCategory.categoryName = name
 
             var frameList = [FrameModel]()
             var categoryIcon: String?
 
-            for i in 1...frameCount {
+            for i in startCount...frameCount + startCount - 1 {
                 var imageName = String(format: format, i, sizeType)
                 if isLandscape {
                     imageName += "_L"
@@ -121,7 +121,7 @@ class FramesManager: NSObject {
                 frameList.append(frameModel)
 
                 // Set the category icon as the first frame imageName
-                if i == 1 {
+                if i == startCount + frameCount - 1 {
                     categoryIcon = imageName
                 }
             }
@@ -145,16 +145,16 @@ class FramesManager: NSObject {
         addFrameCategory(name: "Valentine", frameCount: 18, format: "valentine_frame_%d_%@")
 
         // Add New Year frames
-        addFrameCategory(name: "New Year", frameCount: 20, format: "New_year_frame_%d_%@")
+        addFrameCategory(name: "New Year", frameCount: 10, format: "New_year_frame_%d_%@")
 
         // Add Holiday frames
-        addFrameCategory(name: "Holiday", frameCount: 16, format: "HP500_App_%d_%@")
+        addFrameCategory(name: "Holiday", frameCount: 16, startCount : 54, format: "HP500_App_%d_%@")
 
         // Add Winter frames
-        addFrameCategory(name: "Winter", frameCount: 9, format: "HP500_App_%d_%@")
+        addFrameCategory(name: "Winter", frameCount: 9, startCount : 70, format: "HP500_App_%d_%@")
 
         // Add Thanksgiving frames
-        addFrameCategory(name: "Thanks Giving", frameCount: 23, format: "HP500_App_%d_%@")
+        addFrameCategory(name: "Thanks Giving", frameCount: 23, startCount : 31, format: "HP500_App_%d_%@")
 
         // Add Solid frames
         addFrameCategory(name: "Solid", frameCount: 30, format: "HP500_App_%d_%@")

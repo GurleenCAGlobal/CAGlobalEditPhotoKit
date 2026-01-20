@@ -9,6 +9,7 @@ import UIKit
 import CoreImage
 
 enum Filters: String, CaseIterable {
+    case none = ""
     case zipLut1 = "ZipLut_1"
     case sin = "Sin"
     case lomo = "Lomo"

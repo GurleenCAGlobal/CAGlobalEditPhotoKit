@@ -11,6 +11,8 @@ import UIKit
 
 extension CAEditViewController: BrushViewDelegate, DrawingViewDelegate {
     
+    
+    
     func backButtonBrushSubCategory() {
         self.saveCrossView.showView()
         self.saveCrossSubOptionsView.hideView()
@@ -21,7 +23,6 @@ extension CAEditViewController: BrushViewDelegate, DrawingViewDelegate {
         let invertedValue = sliderValue
 
         // Apply the inverted sharpness to DrawingView
-
         self.viewPaintDrawing.brushSharpness = invertedValue
         self.viewPaintDrawing.setNeedsDisplay()
     }
@@ -33,36 +34,45 @@ extension CAEditViewController: BrushViewDelegate, DrawingViewDelegate {
         self.removeGesturesMainImageViewForMagnify()
     }
     
-    
-    func pickColorForBrush(callBack: (UIColor) -> Void?) {
+    func pickColorForBrush(callBack: (ColorModel) -> Void?) {
+      //  self.magnifyingGlass.magnify(at: self.overlay.cropBox.center)
         self.selectedAddTextView = nil
         self.selectedAddSticker = nil
+
         self.removeGesturesMainImageViewForMagnify()
         let pan = UIPanGestureRecognizer(target: self, action: #selector(handlePanColorPickerMagnify(_:)))
         pan.delegate = self
-        self.mainImageView.addGestureRecognizer(pan)
+        self.stickerTextView.addGestureRecognizer(pan)
         self.viewPaintDrawing.isUserInteractionEnabled = false
-        self.stickerTextView.isUserInteractionEnabled = false
-        self.magnifyingGlass.magnifiedView = self.mainImageView
-        self.magnifyingGlass.magnify(at: self.overlay.cropBox.center)
+        self.stickerTextView.isUserInteractionEnabled = true
+        self.magnifyingGlass.magnifiedView = self.transformMainView
+        self.magnifyingGlass.magnify(at: self.transformMainView.center)
+        
         let color = self.scrollViewContainer.getPixelColorAt(point: self.overlay.center)
         self.option.selectedBrushColorIndex = 100
         self.viewPaintDrawing.strokeColor = color
+        self.viewPaintDrawing.strokeOpacity = self.viewPaintDrawing.strokeOpacity
+        let colorModel = ColorModel()
+        colorModel.selectedColorIndex = 100
+        colorModel.isColor = true
+        colorModel.color = color
+
         
         self.drawingViewWillBeginDraw()
-        callBack(color)
+        callBack(colorModel)
     }
 
     func setUpBrushView() {
+        self.isEnableRedoUndo()
         self.stickerTextView.isUserInteractionEnabled = false
         self.saveCrossView.showView()
         self.setupAddDeleteFlipAndOnTopButtons(isHidden: false)
         self.removeBottomSubViews()
         self.doneButton.isHidden = false
-        setupPaintView()
+        self.setupPaintView()
         self.brushView.delegate = self
         self.brushView.actionOnSubOptionTick()
-        self.brushView.colorModel.selectedColorIndex = self.option.selectedBrushColorIndex
+        self.brushView.colorModel.selectedColorIndex = self.viewPaintDrawing.colorIndex ?? 0
         self.brushView.colorButton.backgroundColor = self.viewPaintDrawing.strokeColor
         self.brushView.widthSlider.value = Float(self.viewPaintDrawing.strokeWidth )
         self.brushView.opacitySlider.value = Float(self.viewPaintDrawing.strokeOpacity )
@@ -70,13 +80,7 @@ extension CAEditViewController: BrushViewDelegate, DrawingViewDelegate {
             self.brushView.sharpnessSlider.value = 1.0
         }   else {
             self.brushView.sharpnessSlider.value = Float(self.viewPaintDrawing.brushSharpness )
-            
         }
-//        if self.brushView.opacitySlider.value == 1.0 {
-//            self.brushView.opacitySlider.value = 1.0
-//        } else {
-//            self.brushView.opacitySlider.value = Float(self.viewPaintDrawing.strokeOpacity )
-//        }
 
         self.brushView.setupUI()
         self.bottomView.addSubview(self.brushView)
@@ -85,16 +89,18 @@ extension CAEditViewController: BrushViewDelegate, DrawingViewDelegate {
     }
     
     func setupPaintView() {
+        isEnableRedoUndo()
         let value = self.option.appliedBrushDetails.last
         
         if self.option.appliedBrushDetails.count == 0 {
-            self.option.selectedBrushColorIndex = 0
+            self.option.selectedBrushColorIndex = -1
         }
         
         self.viewPaintDrawing.strokeColor = value?.color ?? UIColor(named: .blackColorName, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!
         self.viewPaintDrawing.strokeWidth = value?.width ?? 10
         self.viewPaintDrawing.strokeOpacity = value?.opacity ?? 1
         self.viewPaintDrawing.brushSharpness = value?.sharpness ?? 1
+        self.viewPaintDrawing.colorIndex = value?.colorIndex ?? 0
         self.viewPaintDrawing.isUserInteractionEnabled = true
         self.viewPaintDrawing.isHidden = false
         self.viewPaintDrawing.delegate = self
@@ -127,7 +133,7 @@ extension CAEditViewController: BrushViewDelegate, DrawingViewDelegate {
             // If no lines are drawn, use the last applied brush details
             let value = self.option.appliedBrushDetails.last
             if self.option.appliedBrushDetails.count == 0 {
-                self.option.selectedBrushColorIndex = 0
+                self.option.selectedBrushColorIndex = -1
             }
 
             let selectedColor = value?.color ?? UIColor(named: .blackColorName, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!
@@ -172,8 +178,8 @@ extension CAEditViewController: BrushViewDelegate, DrawingViewDelegate {
         self.option.selectedBrushColorIndex = colorModel.selectedColorIndex
         self.drawingViewWillBeginDraw()
         self.viewPaintDrawing.strokeColor = colorModel.color
-        self.viewPaintDrawing.strokeOpacity = 1.0
 
+        self.viewPaintDrawing.strokeOpacity = self.viewPaintDrawing.strokeOpacity
     }
     
     // MARK: - Perform Drawing Action
@@ -223,6 +229,7 @@ extension CAEditViewController: BrushViewDelegate, DrawingViewDelegate {
             for (i,isSave) in array.enumerated() {
                 var param = isSave
                 param.isSaveLine = true
+                param.colorIndex = self.option.selectedBrushColorIndex
                 self.viewPaintDrawing.lines[i] = param
             }
             self.option.appliedBrushDetails = self.viewPaintDrawing.lines
@@ -235,14 +242,16 @@ extension CAEditViewController: BrushViewDelegate, DrawingViewDelegate {
     }
     
     func resetBrush() {
-        self.option.isBrush = false
+
         self.viewPaintDrawing.isUserInteractionEnabled = false
         self.stickerTextView.isUserInteractionEnabled = true
         let array = self.viewPaintDrawing.lines
         if array.count > 0 {
             if self.option.appliedBrushDetails.count > 0 {
+                self.option.isBrush = true // if has any changes in brush
                 self.viewPaintDrawing.reDraw(lines: self.option.appliedBrushDetails)
             } else {
+                self.option.isBrush = false // if has not any changes in brush
                 self.viewPaintDrawing.clearCanvasView()
             }
         } else {
@@ -275,6 +284,7 @@ extension CAEditViewController: BrushViewDelegate, DrawingViewDelegate {
         colorPickerViewController.selectedColor = self.viewPaintDrawing.strokeColor
         colorPickerViewController.selectedOpacity = self.viewPaintDrawing.strokeOpacity
         colorPickerViewController.delegate = self
+        colorPickerViewController.modalPresentationStyle = .fullScreen
         present(colorPickerViewController, animated: true, completion: nil)
     }
     
@@ -288,7 +298,8 @@ extension CAEditViewController: BrushViewDelegate, DrawingViewDelegate {
         } else if name == "sharpness" {
             self.brushSelection = .sharpness
         }
-        if self.option.selectedBrushColorIndex == 0 {
+        if self.option.selectedBrushColorIndex == -1 {
+            
             self.brushView.colorModel.selectedColorIndex = self.option.selectedBrushColorIndex
             self.brushView.colorButton.backgroundColor = (UIColor(named: .blackColorName, in: Bundle(path: Bundle(for: CAEditViewModel.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle") ?? ""), compatibleWith: nil)!)
             self.brushView.colorOptionButton.hideView()
@@ -307,5 +318,83 @@ extension CAEditViewController: BrushViewDelegate, DrawingViewDelegate {
         self.deleteAndAddButtons.isHidden = false
         self.textView.actionCrossForText()
     }
+    
+    @objc func saveCurrentStateForUndo() {
+//        let currentState = self.viewPaintDrawing.lines
+//        undoRedoManager.registerUndo(withTarget: self) { target in
+//            target.restoreStateForUndoRedo(currentState)
+//        }
+//        undoRedoManager.setActionName("Draw Line")
+//        self.isEnableRedoUndo()
+    }
+    
+    func restoreStateForUndoRedo(_ state: [TouchPointsAndColor]) {
+        let previousState = self.viewPaintDrawing.lines
+        self.brushView.sharpnessColorLbl.backgroundColor = previousState.last?.color
+        self.brushView.brushTransparencyLabel.backgroundColor = previousState.last?.color
+        self.brushView.brushSizeLabel.backgroundColor = previousState.last?.color
+
+        undoRedoManager.registerUndo(withTarget: self) { target in
+            target.restoreStateForUndoRedo(previousState)
+        }
+        self.viewPaintDrawing.lines = state
+        self.brushView.sharpnessColorLbl.backgroundColor = state.last?.color
+        self.brushView.brushTransparencyLabel.backgroundColor = state.last?.color
+        self.brushView.brushSizeLabel.backgroundColor = state.last?.color
+        self.brushView.colorButton.backgroundColor = state.last?.color
+        self.brushView.widthSlider.value = Float(state.last?.width ?? 10.0 )
+        self.brushView.opacitySlider.value = Float(state.last?.opacity ?? 1.0 )
+        self.brushView.sharpnessSlider.value = Float(state.last?.sharpness ?? 1.0 )
+
+        self.viewPaintDrawing.strokeColor = state.last?.color ?? UIColor(named: .blackColorName)!
+        self.viewPaintDrawing.strokeWidth = CGFloat(state.last?.width ?? 10.0 )
+        self.viewPaintDrawing.strokeOpacity = CGFloat(state.last?.opacity ?? 1.0 )
+        self.viewPaintDrawing.brushSharpness = CGFloat(state.last?.sharpness ?? 1.0 )
+
+        
+        self.viewPaintDrawing.setNeedsDisplay()
+        self.removePanGestureMainEdit()
+        self.setUpBrushView()
+
+        self.isEnableRedoUndo()
+    }
+    
+    @objc func saveDeleteStateForUndo() {
+        let currentState = self.viewPaintDrawing.lines
+        undoRedoManager.registerUndo(withTarget: self) { target in
+            target.restoreStateForUndoRedo(currentState)
+        }
+        undoRedoManager.setActionName("Delete Line")
+        self.isEnableRedoUndo()
+    }
+    
+    func restoreDeleteStateForUndoRedo(_ state: [TouchPointsAndColor]) {
+        let previousState = self.option.appliedBrushDetails
+        self.brushView.sharpnessColorLbl.backgroundColor = previousState.last?.color
+        self.brushView.brushTransparencyLabel.backgroundColor = previousState.last?.color
+        self.brushView.brushSizeLabel.backgroundColor = previousState.last?.color
+
+        undoRedoManager.registerUndo(withTarget: self) { target in
+            target.restoreStateForUndoRedo(previousState)
+        }
+        self.viewPaintDrawing.lines = state
+        self.brushView.sharpnessColorLbl.backgroundColor = state.last?.color
+        self.brushView.brushTransparencyLabel.backgroundColor = state.last?.color
+        self.brushView.brushSizeLabel.backgroundColor = state.last?.color
+        self.brushView.colorButton.backgroundColor = state.last?.color
+        self.brushView.widthSlider.value = Float(state.last?.width ?? 10.0 )
+        self.brushView.opacitySlider.value = Float(state.last?.opacity ?? 1.0 )
+        self.brushView.sharpnessSlider.value = Float(state.last?.sharpness ?? 1.0 )
+
+        self.viewPaintDrawing.strokeColor = state.last?.color ?? UIColor(named: .blackColorName)!
+        self.viewPaintDrawing.strokeWidth = CGFloat(state.last?.width ?? 10.0 )
+        self.viewPaintDrawing.strokeOpacity = CGFloat(state.last?.opacity ?? 1.0 )
+        self.viewPaintDrawing.brushSharpness = CGFloat(state.last?.sharpness ?? 1.0 )
+        self.brushView.setupUI()
+        
+        self.viewPaintDrawing.setNeedsDisplay()
+        self.isEnableRedoUndo()
+    }
+    
 }
 

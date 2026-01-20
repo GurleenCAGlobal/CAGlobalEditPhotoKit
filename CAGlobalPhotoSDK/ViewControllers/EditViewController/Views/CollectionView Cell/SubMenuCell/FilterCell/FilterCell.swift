@@ -25,7 +25,10 @@ class FilterCell: UICollectionViewCell {
     
     // The view representing the no filter view.
     @IBOutlet weak var filterLabel: UILabel!
-    
+
+    // The view representing the filter Selection.
+    @IBOutlet weak var filterSelectionIndicator: UIImageView!
+
     // Declare data source and delegate properties
     weak var dataSource: FilterCellDataSource?
     weak var delegate: FilterCellDelegate?
@@ -34,20 +37,24 @@ class FilterCell: UICollectionViewCell {
     func configure(with data: String, selectedOverlay: String, image: UIImage) {
         // Use the data source to retrieve the cell's data
         if data == selectedOverlay {
-            self.layer.borderWidth = 1
-            self.layer.borderColor = UIColor.white.cgColor
+            filterSelectionIndicator.isHidden = false
+//            self.layer.borderWidth = 1
+//            self.layer.cornerRadius = 8
+          //  self.layer.borderColor = UIColor.white.cgColor
         } else {
-            self.layer.borderWidth = 0
-            self.layer.borderColor = UIColor.clear.cgColor
+//            self.layer.borderWidth = 0
+//            self.layer.cornerRadius = 0
+            filterSelectionIndicator.isHidden = true
+          //  self.layer.borderColor = UIColor.clear.cgColor
         }
-        
+        self.filterLabel.isHidden = true
         if data == "" {
-            self.filterImageView.image = nil
+//            self.filterImageView.image = noFilterImage
             self.filterLabel.isHidden = false
         } else {
-            self.filterImageView.image = image
             self.filterLabel.isHidden = true
         }
+        self.filterImageView.image = image
     }
     
     // Handle user interaction

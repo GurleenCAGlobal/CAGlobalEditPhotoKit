@@ -8,8 +8,10 @@
 
 import UIKit
 
+
+
 public class AMColorPickerWheelView: XibLioadView, AMColorPicker {
-    
+
     weak public var delegate: AMColorPickerDelegate?
     public var isSelectedColorShown: Bool = true {
         didSet {
@@ -26,6 +28,7 @@ public class AMColorPickerWheelView: XibLioadView, AMColorPicker {
             displayColor(selectedColor)
         }
     }
+    public var isBackground: Bool = false
     @IBOutlet weak private var headerView: UIView!
     @IBOutlet weak private var opacityLabel: UILabel!
     @IBOutlet weak private var brightnessLabel: UILabel!
@@ -37,28 +40,44 @@ public class AMColorPickerWheelView: XibLioadView, AMColorPicker {
             colorPickerImageView.isUserInteractionEnabled = true
             let pan = UIPanGestureRecognizer(target: self, action: #selector(self.gestureAction(gesture:)))
             colorPickerImageView.addGestureRecognizer(pan)
-            
+
             let tap = UITapGestureRecognizer(target: self, action: #selector(self.gestureAction(gesture:)))
             colorPickerImageView.addGestureRecognizer(tap)
         }
     }
     @IBOutlet weak private var cursorImageView: UIImageView!
-    
+
     private var radius: CGFloat {
         return colorPickerImageView.frame.width/2
     }
     private var pickerCenter: CGPoint {
         return colorPickerImageView.center
     }
-    
+
+//    override public func draw(_ rect: CGRect) {
+//        super.draw(rect)
+//        // Set the initial value of the opacity slider to the last selected opacity
+//        opacitySlider.value = Float(selectedOpacity * 100)
+//        brightnessSlider.value = 100
+//        displayColor(selectedColor)
+//    }
     override public func draw(_ rect: CGRect) {
         super.draw(rect)
-        // Set the initial value of the opacity slider to the last selected opacity
+        // Set initial opacity slider value
         opacitySlider.value = Float(selectedOpacity * 100)
+
+        // Set initial brightness to 100%
+        brightnessSlider.value = 100
+
+        // Ensure the selected color starts at full brightness
+        var hsba = selectedColor.hsba
+        hsba.brightness = 1.0
+        selectedColor = UIColor(hue: hsba.hue, saturation: hsba.saturation, brightness: hsba.brightness, alpha: hsba.alpha)
+
         displayColor(selectedColor)
     }
 
-    
+
     // MARK: - Gesture Action
     @objc func gestureAction(gesture: UIGestureRecognizer) {
         let point = gesture.location(in: colorPickerImageView.superview)
@@ -67,14 +86,13 @@ public class AMColorPickerWheelView: XibLioadView, AMColorPicker {
             didSelect(color: calculateColor(point: point))
         }
     }
-    
+
     // MARK: - IBAction
     @IBAction private func changedSlider(_ slider: UISlider) {
         if slider == opacitySlider {
             // Update selectedOpacity when opacity slider changes
             selectedOpacity = CGFloat(opacitySlider.value) / 100.0
             print("Opacity slider value: \(opacitySlider.value)")
-
             didSelect(color: selectedColor)
         } else if slider == brightnessSlider {
             // Handle brightness changes, using the existing selectedOpacity
@@ -82,33 +100,26 @@ public class AMColorPickerWheelView: XibLioadView, AMColorPicker {
         }
     }
 
-    
+
     // MARK: - SetColor
     private func setSliderColor(color: UIColor) {
         let hsba = color.hsba
-        brightnessSlider.setGradient(startColor: .clear,
-                                     endColor: .init(hue: hsba.hue, saturation: hsba.saturation,
-                                                     brightness: 1.0, alpha: CGFloat(opacitySlider.value)/100.0))
+        brightnessSlider.setGradient(startColor: .clear, endColor: .init(hue: hsba.hue,  saturation: hsba.saturation,brightness: 1.0, alpha: CGFloat(opacitySlider.value)/100.0))
     }
-    
-//    private func didSelect(color: UIColor) {
-//        selectedColor = color.withAlphaComponent(selectedOpacity)
-//        delegate?.colorPicker(self, didSelect: color, opacity: selectedOpacity)
-//    }
-//    private func didSelect(color: UIColor) {
-//        let colorWithOpacity = color.withAlphaComponent(selectedOpacity)
-//
-//        selectedColor = colorWithOpacity
-//        print("Selected color: \(colorWithOpacity), Opacity: \(selectedOpacity)")
-//
-//        delegate?.colorPicker(self, didSelect: colorWithOpacity, opacity: selectedOpacity)
-//    }
+
     private func didSelect(color: UIColor) {
         // Apply selectedOpacity to the selected color
         selectedColor = color.withAlphaComponent(selectedOpacity)
+//        var lines: [TouchPointsAndColor] = []
+//        lines.append(TouchPointsAndColor(color: color, points: [CGPoint](), width: CGFloat(), opacity: CGFloat(), sharpness: CGFloat()))
 
+//        let currentState = DrawingState(lines: lines, strokeWidth: 1.0, strokeColor: selectedColor, strokeOpacity: 1.0, brushSharpness: 1.0)
+//
+//
+//        undoStackBrush.append(currentState)
+//        print(currentState,"currentState")
         // Notify the delegate (brush tool) with the updated color and opacity
-        delegate?.colorPicker(self, didSelect: selectedColor, opacity: selectedOpacity)
+        delegate?.colorPicker(self, didSelect: selectedColor, opacity: selectedOpacity, isBackground: isBackground)
     }
 
 
@@ -131,26 +142,6 @@ public class AMColorPickerWheelView: XibLioadView, AMColorPicker {
 
 
     // MARK: - Calculate
-//    private func calculateColor(point: CGPoint, opacity: inout CGFloat) -> UIColor {
-//        // Since the upper side of the screen for obtaining the coordinate difference
-//        // is set as the Y coordinate +, the sign of Y coordinate is replaced
-//        let xPoint = point.x - pickerCenter.x
-//        let yPoint = -(point.y - pickerCenter.y)
-//        
-//        // Find the radian angle
-//        var radian = atan2f(Float(yPoint), Float(xPoint))
-//        if radian < 0 {
-//            radian += Float(Double.pi*2)
-//        }
-//
-//        let distance = CGFloat(sqrtf(Float(pow(Double(xPoint), 2) + pow(Double(yPoint), 2))))
-//        let saturation = (distance > radius) ? 1.0 : distance / radius
-//        let brightness = CGFloat(brightnessSlider.value) / 100.0
-//        let alpha = CGFloat(opacitySlider.value) / 100.0
-//        opacity = alpha
-//        let hue = CGFloat(radian / Float(Double.pi*2))
-//        return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
-//    }
     private func calculateColor(point: CGPoint) -> UIColor {
         // Calculate the position of the point relative to the center
         let xPoint = point.x - pickerCenter.x

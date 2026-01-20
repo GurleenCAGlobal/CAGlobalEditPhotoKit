@@ -25,6 +25,8 @@ class PaperLengthCell: UITableViewCell {
         buttonPaperLengthSize.titleLabel?.font = FontManager.normalLight
         buttonPaperLength.setImage(UIImage(named: "paper_length_size_notselected_radio"), for: .normal)
         buttonPaperLength.tag = tag
+        buttonPaperLengthSize.tag = tag
+
     }
   
     func actionChangeCanvasSize() {

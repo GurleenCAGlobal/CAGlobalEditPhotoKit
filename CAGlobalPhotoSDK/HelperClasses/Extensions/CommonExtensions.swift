@@ -15,7 +15,7 @@ extension UIImageView {
 }
 
 extension UIView {
-    
+
     @IBInspectable private var cornerRadius: CGFloat {
         get {
             return layer.cornerRadius
@@ -25,7 +25,7 @@ extension UIView {
             layer.cornerRadius = newValue
         }
     }
-    
+
     @IBInspectable var circular: Bool {
         get {
             return false
@@ -36,12 +36,12 @@ extension UIView {
             }
         }
     }
-    
+
     func makeCircular() {
         layer.cornerRadius = min(self.frame.size.height, self.frame.size.width)/2
         layer.masksToBounds = true
     }
-    
+
     @IBInspectable var borderWidth: CGFloat {
         get {
             return layer.borderWidth
@@ -50,7 +50,7 @@ extension UIView {
             layer.borderWidth = newValue
         }
     }
-    
+
     @IBInspectable var borderColor: UIColor? {
         get {
             return UIColor(cgColor: layer.borderColor!)
@@ -59,7 +59,7 @@ extension UIView {
             layer.borderColor = newValue?.cgColor
         }
     }
-    
+
     @IBInspectable var shadow: Bool {
         get {
             return layer.shadowOpacity > 0.0
@@ -70,7 +70,7 @@ extension UIView {
             }
         }
     }
-    
+
     func addShadow(
         shadowColor: CGColor = UIColor.black.cgColor,
         shadowOffset: CGSize = CGSize(width: 1.0, height: 2.0),
@@ -91,7 +91,7 @@ extension UIImage {
     var mediumQualityJPEGNSData: Data { return self.jpegData(compressionQuality: 0.5)! }
     var lowQualityJPEGNSData: Data { return self.jpegData(compressionQuality: 0.25)! }
     var lowestQualityJPEGNSData: Data { return self.jpegData(compressionQuality: 0.0)! }
-    
+
     func blurred(radius: CGFloat) -> UIImage {
         let ciContext = CIContext(options: nil)
         guard let cgImage = cgImage else { return self }
@@ -103,7 +103,7 @@ extension UIImage {
         guard let cgImage2 = ciContext.createCGImage(resultImage, from: inputImage.extent) else { return self }
         return UIImage(cgImage: cgImage2)
     }
-    
+
     func imageWithAlpha(alpha: CGFloat) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
         draw(at: CGPointZero, blendMode: .normal, alpha: alpha)
@@ -111,34 +111,34 @@ extension UIImage {
         UIGraphicsEndImageContext()
         return newImage
     }
-    
+
     // MARK: - Masking
     func maskedImage(with maskImage: UIImage) -> UIImage? {
         guard let mask = maskImage.cgImage else { return nil }
-        
+
         guard let masked = self.cgImage?.masking(mask) else {
             return nil
         }
         let result = UIImage(cgImage: masked)
-        
+
         return result
     }
-    
+
     func resize(_ size: CGSize) -> UIImage? {
         var width = Int(size.width)
         var height = Int(size.height)
-        
+
         guard let imageRef = self.cgImage else { return nil }
         guard let colorSpaceInfo = imageRef.colorSpace else { return nil }
         let row = 4 * width
         let bitMapInf = CGImageAlphaInfo.premultipliedFirst.rawValue | CGBitmapInfo.byteOrder32Little.rawValue
         let bitmap: CGContext? = CGContext(data: nil, width: width, height: height, bitsPerComponent: 8, bytesPerRow: row, space: colorSpaceInfo, bitmapInfo: bitMapInf)
-        
+
         if self.imageOrientation == .left || self.imageOrientation == .right {
             width = Int(size.height)
             height = Int(size.width)
         }
-        
+
         if self.imageOrientation == .left || self.imageOrientation == .leftMirrored {
             bitmap?.rotate(by: CGFloat.pi / 2)
             bitmap?.translateBy(x: 0, y: -CGFloat(height))
@@ -151,70 +151,70 @@ extension UIImage {
             bitmap?.translateBy(x: CGFloat(width), y: CGFloat(height))
             bitmap?.rotate(by: -CGFloat.pi)
         }
-        
+
         bitmap?.draw(imageRef, in: CGRect(x: 0, y: 0, width: width, height: height))
-        
+
         guard let ref = bitmap?.makeImage() else { return nil }
         let newImage = UIImage(cgImage: ref)
-        
+
         return newImage
     }
-    
+
     // MARK: - Blur
     func gaussBlur(blurLevel: CGFloat) -> UIImage? {
         let blurLevel = min(1.0, max(0.0, blurLevel))
-        
+
         var boxSize = Int(blurLevel * 0.1 * min(self.size.width, self.size.height))
         boxSize = boxSize - (boxSize % 2) + 1
-        
+
         guard let tmpImage = UIImage(data: self.jpegData(compressionQuality: 1)!) else { return nil }
-        
+
         guard let img = tmpImage.cgImage else { return nil }
-        
+
         var inBuffer = vImage_Buffer()
         var outBuffer = vImage_Buffer()
-        
+
         let inProvider = img.dataProvider
         let inBitmapData = inProvider?.data
         inBuffer.width = vImagePixelCount(img.width)
         inBuffer.height = vImagePixelCount(img.height)
         inBuffer.rowBytes = img.bytesPerRow
         inBuffer.data = UnsafeMutableRawPointer(mutating: CFDataGetBytePtr(inBitmapData))
-        
+
         let pixelBuffer = malloc(img.bytesPerRow * img.height)
-        
+
         outBuffer.data = pixelBuffer
         outBuffer.width = vImagePixelCount(img.width)
         outBuffer.height = vImagePixelCount(img.height)
         outBuffer.rowBytes = img.bytesPerRow
-        
+
         let windowR = boxSize / 2
         var sig2 = CGFloat(windowR) / 3.0
         if windowR > 0 {
             sig2 = -1 / (2 * sig2 * sig2)
         }
-        
+
         var error: vImage_Error = kvImageNoError
-        
+
         let kernel = UnsafeMutablePointer<Int16>.allocate(capacity: boxSize * MemoryLayout<Int16>.size)
         var sum: Int32 = 0
         for index in 0..<boxSize {
             kernel[index] = Int16(255 * exp(sig2 * CGFloat((index - windowR) * (index - windowR))))
             sum += Int32(kernel[index])
         }
-        
+
         // convolution
         error = vImageConvolve_ARGB8888(&inBuffer, &outBuffer, nil, 0, 0, kernel, UInt32(boxSize), 1, sum, nil, vImage_Flags(kvImageEdgeExtend))
-        
+
         vImageConvolve_ARGB8888(&outBuffer, &inBuffer, nil, 0, 0, kernel, 1, UInt32(boxSize), sum, nil, vImage_Flags(kvImageEdgeExtend))
         outBuffer = inBuffer
-        
+
         free(kernel)
-        
+
         if error != kvImageNoError {
             NSLog("error from convolution %ld", error.description)
         }
-        
+
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         let ctx = CGContext(data: outBuffer.data,
                             width: Int(outBuffer.width),
@@ -223,33 +223,53 @@ extension UIImage {
                             bytesPerRow: outBuffer.rowBytes,
                             space: colorSpace,
                             bitmapInfo: CGImageAlphaInfo.noneSkipLast.rawValue)
-        
-        
+
+
         guard let imageRef = ctx?.makeImage() else { return nil }
-        
+
         let returnImage = UIImage(cgImage: imageRef)
         free(pixelBuffer)
         return returnImage
     }
 }
-
+extension UIViewController {
+    func showToast(message: String, duration: Double = 2.0) {
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 100,
+                                               y: self.view.frame.size.height-100,
+                                               width: 200, height: 35))
+        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        toastLabel.textColor = UIColor.white
+        toastLabel.textAlignment = .center
+        toastLabel.font = UIFont.systemFont(ofSize: 14.0)
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10
+        toastLabel.clipsToBounds = true
+        self.view.addSubview(toastLabel)
+        UIView.animate(withDuration: 0.5, delay: duration, options: .curveEaseOut, animations: {
+            toastLabel.alpha = 0.0
+        }, completion: { _ in
+            toastLabel.removeFromSuperview()
+        })
+    }
+}
 extension UIColor {
-    
-    
+
+
     func hexStringToUIColor(hex: String) -> UIColor {
         var cString: String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
-        
+
         if cString.hasPrefix("#") {
             cString.remove(at: cString.startIndex)
         }
-        
+
         if cString.count != 6 {
             return UIColor.gray
         }
-        
+
         var rgbValue: UInt64 = 0
         Scanner(string: cString).scanHexInt64(&rgbValue)
-        
+
         return UIColor(
             red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
             green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
@@ -263,7 +283,7 @@ extension NSObject {
     var className: String {
         return String(describing: type(of: self))
     }
-    
+
     class var className: String {
         return String(describing: self)
     }
@@ -355,7 +375,7 @@ func showAlertView(title: String, message: String) -> UIAlertController {
 }
 
 extension UIImage {
-    
+
     func withSaturationAdjustment(byVal: CGFloat) -> UIImage {
         guard let cgImage = self.cgImage else { return self }
         guard let filter = CIFilter(name: "CIColorControls") else { return self }
@@ -365,7 +385,7 @@ extension UIImage {
         guard let newCgImage = CIContext(options: nil).createCGImage(result, from: result.extent) else { return self }
         return UIImage(cgImage: newCgImage, scale: UIScreen.main.scale, orientation: imageOrientation)
     }
-    
+
 }
 
 extension UICollectionView {
@@ -382,12 +402,12 @@ extension UIImage {
 //        let heightRatio = targetSize.height / size.height
 //        let newSize = widthRatio > heightRatio ?  CGSize(width: size.width * heightRatio, height: size.height * heightRatio) : CGSize(width: size.width * widthRatio,  height: size.height * widthRatio)
 //        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
-//        
+//
 //        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
 //        self.draw(in: rect)
 //        let newImage = UIGraphicsGetImageFromCurrentImageContext()
 //        UIGraphicsEndImageContext()
-//        
+//
 //        return newImage!
 //    }
 }
@@ -400,29 +420,29 @@ extension UIImage {
               let data = CFDataGetBytePtr(pixelData) else {
             return nil
         }
-        
+
         let width = cgImage.width
         let bytesPerPixel = 4
         let bytesPerRow = bytesPerPixel * width
         let byteIndex = (bytesPerRow * yAxis) + (bytesPerPixel * xAxis)
-        
+
         let red = CGFloat(data[byteIndex]) / 255.0
         let green = CGFloat(data[byteIndex + 1]) / 255.0
         let blue = CGFloat(data[byteIndex + 2]) / 255.0
         let alpha = CGFloat(data[byteIndex + 3]) / 255.0
-        
+
         return UIColor(red: red, green: green, blue: blue, alpha: alpha)
     }
 }
 
 extension UIView {
     func getPixelColorAt(point:CGPoint) -> UIColor{
-        
+
         let pixel = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: 4)
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
         let context = CGContext(data: pixel, width: 1, height: 1, bitsPerComponent: 8, bytesPerRow: 4, space: colorSpace, bitmapInfo: bitmapInfo.rawValue)
-        
+
         context!.translateBy(x: -point.x, y: -point.y)
         layer.render(in: context!)
         let color:UIColor = UIColor(red: CGFloat(pixel[0])/255.0,

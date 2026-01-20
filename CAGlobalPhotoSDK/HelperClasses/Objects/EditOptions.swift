@@ -12,6 +12,7 @@ class EditOptions: NSObject {
     // Boolean flags
     var isBlank = false
     var isAuto = false
+    var isAutoInAdjust = false
     var isRedEye = false
     var isTransform = false
     var isTransformActual = false
@@ -33,13 +34,18 @@ class EditOptions: NSObject {
         txtVw: AddTextView,
         text: String?,
         frame: CGRect?,
+        center: CGPoint?,
+        trnf: CGAffineTransform?,
         font: UIFont?,
         index: Int?,
         color: UIColor?,
         colorIn: Int?,
         previousColor: UIColor?,
         previousColorIndex: Int?,
-        trnf: CGAffineTransform?,
+        bcolor: UIColor?,
+        bcolorIn: Int?,
+        previousbColor: UIColor?,
+        previousbColorIndex: Int?,
         slider: CGFloat?,
         opacity: CGFloat?,
         textAlignment: NSTextAlignment?,
@@ -52,8 +58,9 @@ class EditOptions: NSObject {
 
     // Store sticker label details: sticker, stickerName, frame, color, colorIndex, transform
     var stickerDetail = [(sticker: AddSticker?,
-                          transform: CGAffineTransform,
+                          trns: CGAffineTransform,
                           frame: CGRect?,
+                          cnter: CGPoint?,
                           orntn: String?,
                           isSticker: Bool?,
                           color: UIColor?,
@@ -68,7 +75,7 @@ class EditOptions: NSObject {
     var appliedOverlayDetails = [(overlayName: String, opacityValue: CGFloat)]()
 
     // Store overlay name and opacity for overlay
-    var appliedFramesDetails = [(framesName: Any, opacityValue: CGFloat, imageOrientation: UIImage.Orientation?)]()
+    var appliedFramesDetails = [(framesName: Any, opacityValue: CGFloat, imageOrientation: UIImage.Orientation?, isRotate_new: Bool, isAspect: Bool)]()
 
     // Store filter name and opacity for filter
     var appliedFilterDetails = [(filterName: String, opacityValue: CGFloat)]()

@@ -149,7 +149,7 @@ class FilterView: UIView {
 extension FilterView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // Return the number of cells in the table view
-        return self.filterData.count + 1
+        return self.filterImages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -160,19 +160,17 @@ extension FilterView: UICollectionViewDataSource {
         // Set the cell's data source and delegate
         cell.dataSource = self
         cell.delegate = self
-        if indexPath.row == 0 {
-            let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
-            let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)
-
-            cell.configure(with: "", selectedOverlay: self.selectedFilter, image: UIImage.init(named: "filters", in: bundle, compatibleWith: nil)!)
-        } else  {
-            let data = self.filterData[indexPath.row - 1]
-            let image = self.filterImages[indexPath.row - 1]
-            cell.configure(with: data, selectedOverlay: selectedFilter, image: image)
-        }
+            let data = self.filterData[indexPath.row]
+            let image = self.filterImages[indexPath.row]
+            cell.configure(with: data, selectedOverlay: self.selectedFilter, image: image)
+       // }
 
         return cell
     }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 60, height: 60)
+    }
+
 }
 
 extension FilterView: UICollectionViewDelegate {
@@ -182,7 +180,7 @@ extension FilterView: UICollectionViewDelegate {
             cell?.handleSelection(with: "", isEmpty:true)
             self.filterSlider.isHidden = true
         } else {
-            let data = self.filterData[indexPath.row - 1]
+            let data = self.filterData[indexPath.row ]
             cell?.handleSelection(with: data, isEmpty:false)
             self.filterSlider.isHidden = false
         }

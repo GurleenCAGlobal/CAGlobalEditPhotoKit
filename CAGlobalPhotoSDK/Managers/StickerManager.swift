@@ -51,6 +51,11 @@ class StickerManager: NSObject {
         return stickers
     }
     
+    func getShapesNames() -> [String] {
+        let stickers = (1...64).compactMap {  "shape\($0)" }
+        return stickers
+    }
+
     func getEmoticonData() -> [UIImage] {
         let bundlePath = Bundle(for: FrameView.self).path(forResource: "CAGlobalPhotoSDKResources", ofType: "bundle")
         let bundle = (bundlePath != nil ? Bundle(path: bundlePath!) : nil)
@@ -196,7 +201,33 @@ class StickerManager: NSObject {
         customView.stickerSelection = sticker
         customView.isStickers = isSticker
         customView.image = image
-        if sticker == "shapes" || sticker == "badges"  || sticker == "arrow" || sticker == "spray" {
+        if sticker == "shapes" || sticker == "badges"  || sticker == "arrow" || sticker == "spray" || sticker == "customSticker" {
+            customView.tintColor = color
+        }
+        
+        for i in 0...stickersFromApi.count {
+            print(i)
+            if sticker == "api" {
+                customView.tintColor = .clear
+            }
+        }
+        if isTransform {
+            customView.transform = CGAffineTransformIdentity
+            customView.transform = transform
+        }
+        customView.tag = tag
+        return customView
+    }
+    
+    func addStickerReset(stickerView: AddSticker, delegate: UIViewController, frame: CGRect, image: UIImage, isTransform: Bool, transform: CGAffineTransform, tag: Int, sticker: String, isSticker: Bool, color: UIColor) -> AddSticker {
+        _ = 0
+        let customView = stickerView//AddSticker(frame: frame)
+        customView.frame = frame
+        customView.delegate = delegate as? any AddStickerViewDelegate
+        customView.stickerSelection = sticker
+        customView.isStickers = isSticker
+        customView.image = image
+        if sticker == "shapes" || sticker == "badges"  || sticker == "arrow" || sticker == "spray" || sticker == "customSticker" {
             customView.tintColor = color
         }
         

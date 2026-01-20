@@ -19,9 +19,27 @@ enum EffectOption: String, CaseIterable {
     case transform = "Transform"
 }
 
+enum EffectOption500: String, CaseIterable {
+    case gallery = "Add Photo"
+    case stickers = "Stickers"
+    case text = "Text"
+    case frame = "Frame"
+    case brush = "Brush"
+    case transform = "Transform"
+}
+
 class EffectManager: NSObject {
     // Storing options for edit imaae
     func getFilterData() -> [FilterModel] {
+        let bundleID = Bundle.main.bundleIdentifier
+        if bundleID == "com.sprocket.panoramas" {
+            return getFilterData500()
+        } else {
+            return getFilterDataDefault()
+        }
+    }
+    
+    private func getFilterDataDefault() -> [FilterModel] {
         let filters = EffectOption.allCases.map { options in
             let names = FilterModel.init(name: options.rawValue, image: options.rawValue)
             return names
@@ -29,4 +47,11 @@ class EffectManager: NSObject {
         return filters
     }
     
+    private func getFilterData500() -> [FilterModel] {
+        let filters = EffectOption500.allCases.map { options in
+            let names = FilterModel.init(name: options.rawValue, image: options.rawValue)
+            return names
+        }
+        return filters
+    }
 }

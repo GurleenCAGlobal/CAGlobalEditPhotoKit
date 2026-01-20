@@ -28,7 +28,7 @@ open class Overlay: UIView {
         }
     }
 
-    public var gridLinesCount: UInt = 2 {
+    public var gridLinesCount: UInt = 1 {
         didSet {
             cropBox.gridLinesView.horizontalLinesCount = gridLinesCount
             cropBox.gridLinesView.verticalLinesCount = gridLinesCount

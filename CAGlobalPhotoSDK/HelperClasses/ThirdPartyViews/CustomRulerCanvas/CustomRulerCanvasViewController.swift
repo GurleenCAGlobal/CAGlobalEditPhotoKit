@@ -32,6 +32,14 @@ protocol RulerCanvasDelegate {
     @IBOutlet weak var viewCustomCanvas: CanvasCropView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var nextButton: UIButton!
+    
+    @IBOutlet weak var minimumValue: UILabel!
+    
+    @IBOutlet weak var minimumValue1: UILabel!
+    
+    @IBOutlet weak var maxValue: UILabel!
+    
+    @IBOutlet weak var maxValue1: UILabel!
 
     let option = EditOptions()
     var stickerManager = StickerManager()
@@ -58,6 +66,8 @@ protocol RulerCanvasDelegate {
 
     var scrollViewZoomScale:CGFloat?
     var isFillImage = false
+    var isFillImage2 = false
+
     var scrollviewPaperLengthFrame:CGRect?
     var saveIamgeToGallery: Bool = false
     var goToPreview: Bool = false
@@ -128,6 +138,7 @@ protocol RulerCanvasDelegate {
     
     // MARK: - View Life Cycle
     public override func viewDidLoad() {
+        isFillImage2 = isFillImage
         GlobalHelper.sharedManager.isRulerSliderChange = false
 
         super.viewDidLoad()
@@ -167,6 +178,8 @@ protocol RulerCanvasDelegate {
                 }
                 self.changeCanvasSize(orienationaChange: false)
             }
+            //self.viewDottedVertical.addDashedBorder()
+            //self.viewDottedHorizontal.addDashedBorder()
             self.viewDottedVertical.backgroundColor = .clear
             self.viewDottedHorizontal.backgroundColor = .clear
             self.activityIndicator.isHidden = true
@@ -189,6 +202,20 @@ protocol RulerCanvasDelegate {
         
         setNeedsStatusBarAppearanceUpdate()
         self.navigationController?.navigationBar.isHidden = true
+        
+//        if UIScreen.main.sizeType == .iPhone5 {
+//            // Make specific layout for small devices.
+//            minimumValue.isHidden = true
+//            maxValue.isHidden = true
+//            minimumValue1.isHidden = false
+//            maxValue1.isHidden = false
+//        }else {
+            
+            minimumValue.isHidden = false
+            maxValue.isHidden = false
+            minimumValue1.isHidden = true
+            maxValue1.isHidden = true
+//        }
     }
     
     public override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -266,7 +293,7 @@ protocol RulerCanvasDelegate {
         return returnEdited
     }
     
-    func changeCanvasSize(orienationaChange:Bool){
+    func changeCanvasSize(orienationaChange:Bool,contentMode:UIImageView.ContentMode?=nil){
         GlobalHelper.sharedManager.isRulerSliderChange = true
 
         let valueOfSlider = (Double(sliderCustomRange.value).rounded(toPlaces: 1))
@@ -277,14 +304,14 @@ protocol RulerCanvasDelegate {
             } else {
                 self.viewDottedHorizontal.isHidden = false
             }
-            viewCustomCanvas.calculteCanvasSize(aspectRatio: CGFloat(sliderCustomRange.value)/2.0, width: nil, height: dottedLineLandscapeHeight, orienationaChange: orienationaChange)
+            viewCustomCanvas.calculteCanvasSize(aspectRatio: CGFloat(sliderCustomRange.value)/2.0, width: nil, height: dottedLineLandscapeHeight, orienationaChange: orienationaChange, contentMode: contentMode)
         } else {
             if sliderCustomRange.value == 9 {
                 self.viewDottedVertical.isHidden = true
             } else {
                 self.viewDottedVertical.isHidden = false
             }
-            viewCustomCanvas.calculteCanvasSize(aspectRatio: CGFloat(sliderCustomRange.value)/2.0, width: dottedLinePortraitWidth, height: nil, orienationaChange: orienationaChange)
+            viewCustomCanvas.calculteCanvasSize(aspectRatio: CGFloat(sliderCustomRange.value)/2.0, width: dottedLinePortraitWidth, height: nil, orienationaChange: orienationaChange,contentMode: contentMode)
         }
         if let image = viewCustomCanvas.image {
             if isDragEventFromRuler {
@@ -391,13 +418,26 @@ protocol RulerCanvasDelegate {
     @IBAction func actionOrientationChnage(_ sender: Any) {
         self.isDragEventFromRuler = true
         
+        var isOriginalCanvasOrientation = false
+        if (originalCanvasOrientation == .landscape && isLandscape) || (originalCanvasOrientation == .portrait && !isLandscape){
+            isOriginalCanvasOrientation = true
+        }
+        
+        
+        var contentMode = UIImageView.ContentMode(rawValue: isFillImage2 == true ? 2:1) //2 fill
+        if isOriginalCanvasOrientation {
+            contentMode = contentMode == .scaleAspectFit ? .scaleAspectFill:.scaleAspectFit
+        } else {
+            contentMode = contentMode == .scaleAspectFit ? .scaleAspectFit:.scaleAspectFill
+        }
+        
         if isLandscape {
             self.viewDottedHorizontal.isHidden = true
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
                 self.isLandscape = false
                 self.viewDottedVertical.isHidden = false
-                self.changeCanvasSize(orienationaChange: true)
+                self.changeCanvasSize(orienationaChange: true, contentMode: contentMode)
                 
                 let subViews = self.stickerView.subviews
                 for subview in subViews {
@@ -421,67 +461,14 @@ protocol RulerCanvasDelegate {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
                 self.isLandscape = true
                 self.viewDottedHorizontal.isHidden = false
-                self.changeCanvasSize(orienationaChange: true)
+                self.changeCanvasSize(orienationaChange: true, contentMode: contentMode)
+
                 self.viewCustomCanvas.viewImageGesture.addSubview(self.paintImageView)
                 self.viewCustomCanvas.viewImageGesture.addSubview(self.stickerView)
 //                self.paintImageView.frame = self.viewCustomCanvas.viewImageGesture.bounds
 
             }
         }
-        
-        //stickerView.removeFromSuperview()
-
-       // stickerView.bringSubviewToFront(self.viewCustomCanvas.imageView)
-        
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-//            
-//            //Sticker
-//            let widthRatio = self.stickerView.frame.width / self.viewCustomCanvas.viewImageGesture.frame.size.width
-//            let heightRatio = self.stickerView.frame.height / self.viewCustomCanvas.viewImageGesture.frame.size.height
-//            
-//            self.stickerView.frame = CGRectMake(0, 0, self.viewCustomCanvas.viewImageGesture.frame.size.width, self.viewCustomCanvas.viewImageGesture.frame.size.height)
-//            
-//            if self.transformScrollView != nil {
-//                self.stickerView.transform = self.transformScrollView!
-//            }
-//            
-//            let subViews = self.stickerView.subviews
-//            for subview in subViews {
-//                if subview is AddSticker {
-//                    if let addSticker = subview as? AddSticker {
-//                        let origin = addSticker.frame.origin
-//                        let size = addSticker.frame.size
-//                        if self.isLandscape {
-//                            
-//                        } else {
-//                            
-//                        }
-//                        let frame = CGRect(x: origin.x/heightRatio , y: origin.y/widthRatio , width: size.width/widthRatio, height: size.height/heightRatio)
-//                        addSticker.frame = frame
-//                    }
-//                }
-//                
-//                if subview is AddTextView {
-//                    if let addSticker = subview as? AddTextView {
-//                        addSticker.font = UIFont.systemFont(ofSize: addSticker.font.pointSize/heightRatio)
-//                        let origin = addSticker.frame.origin
-//                        let size = addSticker.frame.size
-//                        
-//                        let frame = CGRect()
-//                        if self.isLandscape {
-//                            
-//                        } else {
-//                            
-//                        }
-//                        let frame = CGRect(x: origin.x/heightRatio , y: origin.y/widthRatio , width: size.width/widthRatio, height: size.height/heightRatio)
-//                        addSticker.frame = frame
-//                    }
-//                }
-//            }
-//            
-//            self.viewCustomCanvas.viewImageGesture.addSubview(self.stickerView)
-//
-//        }
     }
     
     @objc func actionFitFillChnage(_ sender:Any){
@@ -578,9 +565,9 @@ protocol RulerCanvasDelegate {
         var canvasResult: UIImage
 
         if GlobalHelper.sharedManager.selectedRatioWith < 2.0 {
-            canvasResult = CanvasRatioManager.shared.newGetImageAccordingPrintRatio(image: image, ratio: GlobalHelper.sharedManager.selectedRatioWith)
+            //canvasResult = CanvasRatioManager.shared.newGetImageAccordingPrintRatio(image: image, ratio: GlobalHelper.sharedManager.selectedRatioWith)
         } else {
-            canvasResult = CanvasRatioManager.shared.getImageAccordingPrintRatio(image: image, ratio: GlobalHelper.sharedManager.selectedRatioWith)
+            //canvasResult = CanvasRatioManager.shared.getImageAccordingPrintRatio(image: image, ratio: GlobalHelper.sharedManager.selectedRatioWith)
         }
 
         GlobalHelper.sharedManager.isLandcape = false
